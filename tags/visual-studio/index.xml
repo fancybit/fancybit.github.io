@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>visual studio - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/visual-studio/</link>
+    <description>visual studio - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 21 Feb 2020 09:14:15 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/visual-studio/" rel="self" type="application/rss+xml" /><item>
+  <title>VSIX项目，添加右键菜单（二）</title>
+  <link>https://www.fancybit.top/archives/88/</link>
+  <pubDate>Fri, 21 Feb 2020 09:14:15 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/88/</guid>
+  <description><![CDATA[&lt;p style=&quot;margin: 10px auto;&quot;&gt; 项目上右击，添加新建项 &lt;/p&gt; &lt;p style=&quot;margin: 10px auto;&quot;&gt; &lt;img src=&quot;https://images2017.cnblogs.com/blog/705223/201708/705223-20170807172213034-2125231860.png&quot; title=&quot;VSIX项目，添加右键菜单（二） visual studio vsix 第1张&quot; alt=&quot;VSIX项目，添加右键菜单（二） visual studio vsix 第1张&quot; style=&quot;border: 0px; max-width: 100%; height: auto;&quot; /&gt; &lt;/p&gt; &lt;p style=&quot;margin: 10px auto;&quot;&gt; 随便起一个名字，例如我的是&amp;nbsp; RightCmd &lt;/p&gt; &lt;p style=&quot;margin: 10px auto;&quot;&gt; &lt;img src=&quot;https://images2017.cnblogs.com/blog/705223/201708/705223-20170807172300112-1153425242.png&quot; title=&quot;VSIX项目，添加右键菜单（二） visual studio vsix 第2张&quot; alt=&quot;VSIX项目，添加右键菜单（二） visual studio vsix 第2张&quot; style=&quot;border: 0px; max-width: 100%; height: auto;&quot; /&gt; &lt;/p&gt; &lt;p style=&quot;margin: 10px auto;&quot;&gt; 2、里边有一个vsct的文件，这个文件相当于MVC里的html，是用于配置显示的。 &lt;/p&gt; &lt;p style=&quot;margin: 10px auto;&quot;&gt; 打开它，里边前几行，有一个引入的文件，vsshlids.]]></description>
+</item>
+</channel>
+</rss>

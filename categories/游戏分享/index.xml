@@ -1,0 +1,61 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>游戏分享 - Category - 数语轩</title>
+    <link>https://www.fancybit.top/categories/%E6%B8%B8%E6%88%8F%E5%88%86%E4%BA%AB/</link>
+    <description>游戏分享 - Category - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 03 Jul 2021 14:13:49 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/categories/%E6%B8%B8%E6%88%8F%E5%88%86%E4%BA%AB/" rel="self" type="application/rss+xml" /><item>
+  <title>绯红结系 脑机接口超能力战斗</title>
+  <link>https://www.fancybit.top/archives/714/</link>
+  <pubDate>Sat, 03 Jul 2021 14:13:49 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/714/</guid>
+  <description><![CDATA[上周，由万代南梦宫制作并发行的《绯红结系》在Steam平台正式上线发售。这是一款经典的日式ARPG游戏，同时也是《噬神者》系列开发团队精心打造的又一最新力作。
+《绯红结系》的游戏背景设定在未来的世界，人们结合大脑和科学的技术革新创建了新的文明。但在新文明蓬勃发展的同时，人类生存遭到了怪异的威胁。普通武器无法对怪异造成伤害，为了对抗怪异，人们集合优异脑力者建立了怪异讨伐军。
+在《绯红结系》中，玩家将扮演 OSF 新兵 Yuito Sumeragi，孩童时期的主人公曾被一位精英灵能者所救，因此TA最大的梦想便是成为如那位精英灵能者一般的英雄人物。玩家可以使用精神异能探索新 Himuka 这一未来城市，并探索处于科技和超能力之间的Brain Punk未来的秘密。
+游戏为玩家提供了两条不同线路和三种不同难度的选择。玩家可以选择男主线路或女主线路并代入角色中，尽管两条线路都能通关，两条主角线中剧情的推进也相似，但两条线路的玩法却大相径庭。比如男女主的战斗模式就有很大的差别，男主是可以近战且自身有较高防御力的战士角色；而女主主打远程输出，有更高伤害，但需要走位避开敌人的攻击。
+与传统的动作类游戏相比，《绯红结系》拥有全新的“念力”战斗系统。玩家操控的角色可以利用念力发动多种攻击，例如特殊的必杀技，远程隔空移物等。而两位主角所在的小队也有不同的队友相辅助。每个队友有自己的奇异能力，主角也可以借助同伴的能力发动招式，比如超高移速，隐身，电力攻击等等。为游戏的玩法提供了超高的挖掘空间，玩家可以探索各种技能招式来击败怪异。
+下载地址：
+BT种子：
+百度网盘：
+https://pan.baidu.com/s/1CX-hrUw6F9gJpu6Y5r7oaA
+提取码：236e]]></description>
+</item>
+<item>
+  <title>[资源] 【2020.3.15】碧蓝幻想VS-Granblue Fantasy: Versus&#43;8 DLCs&#43;联机，fitgirl重新封装，3.25GB</title>
+  <link>https://www.fancybit.top/archives/706/</link>
+  <pubDate>Sat, 03 Jul 2021 11:19:08 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/706/</guid>
+  <description><![CDATA[国外bt建议使用bitcomet，μtorrent，qbittorrent等正规bt软件下载，没速度的多找点有效tracker就快了。学会分享，拒绝某雷等流氓软件吸血（某雷等流氓软件下载导致文件破损后果自负）！**
+**
+**话外音，fitgirl发布页在我搬运完这个资源之后瘫痪了几分钟，然后页面变回了11天前的状态，应该是又被黑了。。。。。。阿弥陀佛，我最爱的repacks小组。。。
+重新封包游戏安装注意事项：
+如遇安装过程卡住
+前提1.如果是机械硬盘，首先排除硬盘是否存在坏道；
+前提2.用某雷下载的，下载附件中的种子，使用正规bt软件打开种子重新检索已下载文件的完整性（重新hash）；
+1.安装时关闭一切防护防毒软件（包括win自带的），因为这些可能拦截安装程序释放临时文件；
+2.内存16G或小于16G的，手动设置虚拟内存最大最小值均为16G。32G或以上的，以防万一手动设置虚拟内存最大最小值8G；
+3.安装全套c++运行库，从2003到2019，x86和x64都要装；
+4.不要安装在系统分区；
+5.把UAC设置到最低级，从不通知；
+6.确保你安装的分区有足够的空间；
+7.如果你系统分区Windows文件夹下有unarc.dll，将其删除；
+8.win系统用户名只能是字母或数字，不能是中文；****
+**
+**
+中文设置方法
+用记事本打开游戏目录下\Engine\Binaries\ThirdParty\Steamworks\Steamv144\Win64\steam_emu.ini文件，把Language=english改为Language=schinese是简体，Language=tchinese是繁体
+由于游戏语言设置中没有提供简繁中文的选项（但游戏数据中包含简繁中文），故无论任何时候，不要对游戏自定义选项中的声音&amp;语言项进行设置，否则将保存为游戏中设置的语言。
+如果已经用其他语言进入游戏，出现开头中文，载入存档进入游戏后变其它语言的问题，删除游戏存档文件，x:\Users\你的用户名\AppData\Local\GBVS文件夹，并按上述方式修改ini文件，在进入游戏，其余如上****
+**
+**
+本资源为搬运，一切解释权归fitgirl小组所有
+**
+重新包装功能
+基于Granblue.Fantasy.Versus-CODEX ISO版本：codex-granblue.fantasy.versus.iso（6,367,444,992字节） 安装后，NoDVD文件夹中提供用于在线联机的基于CreamAPI的Steamworks Fix，以供使用 包含并激活了8个DLC 100％无损和MD5完美：安装后所有文件均与原始文件相同 没有删减，没有重新编码 存档大小显着减小（从5.9 GB压缩到3.3 GB） 安装需要3-6分钟（取决于您的配置） 安装后完整性检查，以便您可以确保所有内容均已正确安装 安装后的硬盘空间：7 GB 可以在游戏设置中更改语言 重新打包使用Razor12911的XTool库 **安装此重新包装至少需要2 GB的可用RAM（包括虚拟）
+** **
+随附的DLC**
+Additional Character Set 1 (Beelzebub) Additional Character Set 2 (Narmaya) Color Pack Set 1 Color Pack Set 2 Color Pack Set 3 Color Pack Set 4 Color Pack Set 5 **Color Pack Set 6]]></description>
+</item>
+</channel>
+</rss>

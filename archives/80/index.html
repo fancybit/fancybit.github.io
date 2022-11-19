@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>宝塔lnmp&#43;frp搭建内网穿透服务 - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 开发和发布环境搭建看这一篇：&lt;a href=&quot;https://www.fancybit.top/post/11.html&quot;&gt;https://www.fancybit.top/post/11.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 用vscode&#43;xdebug断点调试服务器上的php网站：&lt;a href=&quot;https://www.fancybit.top/post/63.html&quot;&gt;https://www.fancybit.top/post/63.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 不过实际应用几次以后 有些需要对接的webapi，比如qq 微信开放平台以及支付宝 微信支付接口之类的时候就会遇到麻烦，因为需要服务提供方进行一些推送，而他们只能推送到外网IP，而我上述的方法只能在服务端来进行操作，会受限开发机到服务器的网络延迟有些麻烦。所以为了开发调试方便，很多人都会用NAT内网穿透技术，比如花生壳,ngrok,natapp之类。花生壳很早就有但是实测非常不稳定，即使付费的VIP用户也经常掉线，连不上。ngrok和natapp都已经进入商业化，想方便使用的话只能在国内一些搭建好的平台付费另外租用带宽流量。 &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 这里是FRP的简单入门使用：&lt;a href=&quot;https://blog." /><meta name="keywords" content='frp, lnmp, QQ开放平台, webapi, 内网穿透, 宝塔, 微信开放平台' /><meta itemprop="name" content="宝塔lnmp&#43;frp搭建内网穿透服务">
+<meta itemprop="description" content="&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 开发和发布环境搭建看这一篇：&lt;a href=&quot;https://www.fancybit.top/post/11.html&quot;&gt;https://www.fancybit.top/post/11.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 用vscode&#43;xdebug断点调试服务器上的php网站：&lt;a href=&quot;https://www.fancybit.top/post/63.html&quot;&gt;https://www.fancybit.top/post/63.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 不过实际应用几次以后 有些需要对接的webapi，比如qq 微信开放平台以及支付宝 微信支付接口之类的时候就会遇到麻烦，因为需要服务提供方进行一些推送，而他们只能推送到外网IP，而我上述的方法只能在服务端来进行操作，会受限开发机到服务器的网络延迟有些麻烦。所以为了开发调试方便，很多人都会用NAT内网穿透技术，比如花生壳,ngrok,natapp之类。花生壳很早就有但是实测非常不稳定，即使付费的VIP用户也经常掉线，连不上。ngrok和natapp都已经进入商业化，想方便使用的话只能在国内一些搭建好的平台付费另外租用带宽流量。 &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 这里是FRP的简单入门使用：&lt;a href=&quot;https://blog."><meta itemprop="datePublished" content="2020-02-19T08:17:48+00:00" />
+<meta itemprop="dateModified" content="2020-02-19T08:17:48+00:00" />
+<meta itemprop="wordCount" content="506">
+<meta itemprop="keywords" content="frp,lnmp,QQ开放平台,webapi,内网穿透,宝塔,微信开放平台," /><meta property="og:title" content="宝塔lnmp&#43;frp搭建内网穿透服务" />
+<meta property="og:description" content="&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 开发和发布环境搭建看这一篇：&lt;a href=&quot;https://www.fancybit.top/post/11.html&quot;&gt;https://www.fancybit.top/post/11.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 用vscode&#43;xdebug断点调试服务器上的php网站：&lt;a href=&quot;https://www.fancybit.top/post/63.html&quot;&gt;https://www.fancybit.top/post/63.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 不过实际应用几次以后 有些需要对接的webapi，比如qq 微信开放平台以及支付宝 微信支付接口之类的时候就会遇到麻烦，因为需要服务提供方进行一些推送，而他们只能推送到外网IP，而我上述的方法只能在服务端来进行操作，会受限开发机到服务器的网络延迟有些麻烦。所以为了开发调试方便，很多人都会用NAT内网穿透技术，比如花生壳,ngrok,natapp之类。花生壳很早就有但是实测非常不稳定，即使付费的VIP用户也经常掉线，连不上。ngrok和natapp都已经进入商业化，想方便使用的话只能在国内一些搭建好的平台付费另外租用带宽流量。 &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 这里是FRP的简单入门使用：&lt;a href=&quot;https://blog." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/80/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-19T08:17:48+00:00" />
+<meta property="article:modified_time" content="2020-02-19T08:17:48+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="宝塔lnmp&#43;frp搭建内网穿透服务"/>
+<meta name="twitter:description" content="&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 开发和发布环境搭建看这一篇：&lt;a href=&quot;https://www.fancybit.top/post/11.html&quot;&gt;https://www.fancybit.top/post/11.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 用vscode&#43;xdebug断点调试服务器上的php网站：&lt;a href=&quot;https://www.fancybit.top/post/63.html&quot;&gt;https://www.fancybit.top/post/63.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 不过实际应用几次以后 有些需要对接的webapi，比如qq 微信开放平台以及支付宝 微信支付接口之类的时候就会遇到麻烦，因为需要服务提供方进行一些推送，而他们只能推送到外网IP，而我上述的方法只能在服务端来进行操作，会受限开发机到服务器的网络延迟有些麻烦。所以为了开发调试方便，很多人都会用NAT内网穿透技术，比如花生壳,ngrok,natapp之类。花生壳很早就有但是实测非常不稳定，即使付费的VIP用户也经常掉线，连不上。ngrok和natapp都已经进入商业化，想方便使用的话只能在国内一些搭建好的平台付费另外租用带宽流量。 &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 这里是FRP的简单入门使用：&lt;a href=&quot;https://blog."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/80/" /><link rel="prev" href="https://www.fancybit.top/archives/79/" /><link rel="next" href="https://www.fancybit.top/archives/81/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "宝塔lnmp+frp搭建内网穿透服务",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/80\/"
+    },"genre": "post","keywords": "frp, lnmp, QQ开放平台, webapi, 内网穿透, 宝塔, 微信开放平台","wordcount":  506 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/80\/","datePublished": "2020-02-19T08:17:48+00:00","dateModified": "2020-02-19T08:17:48+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">宝塔lnmp&#43;frp搭建内网穿透服务</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><!-- raw HTML omitted -->
+<pre><code>&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+  开发和发布环境搭建看这一篇：&lt;a href=&quot;https://www.fancybit.top/post/11.html&quot;&gt;https://www.fancybit.top/post/11.html&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+  用vscode+xdebug断点调试服务器上的php网站：&lt;a href=&quot;https://www.fancybit.top/post/63.html&quot;&gt;https://www.fancybit.top/post/63.html&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+  不过实际应用几次以后 有些需要对接的webapi，比如qq 微信开放平台以及支付宝 微信支付接口之类的时候就会遇到麻烦，因为需要服务提供方进行一些推送，而他们只能推送到外网IP，而我上述的方法只能在服务端来进行操作，会受限开发机到服务器的网络延迟有些麻烦。所以为了开发调试方便，很多人都会用NAT内网穿透技术，比如花生壳,ngrok,natapp之类。花生壳很早就有但是实测非常不稳定，即使付费的VIP用户也经常掉线，连不上。ngrok和natapp都已经进入商业化，想方便使用的话只能在国内一些搭建好的平台付费另外租用带宽流量。
+&lt;/p&gt;
+
+&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+  这里是FRP的简单入门使用：&lt;a href=&quot;https://blog.csdn.net/u013144287/article/details/78589643&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;https://blog.csdn.net/u013144287/article/details/78589643&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+  frp目前还是开源免费的，在自己的服务器上搭建一套并不困难。但是如果生产服务器上使用frp和宝塔面板就会遇到80 443端口冲突的问题。这里就使用如下方法，宝塔占80 443 然后用需要转发的域名建立网站，申请let's encrypt SSL证书，然后打开反向代理，把数据转给 frp服务端注册监听的端口，这里也就是9988。服务器配置文件这么写：
+&lt;/p&gt;
+
+&lt;pre class=&quot;prism-highlight prism-language-bash&quot;&gt;[common]
+</code></pre>
+<p>bind_port = 7000
+server_addr = 0.0.0.0
+server_port = 7000
+vhost_http_port = 9988<!-- raw HTML omitted --></p>
+<pre><code>&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+  注意这里的vhost_http_port是外网机的端口 不能是80 因为会和宝塔冲突 这里用9988 然后宝塔在80端口收到数据 根据收到的请求域名分发给这个9988端口，然后frp通过已建立的连接发给开发机客户端。
+&lt;/p&gt;
+
+&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+  然后是内网开发机，frp客户端配置文件这么写：
+&lt;/p&gt;
+
+&lt;div style=&quot;color: rgb(212, 212, 212); background-color: rgb(30, 30, 30); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;
+  &lt;div&gt;
+    [common]
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;span style=&quot;color: #569cd6;&quot;&gt;server_addr&lt;/span&gt;&amp;nbsp;=&amp;nbsp;fans.fancybit.top
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;span style=&quot;color: #569cd6;&quot;&gt;server_port&lt;/span&gt;&amp;nbsp;=&amp;nbsp;7000
+  &lt;/div&gt;
+  
+  &lt;p&gt;
+  &lt;/p&gt;
+  
+  &lt;div&gt;
+    [test.fans]
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;span style=&quot;color: #569cd6;&quot;&gt;type&lt;/span&gt;&amp;nbsp;=&amp;nbsp;http
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;span style=&quot;color: #569cd6;&quot;&gt;local_ip&lt;/span&gt;&amp;nbsp;=&amp;nbsp;127.0.0.1
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;span style=&quot;color: #569cd6;&quot;&gt;local_port&lt;/span&gt;&amp;nbsp;=&amp;nbsp;80
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;span style=&quot;color: #569cd6;&quot;&gt;custom_domains&lt;/span&gt;&amp;nbsp;=&amp;nbsp;test.fans.fancybit.top
+  &lt;/div&gt;
+  
+  &lt;p&gt;
+    &lt;/div&gt; 
+    
+    &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+      local_port就是开发机上要接受数据的端口，这里使用80，因为frp和开发机之间的连接使用80端口就够了，内网机申请ssl证书比较麻烦，前面最终用户访问域名时候使用https连接你的公网服务器使用ssl就够了。但是要注意创建公网服务器反向代理的时候需要先在宝塔网站设置SSL页面里申请好证书再开反向代理，否则会拒绝你的操作。可以简单的理解为最终用户连接到你的公网服务器走的ssl加密通道，而公网服务器到开发机是不用ssl加密的。如果这方面也有安全漏洞的话，欢迎朋友来指正补充说明一下。
+    &lt;/p&gt;
+    
+    &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+      &lt;img loading=&quot;lazy&quot; src=&quot;https://img.kuke365.com/wp-content/uploads/2018/10/12.png&quot; title=&quot;宝塔lnmp+frp搭建内网穿透服务  frp 内网穿透 webapi 微信开放平台 QQ开放平台 lnmp 宝塔 第1张&quot; alt=&quot;宝塔lnmp+frp搭建内网穿透服务  frp 内网穿透 webapi 微信开放平台 QQ开放平台 lnmp 宝塔 第1张&quot; data-original=&quot;//img.kuke365.com/wp-content/uploads/2018/10/12.png&quot; width=&quot;645&quot; height=&quot;467&quot; class=&quot;alignnone size-full wp-image-123&quot; srcset=&quot;//img.kuke365.com/wp-content/uploads/2018/10/12.png 645w, //img.kuke365.com/wp-content/uploads/2018/10/12-300x217.png 300w&quot; sizes=&quot;(max-width: 645px) 100vw, 645px&quot; style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-style: inherit; margin: 0px 0px 10px; outline: 0px; padding: 0px; vertical-align: middle; max-width: 100%; height: auto; display: block;&quot; /&gt;&amp;nbsp;
+    &lt;/p&gt;
+    
+    &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt;
+      &amp;nbsp;&lt;img loading=&quot;lazy&quot; src=&quot;https://img.kuke365.com/wp-content/uploads/2018/10/13.png&quot; title=&quot;宝塔lnmp+frp搭建内网穿透服务  frp 内网穿透 webapi 微信开放平台 QQ开放平台 lnmp 宝塔 第2张&quot; alt=&quot;宝塔lnmp+frp搭建内网穿透服务  frp 内网穿透 webapi 微信开放平台 QQ开放平台 lnmp 宝塔 第2张&quot; data-original=&quot;//img.kuke365.com/wp-content/uploads/2018/10/13.png&quot; width=&quot;643&quot; height=&quot;610&quot; class=&quot;alignnone size-large wp-image-124&quot; srcset=&quot;//img.kuke365.com/wp-content/uploads/2018/10/13.png 643w, //img.kuke365.com/wp-content/uploads/2018/10/13-300x285.png 300w&quot; sizes=&quot;(max-width: 643px) 100vw, 643px&quot; style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-style: inherit; margin: 0px 0px 10px; outline: 0px; padding: 0px; vertical-align: middle; max-width: 100%; height: auto; display: block;&quot; /&gt;
+    &lt;/p&gt;&lt;/div&gt; &lt;/div&gt; 
+    
+    &lt;p&gt;
+      最后在开发机的80端口上就可以创建任意http服务器接收处理数据了。
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+      当然你也可以在宝塔上也添加一个相同域名的反向代理网站 让本地开发机上多个网站也可以共用同一个80端口 用不同域名分发。
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+      更多的FRP常用功能可以参考这里：&lt;a href=&quot;https://sspai.com/post/52523&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;https://sspai.com/post/52523&lt;/a&gt;
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+      比较重要的也就是加一个 token处理一下安全问题了，避免别人在你开发机上frp客户端关闭的时候冒充你。
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+      &lt;!--81--&gt;
+    &lt;/p&gt;</code></pre>
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

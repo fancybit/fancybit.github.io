@@ -1,0 +1,164 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>开发日志 - Category - 数语轩</title>
+    <link>https://www.fancybit.top/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/</link>
+    <description>开发日志 - Category - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 14 Sep 2022 00:53:43 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/" rel="self" type="application/rss+xml" /><item>
+  <title>C# obfuscar代码混淆备忘</title>
+  <link>https://www.fancybit.top/archives/871/</link>
+  <pubDate>Wed, 14 Sep 2022 00:53:43 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/871/</guid>
+  <description><![CDATA[从nuget安装Obfascar包，不用GlobalTool
+在项目中创建obfucar.xml
+在生成后事件里，
+注意这里是Obfuscar 不是obfascator
+然后是一个简单的obfuscar.xml范例
+有关配置文件详情看这里：
+Configuration — obfuscar 2.2 documentation]]></description>
+</item>
+<item>
+  <title>Unity3d Mirror插件联机开发备忘</title>
+  <link>https://www.fancybit.top/archives/854/</link>
+  <pubDate>Wed, 22 Jun 2022 14:47:40 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/854/</guid>
+  <description><![CDATA[1、序列化的对象不能含有环状引用，一个典型的例子是单例模式，它的instance静态变量肯定要引用到本体，所以需要注意。如果拿这种对象去spawn，即使在NetworkManager里注册了这个物体 也一样会spawn失败，因为中途涉及到序列化，传输，反序列化的步骤。解决这种问题的简单方法目前想到的是设置一个数据类型，保证其中不包含环状引用 然后在客户端拿这个类型的对象来收集无法序列化的类的对象成员，然后进行序列化或者反序列化，或者去spawn
+2、没有Spawn过的对象上调用ClientRPC方法会被忽略，而Spawn的对象需要和服务端同步，所以需要被序列化。mirror的序列化不可以包含环状引用，因此单例对象上是无法调用ClientRPC的，需要把这些单例去掉，才能在上面使用ClientRPC。
+3、如果没有NetworkManager在场景里的话，挂上NetworkIdentity标签的物体会在场景启动时被禁用，还不知道为什么这么设计，猜测可能是为了避免不同时生成物体造成的跨端（服务端客户端）id混乱，毕竟全都spawn出来的话，生成的物体的identity的netid是一致的。
+4、一个物体刚在服务端spawn的时候对它调用Rpc方法会失效，可能是客户端还没来得及生成对应的物体。这种情况需要用协程来延迟，也可以用UniTask库的async await轮询器和封装好的等待对象。
+5、NetworkIdentity 的Server only属性被勾选的时候就不会在Spawn之后自动在客户端生成对应物体。
+6、默认NetworkTransform的缩放同步是未开启的。
+7、对一个对象使用NetworkServer.Spawn的时候，会同时在客户端创建其子对象树结构，但是未使用NetworkBehaviour的对象是否会一起创建？答案是会的，有一个例外就是一个spawn出来的transform树形体系只能在根对象有一个IdentifyComponent。其他子级不能有Identify或者从NetworkBehaviour派生的component,因为会自动引入IdentifyComponent。这种情况就需要写代码自行完成spawn之后的对象体系的挂接工作。
+8、在一个跟节点有IdentifyComponent的体系上，被序列化的体系内不能有序列化不支持的类型，包括Component或者GameObject。但是我们可以在生成的体系中把层级关系让unity内置的transform树形结构来维护，这可以解决大部分引用不含IdentityComponent的子级节点的引用会妨碍序列化的问题。另外含有IdentifyComponent的子级组件的引用不会妨害序列化，因为这部分会自动被过滤掉不参加序列化，需要自行Spawn再挂接。
+9、序列化只能保持在prefab就有的transform层级结构,从场景中的物体进行序列化的话，用代码后续添加的子级不会跟着被序列化传递到客户端。因为本质上spawn就是把用于寻找资源的AssetID发送到客户端，然后客户端同样用AssetID来找到预制件，然后实例化预制件，赋予同时传递来的NetID，用于接收后续发来的同步消息的分发凭据。所以服务端的物体，实例化后，spawn之前的对象层级变化，都不会在客户端同步，甚至可能造成不存在的NetID的问题。
+10、command方法里再调用command方法可能造成服务端执行不完整，应该避免。
+11、SyncXXX系列容器里同步一样是用Waves，所以元素类型不能是GameObject或者Component。可以通过存储NetId来变通实现远程同步。
+12、isServer isClient isServerOnly isLocalPlayer
+13、NetworkServer和NetworkClient是Transporter上第二层的连接和通信
+14、NetworkServer.AddPlayer(conn,gameObject)把一个gameObject关联到一个conn作为Player的表示物体。conn的identity属性被赋予gameObject的identity组件。
+15、调用NetworkManager游戏场景切换时，服务端先进行切换，然后广播场景切换消息到所有客户端，在LateUpdate里轮询检测场景切换是否完成:
+，然后各自调用状态同步代码。
+替换roomPlayer到gamePlayer和传递参数
+创建RoomPlayer
+NetworkRoomManager.OnClientEnterRoom添加RoomPlayerObject
+NetworkRoomPlayer的OnGUI绘制了自己的准备状态和按钮
+NetworkRoomManager的OnGUI绘制了进入房间后的UI底版
+设置了DontDestroyOnLoad的对象如果重新设置setParent会导致不销毁标记失效]]></description>
+</item>
+<item>
+  <title>vscode调试typescript</title>
+  <link>https://www.fancybit.top/archives/793/</link>
+  <pubDate>Wed, 24 Nov 2021 15:08:08 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/793/</guid>
+  <description><![CDATA[vscode本身支持ts调试： 只要在tsconfig.json里打开sourceMap = true就可以启动源码映射文件(*.map)来进行运行时ts断点调试。 终端-》新建终端 创建一个终端窗口 如果已经有终端窗口可以略过这一步 点击终端面板右上角添加终端的+右边的向下箭头，选择创建js调试终端： 这个时候在这个终端里启动的node.js运行js的实例都会进行调试，遇到ts或者js断点都会暂停然后查看状态。
+安装一个vscode插件typescript debugger可以把调试过程做的更简单，F5一键进入调试模式： 1.搜索安装typescript debugger插件，然后切换到debug设置状态：
+2.创建一个调试配置文件，选择ts debug
+3.下图这里把标记的地方改成启动的js文件相对路径，比如./dist/app.js,然后保存
+4.在随意一个终端里运行npm install -dev ts-node 安装所需的包
+5.完成后就可以F5一键键开始调试了，同样是支持js和ts断点，只要tsconfig.json里启用了sourceMap文件生成]]></description>
+</item>
+<item>
+  <title>win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG</title>
+  <link>https://www.fancybit.top/archives/792/</link>
+  <pubDate>Tue, 23 Nov 2021 15:48:41 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/792/</guid>
+  <description><![CDATA[先到微软的网站下载Windows10的SDK和对应版本WDK
+安装win10 sdk 其中包含WinDBG调试器
+安装对应版本WDK
+vmware workstation 15-16虚拟机上安装windows10
+虚拟机菜单上找安装VMWare tools
+从下面地址下载Release的VirtualKD-Redux
+https://github.com/4d61726b/VirtualKD-Redux
+在宿主机（真机）解压缩VirtualKD-Redux的压缩包，根据虚拟机的操作系统位数，把对应的Target文件夹复制到虚拟机，然后在里面找到vminstall.exe文件双击安装。
+安装的时候可以选择新建启动项或者改变原有启动项。win10一定要确保选项选中
+在真机上根据真机win10位数启动vmmon64.exe或者vmmon32.exe，随后在虚拟机win10存在的状态下点击一下patch，然后设置一下windbg所在的路径。
+每次调试前需要先打开这个程序，并且调试结束前不要关闭，它还要继续工作以维持连接并加速数据传输。
+重新启动虚拟机 到启动项选择的时候，确保选中VirtualKD-Redux的那一项，然后不是按回车而是按F8，选择“禁用驱动程序强制签名”来继续启动windows。这个时候可以立刻用VMWARE做一个状态镜像，这样以后就不用每次启动都按F8，只要载入这个状态镜像即可。
+这时候正常情况下windbg就会在虚拟机进入windows徽标显示的载入过程中自动启动并且连接，这时调试环境就已经搞定了，在windbg里可以继续运行或者随时中断虚拟机里win10的所有线程。也可以加载PDB，源代码来进行断点调试了。如果windbg没有断下来，可以再次重启，或者从vmmon（32/64）上还原快照来再次尝试。]]></description>
+</item>
+<item>
+  <title>Docker复习备忘</title>
+  <link>https://www.fancybit.top/archives/773/</link>
+  <pubDate>Wed, 29 Sep 2021 09:28:22 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/773/</guid>
+  <description><![CDATA[Docker Windows使用wsl后端可以提高性能
+-p xxx[宿主机口号]:xxx[docker容器内端口号]
+当宿主机内使用非0.0.0.0 Listen的时候，可能导致宿主机转发来的连接断开，所以如果宿主机内可以curl到内容，但是宿主机浏览器显示socket hang up以及empty_response错误的时候，很可能就是宿主机内listen的IP不对，用0.0.0.0监听所有来源地址即可。
+把容器名和镜像名取同一个 然后commit xxx xxx即可把容器状态同步给镜像文件了
+每一句都会生成一个中间缓存，所以不变的尽量靠前放，经常变化的比如入口点，复制文件之类的往后放。但是也要注意不要搞错依赖关系致使中间出错。
+Dockerfile进行build的时候需要很多错综复杂的国外网络地址，所以与其来回折腾换源提速，还不如直接用一个VPN暂时把所有流量走国外加速VPN，可以解决很多缺失问题。
+pip安装python模块的时候经常会遇到一些.h文件缺失，这种情况一般是用yum来安装缺少的xxx-dev xxx-devel之类的支持库即可解决。
+COPY . .可以和WorkDir配合，WorkDir指定的是容器内的文件系统路径，而COPY的第一个参数是相对于Dokerfile放置的目录，第二个是基于WorkDir参数的容器内路径，注意顺序。
+用.dockerIgnore排除掉.git应该可以避免不需要的git历史占据的空间。
+如果dockerfile构建的时候需要清理每一句的缓存，可以在docker后添加&ndash;no-cache参数来不用缓存彻底从头构建
+vscode有一个docker插件可以浏览修改docker内部 不过我觉得还是用VI做小修小改更顺手。不过拿来检查docker内的文件是否正确更新是个好东西。
+vscode带的DOKERFILE语法格式识别还不错，右键就可以构建]]></description>
+</item>
+<item>
+  <title>windows下运行语音识别项目wenet Demo</title>
+  <link>https://www.fancybit.top/archives/765/</link>
+  <pubDate>Sun, 19 Sep 2021 15:52:18 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/765/</guid>
+  <description><![CDATA[wenet是个语音识别AI 效果感觉还不错 只是在windows下直接下载demo会需要修改些指令 说明文档里写的是适合linux的指令。我这里把自己修改后的可以在windows10下执行的指令列出来 原本步骤参见GITHUB:
+https://github.com/wenet-e2e/wenet/blob/main/README_CN.md
+OK这就可以方便windows用户 不用再切换到linux或者在虚拟机中运行docker了 应该可以提高效率也方便点
+源项目地址：]]></description>
+</item>
+<item>
+  <title>基于OpenCV的全景图剪切程序：一张全景生成六张立方体天空盒图</title>
+  <link>https://www.fancybit.top/archives/762/</link>
+  <pubDate>Tue, 14 Sep 2021 09:48:32 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/762/</guid>
+  <description><![CDATA[各种投影算法的链接：
+http://paulbourke.net/geometry/transformationprojection/]]></description>
+</item>
+<item>
+  <title>unity&#43;.net5全景地图项目开发备忘</title>
+  <link>https://www.fancybit.top/archives/759/</link>
+  <pubDate>Wed, 08 Sep 2021 14:46:31 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/759/</guid>
+  <description><![CDATA[服务端采用.net5 客户端是unity2021
+使用AutoFac做服务端的IOC容器 混用mvc的JsonResult 暂未使用ApiAttribute
+KEY字段的Guid使用NewtonSoft.Json有点问题，暂时都使用GUID生成的字符串来做KEY 同时方便内容传输
+用JWT来生成json保证手机端API的安全
+Post的表单内容在body内以和Get的QueryString一致的形式存在，没有分隔符?
+使用一个OwnerController基类来验证后台管理员的权限问题
+.net5 mvc对于url中的//是会报错的，所以拼接url时候要注意否则容易出现404
+从VS调试器里粘贴用于PostMan的json字符串数据的时候要注意去掉转义符，否则会形成类似2次序列化的问题导致PostMan发送到服务端的json解释混乱报错 通常是405]]></description>
+</item>
+<item>
+  <title>Unity调用Windows API备忘</title>
+  <link>https://www.fancybit.top/archives/114/</link>
+  <pubDate>Tue, 18 May 2021 18:54:11 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/114/</guid>
+  <description><![CDATA[最近接了个麻将游戏项目，需要用到一些透明的异形窗体。然后就需要用Interop库提供的功能引入一些windows api来调用。
+首先要把unity的窗口做成有透明部分需要至少调用2个主要API，一个是SetWindowLong,一个是DwmExtendFrameIntoClientArea。前者是设置窗口显示模式，需要加上WS_EX_LAYERED风格。后者是设置可绘制客户区，把标题栏也归入可绘制控制区域。类似这样的调用方式：
+随后需要离开半透明载入的场景后停止窗口的透明状态，需要重新调用一次SetWindowLong和DwmExtendFrameIntoClientArea
+另外加上的这行对SetLayeredWindowAttributes的调用，是把窗体的透明度恢复为不透明，如果没有这个调用，在unity里半透明渲染的东西可能会和unity窗口之后的屏幕内容发生混色，非常的难看。
+然后是获取当前窗口句柄的方法：
+这样s_hwnd就存入了当前unity窗口的句柄。注意这里只对已经打包后的PC WINDOWS端有效，对于编辑器里的窗口是无效的，因为注册的类名就不同。
+windows api中的char*类型参数可以用StringBuilder来获取，注意要多预留一个字节的容量用于存储C风格字符串的结尾字符“\0”
+如果你需要获取其他类型的窗口，可以打开spy++去查找窗口，记录下窗口的类名就可以用上面的方法获取句柄了，很通用。还可以结合窗体的标题名。
+具体的常量数值可以参考windows的头文件或者msdn手册。]]></description>
+</item>
+<item>
+  <title>unity&#43;Live2D采坑记录</title>
+  <link>https://www.fancybit.top/archives/111/</link>
+  <pubDate>Thu, 28 Jan 2021 03:37:32 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/111/</guid>
+  <description><![CDATA[拖放进去的live2d不显示：
+有时候拖放live2d模型动画文件进untiy之后会显示不出来，打开drawables子级可以看到里面的子物体都有一个MeshFilter组件，并且组件的mesh为空。但是看下面的CubismRenderer组件里有一个mesh属性里面是有数据的。这种情况只要点播放按钮进入一次游戏 在场景中展示一次 随后MeshFilter里就有内容了，模型也就可以看的见了。初步判断应该是live2d给unity的SDK里有些应该awake里写的初始化代码写到了Start里面，所以必须启动一次触发一次Start才能完成初始化。有空分析一下看看有没必要发个pull request修复。
+Live2D模型代码里改参数无效：
+通过Parameters下面的子物体改参数以后，需要去调用一次CubismModel.ForceUpdateNow()才能生效。建议所有参数修改完毕后再调用，也可以直接在Model的Update方法里调用这个。]]></description>
+</item>
+</channel>
+</rss>

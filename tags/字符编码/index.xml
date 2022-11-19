@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>字符编码 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</link>
+    <description>字符编码 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 20 Sep 2019 11:15:20 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" rel="self" type="application/rss+xml" /><item>
+  <title>c# .net使用的字符编码验证</title>
+  <link>https://www.fancybit.top/archives/56/</link>
+  <pubDate>Fri, 20 Sep 2019 11:15:20 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/56/</guid>
+  <description><![CDATA[所有源码见这里：
+https://github.com/fancybit/c_sharp_default_encoding
+运行结果是这样：
+c# .net使用的字符编码验证 .net vs utf16 utf8 字符编码 第1张和人争论C#的“默认字符编码”是什么，这么看确实是UTF16编码了]]></description>
+</item>
+</channel>
+</rss>

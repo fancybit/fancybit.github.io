@@ -1,0 +1,47 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>docker - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/docker/</link>
+    <description>docker - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 19 Sep 2021 15:52:18 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/docker/" rel="self" type="application/rss+xml" /><item>
+  <title>windows下运行语音识别项目wenet Demo</title>
+  <link>https://www.fancybit.top/archives/765/</link>
+  <pubDate>Sun, 19 Sep 2021 15:52:18 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/765/</guid>
+  <description><![CDATA[wenet是个语音识别AI 效果感觉还不错 只是在windows下直接下载demo会需要修改些指令 说明文档里写的是适合linux的指令。我这里把自己修改后的可以在windows10下执行的指令列出来 原本步骤参见GITHUB:
+https://github.com/wenet-e2e/wenet/blob/main/README_CN.md
+OK这就可以方便windows用户 不用再切换到linux或者在虚拟机中运行docker了 应该可以提高效率也方便点
+源项目地址：]]></description>
+</item>
+<item>
+  <title>docker下载镜像太慢的解决方案</title>
+  <link>https://www.fancybit.top/archives/82/</link>
+  <pubDate>Wed, 19 Feb 2020 14:32:14 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/82/</guid>
+  <description><![CDATA[docker下载镜像卡死或太慢
+找了网上很多方法，使用镜像中国也是下载卡死。
+最后一种成功了，下载速度很满意
+1.先再阿里云注册账号，不需要绑定什么，直接注册就可以了，有账号的直接登录就好。
+地址：https://cr.console.aliyun.com
+搜索 容器镜像服务
+2.创建镜像仓库
+3.创建好之后点到这个选项卡
+打开安装呢docker的客户端
+vim /etc/docker/daemon.json
+将&quot;registry-mirrors&quot;: [&ldquo;https://&hellip;&hellip;com&rdquo;] （对应自己的加速地址）复制到文件中
+这是我的格式
+最后是重新加载文件和重启docker（不要忘记这两步）
+sudo systemctl daemon-reload//重新加载
+sudo systemctl restart docker//重启
+1
+2
+最后就可以幸福的下载镜像了
+docker install mysql(还是这种命令，不需要有任何的修改)
+————————————————
+版权声明：本文为CSDN博主「科代表」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_43569697/article/details/89279225]]></description>
+</item>
+</channel>
+</rss>

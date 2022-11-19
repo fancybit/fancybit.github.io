@@ -1,0 +1,159 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>作品发布 - Category - 数语轩</title>
+    <link>https://www.fancybit.top/categories/%E4%BD%9C%E5%93%81%E5%8F%91%E5%B8%83/</link>
+    <description>作品发布 - Category - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 28 Apr 2022 11:12:56 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/categories/%E4%BD%9C%E5%93%81%E5%8F%91%E5%B8%83/" rel="self" type="application/rss+xml" /><item>
+  <title>3D展馆DEMO</title>
+  <link>https://www.fancybit.top/archives/823/</link>
+  <pubDate>Thu, 28 Apr 2022 11:12:56 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/823/</guid>
+  <description><![CDATA[使用陀螺仪和摇杆多种控制模式的3D展馆，可以用来扩展成各种NFT商品交易之类的系统
+点击物品会穿梭到物品面前 长按可以进入观察模式 手机开启陀螺仪，可以用类似VR的方式浏览 也可以用摇杆或者键盘
+安卓端
+链接：https://pan.baidu.com/s/1KdRa51TQoYHnhQ4wprOaaA?pwd=jkla
+提取码：jkla
+&ndash;来自百度网盘超级会员V5的分享
+WINDOWS PC端
+链接：https://pan.baidu.com/s/1RIyy8bwo0SQxlTc18BhL5A?pwd=abcn
+提取码：abcn
+&ndash;来自百度网盘超级会员V5的分享]]></description>
+</item>
+<item>
+  <title>全景看房标记APP</title>
+  <link>https://www.fancybit.top/archives/820/</link>
+  <pubDate>Thu, 28 Apr 2022 10:26:00 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/820/</guid>
+  <description><![CDATA[技术研究要点
+自定义全景照片生成（80%）
+UGUI组件拼接，各种布局器，自己编码扩展新的布局器
+3维标记绘制到摄像机正前方平面上
+编辑模式切换
+标记的选中和拖拽，标字操作
+服务端逻辑模型 DTO
+.NET CORE 接受上传图片]]></description>
+</item>
+<item>
+  <title>猫猫大战克苏鲁DEMO</title>
+  <link>https://www.fancybit.top/archives/812/</link>
+  <pubDate>Thu, 28 Apr 2022 08:12:40 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/812/</guid>
+  <description><![CDATA[只是个简单DEMO 用了大概3天 朋友要的 后来需求大改这个就搁置了
+其中研习了xlua热更框架 还有资源热更框架
+LIVE2D的装备替换方式 面数测试
+A* Path Project插件的自动寻路生成和使用方法 智能寻路追踪的效果
+简单的地下迷宫生成算法]]></description>
+</item>
+<item>
+  <title>平衡大师</title>
+  <link>https://www.fancybit.top/archives/69/</link>
+  <pubDate>Sun, 22 Dec 2019 05:09:01 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/69/</guid>
+  <description><![CDATA[说明： 进入游戏后以手机平放 沿中心上下方向的轴旋转手机控制杆子旋转保持球不会掉下去或者碰到管子刀子等
+如果手机没有重力加速计支持，可以用手指在杆子下方左右滑动，控制杆子倾斜
+每坚持一秒获得一金币
+管子落到下面没有碰到 每个管子一金币
+吃到金币增加6金币
+被刀刺中游戏立即结束 刀碰到金币会改变方向
+目前还是测试版有些功能还在开发中
+一点感想：这小破东西玩了一会儿不禁让我自己都感慨起人生了，手忙脚乱控制着平衡，躲过数不尽的障碍，为财富的诱惑铤而走险，好不容易极限求生最后又不知哪来的飞刀突然干掉。这破游戏一如笔者的餐具人生&hellip;
+欢迎反馈意见
+fancybit
+QQ:148332727
+数语社QQ群：1025446555
+下载地址： 平衡大师点击下载 游戏截图： 平衡大师 unity C# android 第1张平衡大师 unity C# android 第2张开发日志 2019-12-22 ]]></description>
+</item>
+<item>
+  <title>炫斗三国</title>
+  <link>https://www.fancybit.top/archives/54/</link>
+  <pubDate>Wed, 18 Sep 2019 10:45:59 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/54/</guid>
+  <description><![CDATA[闪翼和玩者之心合作的网页游戏项目，使用flash开发的。那会儿闪翼还没有自己的办公室，直接和玩者之心的人一起在大房间里办公。我一开始是写一些资源管理和导入导出的工具，后来尝试用gpu加速，不过遇到了一些瓶颈最终也没有解决，再后来身体原因离开了项目。不过有意思的是在玩者之心遇到了中学一起翻译MUGEN文档的网友久天，真实形象我还是替人家保密好了 哈哈蛤]]></description>
+</item>
+<item>
+  <title>疾风三国</title>
+  <link>https://www.fancybit.top/archives/52/</link>
+  <pubDate>Wed, 18 Sep 2019 10:28:56 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/52/</guid>
+  <description><![CDATA[在三生石公司参与开发的一款动作PK手游，现在已经改名字了，具体换成了什么名字不太清楚
+http://www.iqiyi.com/w_19rt6pyqdt.html
+在那里做node.js服务端游戏逻辑，一开始配置pomelo让同事带着搞了几个小时，又是源码编译又是挨个处理异常 node这种东西还是在linux上开发更容易些吧 可是我又得在对接的时候开着unity，没办法那时候好像unity并没有linux版的ide]]></description>
+</item>
+<item>
+  <title>幽游白书2</title>
+  <link>https://www.fancybit.top/archives/55/</link>
+  <pubDate>Wed, 18 Sep 2019 10:16:29 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/55/</guid>
+  <description><![CDATA[百度网盘下载：
+点击下载
+中学时候和穿山王一起开发的MUGEN同人格斗游戏，还并没有把所有角色和场景都还原出来。只是一个飞影和山顶的场景。
+操控：
+aswd 上下左右
+jkl abc（也就是重攻击 轻攻击 防御）
+和幽游白书魔强统一战的区别：
+山顶场景的镜头炫光
+飞影的空中邪王炼狱焦附带了重击（也就是最后一拳会把对手锤到地上去）
+飞影的投技改成了邪眼发出的捆束能力（其实就加了个闪电动效）
+飞影的下下C会发出挑衅一样的动作 但是会耗灵力 然后此时被攻击会闪到对手后面来一刀（也就是反击技）
+飞影的黑龙波操控变成了a d（也就是左右）分别是顺时针 逆时针旋转 不按键就是直着走
+飞影的黑龙波自己吃掉以后 回满灵力再按下前下前a+b(也就是键盘上的sasa j+k)可以发射2条黑龙（因为开发的时候看到网上很多网友P图双龙甚至9龙 所以就满足一下他们吧）第二条黑龙用a b(也就是j k)来控制
+AI没有专门调校 所以行为看起来会比较傻 当沙包打就行
+我现在有空了会继续开发unity的MUGEN插件，目前已经实现了MUGEN资源的导入 包括图包和动画 现在正在做动画资源格式转成和UNITY编辑器和unity2d组件结合更好的操作流程，项目名称叫UnityMUGEN，完成度差不多了会发布到unity商店供大家使用，然后会用这个插件再重制幽游白书这个游戏，别着急因为最近其实比较忙 2333
+下面是几个截图：
+幽游白书2 幽游白书 yuyu 格斗 MUGEN 第1张幽游白书2 幽游白书 yuyu 格斗 MUGEN 第2张幽游白书2 幽游白书 yuyu 格斗 MUGEN 第3张幽游白书2 幽游白书 yuyu 格斗 MUGEN 第4张]]></description>
+</item>
+<item>
+  <title>机动战姬</title>
+  <link>https://www.fancybit.top/archives/51/</link>
+  <pubDate>Mon, 16 Sep 2019 18:07:11 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/51/</guid>
+  <description><![CDATA[在闪翼时候做的游戏 现在已经停服了
+不过B站还有宣传视频留下：
+https://www.bilibili.com/video/av2915624?from=search&seid=17027275465299308717
+其他玩家制作的视频也还可以搜索到
+立项的时候就加入了 然后一开始做前端 DEMO成型以后调到后端 最后后端主程离职 我就做了一段后端的负责人 最后达到了可以全栈开发单独功能点的程度
+因各种原因早已离职闪翼 不过开发过程中也是受益颇多 至少了解了商业项目的流程
+现在闪翼开发机动战姬的外传重装战姬已经上线 有兴趣可以去试试 好像战斗没大变化UI越来越炫了：https://game.bilibili.com/finalgear/
+然后机动战姬的续作《机动战姬 聚变》也在开发中，可以在微博上看到一些预览动画：https://weibo.com/armorgirls
+嗯 你想的没错 就是学习崩坏2的氪金手游 不过付出了心血也获得了成长 虽然发生过不愉快还是要心存感激 毕竟让我开了开眼界嘛]]></description>
+</item>
+<item>
+  <title>像素风图片素材切图器发布</title>
+  <link>https://www.fancybit.top/archives/50/</link>
+  <pubDate>Sun, 15 Sep 2019 09:43:24 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/50/</guid>
+  <description><![CDATA[使用教学视频在B站审核中：
+https://www.bilibili.com/video/av68026883/
+主要用于提取自老游戏的图片素材切割，只要背景是透明色(32位色)或者纯色就可以使用
+首先点击浏览设置大图位置 打开大图以后设置好关键色模式或者透明色模式
+关键色可以选中“关键色”选项之后 点击一下“拾取关键色”按钮，然后在载入后的大图背景上随便点一下选中背景色
+背景色选中之后就可以一个一个点击大图中的图素 点击哪个就会把连续的不是背景色的部分选中 可以像PS魔棒工具里一样通过调整容差来跨越小的间隔选中更多范围
+和PS选取类似 对于多个部分组成的图素 选中第一块以后可以按住ctrl键点击加选部分 按住s键点击剪选部分 按住shift键点击删除整个图素
+背景色是在alpha模式时候显示图素透明背景用的
+放大到一定倍数后会出现网格辅助观察 网格色就是设置这个网格颜色的
+显示蒙版和显示原图是用来切换实际色图和连续区域的灰白图2种模式的 蒙版只是辅助观察
+最小尺寸是用来过滤手滑点到背景色的情况 也就是说假如你设置默认是5X5 你点在背景色上的话 它会向周围搜索5X5个像素的范围来确定你是点偏了点在背景色上 忽略你的这一次点击操作
+自动切图目前还不是很稳定 尽量手动点击的方式来吧 对于简单数量少的倒是可以试试 只是还没来得及做成多线操作 进度条提示进度的形式 所以自动切图的时候看起来经常是像已经卡死
+自动切图其实就是按指定点击距离一块一块挨着点击
+如果出现堆栈溢出 可能是图素过大
+或者出现其他不明白的异常 可以回复我
+着急的话可以联系我：
+QQ148332727
+基本原理就是种子填充算法的变形而已 虽然这个算法是交大图形学研究生课本里看来的
+附赠一些经典游戏机游戏的ROM提取素材下载站：
+https://www.spriters-resource.com/
+http://spritedatabase.net/file/21471/Bardock
+一个开放资源下载站：
+https://opengameart.org/]]></description>
+</item>
+</channel>
+</rss>

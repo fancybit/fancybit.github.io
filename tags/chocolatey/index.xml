@@ -1,0 +1,33 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>chocolatey - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/chocolatey/</link>
+    <description>chocolatey - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 07 Jul 2021 09:16:22 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/chocolatey/" rel="self" type="application/rss+xml" /><item>
+  <title>像程序员一样安装程序：Chocolatey 初见</title>
+  <link>https://www.fancybit.top/archives/754/</link>
+  <pubDate>Wed, 07 Jul 2021 09:16:22 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/754/</guid>
+  <description><![CDATA[SanKo2019年06月26日
+Matrix 精选 Matrix 是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选 Matrix 最优质的文章，展示来自用户的最真实的体验和观点。
+文章代表作者个人观点，少数派仅对标题和排版略作修改。
+你一定会觉得很酷！今天，我们会尝试用一种非常程序员的方式在 Windows 上安装、卸载、管理程序。
+来动手试一试吧，毕竟，这可能是你接近编程的一次美好体验。
+神奇！ 要是你 在少数派上 看到了一款很好用的文件压缩工具 Bandizip，你会怎么来安装它呢？
+通过文章内的链接或搜索引擎找到它的官网，点击官网的下载按钮安装 要是你使用百度，你可以在百度搜索页直接点击第三方软件下载站的按钮下载 借助各大厂家的电脑管家来搜索、下载 向身边的好友或在论坛、交流群中索要安装包 但是，今天我们会尝试一种更加有趣、方便而又可靠的方式：
+使用 Chocolatey 安装 Bandizip
+没错，只需要输入一行命令，稍等几分钟，Bandizip 已经在你的系统中装好啦。
+安装 Chocolatey 要想这样通过命令行来一键安装程序，我们借助的是 Chocolatey 这款软件包管理器。它事实上是为了习惯于 Linux 的程序员们准备的，因为在 Linux 中安装程序，通常都只需要一条安装命令就可以完成。不过，这丝毫不影响每一个人来尝试一下。
+安装 Chocolatey
+Chocolatey 自身的安装很方便，一共有三步：
+开始菜单中搜索 cmd，选择「命令提示符」 右键菜单或在右边菜单选择「以管理员身份运行」 复制下面这段内容，回车执行@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot; OK 准备就绪。
+前面的安装命令来自 官网的安装界面，如果有更新，还是以官网的为准。
+第一次尝试 接下来，我们可以继续在这个窗口中，尝试安装我们的第一个程序。输入：
+稍等片刻，Bandizip 程序就安装好了。你可以在桌面上看到它的快捷方式。
+装机从此不再难 每次拿到一台新的电脑，快速安装上所有自己需要的程序是一件非常非常耗时间的事情。
+如果去国内各大第三方下载站，或者电脑管家、百度的安装工具，它们很多都会把原生的安装包进行修改，加入自己的广告或其他私货；总之，下载软件还是最好去各自的官网，这样才能最好地避免病毒、保护隐私。
+然而，要一个个软件分别去官网下载，既无聊，又费心。下载安装包之后，还需要手动一次次地点击「下一步」，直到全部安装完成。]]></description>
+</item>
+</channel>
+</rss>

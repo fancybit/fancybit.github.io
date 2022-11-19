@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>UI - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/ui/</link>
+    <description>UI - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 18 Nov 2019 18:33:53 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/ui/" rel="self" type="application/rss+xml" /><item>
+  <title>C# Winform 跨线程更新UI控件常用方法汇总</title>
+  <link>https://www.fancybit.top/archives/59/</link>
+  <pubDate>Mon, 18 Nov 2019 18:33:53 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/59/</guid>
+  <description><![CDATA[&lt;td style=&quot;border-color: rgb(192, 192, 192);border-collapse: collapse;padding: 8px 14px&quot;&gt; &lt;strong&gt;&lt;span style=&quot;font-family: 宋体;font-size: 14px&quot;&gt;线程安全&lt;/span&gt;&lt;/strong&gt; &lt;/td&gt; &lt;td style=&quot;border-color: rgb(192, 192, 192);border-collapse: collapse;padding: 8px 14px&quot;&gt; &lt;strong&gt;&lt;span style=&quot;font-family: 宋体;font-size: 14px&quot;&gt;支持异步&lt;/span&gt;&lt;span style=&quot;font-family: Calibri, sans-serif;font-size: 14px&quot;&gt;/&lt;/span&gt;&lt;span style=&quot;font-family: 宋体;font-size: 14px&quot;&gt;同步&lt;/span&gt;&lt;/strong&gt; &lt;/td&gt; &lt;td style=&quot;border-color: rgb(192, 192, 192);border-collapse: collapse;padding: 8px 14px&quot;&gt; &lt;strong&gt;&lt;span style=&quot;font-family: 宋体;font-size: 14px&quot;&gt;其他&lt;/span&gt;&lt;/strong&gt; &lt;/td&gt; &lt;td style=&quot;border-color: rgb(192, 192, 192);border-collapse: collapse;padding: 8px 14px&quot;&gt; &lt;span style=&quot;font-family: 宋体;font-size: 12px&quot;&gt;是&lt;/span&gt; &lt;/td&gt; &lt;td style=&quot;border-color: rgb(192, 192, 192);border-collapse: collapse;padding: 8px 14px&quot;&gt; &lt;span style=&quot;font-family: Calibri, sans-serif;font-size: 12px&quot;&gt;Post/Send&lt;/span&gt; &lt;/td&gt; &lt;td style=&quot;border-color: rgb(192, 192, 192);border-collapse: collapse;padding: 8px 14px&quot;&gt; &lt;span style=&quot;font-size: 12px&quot;&gt;&lt;span style=&quot;font-family: 宋体&quot;&gt;尽量在窗体构造函数、&lt;/span&gt;&lt;span style=&quot;font-family: Calibri, sans-serif&quot;&gt;FormLoad&lt;/span&gt;&lt;span style=&quot;font-family: 宋体&quot;&gt;中获取同步上下文&lt;/span&gt;&lt;/span&gt; &lt;/td&gt; &lt;td style=&quot;border-color: rgb(192, 192, 192);border-collapse: collapse;padding: 8px 14px&quot;&gt; &lt;span style=&quot;font-family: 宋体;font-size: 12px&quot;&gt;是&lt;/span&gt; &lt;/td&gt; &lt;td style=&quot;border-color: rgb(192, 192, 192);border-collapse: collapse;padding: 8px 14px&quot;&gt; &lt;span style=&quot;font-family: Calibri, sans-serif;font-size: 12px&quot;&gt;control.]]></description>
+</item>
+</channel>
+</rss>

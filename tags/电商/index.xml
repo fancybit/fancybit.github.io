@@ -1,0 +1,95 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>电商 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E7%94%B5%E5%95%86/</link>
+    <description>电商 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 09 Sep 2020 08:03:15 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E7%94%B5%E5%95%86/" rel="self" type="application/rss+xml" /><item>
+  <title>微信公众号开发踩坑记录</title>
+  <link>https://www.fancybit.top/archives/105/</link>
+  <pubDate>Wed, 09 Sep 2020 08:03:15 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/105/</guid>
+  <description><![CDATA[在微信浏览器里可以通过jssdk调用微信的各种功能，比如微信扫一扫，获取用户列表，分享到朋友圈之类 。
+但是每次调用jssdk的时候浏览器的JS必须先用wx.config完成配置和签名校验，这就需要从后端获取一组签名数据包。微信公众平台提供了这方面的文档和参考，有后端也有前端。
+后端范例下载：
+http://demo.open.weixin.qq.com/jssdk/sample.zip
+JSSDK文档：
+https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html
+我使用的是php，这里需要把jssdk.php jsapi_ticket.php access_token.php三个文件都下载下来才能使用，后2个文件是用来缓存jsapi_ticket和access_token的。这两个用来给后端生成签名数据包，然后浏览器端获取签名数据包之后，用js调用jssdk传入签名数据包进行配置，通过验证之后就可以正常调用微信（微信内置浏览器）提供的功能了，这些功能都通过wx这个对象调用。这两个口令的有效期都是2小时，并且请求频率有限制，所以这个缓存机制不能省略。
+jssdk.php并不是复制过来就能用的，我做了几个修改才最终适配到了我这边的需求和环境。一个是access_token.php和jsap_ticket.php的路径，由于用了MVC结构，所以改了一下jssdk.php内对这两个文件的访问，使用了完整URL路径才能正确读写。然后是请求access_token的时候一开始得到的是null，之后下载了
+这个文件，放到文件系统，更改了php配置文件:
+[curl]
+; A default value for the CURLOPT_CAINFO option. This is required to be an
+; absolute path.
+curl.cainfo=&ldquo;d:\xxx\xxx\cacert.pem&rdquo;
+然后重启php，之后就可以获取到access_token和jsapi_ticket了。当然，我开启了ssl。
+还有一个坑是签名验证算法的url参数，首先我用的是frp转发，frp服务端用了ssl，但是我自己的机器没有用，通过nginx转发到本机所以没必要用ssl。因此我这边检测出来的通信协议是http而不是https，这里可能需要手动指定一下。在jssdk.php的这里：
+如果没有使用ajax获取签名包，这里可能需要直接指定成&lt;a href=&ldquo;https://&rdquo; _src=&ldquo;https://&rdquo; target=&quot;_blank&quot; rel=&ldquo;nofollow&rdquo; &gt;https://
+另外这个url参数必须和执行wx.config这个js代码的所在页面路径一致，因此如果你用ajax访问另外一个服务端url获取签名包，应该把执行js的页面的window.location进行url编码，跟着ajax Post参数发送到后端，后端用收到的参数解码后替代这里的url，大概改了以后是这样：
+终于可以顺利通过验证调用扫码了，这个坑磨了我将近一天，做个记录备忘，如果帮到你了或者还有疑问，欢迎留言联系我。]]></description>
+</item>
+<item>
+  <title>好商城二开备忘</title>
+  <link>https://www.fancybit.top/archives/73/</link>
+  <pubDate>Thu, 23 Jan 2020 16:29:40 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/73/</guid>
+  <description><![CDATA[处理请求的核心流程：
+base.php
+install/index.php
+183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+读取配置文件到全局变量$setting_config
+设置MD5 KEY
+检测配置时区
+配置启动session
+配置语言
+control 解析url get参数传递来的action op 控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+设置语言
+检测是否登录
+调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+检测权限
+用户ID为1的根用户可以越过检测控制所有功能
+转码防止GBK乱码
+index layout]]></description>
+</item>
+<item>
+  <title>ecshop二次开发爬坑记录</title>
+  <link>https://www.fancybit.top/archives/70/</link>
+  <pubDate>Sun, 05 Jan 2020 17:00:41 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/70/</guid>
+  <description><![CDATA[宝塔面板本机运行不方便用ssl，如果不小心用了&lt;a href=&ldquo;https://就会报403错误&rdquo; _src=&ldquo;https://就会报403错误&rdquo; target=&quot;_blank&quot; rel=&ldquo;nofollow&rdquo; &gt;https://就会报403错误
+phpstorm全局搜索替换的时候默认会勾选文件类型过滤，只搜索php文件，去掉文件类型过滤才能所有文本内容全局搜索
+ECSHOP在include/config.php里设置一个DEBUG_MODE宏可以开启DEBUG模式，不启用缓存之类的机制方便调试。
+去掉这个可以解决本机调试时候的一些断点追踪配置报错
+ecshop二次开发爬坑记录 php phpstorm.ecshop 电商 第1张手机端页面路径是/mobile/而不是/wap/
+ECSHOP 5.4以上PHP报错
+https://www.cnblogs.com/1442369580cyw/p/3674739.html
+ecs_ecsmart_shop_config 商店基本信息配置表
+后台管理页面目录访问权限报错解决：
+https://blog.csdn.net/qq_31752115/article/details/103597263]]></description>
+</item>
+</channel>
+</rss>

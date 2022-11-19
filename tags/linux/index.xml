@@ -1,0 +1,101 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>linux - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/linux/</link>
+    <description>linux - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 07 Jul 2021 09:16:22 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/linux/" rel="self" type="application/rss+xml" /><item>
+  <title>像程序员一样安装程序：Chocolatey 初见</title>
+  <link>https://www.fancybit.top/archives/754/</link>
+  <pubDate>Wed, 07 Jul 2021 09:16:22 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/754/</guid>
+  <description><![CDATA[SanKo2019年06月26日
+Matrix 精选 Matrix 是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选 Matrix 最优质的文章，展示来自用户的最真实的体验和观点。
+文章代表作者个人观点，少数派仅对标题和排版略作修改。
+你一定会觉得很酷！今天，我们会尝试用一种非常程序员的方式在 Windows 上安装、卸载、管理程序。
+来动手试一试吧，毕竟，这可能是你接近编程的一次美好体验。
+神奇！ 要是你 在少数派上 看到了一款很好用的文件压缩工具 Bandizip，你会怎么来安装它呢？
+通过文章内的链接或搜索引擎找到它的官网，点击官网的下载按钮安装 要是你使用百度，你可以在百度搜索页直接点击第三方软件下载站的按钮下载 借助各大厂家的电脑管家来搜索、下载 向身边的好友或在论坛、交流群中索要安装包 但是，今天我们会尝试一种更加有趣、方便而又可靠的方式：
+使用 Chocolatey 安装 Bandizip
+没错，只需要输入一行命令，稍等几分钟，Bandizip 已经在你的系统中装好啦。
+安装 Chocolatey 要想这样通过命令行来一键安装程序，我们借助的是 Chocolatey 这款软件包管理器。它事实上是为了习惯于 Linux 的程序员们准备的，因为在 Linux 中安装程序，通常都只需要一条安装命令就可以完成。不过，这丝毫不影响每一个人来尝试一下。
+安装 Chocolatey
+Chocolatey 自身的安装很方便，一共有三步：
+开始菜单中搜索 cmd，选择「命令提示符」 右键菜单或在右边菜单选择「以管理员身份运行」 复制下面这段内容，回车执行@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot; OK 准备就绪。
+前面的安装命令来自 官网的安装界面，如果有更新，还是以官网的为准。
+第一次尝试 接下来，我们可以继续在这个窗口中，尝试安装我们的第一个程序。输入：
+稍等片刻，Bandizip 程序就安装好了。你可以在桌面上看到它的快捷方式。
+装机从此不再难 每次拿到一台新的电脑，快速安装上所有自己需要的程序是一件非常非常耗时间的事情。
+如果去国内各大第三方下载站，或者电脑管家、百度的安装工具，它们很多都会把原生的安装包进行修改，加入自己的广告或其他私货；总之，下载软件还是最好去各自的官网，这样才能最好地避免病毒、保护隐私。
+然而，要一个个软件分别去官网下载，既无聊，又费心。下载安装包之后，还需要手动一次次地点击「下一步」，直到全部安装完成。]]></description>
+</item>
+<item>
+  <title>cp命令实现覆盖</title>
+  <link>https://www.fancybit.top/archives/94/</link>
+  <pubDate>Tue, 03 Mar 2020 10:09:05 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/94/</guid>
+  <description><![CDATA[展开
+cp 命令参数以及覆盖与不覆盖
+1.参数详解
+-f ：为强制 (force) 的意思，若有重复或其它疑问时，不会询问使用者，而强制复制；
+-i ：若目的檔(destination)已经存在时，在覆盖时会先询问是否真的动作！
+-r ：递归持续复制，用于目录的复制行为；
+从上边我们可以看出，我们输入的cp命令，其实是“cp -i”命令，
+也就是不管我们怎么输入 cp -rf，其实执行的是 cp -i -rf , 也无怪乎总是提问是否覆盖了。
+其实还有一种更简单的方法可以解决这个问题，就是在cp前加一个反斜杠如：
+\cp -rf $hour $date
+就可以了！
+————————————————
+版权声明：本文为CSDN博主「xuehuagongzi000」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/xuehuagongzi000/article/details/88657089]]></description>
+</item>
+<item>
+  <title>kali 虚拟机安装记录</title>
+  <link>https://www.fancybit.top/archives/93/</link>
+  <pubDate>Sun, 01 Mar 2020 16:31:08 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/93/</guid>
+  <description><![CDATA[安装vmware
+去kali官网上下载最新版的kali镜像 注意最好下载live版 installer是给windows环境下安装的目测 在vmware里用live才能安装成功
+安装完毕了再安装vm-tools
+安装teamviewer的时候需要用dpkg -i xxx.deb 然后会遇到一些依赖问题 这时再运行apt-get &ndash;fix-broken 就可以继续安装并且自动搞定所有依赖问题了 方便
+安装输入法和添加国内镜像加快软件下载速度参照这里：
+https://blog.csdn.net/wanglolaini/article/details/82845748
+解决启动之后输入密码时候小键盘关闭的问题 参看下面：
+https://www.cnblogs.com/lxmwb/p/6241788.html
+不过我用的不是gedit 好像我用的kali版本是基于qt的kde界面 可以用mousepad 不过我最后还是用的vim就够了
+kali使用代理的话可以用proxychains 修改配置文件 /etc/proxychains.conf 把最后一行换成代理服务器IP和端口 然后注掉其他代理IP 使用控制台proxychians xxx来启动需要代理的软件]]></description>
+</item>
+<item>
+  <title>使用frp，宝塔nginx反向代理调试.net core的坑</title>
+  <link>https://www.fancybit.top/archives/85/</link>
+  <pubDate>Thu, 20 Feb 2020 16:50:17 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/85/</guid>
+  <description><![CDATA[用这套环境开发调试.net core网站的时候会遇到即使宝塔nginx反向代理转发到127.0.0.1:xxx（FRP的http协议监听端口）之后仍然无法打开网页的情况。这个时候很简单，只要把.net core网站的监听ip改为0.0.0.0即可。
+有关如何构建frp+宝塔nginx的开发环境，看这里：
+https://www.fancybit.top/post/81.html
+有关如何更改.netcore网站的监听IP，看这里：
+https://www.fancybit.top/post/84.html]]></description>
+</item>
+<item>
+  <title>ssh使用秘钥登陆linux的坑</title>
+  <link>https://www.fancybit.top/archives/81/</link>
+  <pubDate>Wed, 19 Feb 2020 14:16:17 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/81/</guid>
+  <description><![CDATA[有个问题总是记反，用秘钥文件登陆的时候 在客户机上是创建公钥和私钥，私钥用ssh-add指令添加到windows的秘钥管理，然后公钥上传到linux服务器，输入到公钥列表文件
+也就是说 其实客户机可以只使用一组非对称的加密秘钥，私钥放着自己保管，公钥发到哪些服务器，哪些服务器就会允许客户机登陆，而不是之前印象里的服务器创建秘钥文件
+假设在公司维护或者开发 需要连接一台新的服务器，就要把自己的公钥交给运维的放到服务器，这样就获得了特定服务器的访问权限，而不是应该从运维那里索要秘钥对，这样也避免了运维人员使用发给你的秘钥对冒充你操作]]></description>
+</item>
+<item>
+  <title>htop详解</title>
+  <link>https://www.fancybit.top/archives/65/</link>
+  <pubDate>Tue, 10 Dec 2019 15:18:59 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/65/</guid>
+  <description><![CDATA[&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; This is htop, an interactive process viewer for Linux. It is a text-mode application (for console or X terminals) and requires ncurses. &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Comparison between htop and top&lt;/strong&gt; &lt;/p&gt; &lt;ul style=&quot;margin-left: 30px; padding: 0px; word-break: break-all;&quot; class=&quot; list-paddingleft-2&quot;&gt; &lt;li&gt; &lt;p&gt; In 'htop' you can scroll the list vertically and horizontally to see all processes and complete command lines.]]></description>
+</item>
+</channel>
+</rss>

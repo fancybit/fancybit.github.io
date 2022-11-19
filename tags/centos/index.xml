@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>centos - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/centos/</link>
+    <description>centos - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 03 Mar 2020 10:09:05 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/centos/" rel="self" type="application/rss+xml" /><item>
+  <title>cp命令实现覆盖</title>
+  <link>https://www.fancybit.top/archives/94/</link>
+  <pubDate>Tue, 03 Mar 2020 10:09:05 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/94/</guid>
+  <description><![CDATA[展开
+cp 命令参数以及覆盖与不覆盖
+1.参数详解
+-f ：为强制 (force) 的意思，若有重复或其它疑问时，不会询问使用者，而强制复制；
+-i ：若目的檔(destination)已经存在时，在覆盖时会先询问是否真的动作！
+-r ：递归持续复制，用于目录的复制行为；
+从上边我们可以看出，我们输入的cp命令，其实是“cp -i”命令，
+也就是不管我们怎么输入 cp -rf，其实执行的是 cp -i -rf , 也无怪乎总是提问是否覆盖了。
+其实还有一种更简单的方法可以解决这个问题，就是在cp前加一个反斜杠如：
+\cp -rf $hour $date
+就可以了！
+————————————————
+版权声明：本文为CSDN博主「xuehuagongzi000」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/xuehuagongzi000/article/details/88657089]]></description>
+</item>
+</channel>
+</rss>

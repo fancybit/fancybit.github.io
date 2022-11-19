@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>wenet - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/wenet/</link>
+    <description>wenet - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 19 Sep 2021 15:52:18 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/wenet/" rel="self" type="application/rss+xml" /><item>
+  <title>windows下运行语音识别项目wenet Demo</title>
+  <link>https://www.fancybit.top/archives/765/</link>
+  <pubDate>Sun, 19 Sep 2021 15:52:18 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/765/</guid>
+  <description><![CDATA[wenet是个语音识别AI 效果感觉还不错 只是在windows下直接下载demo会需要修改些指令 说明文档里写的是适合linux的指令。我这里把自己修改后的可以在windows10下执行的指令列出来 原本步骤参见GITHUB:
+https://github.com/wenet-e2e/wenet/blob/main/README_CN.md
+OK这就可以方便windows用户 不用再切换到linux或者在虚拟机中运行docker了 应该可以提高效率也方便点
+源项目地址：]]></description>
+</item>
+</channel>
+</rss>

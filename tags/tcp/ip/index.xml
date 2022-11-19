@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>TCP/IP - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/tcp/ip/</link>
+    <description>TCP/IP - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://www.fancybit.top/tags/tcp/ip/" rel="self" type="application/rss+xml" /><item>
+  <title>如何设置 ASP.NET Core 程序监听的 IP 和端口</title>
+  <link>https://www.fancybit.top/archives/83/</link>
+  <pubDate>Thu, 20 Feb 2020 04:48:21 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/83/</guid>
+  <description><![CDATA[&lt;h2 id=&quot;%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%BA%94%E8%AF%A5%E7%9B%91%E5%90%AC%E7%9A%84-IP-%E5%92%8C%E7%AB%AF%E5%8F%A3%EF%BC%9F&quot; name=&quot;%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%BA%94%E8%AF%A5%E7%9B%91%E5%90%AC%E7%9A%84-IP-%E5%92%8C%E7%AB%AF%E5%8F%A3%EF%BC%9F&quot; style=&quot;margin: 16px 0px 8px; padding: 0px; font-size: 16px; box-sizing: border-box; list-style: inherit; color: rgb(0, 0, 0); line-height: 26px;&quot;&gt; 如何选择应该监听的 IP 和端口？ &lt;/h2&gt; &lt;p style=&quot;margin-top: 0px; margin-bottom: 8px; padding: 0px; box-sizing: border-box; list-style: inherit; min-height: 24px;&quot;&gt; 一般来说，监听的 IP 可以选择本地回环地址，特定的 IP 以及任意 IP，分别是： &lt;/p&gt; &lt;ul class=&quot;ul-level-0 list-paddingleft-2&quot; style=&quot;list-style-type: none;&quot;&gt; &lt;li&gt; &lt;p&gt; &lt;code style=&quot;box-sizing: border-box; list-style: inherit; display: inline-block; margin-left: 10px; margin-right: 10px; background-color: rgb(243, 245, 249); border-radius: 0px; padding: 0px 12px; color: rgb(10, 191, 91); font-family: Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, &amp;quot;Microsoft Yahei&amp;quot;, monospace; line-height: 20px;&quot;&gt;127.]]></description>
+</item>
+</channel>
+</rss>

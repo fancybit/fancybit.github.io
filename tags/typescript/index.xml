@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>typescript - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/typescript/</link>
+    <description>typescript - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 24 Nov 2021 15:08:08 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/typescript/" rel="self" type="application/rss+xml" /><item>
+  <title>vscode调试typescript</title>
+  <link>https://www.fancybit.top/archives/793/</link>
+  <pubDate>Wed, 24 Nov 2021 15:08:08 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/793/</guid>
+  <description><![CDATA[vscode本身支持ts调试： 只要在tsconfig.json里打开sourceMap = true就可以启动源码映射文件(*.map)来进行运行时ts断点调试。 终端-》新建终端 创建一个终端窗口 如果已经有终端窗口可以略过这一步 点击终端面板右上角添加终端的+右边的向下箭头，选择创建js调试终端： 这个时候在这个终端里启动的node.js运行js的实例都会进行调试，遇到ts或者js断点都会暂停然后查看状态。
+安装一个vscode插件typescript debugger可以把调试过程做的更简单，F5一键进入调试模式： 1.搜索安装typescript debugger插件，然后切换到debug设置状态：
+2.创建一个调试配置文件，选择ts debug
+3.下图这里把标记的地方改成启动的js文件相对路径，比如./dist/app.js,然后保存
+4.在随意一个终端里运行npm install -dev ts-node 安装所需的包
+5.完成后就可以F5一键键开始调试了，同样是支持js和ts断点，只要tsconfig.json里启用了sourceMap文件生成]]></description>
+</item>
+<item>
+  <title>laya踩坑记录</title>
+  <link>https://www.fancybit.top/archives/97/</link>
+  <pubDate>Sun, 05 Apr 2020 05:00:29 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/97/</guid>
+  <description><![CDATA[场景名不能用Game否则qq小游戏发布时会和系统内的Game类冲突造成Game.scene找不到。
+挂到场景和场景内物体的组件从Laya.Script派生，文档类和Sprite的runtime类要派生自Sprite以及后继类
+Script要获取物体引用调用.owner 然后as成Sprite或者它的runtime类
+Sprite.getComponent(xxx)获取其上挂载的Script类
+很多操作在Script的构造函数被调用时没有完成，所以在onEnable里处理初始化是最合适的
+Script有一组对应生命周期阶段的虚函数可以直接被覆盖 注意覆盖时保证返回值和参数类型都一致
+Sprite需要自己注册事件
+重力感应：
+微信小程序和QQ小程序需要先启动重力感应，并且使用不同于H5的另外一个API设置回调，下面例子
+读取rotation有时候会变成NaN 用默认值0 x.rotation = xxx || 0;
+解决
+可在属性窗口看到的Laya.Script成员变量:
+/** @prop {name:&ldquo;属性显示名&rdquo;,tips:&ldquo;提示&rdquo;,type:&ldquo;属性类型名&rdquo;,default:属性默认值} */
+public propName:XXX = YYY
+上面的空格都不能省略 否则属性窗口会显示不出
+默认值需要在default和 = YYY一起指定]]></description>
+</item>
+</channel>
+</rss>

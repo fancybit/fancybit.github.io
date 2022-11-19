@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>史上最全的css hack（ie6-9,firefox,chrome,opera,safari） - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="在这个浏览器百花争鸣的时代，作为前端开发的我们为了我们漂亮的设计能适应各个浏览器可为煞费苦心，主要体现在javascript和css上面。javascript我这次就不谈了，先说说css。 为了适应不同浏览器不同的版本（版本主要就ie来说），ie这朵奇葩现在我们要兼容6-9，它的10也快出来了。。。在ie下我们可以写条件注释来区分ie和其他浏览器，以及ie的版本，这些请大家自行google。这篇文章主要讨论的是css hack。下面废话补多说了，直接上代码 &lt;! DOCTYPE html &gt; &laquo;/span&gt; html &gt; &laquo;/span&gt; head &gt; &laquo;/span&gt; title &gt; Css Hack &lt;/ title &gt; &laquo;/span&gt; style &gt; #test { width : 300px ; height : 300px ; background-color : blue ; / firefox / background-color : red\9 ; / all ie / background-color : yellow\0 ; / ie8 / &#43;background-color : pink ; / ie7 / _background-color : orange ; / ie6 / } :root #test { background-color : purple\9 ; } / ie9 / @media all and (min-width:0px) { #test {background-color : black\0 ; } } / opera / @media screen and (-webkit-min-device-pixel-ratio:0) { #test {background-color : gray ; } } / chrome and safari / &lt;/ style &gt; &lt;/ head &gt; &laquo;/span&gt; body &gt; &laquo;/span&gt; div id =&ldquo;test&rdquo; &gt; test &lt;/ div &gt; &lt;/ body &gt; &lt;/ html &gt; 上面这段代码大家可以直接copy出来，保存成html在各浏览器试试。下面我来分析下：" /><meta name="keywords" content='Hugo, FixIt' /><meta itemprop="name" content="史上最全的css hack（ie6-9,firefox,chrome,opera,safari）">
+<meta itemprop="description" content="在这个浏览器百花争鸣的时代，作为前端开发的我们为了我们漂亮的设计能适应各个浏览器可为煞费苦心，主要体现在javascript和css上面。javascript我这次就不谈了，先说说css。 为了适应不同浏览器不同的版本（版本主要就ie来说），ie这朵奇葩现在我们要兼容6-9，它的10也快出来了。。。在ie下我们可以写条件注释来区分ie和其他浏览器，以及ie的版本，这些请大家自行google。这篇文章主要讨论的是css hack。下面废话补多说了，直接上代码 &lt;! DOCTYPE html &gt; &laquo;/span&gt; html &gt; &laquo;/span&gt; head &gt; &laquo;/span&gt; title &gt; Css Hack &lt;/ title &gt; &laquo;/span&gt; style &gt; #test { width : 300px ; height : 300px ; background-color : blue ; / firefox / background-color : red\9 ; / all ie / background-color : yellow\0 ; / ie8 / &#43;background-color : pink ; / ie7 / _background-color : orange ; / ie6 / } :root #test { background-color : purple\9 ; } / ie9 / @media all and (min-width:0px) { #test {background-color : black\0 ; } } / opera / @media screen and (-webkit-min-device-pixel-ratio:0) { #test {background-color : gray ; } } / chrome and safari / &lt;/ style &gt; &lt;/ head &gt; &laquo;/span&gt; body &gt; &laquo;/span&gt; div id =&ldquo;test&rdquo; &gt; test &lt;/ div &gt; &lt;/ body &gt; &lt;/ html &gt; 上面这段代码大家可以直接copy出来，保存成html在各浏览器试试。下面我来分析下："><meta itemprop="datePublished" content="2012-07-21T02:17:00+00:00" />
+<meta itemprop="dateModified" content="2012-07-21T02:17:00+00:00" />
+<meta itemprop="wordCount" content="181">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="史上最全的css hack（ie6-9,firefox,chrome,opera,safari）" />
+<meta property="og:description" content="在这个浏览器百花争鸣的时代，作为前端开发的我们为了我们漂亮的设计能适应各个浏览器可为煞费苦心，主要体现在javascript和css上面。javascript我这次就不谈了，先说说css。 为了适应不同浏览器不同的版本（版本主要就ie来说），ie这朵奇葩现在我们要兼容6-9，它的10也快出来了。。。在ie下我们可以写条件注释来区分ie和其他浏览器，以及ie的版本，这些请大家自行google。这篇文章主要讨论的是css hack。下面废话补多说了，直接上代码 &lt;! DOCTYPE html &gt; &laquo;/span&gt; html &gt; &laquo;/span&gt; head &gt; &laquo;/span&gt; title &gt; Css Hack &lt;/ title &gt; &laquo;/span&gt; style &gt; #test { width : 300px ; height : 300px ; background-color : blue ; / firefox / background-color : red\9 ; / all ie / background-color : yellow\0 ; / ie8 / &#43;background-color : pink ; / ie7 / _background-color : orange ; / ie6 / } :root #test { background-color : purple\9 ; } / ie9 / @media all and (min-width:0px) { #test {background-color : black\0 ; } } / opera / @media screen and (-webkit-min-device-pixel-ratio:0) { #test {background-color : gray ; } } / chrome and safari / &lt;/ style &gt; &lt;/ head &gt; &laquo;/span&gt; body &gt; &laquo;/span&gt; div id =&ldquo;test&rdquo; &gt; test &lt;/ div &gt; &lt;/ body &gt; &lt;/ html &gt; 上面这段代码大家可以直接copy出来，保存成html在各浏览器试试。下面我来分析下：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/34/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2012-07-21T02:17:00+00:00" />
+<meta property="article:modified_time" content="2012-07-21T02:17:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="史上最全的css hack（ie6-9,firefox,chrome,opera,safari）"/>
+<meta name="twitter:description" content="在这个浏览器百花争鸣的时代，作为前端开发的我们为了我们漂亮的设计能适应各个浏览器可为煞费苦心，主要体现在javascript和css上面。javascript我这次就不谈了，先说说css。 为了适应不同浏览器不同的版本（版本主要就ie来说），ie这朵奇葩现在我们要兼容6-9，它的10也快出来了。。。在ie下我们可以写条件注释来区分ie和其他浏览器，以及ie的版本，这些请大家自行google。这篇文章主要讨论的是css hack。下面废话补多说了，直接上代码 &lt;! DOCTYPE html &gt; &laquo;/span&gt; html &gt; &laquo;/span&gt; head &gt; &laquo;/span&gt; title &gt; Css Hack &lt;/ title &gt; &laquo;/span&gt; style &gt; #test { width : 300px ; height : 300px ; background-color : blue ; / firefox / background-color : red\9 ; / all ie / background-color : yellow\0 ; / ie8 / &#43;background-color : pink ; / ie7 / _background-color : orange ; / ie6 / } :root #test { background-color : purple\9 ; } / ie9 / @media all and (min-width:0px) { #test {background-color : black\0 ; } } / opera / @media screen and (-webkit-min-device-pixel-ratio:0) { #test {background-color : gray ; } } / chrome and safari / &lt;/ style &gt; &lt;/ head &gt; &laquo;/span&gt; body &gt; &laquo;/span&gt; div id =&ldquo;test&rdquo; &gt; test &lt;/ div &gt; &lt;/ body &gt; &lt;/ html &gt; 上面这段代码大家可以直接copy出来，保存成html在各浏览器试试。下面我来分析下："/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/34/" /><link rel="prev" href="https://www.fancybit.top/archives/33/" /><link rel="next" href="https://www.fancybit.top/archives/35/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "史上最全的css hack（ie6-9,firefox,chrome,opera,safari）",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/34\/"
+    },"genre": "post","wordcount":  181 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/34\/","datePublished": "2012-07-21T02:17:00+00:00","dateModified": "2012-07-21T02:17:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">史上最全的css hack（ie6-9,firefox,chrome,opera,safari）</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><p><!-- raw HTML omitted -->     在这个浏览器百花争鸣的时代，作为前端开发的我们为了我们漂亮的设计能适应各个浏览器可为煞费苦心，主要体现在javascript和css上面。javascript我这次就不谈了，先说说css。       为了适应不同浏览器不同的版本（版本主要就ie来说），ie这朵奇葩现在我们要兼容6-9，它的10也快出来了。。。在ie下我们可以写条件注释来区分ie和其他浏览器，以及ie的版本，这些请大家自行google。这篇文章主要讨论的是css hack。下面废话补多说了，直接上代码 <!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;!<!-- raw HTML omitted --> <!-- raw HTML omitted -->DOCTYPE html<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted -->&laquo;/span&gt; <!-- raw HTML omitted -->html<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted -->&laquo;/span&gt; <!-- raw HTML omitted -->head<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted -->    <!-- raw HTML omitted --> <!-- raw HTML omitted -->&laquo;/span&gt; <!-- raw HTML omitted -->title<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->Css Hack<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;/<!-- raw HTML omitted --> <!-- raw HTML omitted -->title<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted -->    <!-- raw HTML omitted --> <!-- raw HTML omitted -->&laquo;/span&gt; <!-- raw HTML omitted -->style<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted -->    #test   <!-- raw HTML omitted -->    <!-- raw HTML omitted --> <!-- raw HTML omitted -->{<!-- raw HTML omitted --> <!-- raw HTML omitted -->   <!-- raw HTML omitted -->        width<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->300px<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted --> <!-- raw HTML omitted -->   <!-- raw HTML omitted -->        height<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->300px<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted --> <!-- raw HTML omitted -->   <!-- raw HTML omitted -->          <!-- raw HTML omitted -->        background-color<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->blue<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted --> <!-- raw HTML omitted -->      <!-- raw HTML omitted --> <!-- raw HTML omitted -->/<em><!-- raw HTML omitted --> <!-- raw HTML omitted -->firefox<!-- raw HTML omitted --> <!-- raw HTML omitted --></em>/<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->        background-color<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->red\9<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted --> <!-- raw HTML omitted -->      <!-- raw HTML omitted --> <!-- raw HTML omitted -->/<em><!-- raw HTML omitted --> <!-- raw HTML omitted -->all ie<!-- raw HTML omitted --> <!-- raw HTML omitted --></em>/<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->        background-color<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->yellow\0<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted --> <!-- raw HTML omitted -->    <!-- raw HTML omitted --> <!-- raw HTML omitted -->/<em><!-- raw HTML omitted --> <!-- raw HTML omitted -->ie8<!-- raw HTML omitted --> <!-- raw HTML omitted --></em>/<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->        +background-color<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->pink<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted --> <!-- raw HTML omitted -->        <!-- raw HTML omitted --> <!-- raw HTML omitted -->/<em><!-- raw HTML omitted --> <!-- raw HTML omitted -->ie7<!-- raw HTML omitted --> <!-- raw HTML omitted --></em>/<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->        _background-color<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->orange<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted --> <!-- raw HTML omitted -->       <!-- raw HTML omitted --> <!-- raw HTML omitted -->/<em><!-- raw HTML omitted --> <!-- raw HTML omitted -->ie6<!-- raw HTML omitted --> <!-- raw HTML omitted --></em>/<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->    <!-- raw HTML omitted --> <!-- raw HTML omitted -->}<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted -->    :root #test <!-- raw HTML omitted --> <!-- raw HTML omitted -->{<!-- raw HTML omitted --> <!-- raw HTML omitted --> background-color<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->purple\9<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted -->  <!-- raw HTML omitted -->}<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted --> <!-- raw HTML omitted -->/<em><!-- raw HTML omitted --> <!-- raw HTML omitted -->ie9<!-- raw HTML omitted --> <!-- raw HTML omitted --></em>/<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->    @media all and (min-width:0px)<!-- raw HTML omitted --> <!-- raw HTML omitted -->{<!-- raw HTML omitted --> <!-- raw HTML omitted --> #test {background-color<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->black\0<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted --> <!-- raw HTML omitted -->}<!-- raw HTML omitted --> <!-- raw HTML omitted --> }  <!-- raw HTML omitted --> <!-- raw HTML omitted -->/<em><!-- raw HTML omitted --> <!-- raw HTML omitted -->opera<!-- raw HTML omitted --> <!-- raw HTML omitted --></em>/<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->    @media screen and (-webkit-min-device-pixel-ratio:0)<!-- raw HTML omitted --> <!-- raw HTML omitted -->{<!-- raw HTML omitted --> <!-- raw HTML omitted --> #test {background-color<!-- raw HTML omitted --> <!-- raw HTML omitted -->:<!-- raw HTML omitted --> <!-- raw HTML omitted -->gray<!-- raw HTML omitted --> <!-- raw HTML omitted -->;<!-- raw HTML omitted --> <!-- raw HTML omitted -->}<!-- raw HTML omitted --> <!-- raw HTML omitted --> }  <!-- raw HTML omitted --> <!-- raw HTML omitted -->/<em><!-- raw HTML omitted --> <!-- raw HTML omitted -->chrome and safari<!-- raw HTML omitted --> <!-- raw HTML omitted --></em>/<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted -->    <!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;/<!-- raw HTML omitted --> <!-- raw HTML omitted -->style<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;/<!-- raw HTML omitted --> <!-- raw HTML omitted -->head<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted -->&laquo;/span&gt; <!-- raw HTML omitted -->body<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted -->    <!-- raw HTML omitted --> <!-- raw HTML omitted -->&laquo;/span&gt; <!-- raw HTML omitted -->div <!-- raw HTML omitted --> <!-- raw HTML omitted -->id<!-- raw HTML omitted --> <!-- raw HTML omitted -->=&ldquo;test&rdquo;<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->test<!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;/<!-- raw HTML omitted --> <!-- raw HTML omitted -->div<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;/<!-- raw HTML omitted --> <!-- raw HTML omitted -->body<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted --> <!-- raw HTML omitted -->  <!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted -->&lt;/<!-- raw HTML omitted --> <!-- raw HTML omitted -->html<!-- raw HTML omitted --> <!-- raw HTML omitted -->&gt;<!-- raw HTML omitted -->  <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->      上面这段代码大家可以直接copy出来，保存成html在各浏览器试试。下面我来分析下：<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --><!-- raw HTML omitted -->    background-color:blue; 各个浏览器都认识，这里给firefox用；<!-- raw HTML omitted --> <!-- raw HTML omitted -->    background-color:red\9;\9所有的ie浏览器可识别；<!-- raw HTML omitted --> <!-- raw HTML omitted -->    background-color:yellow\0; \0 是留给ie8的，但笔者测试，发现最新版opera也认识，汗。。。不过且慢，后面自有hack写了给opera认的，所以，\0我们就认为是给ie8留的；<!-- raw HTML omitted --> <!-- raw HTML omitted -->    +background-color:pink; + ie7定了；<!-- raw HTML omitted --> <!-- raw HTML omitted -->    _background-color:orange; _专门留给神奇的ie6；<!-- raw HTML omitted --> <!-- raw HTML omitted -->    :root #test { background-color:purple\9; } :root是给ie9的，网上流传了个版本是 <!-- raw HTML omitted --> <!-- raw HTML omitted -->:root #test { background-color:purple\0;}，呃。。。这个。。。，新版opera也认识，所以经笔者反复验证最终ie9特有的为:root 选择符 {属性\9;}<!-- raw HTML omitted --> <!-- raw HTML omitted -->    @media all and (min-width:0px){ #test {background-color:black\0;} } 这个是老是跟ie抢着认\0的神奇的opera，必须加个\0,不然firefox，chrome，safari也都认识。。。<!-- raw HTML omitted --> <!-- raw HTML omitted -->    @media screen and (-webkit-min-device-pixel-ratio:0){ #test {background-color:gray;} }最后这个是浏览器新贵chrome和safari的。<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted -->    好了就这么多了，特别注意以上顺序是不可以改变的。css hack虽然可以解决个浏览器之间css显示的差异问题，但是毕竟不符合W3C规范，我们平时写css最好是按照标准来，这样对我们以后维护也是大有好处的，实在不行再用。<!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted -->    如果给位看官有更好的css hack写法或者本文有不妥之处，欢迎留言，第一次写文章，请轻砸。<!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

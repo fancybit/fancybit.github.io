@@ -1,0 +1,42 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>vscode - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/vscode/</link>
+    <description>vscode - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 24 Nov 2021 15:08:08 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/vscode/" rel="self" type="application/rss+xml" /><item>
+  <title>vscode调试typescript</title>
+  <link>https://www.fancybit.top/archives/793/</link>
+  <pubDate>Wed, 24 Nov 2021 15:08:08 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/793/</guid>
+  <description><![CDATA[vscode本身支持ts调试： 只要在tsconfig.json里打开sourceMap = true就可以启动源码映射文件(*.map)来进行运行时ts断点调试。 终端-》新建终端 创建一个终端窗口 如果已经有终端窗口可以略过这一步 点击终端面板右上角添加终端的+右边的向下箭头，选择创建js调试终端： 这个时候在这个终端里启动的node.js运行js的实例都会进行调试，遇到ts或者js断点都会暂停然后查看状态。
+安装一个vscode插件typescript debugger可以把调试过程做的更简单，F5一键进入调试模式： 1.搜索安装typescript debugger插件，然后切换到debug设置状态：
+2.创建一个调试配置文件，选择ts debug
+3.下图这里把标记的地方改成启动的js文件相对路径，比如./dist/app.js,然后保存
+4.在随意一个终端里运行npm install -dev ts-node 安装所需的包
+5.完成后就可以F5一键键开始调试了，同样是支持js和ts断点，只要tsconfig.json里启用了sourceMap文件生成]]></description>
+</item>
+<item>
+  <title>使用vscode打造python开发环境</title>
+  <link>https://www.fancybit.top/archives/102/</link>
+  <pubDate>Tue, 16 Jun 2020 02:19:55 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/102/</guid>
+  <description><![CDATA[&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &lt;span style=&quot;margin: 0px; padding: 0px; color: #FF0000;&quot;&gt;&amp;nbsp;2. 新增一个vscode远程开发，使用远程服务器上的python开发环境。在第19条那里。&lt;/span&gt; &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &amp;nbsp; &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; 1.安装python解释器，配置好path变量。 &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; 下载网址：https://www.python.org/downloads/release/python-374/ &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; 注意区分64位还是32位的。 &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; 安装python的时候，建议将python添加到path环境变量的复选框勾上，并且使用自定义安装，因为可以自定义安装目录，我是安装在C:\Python37中的 &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &lt;img src=&quot;https://img2018.cnblogs.com/blog/1809823/201910/1809823-20191024094355579-1616094075.png&quot; title=&quot;使用vscode打造python开发环境 python vscode 第1张&quot; alt=&quot;使用vscode打造python开发环境 python vscode 第1张&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; height: auto; max-width: 800px;&quot; /&gt; &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &amp;nbsp;&lt;img src=&quot;https://img2018.]]></description>
+</item>
+<item>
+  <title>2019-12-10</title>
+  <link>https://www.fancybit.top/archives/62/</link>
+  <pubDate>Tue, 10 Dec 2019 09:47:39 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/62/</guid>
+  <description><![CDATA[昨天重新导出了所有数据库 因为看错了商城系统以为要安装mysql6以上 中间发现phpmyadmin导出sql之后 再导回来的时候需要每个数据库前面加个use xxx; 另外这个use的后面;不能省略否则会出错 真坑
+商城系统跑起来了 现在在分析它的模板结构 准备自己改一套适合的皮肤出来
+发现迅雷的chrome插件开启自动侦测页面视频功能的时候会给商城系统的一段json字符串插入xml导致商城系统上传文件的时候js用eval反序列化json串吃到一个json和xml混杂的字符串导致出错 查了一两个小时 真实shit
+安装一堆vscode插件 多是和php开发有关的
+给博客宠物加了个时崎狂三角色 但是还有点问题 edge显示不正常 js有一个报错
+还没有完成提取分析微信小程序的实践 目标《看一看》
+平衡大师游戏还在看slua的使用 准备作为实践lua热更的机会 用lua来避免调试时候测试一次和陀螺仪等硬件就要重新打包一次的麻烦问题 其实各种公式问题都可以用这种动态的lua来搞定吧]]></description>
+</item>
+</channel>
+</rss>

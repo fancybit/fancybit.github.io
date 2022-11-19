@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>live2d - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/live2d/</link>
+    <description>live2d - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 28 Jan 2021 03:37:32 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/live2d/" rel="self" type="application/rss+xml" /><item>
+  <title>unity&#43;Live2D采坑记录</title>
+  <link>https://www.fancybit.top/archives/111/</link>
+  <pubDate>Thu, 28 Jan 2021 03:37:32 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/111/</guid>
+  <description><![CDATA[拖放进去的live2d不显示：
+有时候拖放live2d模型动画文件进untiy之后会显示不出来，打开drawables子级可以看到里面的子物体都有一个MeshFilter组件，并且组件的mesh为空。但是看下面的CubismRenderer组件里有一个mesh属性里面是有数据的。这种情况只要点播放按钮进入一次游戏 在场景中展示一次 随后MeshFilter里就有内容了，模型也就可以看的见了。初步判断应该是live2d给unity的SDK里有些应该awake里写的初始化代码写到了Start里面，所以必须启动一次触发一次Start才能完成初始化。有空分析一下看看有没必要发个pull request修复。
+Live2D模型代码里改参数无效：
+通过Parameters下面的子物体改参数以后，需要去调用一次CubismModel.ForceUpdateNow()才能生效。建议所有参数修改完毕后再调用，也可以直接在Model的Update方法里调用这个。]]></description>
+</item>
+</channel>
+</rss>

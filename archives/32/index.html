@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>mingW与cygwin - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="用MingW和cygwin编译出来的程序的区别。 首先MingW和cygwin都不能让Linux下的程序直接运行在Windows上，必需通过源代码重新编译。 现代操作系统包括Windows和Linux的基本设计概念像进程线程地址空间虚拟内存这些都是大同小异的，之所以二者上的程序不能兼容，主要是它们对这些功能具体实现上的差异，首先是可执行文件的格式，Window使用PE的格式，并且要求以.EXE为后缀名。Linux则使用Elf。其次操作系统的API也不一样，如Windows用CreateProcess()创建进程，而Linux使用fork()。 所以要移植程序必然要在这些地方进行改变，MingW有专门的W32api头文件，来把代码中Linux方式的系统调用替换为对应的Windows方式。而Cygwin则通过cygwin1.dll这个文件来实现这种API的转换，并模拟一个Linux系统调用接口给程序，程序依然以Linux的方式调用系统API，只不过这个API在cygwin1.dll上，cygwin1.dll再调用Windows对应的实现，来把结果返回给程序。 可以用查看他们编译好的程序的导入表来验证这点。 二者生成的程序都是能在Windows上运行的EXE文件，显然都是PE格式，用一个PE格式查看工具检查一下就能发现，Cygwin生成的程序依然有fork()这样的Linux系统调用，但目标库是cygwin1。而MingW生成的程序，则全部使用从KERNEL32导出的标准Windows系统API。 这样看来用Mingw编译的程序性能会高一点，而且也不用带着那个接近两兆的cygwin1.dll文件。 但Cygwin对Linux的模拟比较完整，甚至有一个Cygwin X的项目，可以直接用Cygwin跑X。 另外Cygwin可以设置-mno-cygwin的flag，来使用Mingw编译。 而与Cygwin更有可比性的MSys上的工具也是通过Cygwin这种模拟的方式来提供的。 总之这两个项目有千丝万缕的关系，一个不恰当的比方，如果Mingw是MFC，Cygwin就是.NET了。
+浏览(443)
+评论
+转载" /><meta name="keywords" content='Hugo, FixIt' /><meta itemprop="name" content="mingW与cygwin">
+<meta itemprop="description" content="用MingW和cygwin编译出来的程序的区别。 首先MingW和cygwin都不能让Linux下的程序直接运行在Windows上，必需通过源代码重新编译。 现代操作系统包括Windows和Linux的基本设计概念像进程线程地址空间虚拟内存这些都是大同小异的，之所以二者上的程序不能兼容，主要是它们对这些功能具体实现上的差异，首先是可执行文件的格式，Window使用PE的格式，并且要求以.EXE为后缀名。Linux则使用Elf。其次操作系统的API也不一样，如Windows用CreateProcess()创建进程，而Linux使用fork()。 所以要移植程序必然要在这些地方进行改变，MingW有专门的W32api头文件，来把代码中Linux方式的系统调用替换为对应的Windows方式。而Cygwin则通过cygwin1.dll这个文件来实现这种API的转换，并模拟一个Linux系统调用接口给程序，程序依然以Linux的方式调用系统API，只不过这个API在cygwin1.dll上，cygwin1.dll再调用Windows对应的实现，来把结果返回给程序。 可以用查看他们编译好的程序的导入表来验证这点。 二者生成的程序都是能在Windows上运行的EXE文件，显然都是PE格式，用一个PE格式查看工具检查一下就能发现，Cygwin生成的程序依然有fork()这样的Linux系统调用，但目标库是cygwin1。而MingW生成的程序，则全部使用从KERNEL32导出的标准Windows系统API。 这样看来用Mingw编译的程序性能会高一点，而且也不用带着那个接近两兆的cygwin1.dll文件。 但Cygwin对Linux的模拟比较完整，甚至有一个Cygwin X的项目，可以直接用Cygwin跑X。 另外Cygwin可以设置-mno-cygwin的flag，来使用Mingw编译。 而与Cygwin更有可比性的MSys上的工具也是通过Cygwin这种模拟的方式来提供的。 总之这两个项目有千丝万缕的关系，一个不恰当的比方，如果Mingw是MFC，Cygwin就是.NET了。
+浏览(443)
+评论
+转载"><meta itemprop="datePublished" content="2012-07-07T23:33:00+00:00" />
+<meta itemprop="dateModified" content="2012-07-07T23:33:00+00:00" />
+<meta itemprop="wordCount" content="15">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="mingW与cygwin" />
+<meta property="og:description" content="用MingW和cygwin编译出来的程序的区别。 首先MingW和cygwin都不能让Linux下的程序直接运行在Windows上，必需通过源代码重新编译。 现代操作系统包括Windows和Linux的基本设计概念像进程线程地址空间虚拟内存这些都是大同小异的，之所以二者上的程序不能兼容，主要是它们对这些功能具体实现上的差异，首先是可执行文件的格式，Window使用PE的格式，并且要求以.EXE为后缀名。Linux则使用Elf。其次操作系统的API也不一样，如Windows用CreateProcess()创建进程，而Linux使用fork()。 所以要移植程序必然要在这些地方进行改变，MingW有专门的W32api头文件，来把代码中Linux方式的系统调用替换为对应的Windows方式。而Cygwin则通过cygwin1.dll这个文件来实现这种API的转换，并模拟一个Linux系统调用接口给程序，程序依然以Linux的方式调用系统API，只不过这个API在cygwin1.dll上，cygwin1.dll再调用Windows对应的实现，来把结果返回给程序。 可以用查看他们编译好的程序的导入表来验证这点。 二者生成的程序都是能在Windows上运行的EXE文件，显然都是PE格式，用一个PE格式查看工具检查一下就能发现，Cygwin生成的程序依然有fork()这样的Linux系统调用，但目标库是cygwin1。而MingW生成的程序，则全部使用从KERNEL32导出的标准Windows系统API。 这样看来用Mingw编译的程序性能会高一点，而且也不用带着那个接近两兆的cygwin1.dll文件。 但Cygwin对Linux的模拟比较完整，甚至有一个Cygwin X的项目，可以直接用Cygwin跑X。 另外Cygwin可以设置-mno-cygwin的flag，来使用Mingw编译。 而与Cygwin更有可比性的MSys上的工具也是通过Cygwin这种模拟的方式来提供的。 总之这两个项目有千丝万缕的关系，一个不恰当的比方，如果Mingw是MFC，Cygwin就是.NET了。
+浏览(443)
+评论
+转载" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/32/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2012-07-07T23:33:00+00:00" />
+<meta property="article:modified_time" content="2012-07-07T23:33:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="mingW与cygwin"/>
+<meta name="twitter:description" content="用MingW和cygwin编译出来的程序的区别。 首先MingW和cygwin都不能让Linux下的程序直接运行在Windows上，必需通过源代码重新编译。 现代操作系统包括Windows和Linux的基本设计概念像进程线程地址空间虚拟内存这些都是大同小异的，之所以二者上的程序不能兼容，主要是它们对这些功能具体实现上的差异，首先是可执行文件的格式，Window使用PE的格式，并且要求以.EXE为后缀名。Linux则使用Elf。其次操作系统的API也不一样，如Windows用CreateProcess()创建进程，而Linux使用fork()。 所以要移植程序必然要在这些地方进行改变，MingW有专门的W32api头文件，来把代码中Linux方式的系统调用替换为对应的Windows方式。而Cygwin则通过cygwin1.dll这个文件来实现这种API的转换，并模拟一个Linux系统调用接口给程序，程序依然以Linux的方式调用系统API，只不过这个API在cygwin1.dll上，cygwin1.dll再调用Windows对应的实现，来把结果返回给程序。 可以用查看他们编译好的程序的导入表来验证这点。 二者生成的程序都是能在Windows上运行的EXE文件，显然都是PE格式，用一个PE格式查看工具检查一下就能发现，Cygwin生成的程序依然有fork()这样的Linux系统调用，但目标库是cygwin1。而MingW生成的程序，则全部使用从KERNEL32导出的标准Windows系统API。 这样看来用Mingw编译的程序性能会高一点，而且也不用带着那个接近两兆的cygwin1.dll文件。 但Cygwin对Linux的模拟比较完整，甚至有一个Cygwin X的项目，可以直接用Cygwin跑X。 另外Cygwin可以设置-mno-cygwin的flag，来使用Mingw编译。 而与Cygwin更有可比性的MSys上的工具也是通过Cygwin这种模拟的方式来提供的。 总之这两个项目有千丝万缕的关系，一个不恰当的比方，如果Mingw是MFC，Cygwin就是.NET了。
+浏览(443)
+评论
+转载"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/32/" /><link rel="prev" href="https://www.fancybit.top/archives/31/" /><link rel="next" href="https://www.fancybit.top/archives/33/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "mingW与cygwin",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/32\/"
+    },"genre": "post","wordcount":  15 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/32\/","datePublished": "2012-07-07T23:33:00+00:00","dateModified": "2012-07-07T23:33:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">mingW与cygwin</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><!-- raw HTML omitted -->
+<p>用MingW和cygwin编译出来的程序的区别。  <br>
+首先MingW和cygwin都不能让Linux下的程序直接运行在Windows上，必需通过源代码重新编译。  <br>
+现代操作系统包括Windows和Linux的基本设计概念像进程线程地址空间虚拟内存这些都是大同小异的，之所以二者上的程序不能兼容，主要是它们对这些功能具体实现上的差异，首先是可执行文件的格式，Window使用PE的格式，并且要求以.EXE为后缀名。Linux则使用Elf。其次操作系统的API也不一样，如Windows用CreateProcess()创建进程，而Linux使用fork()。  <br>
+所以要移植程序必然要在这些地方进行改变，MingW有专门的W32api头文件，来把代码中Linux方式的系统调用替换为对应的Windows方式。而Cygwin则通过cygwin1.dll这个文件来实现这种API的转换，并模拟一个Linux系统调用接口给程序，程序依然以Linux的方式调用系统API，只不过这个API在cygwin1.dll上，cygwin1.dll再调用Windows对应的实现，来把结果返回给程序。  <br>
+可以用查看他们编译好的程序的导入表来验证这点。  <br>
+二者生成的程序都是能在Windows上运行的EXE文件，显然都是PE格式，用一个PE格式查看工具检查一下就能发现，Cygwin生成的程序依然有fork()这样的Linux系统调用，但目标库是cygwin1。而MingW生成的程序，则全部使用从KERNEL32导出的标准Windows系统API。  <br>
+这样看来用Mingw编译的程序性能会高一点，而且也不用带着那个接近两兆的cygwin1.dll文件。  <br>
+但Cygwin对Linux的模拟比较完整，甚至有一个Cygwin X的项目，可以直接用Cygwin跑X。  <br>
+另外Cygwin可以设置-mno-cygwin的flag，来使用Mingw编译。  <br>
+而与Cygwin更有可比性的MSys上的工具也是通过Cygwin这种模拟的方式来提供的。  <br>
+总之这两个项目有千丝万缕的关系，一个不恰当的比方，如果Mingw是MFC，Cygwin就是.NET了。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->浏览(443)<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->评论<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->转载<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

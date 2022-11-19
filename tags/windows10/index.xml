@@ -1,0 +1,33 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>windows10 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/windows10/</link>
+    <description>windows10 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 13 Jan 2020 18:14:54 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/windows10/" rel="self" type="application/rss+xml" /><item>
+  <title>一次误操作删除uefi引导数据的恢复过程</title>
+  <link>https://www.fancybit.top/archives/72/</link>
+  <pubDate>Mon, 13 Jan 2020 18:14:54 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/72/</guid>
+  <description><![CDATA[晚饭后准备把电脑上以前给黑苹果用的磁盘空间合并到WINDOWS NTFS分区 结果忘记引导数据是放在那块里面的，一起被删掉以后系统引导不起来。
+随后反复试验了多种方法，最终成功恢复了windows10的引导。
+先是尝试用外接DVD刻录机制作一张win10系统盘，结果空间不够&hellip;看来只能用u盘了
+然后使用win32imager把win10镜像写入u盘 试图引导后用升级安装恢复原来的操作系统，结果卡在启动安装程序之后识别不出u盘的驱动，2.0 3.0的接口都试过都不行，U盘是闪迪的
+接着是用老毛桃2020版制作系统恢复工具U盘，然后把win10光盘镜像文件拷贝上去。这样能进预安装环境了，但是在win10 pe里并不能直接运行安装盘镜像加载后的虚拟光驱里面的安装程序，说系统版本不对。然后试了win10setup之类的工具还是不行。最后在网上看到有人说可以把安装镜像直接解压到硬盘分区里然后启动安装就可以。尝试了一下发现确实可行，现在的win10 iso文件解开放到一个空的硬盘分区以后并不需要再设置引导之类的问题，BIOS启动盘顺序设置里直接就可以选择用那个存放win10安装盘内容的硬盘分区。这样终于可以正常安装操作系统了。
+然而问题还是没有结束，安装过程中如果选择升级安装，就必须要求使用介质安装，不能用硬盘直接安装，再次撞墙。
+再仔细搜索了之后发现一片写BCDBOOT恢复引导的文章：
+https://blog.csdn.net/A_Sen_A/article/details/89545311
+然后依然使用硬盘里的win10安装分区，进入系统恢复，照着使用bcdboot设置了一下，成功，操作系统恢复，分区盘符也没有乱，有用的数据都木有丢失。
+回忆一下其实只要有一个原版win10安装U盘就可以进入这个系统修复 然后用bcdboot直接恢复了。白绕了那么大圈子。
+但是也学到另外一种重新安装操作系统的套路：
+制作老毛桃pe u盘
+win10镜像放入U盘
+老毛桃引导进入PE
+挂载win10光盘镜像
+分区工具分出一个10G左右的空分区，把win10光盘镜像内容复制过去
+重启进入BIOS设置，10G分区设置为第一个引导盘。
+保存重启 进入win10全新安装的步骤。
+真是磨人的麻烦事啊，记录一下被忘，能帮到谁更好，有问题的欢迎留言评论。]]></description>
+</item>
+</channel>
+</rss>

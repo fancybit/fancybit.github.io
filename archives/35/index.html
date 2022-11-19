@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Unity3D第一次亲密接触 - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="刚开始接触Unity3D引擎，作为一个在MAC上非常出名的商业3D游戏引擎，从开发工具到执行效率都非常的专业简便。标准素材库里的脚本和资源足以不写代码完成一个FPS式的场景。
+首先是资源的导入功能，3DS MAX MAYA之类常用的3D建模工具都可以支持，导入的3D模型会以fbx文件格式存在于项目资源目录中。支持多层纹理材质（可能需要自己写shader），骨骼动画，变形动画等。但是导入之后的材质需要在editor里重新赋予纹理，目前还没有找到好的解决办法（UV坐标是正确导入的）
+代码方面 可以使用boo,js,C#脚本。C#脚本编辑器可以使用vs或者自带的MONO DEVELOP。在使用MONO DEVELOP的时候需要注意代码文件必须保存为unicode的编码，否则会出现很多莫名其妙的编译错误还会让中文变成乱码。 所有的行为脚本派生自Behavior类型，行为脚本可以作为Componet赋予场景中的GameObject。c#脚本的对象系统不再是.net里的Object，而是以Unity3d的Object类为基本类型。场景中的物体都派生自GameObject，GameObject派生自Object,Component派生自Object，一个GameObject可以含有多种Componet类型的成员，可以使用GameObject.getComponent方法获取在EDITOR里赋予此物体的Component.所有GameObject都有个Transform Component，可以由此操作对象在场景中的位置和几何变换。行为脚本的基类Behavior也是Component子类，也就是说行为脚本也是以Component的形式和GameObject发生关联。在C#里可以使用public来定义属性，从而可以在Editor的inspector视图中直接给这些属性赋值。既支持基本的C#数值，字串，还支持u3d引擎提供的类型，比如SoundClip类型的public变可以在inspecter里指定为Project View中的音频素材。这里有一个值得注意的地方，对于Component类型的public变量，在inspector中指定一个GameObject时，实际赋予的并不是这个GameObject，而是这个GameObject对应类型的Componet。比如把一个Cube对象赋予给一个Behavior的Transform类型public变量x，结果在C#脚本里是把这个Cube的transform属性赋给了x,不是Component本身。想必这也是出于编辑场景时候的方便，节约一些绕来绕去的GameObject.getComponent调用。对于不想在inspector中出现的变量，可以在C#里设定为private或者protect访问级别。这是比js方便的地方。
+这里附上一段测试上面说的对派生自Component类型变量赋值的测试代码：
+1 public class InspecterTest : MonoBehaviour {
+2 public Transform target;
+3 public AudioClip sound;
+4 protected int ptest;
+5 //
+Use this for initialization
+6 void Start () {
+7 print (
+&quot;
+目标是：
+&quot;&#43;target.name);
+8 print (
+&quot;
+目标位置：
+&quot;&#43;target.transform.position);
+9 print (
+&quot;
+目标类型:
+&quot;&#43;target.GetType());
+10 print (
+&quot;
+目标是不是GameObject?:
+&quot;&#43;(target is GameObject).ToString());
+11 }" /><meta name="keywords" content='Hugo, FixIt' /><meta itemprop="name" content="Unity3D第一次亲密接触">
+<meta itemprop="description" content="刚开始接触Unity3D引擎，作为一个在MAC上非常出名的商业3D游戏引擎，从开发工具到执行效率都非常的专业简便。标准素材库里的脚本和资源足以不写代码完成一个FPS式的场景。
+首先是资源的导入功能，3DS MAX MAYA之类常用的3D建模工具都可以支持，导入的3D模型会以fbx文件格式存在于项目资源目录中。支持多层纹理材质（可能需要自己写shader），骨骼动画，变形动画等。但是导入之后的材质需要在editor里重新赋予纹理，目前还没有找到好的解决办法（UV坐标是正确导入的）
+代码方面 可以使用boo,js,C#脚本。C#脚本编辑器可以使用vs或者自带的MONO DEVELOP。在使用MONO DEVELOP的时候需要注意代码文件必须保存为unicode的编码，否则会出现很多莫名其妙的编译错误还会让中文变成乱码。 所有的行为脚本派生自Behavior类型，行为脚本可以作为Componet赋予场景中的GameObject。c#脚本的对象系统不再是.net里的Object，而是以Unity3d的Object类为基本类型。场景中的物体都派生自GameObject，GameObject派生自Object,Component派生自Object，一个GameObject可以含有多种Componet类型的成员，可以使用GameObject.getComponent方法获取在EDITOR里赋予此物体的Component.所有GameObject都有个Transform Component，可以由此操作对象在场景中的位置和几何变换。行为脚本的基类Behavior也是Component子类，也就是说行为脚本也是以Component的形式和GameObject发生关联。在C#里可以使用public来定义属性，从而可以在Editor的inspector视图中直接给这些属性赋值。既支持基本的C#数值，字串，还支持u3d引擎提供的类型，比如SoundClip类型的public变可以在inspecter里指定为Project View中的音频素材。这里有一个值得注意的地方，对于Component类型的public变量，在inspector中指定一个GameObject时，实际赋予的并不是这个GameObject，而是这个GameObject对应类型的Componet。比如把一个Cube对象赋予给一个Behavior的Transform类型public变量x，结果在C#脚本里是把这个Cube的transform属性赋给了x,不是Component本身。想必这也是出于编辑场景时候的方便，节约一些绕来绕去的GameObject.getComponent调用。对于不想在inspector中出现的变量，可以在C#里设定为private或者protect访问级别。这是比js方便的地方。
+这里附上一段测试上面说的对派生自Component类型变量赋值的测试代码：
+1 public class InspecterTest : MonoBehaviour {
+2 public Transform target;
+3 public AudioClip sound;
+4 protected int ptest;
+5 //
+Use this for initialization
+6 void Start () {
+7 print (
+&quot;
+目标是：
+&quot;&#43;target.name);
+8 print (
+&quot;
+目标位置：
+&quot;&#43;target.transform.position);
+9 print (
+&quot;
+目标类型:
+&quot;&#43;target.GetType());
+10 print (
+&quot;
+目标是不是GameObject?:
+&quot;&#43;(target is GameObject).ToString());
+11 }"><meta itemprop="datePublished" content="2012-08-21T11:44:00+00:00" />
+<meta itemprop="dateModified" content="2012-08-21T11:44:00+00:00" />
+<meta itemprop="wordCount" content="94">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Unity3D第一次亲密接触" />
+<meta property="og:description" content="刚开始接触Unity3D引擎，作为一个在MAC上非常出名的商业3D游戏引擎，从开发工具到执行效率都非常的专业简便。标准素材库里的脚本和资源足以不写代码完成一个FPS式的场景。
+首先是资源的导入功能，3DS MAX MAYA之类常用的3D建模工具都可以支持，导入的3D模型会以fbx文件格式存在于项目资源目录中。支持多层纹理材质（可能需要自己写shader），骨骼动画，变形动画等。但是导入之后的材质需要在editor里重新赋予纹理，目前还没有找到好的解决办法（UV坐标是正确导入的）
+代码方面 可以使用boo,js,C#脚本。C#脚本编辑器可以使用vs或者自带的MONO DEVELOP。在使用MONO DEVELOP的时候需要注意代码文件必须保存为unicode的编码，否则会出现很多莫名其妙的编译错误还会让中文变成乱码。 所有的行为脚本派生自Behavior类型，行为脚本可以作为Componet赋予场景中的GameObject。c#脚本的对象系统不再是.net里的Object，而是以Unity3d的Object类为基本类型。场景中的物体都派生自GameObject，GameObject派生自Object,Component派生自Object，一个GameObject可以含有多种Componet类型的成员，可以使用GameObject.getComponent方法获取在EDITOR里赋予此物体的Component.所有GameObject都有个Transform Component，可以由此操作对象在场景中的位置和几何变换。行为脚本的基类Behavior也是Component子类，也就是说行为脚本也是以Component的形式和GameObject发生关联。在C#里可以使用public来定义属性，从而可以在Editor的inspector视图中直接给这些属性赋值。既支持基本的C#数值，字串，还支持u3d引擎提供的类型，比如SoundClip类型的public变可以在inspecter里指定为Project View中的音频素材。这里有一个值得注意的地方，对于Component类型的public变量，在inspector中指定一个GameObject时，实际赋予的并不是这个GameObject，而是这个GameObject对应类型的Componet。比如把一个Cube对象赋予给一个Behavior的Transform类型public变量x，结果在C#脚本里是把这个Cube的transform属性赋给了x,不是Component本身。想必这也是出于编辑场景时候的方便，节约一些绕来绕去的GameObject.getComponent调用。对于不想在inspector中出现的变量，可以在C#里设定为private或者protect访问级别。这是比js方便的地方。
+这里附上一段测试上面说的对派生自Component类型变量赋值的测试代码：
+1 public class InspecterTest : MonoBehaviour {
+2 public Transform target;
+3 public AudioClip sound;
+4 protected int ptest;
+5 //
+Use this for initialization
+6 void Start () {
+7 print (
+&quot;
+目标是：
+&quot;&#43;target.name);
+8 print (
+&quot;
+目标位置：
+&quot;&#43;target.transform.position);
+9 print (
+&quot;
+目标类型:
+&quot;&#43;target.GetType());
+10 print (
+&quot;
+目标是不是GameObject?:
+&quot;&#43;(target is GameObject).ToString());
+11 }" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/35/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2012-08-21T11:44:00+00:00" />
+<meta property="article:modified_time" content="2012-08-21T11:44:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Unity3D第一次亲密接触"/>
+<meta name="twitter:description" content="刚开始接触Unity3D引擎，作为一个在MAC上非常出名的商业3D游戏引擎，从开发工具到执行效率都非常的专业简便。标准素材库里的脚本和资源足以不写代码完成一个FPS式的场景。
+首先是资源的导入功能，3DS MAX MAYA之类常用的3D建模工具都可以支持，导入的3D模型会以fbx文件格式存在于项目资源目录中。支持多层纹理材质（可能需要自己写shader），骨骼动画，变形动画等。但是导入之后的材质需要在editor里重新赋予纹理，目前还没有找到好的解决办法（UV坐标是正确导入的）
+代码方面 可以使用boo,js,C#脚本。C#脚本编辑器可以使用vs或者自带的MONO DEVELOP。在使用MONO DEVELOP的时候需要注意代码文件必须保存为unicode的编码，否则会出现很多莫名其妙的编译错误还会让中文变成乱码。 所有的行为脚本派生自Behavior类型，行为脚本可以作为Componet赋予场景中的GameObject。c#脚本的对象系统不再是.net里的Object，而是以Unity3d的Object类为基本类型。场景中的物体都派生自GameObject，GameObject派生自Object,Component派生自Object，一个GameObject可以含有多种Componet类型的成员，可以使用GameObject.getComponent方法获取在EDITOR里赋予此物体的Component.所有GameObject都有个Transform Component，可以由此操作对象在场景中的位置和几何变换。行为脚本的基类Behavior也是Component子类，也就是说行为脚本也是以Component的形式和GameObject发生关联。在C#里可以使用public来定义属性，从而可以在Editor的inspector视图中直接给这些属性赋值。既支持基本的C#数值，字串，还支持u3d引擎提供的类型，比如SoundClip类型的public变可以在inspecter里指定为Project View中的音频素材。这里有一个值得注意的地方，对于Component类型的public变量，在inspector中指定一个GameObject时，实际赋予的并不是这个GameObject，而是这个GameObject对应类型的Componet。比如把一个Cube对象赋予给一个Behavior的Transform类型public变量x，结果在C#脚本里是把这个Cube的transform属性赋给了x,不是Component本身。想必这也是出于编辑场景时候的方便，节约一些绕来绕去的GameObject.getComponent调用。对于不想在inspector中出现的变量，可以在C#里设定为private或者protect访问级别。这是比js方便的地方。
+这里附上一段测试上面说的对派生自Component类型变量赋值的测试代码：
+1 public class InspecterTest : MonoBehaviour {
+2 public Transform target;
+3 public AudioClip sound;
+4 protected int ptest;
+5 //
+Use this for initialization
+6 void Start () {
+7 print (
+&quot;
+目标是：
+&quot;&#43;target.name);
+8 print (
+&quot;
+目标位置：
+&quot;&#43;target.transform.position);
+9 print (
+&quot;
+目标类型:
+&quot;&#43;target.GetType());
+10 print (
+&quot;
+目标是不是GameObject?:
+&quot;&#43;(target is GameObject).ToString());
+11 }"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/35/" /><link rel="prev" href="https://www.fancybit.top/archives/34/" /><link rel="next" href="https://www.fancybit.top/archives/36/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Unity3D第一次亲密接触",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/35\/"
+    },"genre": "post","wordcount":  94 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/35\/","datePublished": "2012-08-21T11:44:00+00:00","dateModified": "2012-08-21T11:44:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">Unity3D第一次亲密接触</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><p>刚开始接触Unity3D引擎，作为一个在MAC上非常出名的商业3D游戏引擎，从开发工具到执行效率都非常的专业简便。标准素材库里的脚本和资源足以不写代码完成一个FPS式的场景。</p>
+<p>首先是资源的导入功能，3DS MAX MAYA之类常用的3D建模工具都可以支持，导入的3D模型会以fbx文件格式存在于项目资源目录中。支持多层纹理材质（可能需要自己写shader），骨骼动画，变形动画等。但是导入之后的材质需要在editor里重新赋予纹理，目前还没有找到好的解决办法（UV坐标是正确导入的）</p>
+<p>代码方面 可以使用boo,js,C#脚本。C#脚本编辑器可以使用vs或者自带的MONO DEVELOP。在使用MONO DEVELOP的时候需要注意代码文件必须保存为unicode的编码，否则会出现很多莫名其妙的编译错误还会让中文变成乱码。 </p>
+<p>所有的行为脚本派生自Behavior类型，行为脚本可以作为Componet赋予场景中的GameObject。c#脚本的对象系统不再是.net里的Object，而是以Unity3d的Object类为基本类型。场景中的物体都派生自GameObject，GameObject派生自Object,Component派生自Object，一个GameObject可以含有多种Componet类型的成员，可以使用GameObject.getComponent方法获取在EDITOR里赋予此物体的Component.所有GameObject都有个Transform Component，可以由此操作对象在场景中的位置和几何变换。行为脚本的基类Behavior也是Component子类，也就是说行为脚本也是以Component的形式和GameObject发生关联。在C#里可以使用public来定义属性，从而可以在Editor的inspector视图中直接给这些属性赋值。既支持基本的C#数值，字串，还支持u3d引擎提供的类型，比如SoundClip类型的public变可以在inspecter里指定为Project View中的音频素材。这里有一个值得注意的地方，对于Component类型的public变量，在inspector中指定一个GameObject时，实际赋予的并不是这个GameObject，而是这个GameObject对应类型的Componet。比如把一个Cube对象赋予给一个Behavior的Transform类型public变量x，结果在C#脚本里是把这个Cube的transform属性赋给了x,不是Component本身。想必这也是出于编辑场景时候的方便，节约一些绕来绕去的GameObject.getComponent调用。对于不想在inspector中出现的变量，可以在C#里设定为private或者protect访问级别。这是比js方便的地方。</p>
+<p> 这里附上一段测试上面说的对派生自Component类型变量赋值的测试代码：</p>
+<p><!-- raw HTML omitted --> 1<!-- raw HTML omitted --> <br>
+<!-- raw HTML omitted -->public<!-- raw HTML omitted --> <br>
+<!-- raw HTML omitted -->class<!-- raw HTML omitted --> InspecterTest : MonoBehaviour {</p>
+<p><!-- raw HTML omitted --> 2<!-- raw HTML omitted -->     <br>
+<!-- raw HTML omitted -->public<!-- raw HTML omitted --> Transform target;</p>
+<p><!-- raw HTML omitted --> 3<!-- raw HTML omitted -->     <br>
+<!-- raw HTML omitted -->public<!-- raw HTML omitted --> AudioClip sound;</p>
+<p><!-- raw HTML omitted --> 4<!-- raw HTML omitted -->     <br>
+<!-- raw HTML omitted -->protected<!-- raw HTML omitted --> <br>
+<!-- raw HTML omitted -->int<!-- raw HTML omitted --> ptest;</p>
+<p><!-- raw HTML omitted --> 5<!-- raw HTML omitted -->     <br>
+<!-- raw HTML omitted -->//<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --> Use this for initialization<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --> 6<!-- raw HTML omitted --> <br>
+<!-- raw HTML omitted --><!-- raw HTML omitted -->    <br>
+<!-- raw HTML omitted -->void<!-- raw HTML omitted --> Start () {</p>
+<p><!-- raw HTML omitted --> 7<!-- raw HTML omitted -->         print (<br>
+<!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->目标是：<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->&quot;<!-- raw HTML omitted -->+target.name);</p>
+<p><!-- raw HTML omitted --> 8<!-- raw HTML omitted -->         print (<br>
+<!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->目标位置：<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->&quot;<!-- raw HTML omitted -->+target.transform.position);</p>
+<p><!-- raw HTML omitted --> 9<!-- raw HTML omitted -->         print (<br>
+<!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->目标类型:<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->&quot;<!-- raw HTML omitted -->+target.GetType());</p>
+<p><!-- raw HTML omitted -->10<!-- raw HTML omitted -->         print (<br>
+<!-- raw HTML omitted -->&quot;<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->目标是不是GameObject?:<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->&quot;<!-- raw HTML omitted -->+(target <br>
+<!-- raw HTML omitted -->is<!-- raw HTML omitted --> GameObject).ToString());</p>
+<p><!-- raw HTML omitted -->11<!-- raw HTML omitted -->     }</p>
+<p><!-- raw HTML omitted -->12<!-- raw HTML omitted -->     </p>
+<p><!-- raw HTML omitted -->13<!-- raw HTML omitted -->     <br>
+<!-- raw HTML omitted -->//<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --> Update is called once per frame<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->14<!-- raw HTML omitted --> <br>
+<!-- raw HTML omitted --><!-- raw HTML omitted -->    <br>
+<!-- raw HTML omitted -->void<!-- raw HTML omitted --> Update () {</p>
+<p><!-- raw HTML omitted -->15<!-- raw HTML omitted -->         </p>
+<p><!-- raw HTML omitted -->16<!-- raw HTML omitted -->     }<br>
+<!-- raw HTML omitted -->17<!-- raw HTML omitted --> }  </p>
+<p> 音频方面 通过AudioSource Component添加的音频不仅有3D空间感 连快速移动时候的多普勒效应都已经加入了，可以直接在EDITOR里设定声音的传播范围和衰减函数曲线，非常强大。</p>
+<p>还有很多没有探索到的地方，以后继续完善吧。 </p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

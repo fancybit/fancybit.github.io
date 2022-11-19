@@ -1,0 +1,53 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>b2b2c - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/b2b2c/</link>
+    <description>b2b2c - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 23 Jan 2020 16:29:40 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/b2b2c/" rel="self" type="application/rss+xml" /><item>
+  <title>好商城二开备忘</title>
+  <link>https://www.fancybit.top/archives/73/</link>
+  <pubDate>Thu, 23 Jan 2020 16:29:40 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/73/</guid>
+  <description><![CDATA[处理请求的核心流程：
+base.php
+install/index.php
+183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+读取配置文件到全局变量$setting_config
+设置MD5 KEY
+检测配置时区
+配置启动session
+配置语言
+control 解析url get参数传递来的action op 控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+设置语言
+检测是否登录
+调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+检测权限
+用户ID为1的根用户可以越过检测控制所有功能
+转码防止GBK乱码
+index layout]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>使用 pjax 实现网站无刷新加载 - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="之前也没有研究过pjax，但是没事走访别人博客时看到不少经过pjax优化的网站，响应速度很快，今天看到玖梦博客的一篇《一行代码实现全站pjax无刷新加载》测试后发发现效果确实不错，故发文记录一下。
+pjax是什么
+pjax是一个jQuery插件，它通过ajax和pushState技术提供了极速的（无刷新ajax加载）浏览体验，并且保持了真实的地址、网页标题，浏览器的后退（前进）按钮也可以正常使用。
+pjax的工作原理是通过ajax从服务器端获取HTML，在页面中用获取到的HTML替换指定容器元素中的内容。然后使用pushState技术更新浏览器地址栏中的当前地址。
+以下两点原因决定了pjax会有更快的浏览体验：
+1.不存在页面资源（js/css）的重复加载和应用；
+2.如果服务器端配置了pjax，它可以只渲染页面局部内容，从而避免服务器渲染完整布局的额外开销。
+项目现状
+jquery-pjax的维护方向：可能会继续修复重要的bug，但其功能不会再发生变化，即不会再实现新功能，也不会再扩展现有功能。
+如何使用
+客户端
+客户端设置分两步： 1.下载插件，包括jquery1.8&#43;，或者npm安装，这部分参考文档，不赘述。
+2.初始化pjax插件，并有条件的拦截
+初始化
+下面代码表示：当 selector 被点击时，执行ajax请求，并将返回的HTML字符串填充在 container 标记的位置。
+参数说明
+selector：string类型，用于click 事件委托 的选择器。
+container：string类型，用于标识唯一pjax容器的选择器。
+options object类型，包含下列选项。
+pjax配置选项
+选项 默认值 说明
+timeout 650 ajax超时时间（毫秒），超时后强制刷新整个页面
+push true
+使用
+pushState
+在浏览器中添加历史记录
+replace false 替换URL地址但不添加浏览器历史记录
+maxCacheLength 20 容器元素缓存内容的最大值（次）
+version string或function，返回当前pjax版本
+scrollTo 浏览器滚动条的垂直滚动位置。设为 false 时禁止滚动
+type &ldquo;GET&rdquo;
+参考
+$.ajax
+dataType &ldquo;html&rdquo;
+参考
+$.ajax
+container 被替换内容元素的CSS选择器
+url link.href string或function，返回ajax请求响应的URL
+target link
+pjax
+事件
+中 relatedTarget 属性的最终值" /><meta name="keywords" content='ajax, html, jquery, js, pjax' /><meta itemprop="name" content="使用 pjax 实现网站无刷新加载">
+<meta itemprop="description" content="之前也没有研究过pjax，但是没事走访别人博客时看到不少经过pjax优化的网站，响应速度很快，今天看到玖梦博客的一篇《一行代码实现全站pjax无刷新加载》测试后发发现效果确实不错，故发文记录一下。
+pjax是什么
+pjax是一个jQuery插件，它通过ajax和pushState技术提供了极速的（无刷新ajax加载）浏览体验，并且保持了真实的地址、网页标题，浏览器的后退（前进）按钮也可以正常使用。
+pjax的工作原理是通过ajax从服务器端获取HTML，在页面中用获取到的HTML替换指定容器元素中的内容。然后使用pushState技术更新浏览器地址栏中的当前地址。
+以下两点原因决定了pjax会有更快的浏览体验：
+1.不存在页面资源（js/css）的重复加载和应用；
+2.如果服务器端配置了pjax，它可以只渲染页面局部内容，从而避免服务器渲染完整布局的额外开销。
+项目现状
+jquery-pjax的维护方向：可能会继续修复重要的bug，但其功能不会再发生变化，即不会再实现新功能，也不会再扩展现有功能。
+如何使用
+客户端
+客户端设置分两步： 1.下载插件，包括jquery1.8&#43;，或者npm安装，这部分参考文档，不赘述。
+2.初始化pjax插件，并有条件的拦截
+初始化
+下面代码表示：当 selector 被点击时，执行ajax请求，并将返回的HTML字符串填充在 container 标记的位置。
+参数说明
+selector：string类型，用于click 事件委托 的选择器。
+container：string类型，用于标识唯一pjax容器的选择器。
+options object类型，包含下列选项。
+pjax配置选项
+选项 默认值 说明
+timeout 650 ajax超时时间（毫秒），超时后强制刷新整个页面
+push true
+使用
+pushState
+在浏览器中添加历史记录
+replace false 替换URL地址但不添加浏览器历史记录
+maxCacheLength 20 容器元素缓存内容的最大值（次）
+version string或function，返回当前pjax版本
+scrollTo 浏览器滚动条的垂直滚动位置。设为 false 时禁止滚动
+type &ldquo;GET&rdquo;
+参考
+$.ajax
+dataType &ldquo;html&rdquo;
+参考
+$.ajax
+container 被替换内容元素的CSS选择器
+url link.href string或function，返回ajax请求响应的URL
+target link
+pjax
+事件
+中 relatedTarget 属性的最终值"><meta itemprop="datePublished" content="2021-07-03T15:42:33+00:00" />
+<meta itemprop="dateModified" content="2021-07-03T15:42:33+00:00" />
+<meta itemprop="wordCount" content="161">
+<meta itemprop="keywords" content="ajax,html,jquery,js,pjax," /><meta property="og:title" content="使用 pjax 实现网站无刷新加载" />
+<meta property="og:description" content="之前也没有研究过pjax，但是没事走访别人博客时看到不少经过pjax优化的网站，响应速度很快，今天看到玖梦博客的一篇《一行代码实现全站pjax无刷新加载》测试后发发现效果确实不错，故发文记录一下。
+pjax是什么
+pjax是一个jQuery插件，它通过ajax和pushState技术提供了极速的（无刷新ajax加载）浏览体验，并且保持了真实的地址、网页标题，浏览器的后退（前进）按钮也可以正常使用。
+pjax的工作原理是通过ajax从服务器端获取HTML，在页面中用获取到的HTML替换指定容器元素中的内容。然后使用pushState技术更新浏览器地址栏中的当前地址。
+以下两点原因决定了pjax会有更快的浏览体验：
+1.不存在页面资源（js/css）的重复加载和应用；
+2.如果服务器端配置了pjax，它可以只渲染页面局部内容，从而避免服务器渲染完整布局的额外开销。
+项目现状
+jquery-pjax的维护方向：可能会继续修复重要的bug，但其功能不会再发生变化，即不会再实现新功能，也不会再扩展现有功能。
+如何使用
+客户端
+客户端设置分两步： 1.下载插件，包括jquery1.8&#43;，或者npm安装，这部分参考文档，不赘述。
+2.初始化pjax插件，并有条件的拦截
+初始化
+下面代码表示：当 selector 被点击时，执行ajax请求，并将返回的HTML字符串填充在 container 标记的位置。
+参数说明
+selector：string类型，用于click 事件委托 的选择器。
+container：string类型，用于标识唯一pjax容器的选择器。
+options object类型，包含下列选项。
+pjax配置选项
+选项 默认值 说明
+timeout 650 ajax超时时间（毫秒），超时后强制刷新整个页面
+push true
+使用
+pushState
+在浏览器中添加历史记录
+replace false 替换URL地址但不添加浏览器历史记录
+maxCacheLength 20 容器元素缓存内容的最大值（次）
+version string或function，返回当前pjax版本
+scrollTo 浏览器滚动条的垂直滚动位置。设为 false 时禁止滚动
+type &ldquo;GET&rdquo;
+参考
+$.ajax
+dataType &ldquo;html&rdquo;
+参考
+$.ajax
+container 被替换内容元素的CSS选择器
+url link.href string或function，返回ajax请求响应的URL
+target link
+pjax
+事件
+中 relatedTarget 属性的最终值" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/719/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-03T15:42:33+00:00" />
+<meta property="article:modified_time" content="2021-07-03T15:42:33+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用 pjax 实现网站无刷新加载"/>
+<meta name="twitter:description" content="之前也没有研究过pjax，但是没事走访别人博客时看到不少经过pjax优化的网站，响应速度很快，今天看到玖梦博客的一篇《一行代码实现全站pjax无刷新加载》测试后发发现效果确实不错，故发文记录一下。
+pjax是什么
+pjax是一个jQuery插件，它通过ajax和pushState技术提供了极速的（无刷新ajax加载）浏览体验，并且保持了真实的地址、网页标题，浏览器的后退（前进）按钮也可以正常使用。
+pjax的工作原理是通过ajax从服务器端获取HTML，在页面中用获取到的HTML替换指定容器元素中的内容。然后使用pushState技术更新浏览器地址栏中的当前地址。
+以下两点原因决定了pjax会有更快的浏览体验：
+1.不存在页面资源（js/css）的重复加载和应用；
+2.如果服务器端配置了pjax，它可以只渲染页面局部内容，从而避免服务器渲染完整布局的额外开销。
+项目现状
+jquery-pjax的维护方向：可能会继续修复重要的bug，但其功能不会再发生变化，即不会再实现新功能，也不会再扩展现有功能。
+如何使用
+客户端
+客户端设置分两步： 1.下载插件，包括jquery1.8&#43;，或者npm安装，这部分参考文档，不赘述。
+2.初始化pjax插件，并有条件的拦截
+初始化
+下面代码表示：当 selector 被点击时，执行ajax请求，并将返回的HTML字符串填充在 container 标记的位置。
+参数说明
+selector：string类型，用于click 事件委托 的选择器。
+container：string类型，用于标识唯一pjax容器的选择器。
+options object类型，包含下列选项。
+pjax配置选项
+选项 默认值 说明
+timeout 650 ajax超时时间（毫秒），超时后强制刷新整个页面
+push true
+使用
+pushState
+在浏览器中添加历史记录
+replace false 替换URL地址但不添加浏览器历史记录
+maxCacheLength 20 容器元素缓存内容的最大值（次）
+version string或function，返回当前pjax版本
+scrollTo 浏览器滚动条的垂直滚动位置。设为 false 时禁止滚动
+type &ldquo;GET&rdquo;
+参考
+$.ajax
+dataType &ldquo;html&rdquo;
+参考
+$.ajax
+container 被替换内容元素的CSS选择器
+url link.href string或function，返回ajax请求响应的URL
+target link
+pjax
+事件
+中 relatedTarget 属性的最终值"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/719/" /><link rel="prev" href="https://www.fancybit.top/archives/714/" /><link rel="next" href="https://www.fancybit.top/archives/749/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "使用 pjax 实现网站无刷新加载",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/719\/"
+    },"genre": "post","keywords": "ajax, html, jquery, js, pjax","wordcount":  161 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/719\/","datePublished": "2021-07-03T15:42:33+00:00","dateModified": "2021-07-03T15:42:33+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">使用 pjax 实现网站无刷新加载</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><p>之前也没有研究过pjax，但是没事走访别人博客时看到不少经过pjax优化的网站，响应速度很快，今天看到玖梦博客的一篇《一行代码实现全站pjax无刷新加载》测试后发发现效果确实不错，故发文记录一下。</p>
+<p>pjax是什么<br>
+pjax是一个jQuery插件，它通过ajax和pushState技术提供了极速的（无刷新ajax加载）浏览体验，并且保持了真实的地址、网页标题，浏览器的后退（前进）按钮也可以正常使用。</p>
+<p>pjax的工作原理是通过ajax从服务器端获取HTML，在页面中用获取到的HTML替换指定容器元素中的内容。然后使用pushState技术更新浏览器地址栏中的当前地址。</p>
+<p>以下两点原因决定了pjax会有更快的浏览体验：</p>
+<p>1.不存在页面资源（js/css）的重复加载和应用；</p>
+<p>2.如果服务器端配置了pjax，它可以只渲染页面局部内容，从而避免服务器渲染完整布局的额外开销。</p>
+<p>项目现状<br>
+jquery-pjax的维护方向：可能会继续修复重要的bug，但其功能不会再发生变化，即不会再实现新功能，也不会再扩展现有功能。</p>
+<p>如何使用</p>
+<ol>
+<li>客户端<br>
+客户端设置分两步：</li>
+</ol>
+<p>1.下载插件，包括jquery1.8+，或者npm安装，这部分参考文档，不赘述。</p>
+<p>2.初始化pjax插件，并有条件的拦截</p>
+<p>初始化</p>
+<!-- raw HTML omitted -->
+<p>下面代码表示：当 selector 被点击时，执行ajax请求，并将返回的HTML字符串填充在 container 标记的位置。</p>
+<p>参数说明<br>
+selector：string类型，用于click 事件委托 的选择器。<br>
+container：string类型，用于标识唯一pjax容器的选择器。<br>
+options object类型，包含下列选项。<br>
+pjax配置选项</p>
+<!-- raw HTML omitted -->
+<p>选项 默认值 说明<br>
+timeout 650 ajax超时时间（毫秒），超时后强制刷新整个页面<br>
+push true<br>
+使用</p>
+<p>pushState</p>
+<p>在浏览器中添加历史记录</p>
+<p>replace false 替换URL地址但不添加浏览器历史记录<br>
+maxCacheLength 20 容器元素缓存内容的最大值（次）<br>
+version string或function，返回当前pjax版本<br>
+scrollTo 浏览器滚动条的垂直滚动位置。设为 false 时禁止滚动<br>
+type &ldquo;GET&rdquo;<br>
+参考</p>
+<p>$.ajax</p>
+<p>dataType &ldquo;html&rdquo;<br>
+参考</p>
+<p>$.ajax</p>
+<p>container 被替换内容元素的CSS选择器<br>
+url link.href string或function，返回ajax请求响应的URL<br>
+target link<br>
+pjax</p>
+<p>事件</p>
+<p>中 relatedTarget 属性的最终值</p>
+<p>fragment css选择器，提取ajax响应内容中指定的内容片段<br>
+可以在全局使用$.pjax.defaults对象改变默认配置：</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>API介绍<br>
+这部分用于更细粒度的控制。</p>
+<p>最简单常见的pjax使用方法如下：</p>
+<!-- raw HTML omitted -->
+<p>通过这种方式可以让页面中所有的链接都实现pjax加载，并指定#pjax-container作为容器元素。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>这是一个$.fn.pjax内部使用的底层方法，通过此方法可以在pjax事件之上做更多的事情。本示例使用当前的click上下文来设置一个祖先元素作为容器：</p>
+<p>通过pjax提交表单。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>使用pjax机制发起一个当前URL的请求到服务器，并且通过响应的内容替换容器元素中的内容，同时不添加浏览器历史记录。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>事件 取消 参数 说明<br>
+pjax链接事件的生命周期<br>
+pjax:click ✔︎ options 链接被激活的时候触发；取消的时候阻止pjax<br>
+pjax:beforeSend ✔︎ xhr, options 可以设置XHR头<br>
+pjax:start xhr, options<br>
+pjax:send xhr, options<br>
+pjax:clicked options pjax通过链接点击已经开始之后触发<br>
+pjax:beforeReplace contents, options 从服务器端加载的HTML内容完成之后，替换当前内容之前<br>
+pjax:success data, status, xhr, options 从服务器端加载的HTML内容替换当前内容之后<br>
+pjax:timeout ✔︎ xhr, options 在 options.timeout 之后触发；除非被取消，否则会强制刷新页面<br>
+pjax:error ✔︎ xhr, textStatus, error, options ajax请求出错；除非被取消，否则会强制刷新页面<br>
+pjax:complete xhr, options<br>
+浏览器前进后退事件的生命周期<br>
+pjax:popstate direction 事件的属性: &ldquo;back&rdquo;/&ldquo;forward&rdquo;<br>
+pjax:start null, options 内容替换之前<br>
+pjax:beforeReplace contents, options 在用缓存中的内容替换HTML之前<br>
+pjax:end null, options 替换内容之后<br>
+pjax:callback null, options 页面脚本加载完成后（Admui项目）<br>
+如果您使用了加载指示（如loading图标或“加载中”的文字），pjax:send和pjax:complete这两个事件会比较有用。它们只有在XHR请求（而不是从缓存中加载内容）时才会被触发：</p>
+<p>以下是禁用 pjax:timeout 事件的示例。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>————————————————<br>
+版权声明：本文为CSDN博主「$encoding」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：https://blog.csdn.net/weixin_44776993/article/details/107502380</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<blockquote>
+</blockquote>
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

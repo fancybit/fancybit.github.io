@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>源码 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E6%BA%90%E7%A0%81/</link>
+    <description>源码 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 15 Feb 2020 17:12:54 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E6%BA%90%E7%A0%81/" rel="self" type="application/rss+xml" /><item>
+  <title>资源站和源码站搜集</title>
+  <link>https://www.fancybit.top/archives/75/</link>
+  <pubDate>Sat, 15 Feb 2020 17:12:54 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/75/</guid>
+  <description><![CDATA[爱给网 http://www.aigei.com/
+各种免费资源提供 音频 3D模型 原画 游戏源码 教学视频
+中国源码网 http://www.zgymw.com/
+非常低价和大量免费的资源 不过内容好像质量不太高而且比较老旧
+GMBBS https://www.gmbbs.cn/
+各种编译好的一键搭建的私服端 但是只有构建好的可执行文件 似乎少有完整源码 主要面向不会编译修改只会拿工具去架设当GM的玩家
+其他实测之后再来补充]]></description>
+</item>
+</channel>
+</rss>

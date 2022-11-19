@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>宝塔 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E5%AE%9D%E5%A1%94/</link>
+    <description>宝塔 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 19 Feb 2020 08:17:48 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E5%AE%9D%E5%A1%94/" rel="self" type="application/rss+xml" /><item>
+  <title>宝塔lnmp&#43;frp搭建内网穿透服务</title>
+  <link>https://www.fancybit.top/archives/80/</link>
+  <pubDate>Wed, 19 Feb 2020 08:17:48 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/80/</guid>
+  <description><![CDATA[&lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 开发和发布环境搭建看这一篇：&lt;a href=&quot;https://www.fancybit.top/post/11.html&quot;&gt;https://www.fancybit.top/post/11.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 用vscode+xdebug断点调试服务器上的php网站：&lt;a href=&quot;https://www.fancybit.top/post/63.html&quot;&gt;https://www.fancybit.top/post/63.html&lt;/a&gt; &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 不过实际应用几次以后 有些需要对接的webapi，比如qq 微信开放平台以及支付宝 微信支付接口之类的时候就会遇到麻烦，因为需要服务提供方进行一些推送，而他们只能推送到外网IP，而我上述的方法只能在服务端来进行操作，会受限开发机到服务器的网络延迟有些麻烦。所以为了开发调试方便，很多人都会用NAT内网穿透技术，比如花生壳,ngrok,natapp之类。花生壳很早就有但是实测非常不稳定，即使付费的VIP用户也经常掉线，连不上。ngrok和natapp都已经进入商业化，想方便使用的话只能在国内一些搭建好的平台付费另外租用带宽流量。 &lt;/p&gt; &lt;p style=&quot;box-sizing: inherit; border: 0px; font-family: inherit; font-size: 16px; font-style: inherit; margin-top: 0px; margin-bottom: 12px; outline: 0px; padding: 0px; vertical-align: baseline; overflow-wrap: break-word; text-indent: 2em;&quot;&gt; 这里是FRP的简单入门使用：&lt;a href=&quot;https://blog.]]></description>
+</item>
+</channel>
+</rss>

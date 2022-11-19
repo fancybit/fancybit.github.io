@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>安全 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E5%AE%89%E5%85%A8/</link>
+    <description>安全 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 14 Nov 2019 03:27:40 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E5%AE%89%E5%85%A8/" rel="self" type="application/rss+xml" /><item>
+  <title>文件莫名其妙被共享</title>
+  <link>https://www.fancybit.top/archives/58/</link>
+  <pubDate>Thu, 14 Nov 2019 03:27:40 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/58/</guid>
+  <description><![CDATA[最近发现隔一段时间我的电脑C D盘就会不知道什么时候被开了共享，这样来蹭WIFI的都可以随便下我的电脑内容了，然后就在火绒上开了个注册表保护：
+高级防护-》自定义防护-》添加规则-》添加保护对象-》注册表规则-》
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Shares\
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Shares\Security
+这两项注册表是有关局域网文件共享的
+然后修改这2项之后重启lanmanserver服务 就可以看到lanmanserver会读取这两个里面的内容 重新启动注册表服务
+windows xp之后好像都是这个服务在控制局域网的文件和打印机共享
+哦了 现在就等着哪个捣蛋的进程再来动我的局域网共享了 到时候查出来彻底灭掉]]></description>
+</item>
+</channel>
+</rss>

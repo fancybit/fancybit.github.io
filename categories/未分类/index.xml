@@ -1,0 +1,167 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>未分类 - Category - 数语轩</title>
+    <link>https://www.fancybit.top/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/</link>
+    <description>未分类 - Category - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 17 Sep 2022 14:47:48 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" rel="self" type="application/rss+xml" /><item>
+  <title>GrassCutter研究备忘</title>
+  <link>https://www.fancybit.top/archives/876/</link>
+  <pubDate>Sat, 17 Sep 2022 14:47:48 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/876/</guid>
+  <description><![CDATA[fiddler和pandavpn只能开一个 互相会抢占系统默认代理的位置 影响原神的htt_p_请求转发
+Cultivation在本机的时候需要在GrassCutter的config.json里面禁用加密和InRouting，具体位置在server/http/encryption/useEncryption和useInRouting.服务端端口server/http/bindPort设置为启动器一致端口。启动器以GrassCutter模式连接，不能勾选使用Https。]]></description>
+</item>
+<item>
+  <title>猫猫大战克苏鲁DEMO</title>
+  <link>https://www.fancybit.top/archives/812/</link>
+  <pubDate>Thu, 28 Apr 2022 08:12:40 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/812/</guid>
+  <description><![CDATA[只是个简单DEMO 用了大概3天 朋友要的 后来需求大改这个就搁置了
+其中研习了xlua热更框架 还有资源热更框架
+LIVE2D的装备替换方式 面数测试
+A* Path Project插件的自动寻路生成和使用方法 智能寻路追踪的效果
+简单的地下迷宫生成算法]]></description>
+</item>
+<item>
+  <title>你咋不喜呢–清明忆外婆</title>
+  <link>https://www.fancybit.top/archives/806/</link>
+  <pubDate>Wed, 06 Apr 2022 23:57:45 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/806/</guid>
+  <description><![CDATA[“你咋不喜呢？”当我在北京漂泊，996的时候，我已经再也听不到这句话了。从小到大，我是外婆的心头肉，家里3个孩子，我总是最受宠的一个。外婆甚至总是把好吃好喝的偷偷藏起来专门留给我不给姐姐和哥哥吃。为此我还总是心里抱怨，你这么做我姐姐可就不高兴了吧，于是每次都会把藏起来的东西分给姐姐，因为妈妈也一直教导我不要吃独食，好东西要和家人分享。
+每一次见到外婆，她头一句总是会问“辉，你咋不喜呢？”然后就会跟我讲那些重复了好多遍的故事，顺口溜，段子。
+“我是一个兵，脸上有麻坑，买个雪花膏，腻也腻不平；买个新洋车，蹬也蹬不动；买个拖拉机，轧也轧不平；我说死了吧，对不起毛泽东~”
+俗话说身在福中不知福，经历了各种各样现实与社会的毒打，才明白青少时期的简单快乐多么的弥足珍贵，亲人的挂念与关怀多么温暖。焦躁难眠之时，总会想起小时候在姥姥家村里房门口，躺着枕在姥姥腿上，仰望清澈干净的夜空，数着星星，姥姥扇着扇子一下一下，也没有太多话，就这样惬意地渡过半个夏夜。
+“你咋不喜呢？”在每次放学回家疲于一天的课业。
+“你咋不喜呢？”在考试失后利纠结怎么跟爸妈说。
+“你咋不喜呢？”在喜欢的女同学有了“男朋友“。
+而当我在北漂打工的时候，多少次要猝死在公司，出租房的时候，身边只有着为了钱贪婪 痛楚 癫狂 出卖朋友 欺诈老板 也背叛自己理想的自己和他人。
+“你咋不喜呢？”一个90多岁农村老太太对外甥的一句简单的关怀，这一刻也许比再多的金钱，都弥足珍贵吧。
+小时候在外婆家常听一首黄安的歌：
+荣华富贵呀飞呀飞
+世上的人呀追呀追
+荣华富贵呀飞呀飞
+何时放下歇一歇
+当一个人还会流泪的时候，说明他还是一个人。虽说男儿有泪不轻弹，但是伴着泪水的真心是无价的，因为这些眼泪正是我们这些生而为人的无价之宝的一部分。
+“你咋不喜呢？”
+在这清明祭时，只有已逝亲人无私的关爱，才配得上这无价之宝。]]></description>
+</item>
+<item>
+  <title>2021-11-3开发日志</title>
+  <link>https://www.fancybit.top/archives/785/</link>
+  <pubDate>Thu, 04 Nov 2021 02:16:07 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/785/</guid>
+  <description><![CDATA[今天搞定了unity桌宠的透明和使用像素做鼠标穿透的问题，主要参考这个油管视频：
+unity中有些涉及windows的操作 .net必须选择.net framework4.x，同时引用来的.net dll也必须是.net 4.x的一套]]></description>
+</item>
+<item>
+  <title>unity pro 2020.1 f1破解版</title>
+  <link>https://www.fancybit.top/archives/780/</link>
+  <pubDate>Mon, 01 Nov 2021 11:38:39 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/780/</guid>
+  <description><![CDATA[附安装教程
+软件介绍****unity2020是一款功能强大的实时3D开发平台，能够帮助用户进行游戏、电影、娱乐以及建筑还是任何其他使用2D或3D实时技术的行业辅助设计。软件内置Modicon Premium，Atrium和Quantum PLC系列的通用编程，调试和操作软件，因此可以很好的在这里进行编辑进行制作，功能十分强大，相信无论您是从事游戏，电影，娱乐，建筑，还是任何其他使用2D或3D实时技术的行业，该软件都可以轻轻松松的满足您的使用需求。并还拥有专业的实时渲染功能，因此当涉及图形时，您只需要控制以塑造您的视觉并推动视觉效果即可，当然也可以通过可编写脚本的渲染管道来产生惊人的视觉保真度。同时新版本的到来也为用户提供了许多新功能例如显示预处理的源、条件着色器编译指令选择、新的轴转换设置、独立的Profiler、新的C＃调试工作流程、Visual Studio集成等等，并还对Unity经过验证的美工工具进行了改进，使工作流在各种用例中更加高效。有需要的朋友可以到本站下载体验。本次小编为用户们提供的是unity2020破解版，附带了相对应的破解文件，从而可帮助用户完美激活该软件的所有功能，亲测有效，同时小编在下文准备了破解安装的过程供大家参考，希望可以对大家有帮助。
+软件特色1、艺术家和设计师工具
+Unity 2020.1包括多项新功能，并对Unity经过验证的美工工具进行了改进，使工作流在各种用例中更加高效。您会发现2D增强功能和动画更新，而Cinemachine现在是经过验证的软件包。
+2、编程工具
+使用我们改进的性能分析工具，以更清晰的方式获得更准确的性能数据。新的脚本和测试功能可改善您的编码工作流程和生产率。
+3、编辑和团队工作流程
+我们改进了编辑器和工作流程，使您的工作效率更高。通过更多方式自定义工作流程，您将减少中断，从而保持流程顺畅。程序包管理器的新用户界面在“预览”和“已验证”程序包之间建立了更清晰的区分。
+4、平台类
+无论您是在增强现实还是虚拟现实，移动，Web，桌面或控制台平台上构建体验，我们都有新功能和增强功能，可以使开发过程更加顺畅。
+5、图形
+该版本为在Unity中工作的技术美术师和图形程序员带来了进一步的稳定性和新功能。这包括Universal Render Pipeline中的Camera Stacking以及光照更新，例如光照贴图优化。
+6、Splash screen customization
+更改启动画面。或将其完全删除。
+7、深色主题UI
+在赏心悦目的深色 UI 环境中开发。
+8、高级 Cloud Diagnostics
+通过有关崩溃、异常和用户反馈的实时数据，更好地了解游戏中发生的情况。
+9、提供的技术支持
+遇到问题时，通过专家技术支持最大限度地减少停机时间。
+10、提供源代码
+访问源代码并根据您的复杂要求进行修改。
+11、广告与应用内购
+使用手机游戏先进的广告盈利解决方案，并跨多个商店简化应用内购设置。
+破解安装教程1、解压从本站下载的压缩包文件，得到如下程序
+2、进入addons文件安装UnityHubSetup-2.3.2.exe
+3、选择hub的安装路径
+4、安装完成后先不要启动软件
+5、然后在安装主程序UnitySetup64-2020.1.0f1.exe
+6、选择主程序安装路径
+7、安装完成，同样不要启动软件
+8、复制\crack\Hub\2.3.2文件夹下的app.asar到C:\Program Files\Unity Hub\resources
+9、复制crack\Unity\2020.1.0f1下的Unity.exe到C:\Program Files\Unity\Editor
+10、删除C：\ Program Files \ Unity \ Editor \ Data文件夹\ Resources \ Licensing \下所有文件
+11、将crack\Unity\2020.1.0f1下的Unity_lic.ulf，拖放至C：\ ProgramData \ Unity \
+ps：如果ProgramData下没有Unity文件夹，新建一个即可
+12、打开Unity Hub，需要定位版本]]></description>
+</item>
+<item>
+  <title>jquery mouseleave和mouseout的区别</title>
+  <link>https://www.fancybit.top/archives/778/</link>
+  <pubDate>Tue, 19 Oct 2021 14:30:19 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/778/</guid>
+  <description><![CDATA[今天做一个下拉菜单的效果，发现用mouseout事件判断鼠标是否移出菜单让菜单消失的判断有很大问题。
+第一是鼠标移动到了元素的margin border padding区域的时候会触发mouseout。
+第二是子元素上鼠标移开也会让父元素触发mouseout。
+这就导致鼠标在进入下拉菜单和在菜单元素之间移动的时候触发大量的mouseout，菜单总是消失。
+改为使用mouseleave事件以后问题消失，说明mouseleave既会把margin border padding视为组件内部，也不会反复的在其子元素之间移动鼠标的时候触发。]]></description>
+</item>
+<item>
+  <title>特朗普中新冠后推特都有人说啥？</title>
+  <link>https://www.fancybit.top/archives/107/</link>
+  <pubDate>Fri, 02 Oct 2020 17:34:58 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/107/</guid>
+  <description><![CDATA[特朗普得新冠以后他推特上不停有人用中东的语言刷屏，我摘到2段分享下
+阿姆哈拉语
+ኃጢአተኛ ነፍስህ ከመዳን በላይ ናት እናም ሰላምን ወይም ሥቃይን አታውቅም ፣ የንስሐ ቅዝቃዜ ብቻ አብቅቷል ፣ ምክንያቱም ኃጢአቶችህ ከማንኛውም ተልእኮ የላቀ ስለሆነ ፣ መጨረሻው ቀርቧል ፣ የኃጢአት መርከቦች
+你有罪的灵魂无法救赎，你不知道平安或痛苦，只有悔改的寒冷结束了，因为你的罪孽大于任何使命，末日临近，罪恶的船
+古吉拉特语
+તમે ગુદામાંથી લોહી વહેવડાવશો, અને તમારા કુટુંબને ફાડી નાખવામાં આવશે, અમારા સ્વામી અલ્લાહને શ્વાસ લેશો અથવા તમારા પાપી આત્માને પીડાશે. તૂટેલા કોન્ડોમથી તમે બળી જશો અને લોહી વહેવશો
+您将从肛门流血，您的家人将被撕裂，呼吸我们的安拉主，否则您的罪孽深重的灵魂将受苦。 避孕套破裂会燃烧并流血
+转发的人无数 有些好像还是美国人跟着转发 美国民众对他的真实态度暴露无遗]]></description>
+</item>
+<item>
+  <title>PS CC 2019下载地址</title>
+  <link>https://www.fancybit.top/archives/104/</link>
+  <pubDate>Mon, 17 Aug 2020 18:40:59 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/104/</guid>
+  <description><![CDATA[磁力链接（复制以后用迅雷或者比特彗星下载）：
+magnet:?xt=urn:btih:YFTLDRFSAWT3PAOYJCVCOS3IWQLII5XK&amp;dn=%E6%A4%8D%E6%A2%A6%E4%BA%BAPSCC2019%E5%AE%89%E8%A3%85%E5%8C%85.rar&amp;tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&amp;tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&amp;xl=1793164198
+百度网盘：
+https://pan.baidu.com/s/10G-L2WJLHB0F7Nt9aEavjA
+提取码：rww5]]></description>
+</item>
+<item>
+  <title>安阳黑店网联手机</title>
+  <link>https://www.fancybit.top/archives/103/</link>
+  <pubDate>Tue, 11 Aug 2020 02:48:32 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/103/</guid>
+  <description><![CDATA[保留下来的录像在这里能提取到原始版本：
+链接: https://pan.baidu.com/s/166rKl9mvYuMRZhj6thDx4g 提取码: 8vc8]]></description>
+</item>
+<item>
+  <title>资源站和源码站搜集</title>
+  <link>https://www.fancybit.top/archives/75/</link>
+  <pubDate>Sat, 15 Feb 2020 17:12:54 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/75/</guid>
+  <description><![CDATA[爱给网 http://www.aigei.com/
+各种免费资源提供 音频 3D模型 原画 游戏源码 教学视频
+中国源码网 http://www.zgymw.com/
+非常低价和大量免费的资源 不过内容好像质量不太高而且比较老旧
+GMBBS https://www.gmbbs.cn/
+各种编译好的一键搭建的私服端 但是只有构建好的可执行文件 似乎少有完整源码 主要面向不会编译修改只会拿工具去架设当GM的玩家
+其他实测之后再来补充]]></description>
+</item>
+</channel>
+</rss>

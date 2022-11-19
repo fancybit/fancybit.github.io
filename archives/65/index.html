@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>htop详解 - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; This is htop, an interactive process viewer for Linux. It is a text-mode application (for console or X terminals) and requires ncurses. &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Comparison between htop and top&lt;/strong&gt; &lt;/p&gt; &lt;ul style=&quot;margin-left: 30px; padding: 0px; word-break: break-all;&quot; class=&quot; list-paddingleft-2&quot;&gt; &lt;li&gt; &lt;p&gt; In &#39;htop&#39; you can scroll the list vertically and horizontally to see all processes and complete command lines." /><meta name="keywords" content='htop, linux, 运维' /><meta itemprop="name" content="htop详解">
+<meta itemprop="description" content="&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; This is htop, an interactive process viewer for Linux. It is a text-mode application (for console or X terminals) and requires ncurses. &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Comparison between htop and top&lt;/strong&gt; &lt;/p&gt; &lt;ul style=&quot;margin-left: 30px; padding: 0px; word-break: break-all;&quot; class=&quot; list-paddingleft-2&quot;&gt; &lt;li&gt; &lt;p&gt; In &#39;htop&#39; you can scroll the list vertically and horizontally to see all processes and complete command lines."><meta itemprop="datePublished" content="2019-12-10T15:18:59+00:00" />
+<meta itemprop="dateModified" content="2019-12-10T15:18:59+00:00" />
+<meta itemprop="wordCount" content="2811">
+<meta itemprop="keywords" content="htop,linux,运维," /><meta property="og:title" content="htop详解" />
+<meta property="og:description" content="&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; This is htop, an interactive process viewer for Linux. It is a text-mode application (for console or X terminals) and requires ncurses. &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Comparison between htop and top&lt;/strong&gt; &lt;/p&gt; &lt;ul style=&quot;margin-left: 30px; padding: 0px; word-break: break-all;&quot; class=&quot; list-paddingleft-2&quot;&gt; &lt;li&gt; &lt;p&gt; In &#39;htop&#39; you can scroll the list vertically and horizontally to see all processes and complete command lines." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/65/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-12-10T15:18:59+00:00" />
+<meta property="article:modified_time" content="2019-12-10T15:18:59+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="htop详解"/>
+<meta name="twitter:description" content="&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; This is htop, an interactive process viewer for Linux. It is a text-mode application (for console or X terminals) and requires ncurses. &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Comparison between htop and top&lt;/strong&gt; &lt;/p&gt; &lt;ul style=&quot;margin-left: 30px; padding: 0px; word-break: break-all;&quot; class=&quot; list-paddingleft-2&quot;&gt; &lt;li&gt; &lt;p&gt; In &#39;htop&#39; you can scroll the list vertically and horizontally to see all processes and complete command lines."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/65/" /><link rel="prev" href="https://www.fancybit.top/archives/64/" /><link rel="next" href="https://www.fancybit.top/archives/66/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "htop详解",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/65\/"
+    },"genre": "post","keywords": "htop, linux, 运维","wordcount":  2811 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/65\/","datePublished": "2019-12-10T15:18:59+00:00","dateModified": "2019-12-10T15:18:59+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">htop详解</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  This is htop, an interactive process viewer for Linux. It is a text-mode application (for console or X terminals) and requires ncurses.
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Comparison between htop and top&lt;/strong&gt;
+&lt;/p&gt;
+
+&lt;ul style=&quot;margin-left: 30px; padding: 0px; word-break: break-all;&quot; class=&quot; list-paddingleft-2&quot;&gt;
+  &lt;li&gt;
+    &lt;p&gt;
+      In 'htop' you can scroll the list vertically and horizontally to see all processes and complete command lines.
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      In 'top' you are subject to a delay for each unassigned key you press (especially annoying when multi-key escape sequences are triggered by accident).
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      'htop' starts faster ('top' seems to collect data for a while before displaying anything).
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      In 'htop' you don't need to type the process number to kill a process, in 'top' you do.
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      In 'htop' you don't need to type the process number or the priority value to renice a process, in 'top' you do.
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      'htop' supports mouse operation, 'top' doesn't
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      'top' is older, hence, more used and tested.
+    &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  htop 是Linux系统中的一个互动的进程查看器，一个文本模式的应用程序(在控制台或者X终端中)，需要ncurses。
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  与Linux传统的top相比，htop更加人性化。它可让用户交互式操作，支持颜色主题，可横向或纵向滚动浏览进程列表，并支持鼠标操作。
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  与top相比，htop有以下优点：
+&lt;/p&gt;
+
+&lt;ul style=&quot;margin-left: 30px; padding: 0px; word-break: break-all;&quot; class=&quot; list-paddingleft-2&quot;&gt;
+  &lt;li&gt;
+    &lt;p&gt;
+      可以横向或纵向滚动浏览进程列表，以便看到所有的进程和完整的命令行。
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      在启动上，比top 更快。
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      杀进程时不需要输入进程号。
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      htop 支持鼠标操作。
+    &lt;/p&gt;
+  &lt;/li&gt;
+  
+  &lt;li&gt;
+    &lt;p&gt;
+      top 已经很老了。
+    &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  htop 官网：&lt;a title=&quot;http://htop.sourceforge.net/&quot; href=&quot;http://htop.sourceforge.net/&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;http://htop.sourceforge.net/&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  &amp;nbsp;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;二．软件的获取与安装&lt;/strong&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  Htop的安装，既可以通过源码包编译安装，也可以配置好yum源后网络下载安装
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  2.1源码安装
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在htop的项目官方网站上：&lt;a href=&quot;http://sourceforge.net/projects/htop/&quot; rel=&quot;nofollow external&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;http://sourceforge.net/projects/htop/&lt;/a&gt;直接下载即可
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  &lt;img loading=&quot;lazy&quot; src=&quot;http://static.open-open.com/lib/uploadImg/20141203/20141203210952_604.png&quot; title=&quot;htop详解  htop linux 运维 第1张&quot; alt=&quot;htop详解  htop linux 运维 第1张&quot; width=&quot;577&quot; height=&quot;78&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  由于我已经安装过了，因此大家看个以上每个编译过程后面都会^c，是不执行此行操作Ctrl+c取消的，此处只是告知如何编译安装的，各人的环境不同，可能编译过程中会出现错误，根据错误，解决后即可。
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  若出现错误：
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  configure: error: You may want to use --disable-unicode or install libncursesw.
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  则需安装 ncurses-devel
+&lt;/p&gt;
+
+&lt;div class=&quot;cnblogs_code&quot; style=&quot;margin: 5px 0px; padding: 5px; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); overflow: auto; color: rgb(0, 0, 0); font-family: &amp;quot;Courier New&amp;quot; !important; font-size: 12px !important;&quot;&gt;
+  &lt;pre style=&quot;margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; overflow-wrap: break-word; font-family: &amp;quot;Courier New&amp;quot; !important;&quot;&gt;yum&amp;nbsp;install&amp;nbsp;ncurses-devel&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  2.2 yum和rpm包安装
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  个人推荐yum安装，能够自动的解决软件包依赖关系，安装即可。
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  如果yum没有htop包，可以添加epel 的yum源，具体请参考&amp;nbsp;&lt;a href=&quot;http://www.cnblogs.com/mchina/archive/2013/01/04/2842275.html&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;CentOS yum 源的配置与使用&lt;/a&gt;。
+&lt;/p&gt;
+
+&lt;div class=&quot;cnblogs_code&quot; style=&quot;margin: 5px 0px; padding: 5px; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); overflow: auto; color: rgb(0, 0, 0); font-family: &amp;quot;Courier New&amp;quot; !important; font-size: 12px !important;&quot;&gt;
+  &lt;pre style=&quot;margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; overflow-wrap: break-word; font-family: &amp;quot;Courier New&amp;quot; !important;&quot;&gt;rpm&amp;nbsp;-ivh&amp;nbsp;http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm&amp;nbsp;rpm&amp;nbsp;--import&amp;nbsp;/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//导入key&amp;nbsp;yum&amp;nbsp;install&amp;nbsp;htop&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  &lt;img loading=&quot;lazy&quot; src=&quot;http://static.open-open.com/lib/uploadImg/20141203/20141203210952_198.png&quot; title=&quot;htop详解  htop linux 运维 第2张&quot; alt=&quot;htop详解  htop linux 运维 第2张&quot; width=&quot;577&quot; height=&quot;235&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  &amp;nbsp;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;三、htop 参数&lt;/strong&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  键入htop 命令，打开htop。
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  # htop
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224047-b6fd5270cea14cee87544ff3ca193b34.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224048-e798f9f6de94490885989b39970a8270.jpg&quot; title=&quot;htop详解  htop linux 运维 第3张&quot; alt=&quot;htop详解  htop linux 运维 第3张&quot; width=&quot;900&quot; height=&quot;464&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  上面左上角显示CPU、内存、交换区的使用情况，右边显示任务、负载、开机时间，下面就是进程实时状况。
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+  下面是 F1~F10 的功能和对应的字母快捷键。
+&lt;/p&gt;
+
+&lt;table cellspacing=&quot;0&quot; cellpadding=&quot;2&quot;&gt;
+  &lt;tr style=&quot;margin: 0px; padding: 0px;&quot; class=&quot;firstRow&quot;&gt;
+    &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+      &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Shortcut Key&lt;/ strong&gt;&lt;/td&gt; 
+      
+      &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Function Key&lt;/strong&gt;
+      &lt;/td&gt;
+      
+      &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Description&lt;/strong&gt;
+      &lt;/td&gt;
+      
+      &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;中文说明&lt;/strong&gt;
+      &lt;/td&gt;&lt;/tr&gt; 
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          h, ?
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F1
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Invoke htop Help
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          查看htop使用说明
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          S
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F2
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Htop Setup Menu
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          htop 设定
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          /
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F3
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Search for a Process
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          搜索进程
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          \
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F4
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Incremental process filtering
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          增量进程过滤器
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          t
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F5
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Tree View
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          显示树形结构
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          &lt;, &gt;
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F6
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Sort by a column
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          选择排序方式
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          [
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F7
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Nice - (change priority)
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          可减少nice值，这样就可以提高对应进程的优先级
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          ]
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F8
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Nice + (change priority)
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          可增加nice值，这样就可以降低对应进程的优先级
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          k
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F9
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Kill a Process
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          可对进程传递信号
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      
+      &lt;tr style=&quot;margin: 0px; padding: 0px;&quot;&gt;
+        &lt;td valign=&quot;top&quot; width=&quot;109&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          q
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;112&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          F10
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;214&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          Quit htop
+        &lt;/td&gt;
+        
+        &lt;td valign=&quot;top&quot; width=&quot;311&quot; style=&quot;margin: 0px; padding: 8px 14px; border-color: rgb(192, 192, 192); border-collapse: collapse;&quot;&gt;
+          结束htop
+        &lt;/td&gt;
+      &lt;/tr&gt;&lt;/tbody&gt; &lt;/table&gt; 
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &amp;nbsp;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;命令行选项（COMMAND-LINE OPTIONS）&lt;/strong&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        -C --no-color　　　　&amp;nbsp;　　&amp;nbsp;使用一个单色的配色方案
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        -d --delay=DELAY　　　　&amp;nbsp;设置延迟更新时间，单位秒
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        -h --help　　　　　　 &amp;nbsp;　　&amp;nbsp;显示htop 命令帮助信息
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        -u --user=USERNAME　　 &amp;nbsp;只显示一个给定的用户的过程
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        -p --pid=PID,PID…　　　 &amp;nbsp; &amp;nbsp;只显示给定的PIDs
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin:
+</code></pre>
+<p>10px auto; padding: 0px;&quot;&gt;
+-s &ndash;sort-key COLUMN　    依此列来排序
+<!-- raw HTML omitted --></p>
+<pre><code>      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        -v –version　　　　　　　 &amp;nbsp;&amp;nbsp;显示版本信息
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;交互式命令（INTERACTIVE COMMANDS）&lt;/strong&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        上下键或&lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;PgUP, PgDn&lt;/strong&gt;&amp;nbsp;选定想要的进程，左右键或&lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Home, End&lt;/strong&gt;&amp;nbsp;移动字段，当然也可以直接用鼠标选定进程；
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Space&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; 标记/取消标记一个进程。命令可以作用于多个进程，例如 &quot;kill&quot;，将应用于所有已标记的进程
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;U&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; 取消标记所有进程
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;s&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; 选择某一进程，按s:用strace追踪进程的系统调用
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;l&lt;/strong&gt;&amp;nbsp; &amp;nbsp; 显示进程打开的文件: 如果安装了lsof，按此键可以显示进程所打开的文件
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;I&lt;/strong&gt;&amp;nbsp; &amp;nbsp; 倒转排序顺序，如果排序是正序的，则反转成倒序的，反之亦然
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;+, -&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; When in tree view mode, expand or collapse subtree. When a subtree is collapsed a &quot;+&quot; sign shows to the left of the process name.
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;a (在有多处理器的机器上)&lt;/strong&gt;&amp;nbsp; &amp;nbsp; 设置 CPU affinity: 标记一个进程允许使用哪些CPU
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;u&lt;/strong&gt;&amp;nbsp; &amp;nbsp; 显示特定用户进程
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;M&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp; 按Memory 使用排序
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;P&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; 按CPU 使用排序
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;T&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp; 按Time+ 使用排序
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;F&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; 跟踪进程: 如果排序顺序引起选定的进程在列表上到处移动，让选定条跟随该进程。这对监视一个进程非常有用：通过这种方式，你可以让一个进程在屏幕上一直可见。使用方向键会停止该功能。
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;K&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; 显示/隐藏内核线程
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;H&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp; 显示/隐藏用户线程
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Ctrl-L&lt;/strong&gt;&amp;nbsp; &amp;nbsp; 刷新
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Numbers&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp; PID 查找: 输入PID，光标将移动到相应的进程上
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;四、htop 使用&lt;/strong&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        4.1. 显示自带帮助
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        鼠标点击Help或者按F1 显示自带帮助
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224049-575f66ab3d964c5cb419959aee9032b1.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224050-75be8605449248f999bde75c6697522f.jpg&quot; title=&quot;htop详解  htop linux 运维 第4张&quot; alt=&quot;htop详解  htop linux 运维 第4张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        4.2. htop 设定
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        鼠标点击Setup或者按下F2 之后进入htop 设定的页面，Meters 页面设定了顶端的一些信息显示，顶端的显示又分为左右两侧，到底能显示些什么可以在最右侧那栏新增，要新增到上方左侧（F5）或是右侧（F6）都可以，这就是个人设定的范围了。这里多加了一个时钟。
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224051-9b4d728776d1499190c9d21ab3615f5a.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224052-570be85130854977aa4bc9f796fb0eb1.jpg&quot; title=&quot;htop详解  htop linux 运维 第5张&quot; alt=&quot;htop详解  htop linux 运维 第5张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        上方左右两栏的显示方式分为Text Bar Graph Led 四种，下图我就把 cpu memory swap 改成文本模式显示，然后右栏的改成Bar 显示，clock 用LED方式显示。数据显示都差不多，只是这样看有点不习惯了。
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224052-befc1e283e4c4576a59f89e6f72a4337.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224053-eca0d56c388240e495c0b3226ed45472.jpg&quot; title=&quot;htop详解  htop linux 运维 第6张&quot; alt=&quot;htop详解  htop linux 运维 第6张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        关于Display options 的设定，可要根据管理者自己的需要来设定。
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224054-b8d7722ac20b421299bd0c72b3394198.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224054-97538b88011d4b6fb49e7d48ec7b4263.jpg&quot; title=&quot;htop详解  htop linux 运维 第7张&quot; alt=&quot;htop详解  htop linux 运维 第7张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        颜色选择，除了基本的颜色显示之外，htop 还提供了换面板的功能，其实也只是改变一些色彩显示的设定，虽然说不能自定义到细部的颜色显示，但是至少提供了几种风格可以选择。
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224055-b6a13eb2abaa45fab167e61a8db12356.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224056-2f6114304f37492095545a4ad6a68986.jpg&quot; title=&quot;htop详解  htop linux 运维 第8张&quot; alt=&quot;htop详解  htop linux 运维 第8张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        最后一项的设定是调整 Columns 的显示，就是在一般htop 指令进来希望可以看到的什么样的数据及信息，字段的调整可以在这边做个人化的设定，一般使用系统默认值就好了。
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224058-1ef4f726ccd64dfbaab68142dc9a95be.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(10
+</code></pre>
+<p>0, 102, 179);&quot; target=&quot;_blank&quot;  rel=&ldquo;nofollow&rdquo; &gt;<!-- raw HTML omitted --><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<pre><code>      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        4.3. 搜索进程
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        鼠标点击Search 或者按下F3 或者输入&quot;/&quot;， 输入进程名进行搜索，例如搜索ssh
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224100-dab0040192b24614b44d1e28d1b4badb.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224101-da92613d580148e7a74b5bde960bbbb8.jpg&quot; title=&quot;htop详解  htop linux 运维 第10张&quot; alt=&quot;htop详解  htop linux 运维 第10张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        4.4. 过滤器
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        按下F4，进入过滤器，相当于关键字搜索，不区分大小写，例如过滤dev
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224102-6339cac4da0b482097e1a5b218b523c4.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224103-ee01abbe5a7d4f5388057a52bd52e109.jpg&quot; title=&quot;htop详解  htop linux 运维 第11张&quot; alt=&quot;htop详解  htop linux 运维 第11张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        4.5. 显示树形结构
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        输入&quot;t&quot;或按下F5，显示树形结构，意思跟pstree 差不多，能看到所有程序树状执行的结构，这对于系统管理来说相当方便，理清程序是如何产生的，当然树状结构的浏览也可以依照其他数据来排序。
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224104-f5d4a8c905cd4a83b262ad2e5944f3fe.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224105-44b98e747b494234929f8af4e3eeb5e4.jpg&quot; title=&quot;htop详解  htop linux 运维 第12张&quot; alt=&quot;htop详解  htop linux 运维 第12张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        4.6. 选择排序方式
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        按下F6 就可以选择依照什么来排序，最常排序的内容就是cpu 和memory 吧！
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224107-6a091d2523cd4829b243f635b1c32a0a.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224111-2f34d96612bd420ebcf9471c7339fc63.jpg&quot; title=&quot;htop详解  htop linux 运维 第13张&quot; alt=&quot;htop详解  htop linux 运维 第13张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        4.7 操作进程
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        F7、F8分别对应nice-和nice+，F9对应kill给进程发信号，选好信号回车就OK了
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224112-9dc1706a8dbd4972b78a78af34f75ec7.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224113-0e383c20b0e74196a393586b72a67ba1.jpg&quot; title=&quot;htop详解  htop linux 运维 第14张&quot; alt=&quot;htop详解  htop linux 运维 第14张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        4.8. 显示某个用户的进程，在左侧选择用户
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        输入&quot;u&quot;，在左侧选择用户
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;a href=&quot;https://images0.cnblogs.com/blog/370046/201301/12224115-289b4cf95c344dada4aa048c25f821ce.jpg&quot; style=&quot;margin: 0px; padding: 0px; color: rgb(100, 102, 179);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://images0.cnblogs.com/blog/370046/201301/12224116-5b7ca92b8c644464a65a11204e346f49.jpg&quot; title=&quot;htop详解  htop linux 运维 第15张&quot; alt=&quot;htop详解  htop linux 运维 第15张&quot; width=&quot;900&quot; height=&quot;465&quot; border=&quot;0&quot; style=&quot;margin: 0px; padding: 0px; border: 0px; max-width: 900px; height: auto;&quot; /&gt;&lt;/a&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;五、Alias top&lt;/strong&gt;
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        也许你用惯了top，我们也可以用top来打开htop。
+      &lt;/p&gt;
+      
+      &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt;
+        编辑/root/.bashrc文件，添加如下代码
+      &lt;/p&gt;
+      
+      &lt;div class=&quot;cnblogs_code&quot; style=&quot;margin: 5px 0px; padding: 5px; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); overflow: auto; color: rgb(0, 0, 0); font-family: &amp;quot;Courier New&amp;quot; !important; font-size: 12px !important;&quot;&gt;
+        &lt;pre style=&quot;margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; overflow-wrap: break-word; font-family: &amp;quot;Courier New&amp;quot; !important;&quot;&gt;if&amp;nbsp;[&amp;nbsp;-f&amp;nbsp;/usr/local/bin/htop&amp;nbsp;];&amp;nbsp;then
+</code></pre>
+<p>    alias top=’/usr/local/bin/htop’fi<!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
+<pre><code>      &lt;div class=&quot;cnblogs_code&quot; style=&quot;margin: 5px 0px; padding: 5px; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); overflow: auto; color: rgb(0, 0, 0); font-family: &amp;quot;Courier New&amp;quot; !important; font-size: 12px !important;&quot;&gt;
+        &lt;pre style=&quot;margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; overflow-wrap: break-word; font-family: &amp;quot;Courier New&amp;quot; !important;&quot;&gt;source&amp;nbsp;/root/.bashrc&lt;/pre&gt;
+      &lt;/div&gt;
+      
+      &lt;pre style=&quot;margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;参考：
+</code></pre>
+<p><a href="http://www.cnblogs.com/mchina/archive/2013/03/15/2858041.html"target="_blank" rel="external nofollow noopener noreferrer">http://www.cnblogs.com/mchina/archive/2013/03/15/2858041.html</a><!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --></p>
+<pre><code>      &lt;p&gt;
+      &lt;/p&gt;
+      
+      &lt;p&gt;
+        &lt;!--65--&gt;
+      &lt;/p&gt;</code></pre>
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

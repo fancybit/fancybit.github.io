@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>github - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/github/</link>
+    <description>github - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 17 Feb 2020 16:49:24 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/github/" rel="self" type="application/rss+xml" /><item>
+  <title>github慢的解决办法</title>
+  <link>https://www.fancybit.top/archives/77/</link>
+  <pubDate>Mon, 17 Feb 2020 16:49:24 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/77/</guid>
+  <description><![CDATA[方法1：
+github虽然方便但是总是有时候会变得很慢，最近发现个新的提速套路：
+首先我有一个美国搬瓦工的服务器，然后架设简单的apache或者nginx
+然后用ssh登录搬瓦工，使用wget下载github源码的zip文件 这个过程因为github和搬瓦工都是美国的所以速度飞快
+下载完后放到网站上，把对应的url地址粘到迅雷下载里
+这样就可以达到1MB多的下载速度了原来只有200K还总是断断续续
+方法2：
+&lt;li&gt; &lt;p&gt; 选择导入已有项目 &lt;/p&gt; &lt;/li&gt; &lt;/ol&gt;&lt;figure data-size=&quot;normal&quot;&gt; &lt;noscript&gt; &lt;img src=&quot;https://pic3.zhimg.com/50/v2-97b5d256b69c2ff50c1df607cbba8cac_hd.jpg&quot; title=&quot;github慢的解决办法 github git gitee 第1张&quot; alt=&quot;github慢的解决办法 github git gitee 第1张&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1078&quot; data-rawheight=&quot;843&quot; data-default-watermark-src=&quot;https://pic2.zhimg.com/50/v2-557551181edbe21cef75ee97bd65a6cf_hd.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1078&quot; data-original=&quot;https://pic3.zhimg.com/v2-97b5d256b69c2ff50c1df607cbba8cac_r.jpg&quot; /&gt; &lt;/noscript&gt; &lt;img src=&quot;https://pic3.zhimg.com/80/v2-97b5d256b69c2ff50c1df607cbba8cac_hd.jpg&quot; title=&quot;github慢的解决办法 github git gitee 第2张&quot; alt=&quot;github慢的解决办法 github git gitee 第2张&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1078&quot; data-rawheight=&quot;843&quot; data-default-watermark-src=&quot;https://pic2.zhimg.com/50/v2-557551181edbe21cef75ee97bd65a6cf_hd.jpg&quot; class=&quot;origin_image zh-lightbox-thumb lazy&quot; width=&quot;1078&quot; data-original=&quot;https://pic3.zhimg.com/v2-97b5d256b69c2ff50c1df607cbba8cac_r.jpg&quot; data-actualsrc=&quot;https://pic3.zhimg.com/50/v2-97b5d256b69c2ff50c1df607cbba8cac_hd.jpg&quot; data-lazy-status=&quot;ok&quot; /&gt;&lt;/figure&gt; &lt;p&gt; 3. 复制github仓库地址 &lt;/p&gt; &lt;p&gt; 4. 填写地址 &lt;/p&gt;&lt;figure data-size=&quot;normal&quot;&gt; &lt;noscript&gt; &lt;img src=&quot;https://pic4.]]></description>
+</item>
+</channel>
+</rss>

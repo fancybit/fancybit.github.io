@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>微信小游戏 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F/</link>
+    <description>微信小游戏 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 04 Oct 2019 08:54:01 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F/" rel="self" type="application/rss+xml" /><item>
+  <title>ts cocos creator 踩坑记录</title>
+  <link>https://www.fancybit.top/archives/57/</link>
+  <pubDate>Fri, 04 Oct 2019 08:54:01 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/57/</guid>
+  <description><![CDATA[vscode调试支持开启：cocos creator编辑器菜单 开发者-&gt;vs工作流-&gt;XXX
+vscode 报不支持chrome：重新安装debugger for chrome插件
+//TODO:
+cocos creator 和matchvs的混淆工具现在是否还有能用的？
+matchvs的通信协议能不能改成protobuf或者其他二进制协议？能自定义通信加密么？
+typescript的process库和readline库的声明文件（*.d.ts）哪里能下到？
+typescript的命名空间和导入导出的合作用法]]></description>
+</item>
+</channel>
+</rss>

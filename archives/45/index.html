@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>egametang框架服务端运行流程 - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="et框架的构建块主要由entity和componet组成，类似unity的组件。一个Entity可以挂载多个不同Component。Entity和Component的共同基类Disposer用于提供对象池和事件机制。所有Disposer的派生类都可以从对象池中获取。
+entity的构造函数会调用IdGenerator类来根据服务器id当前时间以及一个自增计数组合出一个唯一的id。对象池Fetch对象的时候也会用这个IdGenerator生成新的唯一Id。通常使用EntityFactory.Create方法创建Entity实例，这样会先从对象池获取，随后注册到全局事件管理器ObjectEvents。
+Disposer创建时会被注册进单例的ObjectEvents，如果它实现了ILoad,IUpdate,IStart,就会注册进相应的列表，在ObjectEvents启动，更新或者载入的时候触发对应的事件处理方法（此方法在接口中定义）。
+Disposer实现了IDisposable，在使用using或者手动调用Dispose之后会被对象池回收。
+et框架的服务端启动项目是app.proj 里面只有一个带main的program类型。et自定义了一个OneThreadSynchronizationContext,在有异步回调到来的时候保存delegate和参数到一个多线安全的队列，然后在后面的主循环中调用update，在主线程中取出本次主循环产生的所有异步回调，从而保证了所有的回调函数都被捕捉到单一主线程执行。在主线程中多用await和async既符合顺序的思考习惯，避免了很多的回调定义分散在多个函数中，又可以在等待某一异步操作完成时自动将执行权交给调用函数的后续代码，避免了单线程主线挂起而永远等不到回调完成的问题。单线程的架构既避免了各种多线编程的复杂性和问题陷阱，又可以在组织服务器集群时根据服务器cpu支持的线程数合理启动数量相当的进程来充分发挥服务器计算能力，避免了过多线程造成的上下文切换开销，有利于总体性能的提高。
+et框架的启动项目是App.proj，其中只有一个Program类，类中包含入口函数Main。
+启动之后首先注册Model程序集中提供的各种基础模型类，随后加载Hotfix中可以热更新的类型并且注册到ObjectEvents。一方面是提供IAwake ILoad IUpdate接口中的事件处理，一方面检索各类Attribute并且注册到相应容器中以便后续查找。
+Game.Scene是很重要的单例实体，其上的component代表了服务端进程能提供的基础功能集合。
+OptionComponent和StartConfigComponent用来读取unity中设定的服务器集群配置，给后续的启动步骤留下依据。
+后续OpcodeTypeComponent和MessageDispatherComponent提供服务端进程相应网络消息回调的功能，这个所有种类的服务端进程都需要。
+随后是根据本身的appid添加自身需要的Component。这些具体的组件后续的文章会继续介绍。最后是进入服务端主循环：每此循环休息1ms防止CPU占用过高；处理发生的异步回调；处理各种IDisposer的update事件。
+服务端的设计思路和基本运行流程就到这里，后续会再介绍框架的其他方面。
+参考资料：
+搞懂SynchronizationContext：http://www.cnblogs.com/lzxianren/p/SynchronizationContext.html
+作者:fancybit
+qq:148332727" /><meta name="keywords" content='Hugo, FixIt' /><meta itemprop="name" content="egametang框架服务端运行流程">
+<meta itemprop="description" content="et框架的构建块主要由entity和componet组成，类似unity的组件。一个Entity可以挂载多个不同Component。Entity和Component的共同基类Disposer用于提供对象池和事件机制。所有Disposer的派生类都可以从对象池中获取。
+entity的构造函数会调用IdGenerator类来根据服务器id当前时间以及一个自增计数组合出一个唯一的id。对象池Fetch对象的时候也会用这个IdGenerator生成新的唯一Id。通常使用EntityFactory.Create方法创建Entity实例，这样会先从对象池获取，随后注册到全局事件管理器ObjectEvents。
+Disposer创建时会被注册进单例的ObjectEvents，如果它实现了ILoad,IUpdate,IStart,就会注册进相应的列表，在ObjectEvents启动，更新或者载入的时候触发对应的事件处理方法（此方法在接口中定义）。
+Disposer实现了IDisposable，在使用using或者手动调用Dispose之后会被对象池回收。
+et框架的服务端启动项目是app.proj 里面只有一个带main的program类型。et自定义了一个OneThreadSynchronizationContext,在有异步回调到来的时候保存delegate和参数到一个多线安全的队列，然后在后面的主循环中调用update，在主线程中取出本次主循环产生的所有异步回调，从而保证了所有的回调函数都被捕捉到单一主线程执行。在主线程中多用await和async既符合顺序的思考习惯，避免了很多的回调定义分散在多个函数中，又可以在等待某一异步操作完成时自动将执行权交给调用函数的后续代码，避免了单线程主线挂起而永远等不到回调完成的问题。单线程的架构既避免了各种多线编程的复杂性和问题陷阱，又可以在组织服务器集群时根据服务器cpu支持的线程数合理启动数量相当的进程来充分发挥服务器计算能力，避免了过多线程造成的上下文切换开销，有利于总体性能的提高。
+et框架的启动项目是App.proj，其中只有一个Program类，类中包含入口函数Main。
+启动之后首先注册Model程序集中提供的各种基础模型类，随后加载Hotfix中可以热更新的类型并且注册到ObjectEvents。一方面是提供IAwake ILoad IUpdate接口中的事件处理，一方面检索各类Attribute并且注册到相应容器中以便后续查找。
+Game.Scene是很重要的单例实体，其上的component代表了服务端进程能提供的基础功能集合。
+OptionComponent和StartConfigComponent用来读取unity中设定的服务器集群配置，给后续的启动步骤留下依据。
+后续OpcodeTypeComponent和MessageDispatherComponent提供服务端进程相应网络消息回调的功能，这个所有种类的服务端进程都需要。
+随后是根据本身的appid添加自身需要的Component。这些具体的组件后续的文章会继续介绍。最后是进入服务端主循环：每此循环休息1ms防止CPU占用过高；处理发生的异步回调；处理各种IDisposer的update事件。
+服务端的设计思路和基本运行流程就到这里，后续会再介绍框架的其他方面。
+参考资料：
+搞懂SynchronizationContext：http://www.cnblogs.com/lzxianren/p/SynchronizationContext.html
+作者:fancybit
+qq:148332727"><meta itemprop="datePublished" content="2017-10-06T23:38:00+00:00" />
+<meta itemprop="dateModified" content="2017-10-06T23:38:00+00:00" />
+<meta itemprop="wordCount" content="19">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="egametang框架服务端运行流程" />
+<meta property="og:description" content="et框架的构建块主要由entity和componet组成，类似unity的组件。一个Entity可以挂载多个不同Component。Entity和Component的共同基类Disposer用于提供对象池和事件机制。所有Disposer的派生类都可以从对象池中获取。
+entity的构造函数会调用IdGenerator类来根据服务器id当前时间以及一个自增计数组合出一个唯一的id。对象池Fetch对象的时候也会用这个IdGenerator生成新的唯一Id。通常使用EntityFactory.Create方法创建Entity实例，这样会先从对象池获取，随后注册到全局事件管理器ObjectEvents。
+Disposer创建时会被注册进单例的ObjectEvents，如果它实现了ILoad,IUpdate,IStart,就会注册进相应的列表，在ObjectEvents启动，更新或者载入的时候触发对应的事件处理方法（此方法在接口中定义）。
+Disposer实现了IDisposable，在使用using或者手动调用Dispose之后会被对象池回收。
+et框架的服务端启动项目是app.proj 里面只有一个带main的program类型。et自定义了一个OneThreadSynchronizationContext,在有异步回调到来的时候保存delegate和参数到一个多线安全的队列，然后在后面的主循环中调用update，在主线程中取出本次主循环产生的所有异步回调，从而保证了所有的回调函数都被捕捉到单一主线程执行。在主线程中多用await和async既符合顺序的思考习惯，避免了很多的回调定义分散在多个函数中，又可以在等待某一异步操作完成时自动将执行权交给调用函数的后续代码，避免了单线程主线挂起而永远等不到回调完成的问题。单线程的架构既避免了各种多线编程的复杂性和问题陷阱，又可以在组织服务器集群时根据服务器cpu支持的线程数合理启动数量相当的进程来充分发挥服务器计算能力，避免了过多线程造成的上下文切换开销，有利于总体性能的提高。
+et框架的启动项目是App.proj，其中只有一个Program类，类中包含入口函数Main。
+启动之后首先注册Model程序集中提供的各种基础模型类，随后加载Hotfix中可以热更新的类型并且注册到ObjectEvents。一方面是提供IAwake ILoad IUpdate接口中的事件处理，一方面检索各类Attribute并且注册到相应容器中以便后续查找。
+Game.Scene是很重要的单例实体，其上的component代表了服务端进程能提供的基础功能集合。
+OptionComponent和StartConfigComponent用来读取unity中设定的服务器集群配置，给后续的启动步骤留下依据。
+后续OpcodeTypeComponent和MessageDispatherComponent提供服务端进程相应网络消息回调的功能，这个所有种类的服务端进程都需要。
+随后是根据本身的appid添加自身需要的Component。这些具体的组件后续的文章会继续介绍。最后是进入服务端主循环：每此循环休息1ms防止CPU占用过高；处理发生的异步回调；处理各种IDisposer的update事件。
+服务端的设计思路和基本运行流程就到这里，后续会再介绍框架的其他方面。
+参考资料：
+搞懂SynchronizationContext：http://www.cnblogs.com/lzxianren/p/SynchronizationContext.html
+作者:fancybit
+qq:148332727" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/45/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-10-06T23:38:00+00:00" />
+<meta property="article:modified_time" content="2017-10-06T23:38:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="egametang框架服务端运行流程"/>
+<meta name="twitter:description" content="et框架的构建块主要由entity和componet组成，类似unity的组件。一个Entity可以挂载多个不同Component。Entity和Component的共同基类Disposer用于提供对象池和事件机制。所有Disposer的派生类都可以从对象池中获取。
+entity的构造函数会调用IdGenerator类来根据服务器id当前时间以及一个自增计数组合出一个唯一的id。对象池Fetch对象的时候也会用这个IdGenerator生成新的唯一Id。通常使用EntityFactory.Create方法创建Entity实例，这样会先从对象池获取，随后注册到全局事件管理器ObjectEvents。
+Disposer创建时会被注册进单例的ObjectEvents，如果它实现了ILoad,IUpdate,IStart,就会注册进相应的列表，在ObjectEvents启动，更新或者载入的时候触发对应的事件处理方法（此方法在接口中定义）。
+Disposer实现了IDisposable，在使用using或者手动调用Dispose之后会被对象池回收。
+et框架的服务端启动项目是app.proj 里面只有一个带main的program类型。et自定义了一个OneThreadSynchronizationContext,在有异步回调到来的时候保存delegate和参数到一个多线安全的队列，然后在后面的主循环中调用update，在主线程中取出本次主循环产生的所有异步回调，从而保证了所有的回调函数都被捕捉到单一主线程执行。在主线程中多用await和async既符合顺序的思考习惯，避免了很多的回调定义分散在多个函数中，又可以在等待某一异步操作完成时自动将执行权交给调用函数的后续代码，避免了单线程主线挂起而永远等不到回调完成的问题。单线程的架构既避免了各种多线编程的复杂性和问题陷阱，又可以在组织服务器集群时根据服务器cpu支持的线程数合理启动数量相当的进程来充分发挥服务器计算能力，避免了过多线程造成的上下文切换开销，有利于总体性能的提高。
+et框架的启动项目是App.proj，其中只有一个Program类，类中包含入口函数Main。
+启动之后首先注册Model程序集中提供的各种基础模型类，随后加载Hotfix中可以热更新的类型并且注册到ObjectEvents。一方面是提供IAwake ILoad IUpdate接口中的事件处理，一方面检索各类Attribute并且注册到相应容器中以便后续查找。
+Game.Scene是很重要的单例实体，其上的component代表了服务端进程能提供的基础功能集合。
+OptionComponent和StartConfigComponent用来读取unity中设定的服务器集群配置，给后续的启动步骤留下依据。
+后续OpcodeTypeComponent和MessageDispatherComponent提供服务端进程相应网络消息回调的功能，这个所有种类的服务端进程都需要。
+随后是根据本身的appid添加自身需要的Component。这些具体的组件后续的文章会继续介绍。最后是进入服务端主循环：每此循环休息1ms防止CPU占用过高；处理发生的异步回调；处理各种IDisposer的update事件。
+服务端的设计思路和基本运行流程就到这里，后续会再介绍框架的其他方面。
+参考资料：
+搞懂SynchronizationContext：http://www.cnblogs.com/lzxianren/p/SynchronizationContext.html
+作者:fancybit
+qq:148332727"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/45/" /><link rel="prev" href="https://www.fancybit.top/archives/44/" /><link rel="next" href="https://www.fancybit.top/archives/46/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "egametang框架服务端运行流程",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/45\/"
+    },"genre": "post","wordcount":  19 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/45\/","datePublished": "2017-10-06T23:38:00+00:00","dateModified": "2017-10-06T23:38:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">egametang框架服务端运行流程</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><!-- raw HTML omitted -->
+<p>et框架的构建块主要由entity和componet组成，类似unity的组件。一个Entity可以挂载多个不同Component。Entity和Component的共同基类Disposer用于提供对象池和事件机制。所有Disposer的派生类都可以从对象池中获取。</p>
+<p>entity的构造函数会调用IdGenerator类来根据服务器id当前时间以及一个自增计数组合出一个唯一的id。对象池Fetch对象的时候也会用这个IdGenerator生成新的唯一Id。通常使用EntityFactory.Create方法创建Entity实例，这样会先从对象池获取，随后注册到全局事件管理器ObjectEvents。</p>
+<p>Disposer创建时会被注册进单例的ObjectEvents，如果它实现了ILoad,IUpdate,IStart,就会注册进相应的列表，在ObjectEvents启动，更新或者载入的时候触发对应的事件处理方法（此方法在接口中定义）。</p>
+<p>Disposer实现了IDisposable，在使用using或者手动调用Dispose之后会被对象池回收。</p>
+<p>et框架的服务端启动项目是app.proj 里面只有一个带main的program类型。et自定义了一个OneThreadSynchronizationContext,在有异步回调到来的时候保存delegate和参数到一个多线安全的队列，然后在后面的主循环中调用update，在主线程中取出本次主循环产生的所有异步回调，从而保证了所有的回调函数都被捕捉到单一主线程执行。在主线程中多用await和async既符合顺序的思考习惯，避免了很多的回调定义分散在多个函数中，又可以在等待某一异步操作完成时自动将执行权交给调用函数的后续代码，避免了单线程主线挂起而永远等不到回调完成的问题。单线程的架构既避免了各种多线编程的复杂性和问题陷阱，又可以在组织服务器集群时根据服务器cpu支持的线程数合理启动数量相当的进程来充分发挥服务器计算能力，避免了过多线程造成的上下文切换开销，有利于总体性能的提高。</p>
+<p>et框架的启动项目是App.proj，其中只有一个Program类，类中包含入口函数Main。</p>
+<p><!-- raw HTML omitted -->启动之后首先注册Model程序集中提供的各种基础模型类，随后加载Hotfix中可以热更新的类型并且注册到ObjectEvents。一方面是提供IAwake ILoad IUpdate接口中的事件处理，一方面检索各类Attribute并且注册到相应容器中以便后续查找。<!-- raw HTML omitted --></p>
+<p>Game.Scene是很重要的单例实体，其上的component代表了服务端进程能提供的基础功能集合。</p>
+<p> OptionComponent和StartConfigComponent用来读取unity中设定的服务器集群配置，给后续的启动步骤留下依据。</p>
+<p>后续OpcodeTypeComponent和MessageDispatherComponent提供服务端进程相应网络消息回调的功能，这个所有种类的服务端进程都需要。</p>
+<p>随后是根据本身的appid添加自身需要的Component。这些具体的组件后续的文章会继续介绍。最后是进入服务端主循环：每此循环休息1ms防止CPU占用过高；处理发生的异步回调；处理各种IDisposer的update事件。</p>
+<p>服务端的设计思路和基本运行流程就到这里，后续会再介绍框架的其他方面。</p>
+<p> </p>
+<p>参考资料：</p>
+<p><!-- raw HTML omitted -->搞懂SynchronizationContext：<!-- raw HTML omitted --><a href="http://www.cnblogs.com/lzxianren/p/SynchronizationContext.html"target="_blank" rel="external nofollow noopener noreferrer">http://www.cnblogs.com/lzxianren/p/SynchronizationContext.html</a><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p> </p>
+<p>作者:fancybit</p>
+<p>qq:148332727</p>
+<!-- raw HTML omitted -->
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

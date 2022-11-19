@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>obfuscar - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/obfuscar/</link>
+    <description>obfuscar - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 14 Sep 2022 00:53:43 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/obfuscar/" rel="self" type="application/rss+xml" /><item>
+  <title>C# obfuscar代码混淆备忘</title>
+  <link>https://www.fancybit.top/archives/871/</link>
+  <pubDate>Wed, 14 Sep 2022 00:53:43 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/871/</guid>
+  <description><![CDATA[从nuget安装Obfascar包，不用GlobalTool
+在项目中创建obfucar.xml
+在生成后事件里，
+注意这里是Obfuscar 不是obfascator
+然后是一个简单的obfuscar.xml范例
+有关配置文件详情看这里：
+Configuration — obfuscar 2.2 documentation]]></description>
+</item>
+</channel>
+</rss>

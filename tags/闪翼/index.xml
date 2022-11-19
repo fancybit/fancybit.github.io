@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>闪翼 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E9%97%AA%E7%BF%BC/</link>
+    <description>闪翼 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 18 Sep 2019 10:45:59 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E9%97%AA%E7%BF%BC/" rel="self" type="application/rss+xml" /><item>
+  <title>炫斗三国</title>
+  <link>https://www.fancybit.top/archives/54/</link>
+  <pubDate>Wed, 18 Sep 2019 10:45:59 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/54/</guid>
+  <description><![CDATA[闪翼和玩者之心合作的网页游戏项目，使用flash开发的。那会儿闪翼还没有自己的办公室，直接和玩者之心的人一起在大房间里办公。我一开始是写一些资源管理和导入导出的工具，后来尝试用gpu加速，不过遇到了一些瓶颈最终也没有解决，再后来身体原因离开了项目。不过有意思的是在玩者之心遇到了中学一起翻译MUGEN文档的网友久天，真实形象我还是替人家保密好了 哈哈蛤]]></description>
+</item>
+</channel>
+</rss>

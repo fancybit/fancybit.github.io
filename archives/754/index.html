@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>像程序员一样安装程序：Chocolatey 初见 - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="SanKo2019年06月26日
+Matrix 精选 Matrix 是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选 Matrix 最优质的文章，展示来自用户的最真实的体验和观点。
+文章代表作者个人观点，少数派仅对标题和排版略作修改。
+你一定会觉得很酷！今天，我们会尝试用一种非常程序员的方式在 Windows 上安装、卸载、管理程序。
+来动手试一试吧，毕竟，这可能是你接近编程的一次美好体验。
+神奇！ 要是你 在少数派上 看到了一款很好用的文件压缩工具 Bandizip，你会怎么来安装它呢？
+通过文章内的链接或搜索引擎找到它的官网，点击官网的下载按钮安装 要是你使用百度，你可以在百度搜索页直接点击第三方软件下载站的按钮下载 借助各大厂家的电脑管家来搜索、下载 向身边的好友或在论坛、交流群中索要安装包 但是，今天我们会尝试一种更加有趣、方便而又可靠的方式：
+使用 Chocolatey 安装 Bandizip
+没错，只需要输入一行命令，稍等几分钟，Bandizip 已经在你的系统中装好啦。
+安装 Chocolatey 要想这样通过命令行来一键安装程序，我们借助的是 Chocolatey 这款软件包管理器。它事实上是为了习惯于 Linux 的程序员们准备的，因为在 Linux 中安装程序，通常都只需要一条安装命令就可以完成。不过，这丝毫不影响每一个人来尝试一下。
+安装 Chocolatey
+Chocolatey 自身的安装很方便，一共有三步：
+开始菜单中搜索 cmd，选择「命令提示符」 右键菜单或在右边菜单选择「以管理员身份运行」 复制下面这段内容，回车执行@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot; OK 准备就绪。
+前面的安装命令来自 官网的安装界面，如果有更新，还是以官网的为准。
+第一次尝试 接下来，我们可以继续在这个窗口中，尝试安装我们的第一个程序。输入：
+稍等片刻，Bandizip 程序就安装好了。你可以在桌面上看到它的快捷方式。
+装机从此不再难 每次拿到一台新的电脑，快速安装上所有自己需要的程序是一件非常非常耗时间的事情。
+如果去国内各大第三方下载站，或者电脑管家、百度的安装工具，它们很多都会把原生的安装包进行修改，加入自己的广告或其他私货；总之，下载软件还是最好去各自的官网，这样才能最好地避免病毒、保护隐私。
+然而，要一个个软件分别去官网下载，既无聊，又费心。下载安装包之后，还需要手动一次次地点击「下一步」，直到全部安装完成。" /><meta name="keywords" content='chocolatey, linux, python, windows' /><meta itemprop="name" content="像程序员一样安装程序：Chocolatey 初见">
+<meta itemprop="description" content="SanKo2019年06月26日
+Matrix 精选 Matrix 是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选 Matrix 最优质的文章，展示来自用户的最真实的体验和观点。
+文章代表作者个人观点，少数派仅对标题和排版略作修改。
+你一定会觉得很酷！今天，我们会尝试用一种非常程序员的方式在 Windows 上安装、卸载、管理程序。
+来动手试一试吧，毕竟，这可能是你接近编程的一次美好体验。
+神奇！ 要是你 在少数派上 看到了一款很好用的文件压缩工具 Bandizip，你会怎么来安装它呢？
+通过文章内的链接或搜索引擎找到它的官网，点击官网的下载按钮安装 要是你使用百度，你可以在百度搜索页直接点击第三方软件下载站的按钮下载 借助各大厂家的电脑管家来搜索、下载 向身边的好友或在论坛、交流群中索要安装包 但是，今天我们会尝试一种更加有趣、方便而又可靠的方式：
+使用 Chocolatey 安装 Bandizip
+没错，只需要输入一行命令，稍等几分钟，Bandizip 已经在你的系统中装好啦。
+安装 Chocolatey 要想这样通过命令行来一键安装程序，我们借助的是 Chocolatey 这款软件包管理器。它事实上是为了习惯于 Linux 的程序员们准备的，因为在 Linux 中安装程序，通常都只需要一条安装命令就可以完成。不过，这丝毫不影响每一个人来尝试一下。
+安装 Chocolatey
+Chocolatey 自身的安装很方便，一共有三步：
+开始菜单中搜索 cmd，选择「命令提示符」 右键菜单或在右边菜单选择「以管理员身份运行」 复制下面这段内容，回车执行@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot; OK 准备就绪。
+前面的安装命令来自 官网的安装界面，如果有更新，还是以官网的为准。
+第一次尝试 接下来，我们可以继续在这个窗口中，尝试安装我们的第一个程序。输入：
+稍等片刻，Bandizip 程序就安装好了。你可以在桌面上看到它的快捷方式。
+装机从此不再难 每次拿到一台新的电脑，快速安装上所有自己需要的程序是一件非常非常耗时间的事情。
+如果去国内各大第三方下载站，或者电脑管家、百度的安装工具，它们很多都会把原生的安装包进行修改，加入自己的广告或其他私货；总之，下载软件还是最好去各自的官网，这样才能最好地避免病毒、保护隐私。
+然而，要一个个软件分别去官网下载，既无聊，又费心。下载安装包之后，还需要手动一次次地点击「下一步」，直到全部安装完成。"><meta itemprop="datePublished" content="2021-07-07T09:16:22+00:00" />
+<meta itemprop="dateModified" content="2021-07-07T09:16:22+00:00" />
+<meta itemprop="wordCount" content="157">
+<meta itemprop="keywords" content="chocolatey,linux,python,windows," /><meta property="og:title" content="像程序员一样安装程序：Chocolatey 初见" />
+<meta property="og:description" content="SanKo2019年06月26日
+Matrix 精选 Matrix 是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选 Matrix 最优质的文章，展示来自用户的最真实的体验和观点。
+文章代表作者个人观点，少数派仅对标题和排版略作修改。
+你一定会觉得很酷！今天，我们会尝试用一种非常程序员的方式在 Windows 上安装、卸载、管理程序。
+来动手试一试吧，毕竟，这可能是你接近编程的一次美好体验。
+神奇！ 要是你 在少数派上 看到了一款很好用的文件压缩工具 Bandizip，你会怎么来安装它呢？
+通过文章内的链接或搜索引擎找到它的官网，点击官网的下载按钮安装 要是你使用百度，你可以在百度搜索页直接点击第三方软件下载站的按钮下载 借助各大厂家的电脑管家来搜索、下载 向身边的好友或在论坛、交流群中索要安装包 但是，今天我们会尝试一种更加有趣、方便而又可靠的方式：
+使用 Chocolatey 安装 Bandizip
+没错，只需要输入一行命令，稍等几分钟，Bandizip 已经在你的系统中装好啦。
+安装 Chocolatey 要想这样通过命令行来一键安装程序，我们借助的是 Chocolatey 这款软件包管理器。它事实上是为了习惯于 Linux 的程序员们准备的，因为在 Linux 中安装程序，通常都只需要一条安装命令就可以完成。不过，这丝毫不影响每一个人来尝试一下。
+安装 Chocolatey
+Chocolatey 自身的安装很方便，一共有三步：
+开始菜单中搜索 cmd，选择「命令提示符」 右键菜单或在右边菜单选择「以管理员身份运行」 复制下面这段内容，回车执行@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot; OK 准备就绪。
+前面的安装命令来自 官网的安装界面，如果有更新，还是以官网的为准。
+第一次尝试 接下来，我们可以继续在这个窗口中，尝试安装我们的第一个程序。输入：
+稍等片刻，Bandizip 程序就安装好了。你可以在桌面上看到它的快捷方式。
+装机从此不再难 每次拿到一台新的电脑，快速安装上所有自己需要的程序是一件非常非常耗时间的事情。
+如果去国内各大第三方下载站，或者电脑管家、百度的安装工具，它们很多都会把原生的安装包进行修改，加入自己的广告或其他私货；总之，下载软件还是最好去各自的官网，这样才能最好地避免病毒、保护隐私。
+然而，要一个个软件分别去官网下载，既无聊，又费心。下载安装包之后，还需要手动一次次地点击「下一步」，直到全部安装完成。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/754/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-07T09:16:22+00:00" />
+<meta property="article:modified_time" content="2021-07-07T09:16:22+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="像程序员一样安装程序：Chocolatey 初见"/>
+<meta name="twitter:description" content="SanKo2019年06月26日
+Matrix 精选 Matrix 是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选 Matrix 最优质的文章，展示来自用户的最真实的体验和观点。
+文章代表作者个人观点，少数派仅对标题和排版略作修改。
+你一定会觉得很酷！今天，我们会尝试用一种非常程序员的方式在 Windows 上安装、卸载、管理程序。
+来动手试一试吧，毕竟，这可能是你接近编程的一次美好体验。
+神奇！ 要是你 在少数派上 看到了一款很好用的文件压缩工具 Bandizip，你会怎么来安装它呢？
+通过文章内的链接或搜索引擎找到它的官网，点击官网的下载按钮安装 要是你使用百度，你可以在百度搜索页直接点击第三方软件下载站的按钮下载 借助各大厂家的电脑管家来搜索、下载 向身边的好友或在论坛、交流群中索要安装包 但是，今天我们会尝试一种更加有趣、方便而又可靠的方式：
+使用 Chocolatey 安装 Bandizip
+没错，只需要输入一行命令，稍等几分钟，Bandizip 已经在你的系统中装好啦。
+安装 Chocolatey 要想这样通过命令行来一键安装程序，我们借助的是 Chocolatey 这款软件包管理器。它事实上是为了习惯于 Linux 的程序员们准备的，因为在 Linux 中安装程序，通常都只需要一条安装命令就可以完成。不过，这丝毫不影响每一个人来尝试一下。
+安装 Chocolatey
+Chocolatey 自身的安装很方便，一共有三步：
+开始菜单中搜索 cmd，选择「命令提示符」 右键菜单或在右边菜单选择「以管理员身份运行」 复制下面这段内容，回车执行@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot; OK 准备就绪。
+前面的安装命令来自 官网的安装界面，如果有更新，还是以官网的为准。
+第一次尝试 接下来，我们可以继续在这个窗口中，尝试安装我们的第一个程序。输入：
+稍等片刻，Bandizip 程序就安装好了。你可以在桌面上看到它的快捷方式。
+装机从此不再难 每次拿到一台新的电脑，快速安装上所有自己需要的程序是一件非常非常耗时间的事情。
+如果去国内各大第三方下载站，或者电脑管家、百度的安装工具，它们很多都会把原生的安装包进行修改，加入自己的广告或其他私货；总之，下载软件还是最好去各自的官网，这样才能最好地避免病毒、保护隐私。
+然而，要一个个软件分别去官网下载，既无聊，又费心。下载安装包之后，还需要手动一次次地点击「下一步」，直到全部安装完成。"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/754/" /><link rel="prev" href="https://www.fancybit.top/archives/749/" /><link rel="next" href="https://www.fancybit.top/archives/757/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "像程序员一样安装程序：Chocolatey 初见",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/754\/"
+    },"genre": "post","keywords": "chocolatey, linux, python, windows","wordcount":  157 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/754\/","datePublished": "2021-07-07T09:16:22+00:00","dateModified": "2021-07-07T09:16:22+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">像程序员一样安装程序：Chocolatey 初见</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->SanKo<!-- raw HTML omitted -->2019年06月26日</p>
+<h3 id="ss-H3-1562306942827">Matrix 精选</h3>
+<p><!-- raw HTML omitted -->Matrix<!-- raw HTML omitted --> 是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选 Matrix 最优质的文章，展示来自用户的最真实的体验和观点。</p>
+<p>文章代表作者个人观点，少数派仅对标题和排版略作修改。</p>
+<!-- raw HTML omitted -->
+<p>你一定会觉得很酷！今天，我们会尝试用一种非常程序员的方式在 Windows 上安装、卸载、管理程序。</p>
+<p>来动手试一试吧，毕竟，这可能是你接近编程的一次美好体验。</p>
+<h2 id="ss-H2-1562306995425">神奇！</h2>
+<p>要是你 <!-- raw HTML omitted -->在少数派上<!-- raw HTML omitted --> 看到了一款很好用的文件压缩工具 <!-- raw HTML omitted -->Bandizip<!-- raw HTML omitted -->，你会怎么来安装它呢？</p>
+<ul>
+<li>通过文章内的链接或搜索引擎找到它的官网，点击官网的下载按钮安装</li>
+<li>要是你使用百度，你可以在百度搜索页直接点击第三方软件下载站的按钮下载</li>
+<li>借助各大厂家的电脑管家来搜索、下载</li>
+<li>向身边的好友或在论坛、交流群中索要安装包</li>
+</ul>
+<p>但是，今天我们会尝试一种更加有趣、方便而又可靠的方式：<!-- raw HTML omitted --></p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://cdn.sspai.com/2019/06/20/663e95cb67980a8a24b7a6dd1c090a67.gif"
+    data-srcset="https://cdn.sspai.com/2019/06/20/663e95cb67980a8a24b7a6dd1c090a67.gif, https://cdn.sspai.com/2019/06/20/663e95cb67980a8a24b7a6dd1c090a67.gif 1.5x, https://cdn.sspai.com/2019/06/20/663e95cb67980a8a24b7a6dd1c090a67.gif 2x"
+    data-sizes="auto"
+    alt="https://cdn.sspai.com/2019/06/20/663e95cb67980a8a24b7a6dd1c090a67.gif"
+    title="https://cdn.sspai.com/2019/06/20/663e95cb67980a8a24b7a6dd1c090a67.gif"/> <!-- raw HTML omitted -->使用 Chocolatey 安装 Bandizip<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>没错，<strong>只需要输入一行命令</strong>，稍等几分钟，Bandizip 已经在你的系统中装好啦。</p>
+<h2 id="ss-H2-1562307000024">安装 Chocolatey</h2>
+<p>要想这样通过命令行来一键安装程序，我们借助的是 <!-- raw HTML omitted -->Chocolatey<!-- raw HTML omitted --> 这款软件包管理器。它事实上是为了习惯于 Linux 的程序员们准备的，因为在 Linux 中安装程序，通常都只需要一条安装命令就可以完成。不过，<strong>这丝毫不影响每一个人来尝试一下</strong>。<!-- raw HTML omitted --></p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://cdn.sspai.com/2019/06/20/6f90d5fde5db602d920bdb5416944a12.gif"
+    data-srcset="https://cdn.sspai.com/2019/06/20/6f90d5fde5db602d920bdb5416944a12.gif, https://cdn.sspai.com/2019/06/20/6f90d5fde5db602d920bdb5416944a12.gif 1.5x, https://cdn.sspai.com/2019/06/20/6f90d5fde5db602d920bdb5416944a12.gif 2x"
+    data-sizes="auto"
+    alt="https://cdn.sspai.com/2019/06/20/6f90d5fde5db602d920bdb5416944a12.gif"
+    title="https://cdn.sspai.com/2019/06/20/6f90d5fde5db602d920bdb5416944a12.gif"/> <!-- raw HTML omitted -->安装 Chocolatey<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>Chocolatey 自身的安装很方便，一共有三步：</p>
+<ol>
+<li>开始菜单中搜索 <code>cmd</code>，选择「命令提示符」</li>
+<li>右键菜单或在右边菜单选择「以管理员身份运行」</li>
+<li>复制下面这段内容，回车执行<code>@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;</code></li>
+</ol>
+<p>OK 准备就绪。</p>
+<p>前面的安装命令来自 <!-- raw HTML omitted -->官网的安装界面<!-- raw HTML omitted -->，如果有更新，还是以官网的为准。</p>
+<h2 id="ss-H2-1562307003874">第一次尝试</h2>
+<p>接下来，我们可以继续在这个窗口中，尝试安装我们的第一个程序。输入：</p>
+<!-- raw HTML omitted -->
+<p>稍等片刻，Bandizip 程序就安装好了。你可以在桌面上看到它的快捷方式。</p>
+<h2 id="ss-H2-1562307007340">装机从此不再难</h2>
+<p>每次拿到一台新的电脑，<strong>快速安装上所有自己需要的程序</strong>是一件非常非常耗时间的事情。</p>
+<p>如果去国内各大第三方下载站，或者电脑管家、百度的安装工具，它们很多都会把原生的安装包进行修改，加入自己的广告或其他私货；总之，<strong>下载软件还是最好去各自的官网</strong>，这样才能最好地避免病毒、保护隐私。</p>
+<p>然而，要一个个软件分别去官网下载，既无聊，又费心。下载安装包之后，还需要手动一次次地点击「下一步」，直到全部安装完成。</p>
+<p>Chocolatey 就可以比较好地解决这些烦恼。因为你可以：</p>
+<!-- raw HTML omitted -->
+<p>把你想要安装的程序一起写上，十个，二十个，都没有关系。把它丢在一边跑着，你可以出去吃个冰淇淋，回来就都装上了。</p>
+<h2 id="ss-H2-1562307010478">还有一些命令</h2>
+<p>在安装的过程中，你应该已经发现 <strong>Chocolatey 的命令非常语义化</strong>。</p>
+<p>先以 <code>choco</code> 开头，告诉系统我要使用 Chocolatey 了，然后用 <code>install</code> 表明我要安装一个程序，最后跟上需要安装的程序名称即可。中间的 <code>--yes</code> 意味着对 Chocolatey 安装过程的认可，如果不加，Chocolatey 会在安装的每一个步骤前停下来问你是否同意继续。<!-- raw HTML omitted --></p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://cdn.sspai.com/2019/06/20/36246ba1a4334bf22f17c6d33717a567.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"
+    data-srcset="https://cdn.sspai.com/2019/06/20/36246ba1a4334bf22f17c6d33717a567.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1, https://cdn.sspai.com/2019/06/20/36246ba1a4334bf22f17c6d33717a567.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1 1.5x, https://cdn.sspai.com/2019/06/20/36246ba1a4334bf22f17c6d33717a567.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1 2x"
+    data-sizes="auto"
+    alt="https://cdn.sspai.com/2019/06/20/36246ba1a4334bf22f17c6d33717a567.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"
+    title="https://cdn.sspai.com/2019/06/20/36246ba1a4334bf22f17c6d33717a567.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"/> <!-- raw HTML omitted -->用于安装的命令<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>所以，这个命令理解下来就是：「召唤」Chocolatey，请执行「安装」，我「同意」你的一切行为，安装的内容是「Bandizip 和 Firefox」。</p>
+<p>除了安装，你肯定还关心怎么卸载。要是想要<strong>卸载</strong>一个已经安装的程序，只需要执行：</p>
+<!-- raw HTML omitted -->
+<p>为了便于管理，我们有时候需要查看所有程序的<strong>列表</strong>。想知道自己用 Chocolatey 装了哪些程序，可以这样写：</p>
+<!-- raw HTML omitted -->
+<p>需要更新程序时，可以先<strong>检查</strong>一下哪些应用需要更新，使用 <code>outdated</code> 命令：</p>
+<!-- raw HTML omitted -->
+<p>这样就会把所有「过期」的应用全部列出来，可以按需更新。<strong>升级</strong>与安装的命令格式相似：</p>
+<!-- raw HTML omitted -->
+<p>你也可以尝试<strong>一键升级</strong>所有程序，命令同样非常语义化，执行「升级」、「允许」操作、「所有」应用：</p>
+<!-- raw HTML omitted -->
+<p>现在，你可以不必担心每一个程序是否是最新版，因为你可以时不时运行一下更新命令；你也不用担心程序卸载不干净了，使用 Chocolatey 安装的程序，就可以用 Chocolatey 卸载。</p>
+<h2 id="ss-H2-1562307014473">知其所以然</h2>
+<p>前面安装的时候提到过，Chocolatey 跟其他第三方软件管理器不同之处在于，其他软件管理器经常修改原来的安装包，从而可以夹带自己的广告，并且经常安装好之后发现并不是最新版本。但是 Chocolatey 不但<strong>使用官网链接下载</strong>，而且会在下载完成后使用数字摘要技术<strong>检查安装包是否跟官网上的完全一致</strong>，所以，你使用 Chocolatey 安装的就是最新纯净官网版本。</p>
+<p>此外，通过使用 <code>info</code> 命令，你还可以查看程序的详细信息，便于你确认是否需要使用 Chocolatey 来安装这个程序：</p>
+<!-- raw HTML omitted -->
+<p>得到 Tim 的详细信息如下：<!-- raw HTML omitted --></p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="https://cdn.sspai.com/2019/06/20/a8887313f2bf1d734a34db0311c38679.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"
+    data-srcset="https://cdn.sspai.com/2019/06/20/a8887313f2bf1d734a34db0311c38679.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1, https://cdn.sspai.com/2019/06/20/a8887313f2bf1d734a34db0311c38679.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1 1.5x, https://cdn.sspai.com/2019/06/20/a8887313f2bf1d734a34db0311c38679.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1 2x"
+    data-sizes="auto"
+    alt="https://cdn.sspai.com/2019/06/20/a8887313f2bf1d734a34db0311c38679.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"
+    title="https://cdn.sspai.com/2019/06/20/a8887313f2bf1d734a34db0311c38679.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1"/> <!-- raw HTML omitted -->Tim 软件包信息<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<h2 id="ss-H2-1562307017912">它包揽了一切</h2>
+<p>现在，我的 Windows 软件基本上全靠 Chocolatey 管理了。每隔一段时间，我会用 <code>list</code> 命令导出一下已安装的软件，需要配置新电脑的时候，只要把这份导出的列表稍作整理，就可以用 <code>install</code> 命令一下子全部装上了。这样也可以让公司和家里的 Windows 电脑保持一致的使用手感。</p>
+<p>不过，仍有一些软件没有在 Chocolatey 上提供。我需要手动安装的软件包括：</p>
+<ul>
+<li>QQ（不过有 Tim）</li>
+<li>微信</li>
+<li>搜狗输入法</li>
+<li>火绒安全</li>
+<li>Visual Studio</li>
+<li>Office</li>
+</ul>
+<p>此外，还有一些软件需要从微软应用商店下载，自然也不会出现在 Chocolatey 中。无论如何，Chocolatey 绝对是一种值得尝试的软件管理方式。</p>
+<blockquote>
+<p>下载少数派 <!-- raw HTML omitted -->客户端<!-- raw HTML omitted -->、关注 <!-- raw HTML omitted -->少数派公众号<!-- raw HTML omitted -->，了解更多有趣的应用 🚀</p>
+</blockquote>
+<blockquote>
+<p>特惠、好用的硬件产品，尽在 <!-- raw HTML omitted -->少数派sspai官方店铺<!-- raw HTML omitted --> 🛒</p>
+</blockquote>
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

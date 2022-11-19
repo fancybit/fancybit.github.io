@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>web - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/web/</link>
+    <description>web - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 19 Oct 2021 14:30:19 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/web/" rel="self" type="application/rss+xml" /><item>
+  <title>jquery mouseleave和mouseout的区别</title>
+  <link>https://www.fancybit.top/archives/778/</link>
+  <pubDate>Tue, 19 Oct 2021 14:30:19 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/778/</guid>
+  <description><![CDATA[今天做一个下拉菜单的效果，发现用mouseout事件判断鼠标是否移出菜单让菜单消失的判断有很大问题。
+第一是鼠标移动到了元素的margin border padding区域的时候会触发mouseout。
+第二是子元素上鼠标移开也会让父元素触发mouseout。
+这就导致鼠标在进入下拉菜单和在菜单元素之间移动的时候触发大量的mouseout，菜单总是消失。
+改为使用mouseleave事件以后问题消失，说明mouseleave既会把margin border padding视为组件内部，也不会反复的在其子元素之间移动鼠标的时候触发。]]></description>
+</item>
+</channel>
+</rss>

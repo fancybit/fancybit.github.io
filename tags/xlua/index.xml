@@ -1,0 +1,30 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>xLua - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/xlua/</link>
+    <description>xLua - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 20 Dec 2019 13:55:14 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/xlua/" rel="self" type="application/rss+xml" /><item>
+  <title>KSFramework研究纪要</title>
+  <link>https://www.fancybit.top/archives/68/</link>
+  <pubDate>Fri, 20 Dec 2019 13:55:14 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/68/</guid>
+  <description><![CDATA[发包前重要步骤和KSFramework的重要路径：
+/Product/SettingSource/ =&gt; /Assets/AppSettings.cs 从配置表生成配置数据cs类
+/Product/SettingSource/ =&gt; /Product/Setting/ 生成tsv数据文件
+KEngine - &gt; AssetBundle -&gt; Build All /Rebuild All =&gt; /Assets/StreamAssets/ 包括预制件 场景 多媒体资源 lua代码等内容 导出成AssetBundle
+KEngine -&gt; AutoBuilder -&gt; Android Dev
+切换平台 /Assets/StreamAssets/内容移动到/Product/Bundles/XXX(Android)/
+打包APK
+用于编辑UI预制件的场景放在/Assets/BundleEditing/UI/
+场景不能和任何其他场景重名，即使和不包含UIWindowAsset组件物体的场景同样不能重名，否则会发生Prefab的UI组件与lua绑定失效的问题。
+Assets/KSFramework/KEngine/KEngine.Lib/TabeMLCompiler/ 这里的DLL仅在UnityEditor中使用 不能打包发布到手机因为引用了Winform相关的库。
+计划：现在的unity2018已经可以不用场景直接编辑Prefab，或许可以修改调整去掉场景里生成ui prefab的流程
+在场景文件里单独编辑预制件还可以配合摄像机等其他辅助物体进行对位，编辑预制件的场景仍然有必要
+打包前最好调用xLua生成一遍包装代码，不然：
+KSFramework研究纪要 Unity 热更新 xLua KSFramework KEngine 第1张改动：修改了SceneLoader.Load方法的第一个参数，现在不需要加Scene\前缀，直接输入放到Scene里的场景路径即可载入。
+经验：遇到aguments invalid的LUA层错误，先检查是否对一个luatable调用成员方法的时候没有用第一个self参数，也没有用:替代.
+疑问：lua是在另外线程执行的么？ 线程同步使用的什么机制？ 同样一个按钮事件是CS先执行还是LUA先执行？LUA能等待CS线程或者协程的同步消息么？ 经验：用StaticAssetLoader.Load载入的物体会创建在场景里，如果不希望放进场景的话可以SetActive(false)]]></description>
+</item>
+</channel>
+</rss>

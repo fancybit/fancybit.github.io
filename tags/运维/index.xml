@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>运维 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E8%BF%90%E7%BB%B4/</link>
+    <description>运维 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 19 Feb 2020 14:16:17 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E8%BF%90%E7%BB%B4/" rel="self" type="application/rss+xml" /><item>
+  <title>ssh使用秘钥登陆linux的坑</title>
+  <link>https://www.fancybit.top/archives/81/</link>
+  <pubDate>Wed, 19 Feb 2020 14:16:17 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/81/</guid>
+  <description><![CDATA[有个问题总是记反，用秘钥文件登陆的时候 在客户机上是创建公钥和私钥，私钥用ssh-add指令添加到windows的秘钥管理，然后公钥上传到linux服务器，输入到公钥列表文件
+也就是说 其实客户机可以只使用一组非对称的加密秘钥，私钥放着自己保管，公钥发到哪些服务器，哪些服务器就会允许客户机登陆，而不是之前印象里的服务器创建秘钥文件
+假设在公司维护或者开发 需要连接一台新的服务器，就要把自己的公钥交给运维的放到服务器，这样就获得了特定服务器的访问权限，而不是应该从运维那里索要秘钥对，这样也避免了运维人员使用发给你的秘钥对冒充你操作]]></description>
+</item>
+<item>
+  <title>htop详解</title>
+  <link>https://www.fancybit.top/archives/65/</link>
+  <pubDate>Tue, 10 Dec 2019 15:18:59 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/65/</guid>
+  <description><![CDATA[&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; This is htop, an interactive process viewer for Linux. It is a text-mode application (for console or X terminals) and requires ncurses. &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Comparison between htop and top&lt;/strong&gt; &lt;/p&gt; &lt;ul style=&quot;margin-left: 30px; padding: 0px; word-break: break-all;&quot; class=&quot; list-paddingleft-2&quot;&gt; &lt;li&gt; &lt;p&gt; In 'htop' you can scroll the list vertically and horizontally to see all processes and complete command lines.]]></description>
+</item>
+</channel>
+</rss>

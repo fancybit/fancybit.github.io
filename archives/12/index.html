@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>像修改本机代码一样修改远端服务器的PHP网站 - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="&lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;7&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt; &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;systemctl restart smb&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;systemctl&amp;nbsp;restart&amp;nbsp;smb&lt;/pre&gt; &lt;/div&gt; &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt; &lt;span style=&quot;color: #000000;&quot;&gt;或者&lt;/span&gt; &lt;/p&gt; &lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;6&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt; &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;service smb restart&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;service&amp;nbsp;smb&amp;nbsp;restart&lt;/pre&gt; &lt;/div&gt; &lt;p style=&quot;margin: 10px auto; line-height: 1." /><meta name="keywords" content='Hugo, FixIt' /><meta itemprop="name" content="像修改本机代码一样修改远端服务器的PHP网站">
+<meta itemprop="description" content="&lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;7&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt; &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;systemctl restart smb&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;systemctl&amp;nbsp;restart&amp;nbsp;smb&lt;/pre&gt; &lt;/div&gt; &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt; &lt;span style=&quot;color: #000000;&quot;&gt;或者&lt;/span&gt; &lt;/p&gt; &lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;6&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt; &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;service smb restart&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;service&amp;nbsp;smb&amp;nbsp;restart&lt;/pre&gt; &lt;/div&gt; &lt;p style=&quot;margin: 10px auto; line-height: 1."><meta itemprop="datePublished" content="2019-08-25T22:09:00+00:00" />
+<meta itemprop="dateModified" content="2019-08-25T22:09:00+00:00" />
+<meta itemprop="wordCount" content="1225">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="像修改本机代码一样修改远端服务器的PHP网站" />
+<meta property="og:description" content="&lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;7&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt; &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;systemctl restart smb&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;systemctl&amp;nbsp;restart&amp;nbsp;smb&lt;/pre&gt; &lt;/div&gt; &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt; &lt;span style=&quot;color: #000000;&quot;&gt;或者&lt;/span&gt; &lt;/p&gt; &lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;6&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt; &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;service smb restart&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;service&amp;nbsp;smb&amp;nbsp;restart&lt;/pre&gt; &lt;/div&gt; &lt;p style=&quot;margin: 10px auto; line-height: 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/12/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-08-25T22:09:00+00:00" />
+<meta property="article:modified_time" content="2019-08-25T22:09:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="像修改本机代码一样修改远端服务器的PHP网站"/>
+<meta name="twitter:description" content="&lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;7&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt; &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;systemctl restart smb&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;systemctl&amp;nbsp;restart&amp;nbsp;smb&lt;/pre&gt; &lt;/div&gt; &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt; &lt;span style=&quot;color: #000000;&quot;&gt;或者&lt;/span&gt; &lt;/p&gt; &lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;6&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt; &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;service smb restart&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;service&amp;nbsp;smb&amp;nbsp;restart&lt;/pre&gt; &lt;/div&gt; &lt;p style=&quot;margin: 10px auto; line-height: 1."/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/12/" /><link rel="prev" href="https://www.fancybit.top/archives/11/" /><link rel="next" href="https://www.fancybit.top/archives/13/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "像修改本机代码一样修改远端服务器的PHP网站",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/12\/"
+    },"genre": "post","wordcount":  1225 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/12\/","datePublished": "2019-08-25T22:09:00+00:00","dateModified": "2019-08-25T22:09:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">像修改本机代码一样修改远端服务器的PHP网站</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;7&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt;
+  &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;systemctl restart smb&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;systemctl&amp;nbsp;restart&amp;nbsp;smb&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;或者&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;6&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt;
+  &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;service smb restart&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;service&amp;nbsp;smb&amp;nbsp;restart&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;然后连接上vpn之后就可以在文件浏览器里用\\xxx.xxx.xxx.xxx(服务器在vpn里的地址) 看到并操作服务器的文件了。&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;h2 style=&quot;margin: 10px 0px; font-size: 21px; border-bottom: 1px solid rgb(102, 102, 102); line-height: 1.5; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;2、用OpenVPN建立稳定的VPN连接&lt;/span&gt;
+&lt;/h2&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;首先登陆centos使用&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;5&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt;
+  &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;wget https://gitee.com/lookingdreamer/SPPPOTools/raw/master/centos/vpn/openvpn/openvpn-install.sh&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;wget&amp;nbsp;https://gitee.com/lookingdreamer/SPPPOTools/raw/master/centos/vpn/openvpn/openvpn-install.sh&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;下载openvpn一键安装脚本。使用&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;4&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt;
+  &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;chmod +x openvpn-install.sh\n./openvpn-install.sh&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;chmod&amp;nbsp;+x&amp;nbsp;openvpn-install.sh./openvpn-install.sh&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;开始安装openvpn。&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;大多配置都可以采用默认值，建议询问是否使用秘钥的那一项的时候设置一个秘钥。不过就算不设置秘钥，入侵者也需要先获取你的openvpn客户端配置文件才能登陆VPN。这个自动生成的配置文件内是有加密算法的秘钥对的。&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;安装完成后会生成一个客户端配置文件，您需要使用ftp或者securefx之类的工具从服务器上下载此配置文件。然后安装一个openvpn的客户端，我这里是安装了一个windows版的客户端，翻墙到openvpn的管网下载的，管网地址是：&lt;/span&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;a href=&quot;https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.7-I607-Win10.exe&quot; data-cke-saved-href=&quot;https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.7-I607-Win10.exe&quot; style=&quot;text-decoration: underline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;span style=&quot;color: #000000;&quot;&gt;https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.7-I607-Win10.exe&lt;/span&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+  &lt;span style=&quot;color: #000000;&quot;&gt;如果你没有翻墙工具，可以到我管理的BBS上下载，QQ登陆简单注册一下即可得到提取码：&lt;/spa n&gt;&lt;/p&gt; 
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;a href=&quot;https://www.shuyu.online/forum.php?mod=viewthread&amp;tid=57&amp;page=1&amp;extra=#pid61&quot; data-cke-saved-href=&quot;https://www.shuyu.online/forum.php?mod=viewthread&amp;tid=57&amp;page=1&amp;extra=#pid61&quot; style=&quot;text-decoration: underline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;span style=&quot;color: #000000;&quot;&gt;https://www.shuyu.online/forum.php?mod=viewthread&amp;tid=57&amp;page=1&amp;extra=#pid61&lt;/span&gt;&lt;/a&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;安装完毕之后，启动openvpn可以看到右下角任务栏出现这个带锁的显示器图标：&lt;/span&gt;&lt;img loading=&quot;lazy&quot; src=&quot;https://img-blog.csdnimg.cn/20190725122616841.png&quot; title=&quot;像修改本机代码一样修改远端服务器的PHP网站  第1张&quot; alt=&quot;像修改本机代码一样修改远端服务器的PHP网站  第1张&quot; class=&quot;has cke_widget_element&quot; width=&quot;405&quot; height=&quot;54&quot; data-cke-saved-src=&quot;https://img-blog.csdnimg.cn/20190725122616841.png&quot; data-cke-widget-data=&quot;{&amp;quot;hasCaption&amp;quot;:false,&amp;quot;src&amp;quot;:&amp;quot;https://img-blog.csdnimg.cn/20190725122616841.png&amp;quot;,&amp;quot;alt&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;width&amp;quot;:&amp;quot;405&amp;quot;,&amp;quot;height&amp;quot;:&amp;quot;54&amp;quot;,&amp;quot;lock&amp;quot;:true,&amp;quot;align&amp;quot;:&amp;quot;none&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;image&quot; style=&quot;border: 0px; max-width: 800px; height: auto;&quot; /&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;右键点击，导入配置文件，找到刚才生成的配置文件打开。导入配置之后即可右键点击它进行连接，连接成功后就可以在\\10.8.0.1\ 这个地址（在文件管理器，也就是计算机 或者 我的电脑打开）上看到你服务器的文件夹了。右键点击文件夹创建网络驱动器，之后就可以像操作本地文件一样操作服务器上的文件了。我试了一下phpstorm这个ide，过于重量级，intellisense可能会做很多操作来扫描网络驱动器，会造成卡顿。因此推荐使用vscode,sublime之类的轻量级代码编辑器进行操作。&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;到此已经可以在编辑器里直接修改服务器上的文件，免得零碎改动的上传下载。但是还有个问题，VPN打开的时候，可能你上不了外网，或者外网速度很慢。因为openvpn的默认设置是使用VPN服务端的网关上网，所有网络访问都会先绕到你的服务器上。这样既慢（通常便宜服务器也就1-2M的带宽）又浪费服务器流量。所以还需要如下2个关键步骤调整OpenVPN的配置，让你的电脑不通过服务器绕弯上网，而是用原有的本地网关路径直接上网：&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;登陆centos服务器进入控制台，修改openvpn配置文件：&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;div class=&quot;cke_widget_wrapper cke_widget_block cke_widget_codeSnippet cke_widget_wrapper_has cke_widget_selected&quot; data-cke-widget-wrapper=&quot;1&quot; data-cke-filter=&quot;off&quot; data-cke-display-name=&quot;代码段&quot; data-cke-widget-id=&quot;2&quot; style=&quot;font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal; &quot;&gt;
+    &lt;pre class=&quot;has cke_widget_element&quot; data-cke-widget-data=&quot;{&amp;quot;lang&amp;quot;:&amp;quot;bash&amp;quot;,&amp;quot;code&amp;quot;:&amp;quot;vim /etc/openvpn/server.conf&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;codeSnippet&quot; style=&quot;margin-top: 0px; margin-bottom: 0px; white-space: pre-wrap; overflow-wrap: break-word;&quot;&gt;vim&amp;nbsp;/etc/openvpn/server.conf&lt;/pre&gt;
+  &lt;/div&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;找到这一句在前面加;&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;img loading=&quot;lazy&quot; src=&quot;https://img-blog.csdnimg.cn/20190725125853472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmN5Yml0,size_16,color_FFFFFF,t_70&quot; title=&quot;像修改本机代码一样修改远端服务器的PHP网站  第2张&quot; alt=&quot;像修改本机代码一样修改远端服务器的PHP网站  第2张&quot; class=&quot;has cke_widget_element&quot; width=&quot;534&quot; height=&quot;528&quot; data-cke-saved-src=&quot;https://img-blog.csdnimg.cn/20190725125853472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmN5Yml0,size_16,color_FFFFFF,t_70&quot; data-cke-widget-data=&quot;{&amp;quot;hasCaption&amp;quot;:false,&amp;quot;src&amp;quot;:&amp;quot;https://img-blog.csdnimg.cn/20190725125853472.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmN5Yml0,size_16,color_FFFFFF,t_70&amp;quot;,&amp;quot;alt&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;width&amp;quot;:&amp;quot;534&amp;quot;,&amp;quot;height&amp;quot;:&amp;quot;528&amp;quot;,&amp;quot;lock&amp;quot;:true,&amp;quot;align&amp;quot;:&amp;quot;none&amp;quot;,&amp;quot;classes&amp;quot;:{&amp;quot;has&amp;quot;:1}}&quot; data-cke-widget-upcasted=&quot;1&quot; data-cke-widget-keep-attr=&quot;0&quot; data-widget=&quot;image&quot; style=&quot;border: 0px; max-width: 800px; height: auto;&quot; /&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;:wq存储关闭配置文件，重启OpenVPN。这里因为用的一键安装脚本安装的OpenVPN，并没有注册成服务所以systemctl和service都找不到这个服务。可以直接kill掉进程再重启，具体步骤如下：&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;这样就不会让你的电脑所有流量都绕道服务器了。&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;然后是客户端配置文件的修改，右键右下角的OpenVPN客户端图标，选择“编辑配置文件”，打开配置文件内容：&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;img loading=&quot;lazy&quot; src=&quot;https://img-blog.csdnimg.cn/20190725130409648.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmN5Yml0,size_16,color_FFFFFF,t_70&quot; title=&quot;像修改本机代码一样修改远端服务器的PHP网站  第3张&quot; alt=&quot;像修改本机代码一样修改远端服务器的PHP网站  第3张&quot; class=&quot;has cke_widget_element&quot; width=&quot;632&quot; height=&quot;426&quot; data-cke-saved-src=&quot;https://img-blog.csdnimg.cn/20190725130409648.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmN5Y
+</code></pre>
+<p>ml0,size_16,color_FFFFFF,t_70&quot; data-cke-widget-data=&quot;{&quot;hasCaption&quot;:false,&quot;src&quot;:&quot;https://img-blog.csdnimg.cn/20190725130409648.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmN5Yml0,size_16,color_FFFFFF,t_70&quot;,&quot;alt&quot;:&quot;&quot;,&quot;width&quot;:&quot;632&quot;,&quot;height&quot;:&quot;426&quot;,&quot;lock&quot;:true,&quot;align&quot;:&quot;none&quot;,&quot;classes&quot;:{&quot;has&quot;:1}}&quot; data-cke-widget-upcasted=&ldquo;1&rdquo; data-cke-widget-keep-attr=&ldquo;0&rdquo; data-widget=&ldquo;image&rdquo; style=&ldquo;border: 0px; max-width: 800px; height: auto;&rdquo; /&gt;
+<!-- raw HTML omitted --></p>
+<pre><code>  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;同样在这一句前面加上;&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;这是禁用防DNS泄露，如果没有注释掉的话原来的意思是所有域名解析也都从服务器的DNS走，现在openvpn客户端重新连接一次，使用VPN+SMB+网络驱动器映射就可以简单地在你自己电脑上操作服务器文件了。小修改不用麻烦地用上传下载工具折腾了，一个ctrl+s就把改动直接存到服务器，浏览器打开服务器域名直接F5看修改效果，调试OAUTH和各种在线的插件也方便多了。&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    如果是阿里云的centos服务器 还需要先关闭firewalld防火墙 systemctl disable firewalld.然后在服务器的安全组里开通1194或者你安装时候设置的openvpn端口
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;&lt;br /&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;这个方法只适用于小修改，如果是涉及到数据库之类东西或者新的模块，建议还是弄一个本地镜像来。&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;希望能给你的工作带来一些方便，我是费了一天左右的功夫搞定开OPENVPN同时走本地流量上网的问题，不过中途也学习了一下路由表之类的知识，虽然最后发现只需要改这两个配置就不必折腾路由表，OPENVPN的客户端会自动搞定繁复的底层操作，也算是塞翁失马了。&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #FF0000;&quot;&gt;另外如果服务器开启了防火墙 记得放行你设置的OPENVPN的端口号 还有SAMBA服务端口号 SAMBA服务的端口号默认是445&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;如果您看完本篇觉得有用请点个收藏，还可以到我的网站数语在线软件IT板块获取更多技术和工具的交流分享：&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;a href=&quot;https://www.shuyu.online/forum.php?gid=37&quot; data-cke-saved-href=&quot;https://www.shuyu.online/forum.php?gid=37&quot; style=&quot;text-decoration: underline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;span style=&quot;color: #000000;&quot;&gt;https://www.shuyu.online/forum.php?gid=37&lt;/span&gt;&lt;/a&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;&amp;nbsp;&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;h2 style=&quot;margin: 10px 0px; font-size: 21px; border-bottom: 1px solid rgb(102, 102, 102); line-height: 1.5; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;相关连接汇总：&lt;/span&gt;
+  &lt;/h2&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;samba服务安装配置：&amp;nbsp;&lt;/span&gt;&lt;a href=&quot;https://www.jianshu.com/p/0d8f44d1b9ed&quot; data-cke-saved-href=&quot;https://www.jianshu.com/p/0d8f44d1b9ed&quot; style=&quot;text-decoration: underline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;&lt;span style=&quot;color: #000000;&quot;&gt;https://www.jianshu.com/p/0d8f44d1b9ed&lt;/span&gt;&lt;/a&gt;
+  &lt;/p&gt;
+  
+  &lt;p style=&quot;margin: 10px auto; line-height: 1.5; font-size: 13px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; white-space: normal; &quot;&gt;
+    &lt;span style=&quot;color: #000000;&quot;&gt;一键openvpn安装脚本：&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-decoration: underline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: #000000;&quot;&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000019471008&quot; data-cke-saved-href=&quot;https://segmentfault.com/a/1190000019471008&quot; style=&quot;text-decoration: underline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(0, 0, 0);&quot; target=&quot;_blank&quot;  rel=&quot;nofollow&quot; &gt;https://segmentfault.com/a/1190000019471008&lt;/a&gt;&lt;/span&gt;
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &lt;!--11--&gt;
+  &lt;/p&gt;</code></pre>
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

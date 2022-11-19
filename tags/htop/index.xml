@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>htop - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/htop/</link>
+    <description>htop - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 10 Dec 2019 15:18:59 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/htop/" rel="self" type="application/rss+xml" /><item>
+  <title>htop详解</title>
+  <link>https://www.fancybit.top/archives/65/</link>
+  <pubDate>Tue, 10 Dec 2019 15:18:59 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/65/</guid>
+  <description><![CDATA[&lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; This is htop, an interactive process viewer for Linux. It is a text-mode application (for console or X terminals) and requires ncurses. &lt;/p&gt; &lt;p style=&quot;margin: 10px auto; padding: 0px;&quot;&gt; &lt;strong style=&quot;margin: 0px; padding: 0px;&quot;&gt;Comparison between htop and top&lt;/strong&gt; &lt;/p&gt; &lt;ul style=&quot;margin-left: 30px; padding: 0px; word-break: break-all;&quot; class=&quot; list-paddingleft-2&quot;&gt; &lt;li&gt; &lt;p&gt; In 'htop' you can scroll the list vertically and horizontally to see all processes and complete command lines.]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>跨域 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E8%B7%A8%E5%9F%9F/</link>
+    <description>跨域 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 20 Feb 2020 17:30:13 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E8%B7%A8%E5%9F%9F/" rel="self" type="application/rss+xml" /><item>
+  <title>.net core webapi跨域问题</title>
+  <link>https://www.fancybit.top/archives/86/</link>
+  <pubDate>Thu, 20 Feb 2020 17:30:13 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/86/</guid>
+  <description><![CDATA[跨域问题是通过ajax在一个域A访问域B上的资源的时候 需要在B域的跨域列表里加上A。
+另外一个重点是判断2个域是否跨域需要3个要素 协议(http或者https,ftp) 地址(包含域名) 端口号 三者有一个不同就是跨域的
+比如 http://abc.com:8888 和 https://abc.com:8888是2个域 http://localhost:12345 和 http://127.0.0.1:12345 也是2个域
+.net core 的跨域设置看这里:
+https://www.jianshu.com/p/26c2108bab05
+尤其最后一个不要漏掉
+.net core webapi跨域问题 跨域 cors webapi c# 第1张]]></description>
+</item>
+</channel>
+</rss>

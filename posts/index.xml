@@ -1,0 +1,165 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>All Posts - 数语轩</title>
+    <link>https://www.fancybit.top/posts/</link>
+    <description>All Posts | 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 17 Sep 2022 14:47:48 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/posts/" rel="self" type="application/rss+xml" /><item>
+  <title>GrassCutter研究备忘</title>
+  <link>https://www.fancybit.top/archives/876/</link>
+  <pubDate>Sat, 17 Sep 2022 14:47:48 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/876/</guid>
+  <description><![CDATA[fiddler和pandavpn只能开一个 互相会抢占系统默认代理的位置 影响原神的htt_p_请求转发
+Cultivation在本机的时候需要在GrassCutter的config.json里面禁用加密和InRouting，具体位置在server/http/encryption/useEncryption和useInRouting.服务端端口server/http/bindPort设置为启动器一致端口。启动器以GrassCutter模式连接，不能勾选使用Https。]]></description>
+</item>
+<item>
+  <title>C# obfuscar代码混淆备忘</title>
+  <link>https://www.fancybit.top/archives/871/</link>
+  <pubDate>Wed, 14 Sep 2022 00:53:43 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/871/</guid>
+  <description><![CDATA[从nuget安装Obfascar包，不用GlobalTool
+在项目中创建obfucar.xml
+在生成后事件里，
+注意这里是Obfuscar 不是obfascator
+然后是一个简单的obfuscar.xml范例
+有关配置文件详情看这里：
+Configuration — obfuscar 2.2 documentation]]></description>
+</item>
+<item>
+  <title>Unity3d Mirror插件联机开发备忘</title>
+  <link>https://www.fancybit.top/archives/854/</link>
+  <pubDate>Wed, 22 Jun 2022 14:47:40 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/854/</guid>
+  <description><![CDATA[1、序列化的对象不能含有环状引用，一个典型的例子是单例模式，它的instance静态变量肯定要引用到本体，所以需要注意。如果拿这种对象去spawn，即使在NetworkManager里注册了这个物体 也一样会spawn失败，因为中途涉及到序列化，传输，反序列化的步骤。解决这种问题的简单方法目前想到的是设置一个数据类型，保证其中不包含环状引用 然后在客户端拿这个类型的对象来收集无法序列化的类的对象成员，然后进行序列化或者反序列化，或者去spawn
+2、没有Spawn过的对象上调用ClientRPC方法会被忽略，而Spawn的对象需要和服务端同步，所以需要被序列化。mirror的序列化不可以包含环状引用，因此单例对象上是无法调用ClientRPC的，需要把这些单例去掉，才能在上面使用ClientRPC。
+3、如果没有NetworkManager在场景里的话，挂上NetworkIdentity标签的物体会在场景启动时被禁用，还不知道为什么这么设计，猜测可能是为了避免不同时生成物体造成的跨端（服务端客户端）id混乱，毕竟全都spawn出来的话，生成的物体的identity的netid是一致的。
+4、一个物体刚在服务端spawn的时候对它调用Rpc方法会失效，可能是客户端还没来得及生成对应的物体。这种情况需要用协程来延迟，也可以用UniTask库的async await轮询器和封装好的等待对象。
+5、NetworkIdentity 的Server only属性被勾选的时候就不会在Spawn之后自动在客户端生成对应物体。
+6、默认NetworkTransform的缩放同步是未开启的。
+7、对一个对象使用NetworkServer.Spawn的时候，会同时在客户端创建其子对象树结构，但是未使用NetworkBehaviour的对象是否会一起创建？答案是会的，有一个例外就是一个spawn出来的transform树形体系只能在根对象有一个IdentifyComponent。其他子级不能有Identify或者从NetworkBehaviour派生的component,因为会自动引入IdentifyComponent。这种情况就需要写代码自行完成spawn之后的对象体系的挂接工作。
+8、在一个跟节点有IdentifyComponent的体系上，被序列化的体系内不能有序列化不支持的类型，包括Component或者GameObject。但是我们可以在生成的体系中把层级关系让unity内置的transform树形结构来维护，这可以解决大部分引用不含IdentityComponent的子级节点的引用会妨碍序列化的问题。另外含有IdentifyComponent的子级组件的引用不会妨害序列化，因为这部分会自动被过滤掉不参加序列化，需要自行Spawn再挂接。
+9、序列化只能保持在prefab就有的transform层级结构,从场景中的物体进行序列化的话，用代码后续添加的子级不会跟着被序列化传递到客户端。因为本质上spawn就是把用于寻找资源的AssetID发送到客户端，然后客户端同样用AssetID来找到预制件，然后实例化预制件，赋予同时传递来的NetID，用于接收后续发来的同步消息的分发凭据。所以服务端的物体，实例化后，spawn之前的对象层级变化，都不会在客户端同步，甚至可能造成不存在的NetID的问题。
+10、command方法里再调用command方法可能造成服务端执行不完整，应该避免。
+11、SyncXXX系列容器里同步一样是用Waves，所以元素类型不能是GameObject或者Component。可以通过存储NetId来变通实现远程同步。
+12、isServer isClient isServerOnly isLocalPlayer
+13、NetworkServer和NetworkClient是Transporter上第二层的连接和通信
+14、NetworkServer.AddPlayer(conn,gameObject)把一个gameObject关联到一个conn作为Player的表示物体。conn的identity属性被赋予gameObject的identity组件。
+15、调用NetworkManager游戏场景切换时，服务端先进行切换，然后广播场景切换消息到所有客户端，在LateUpdate里轮询检测场景切换是否完成:
+，然后各自调用状态同步代码。
+替换roomPlayer到gamePlayer和传递参数
+创建RoomPlayer
+NetworkRoomManager.OnClientEnterRoom添加RoomPlayerObject
+NetworkRoomPlayer的OnGUI绘制了自己的准备状态和按钮
+NetworkRoomManager的OnGUI绘制了进入房间后的UI底版
+设置了DontDestroyOnLoad的对象如果重新设置setParent会导致不销毁标记失效]]></description>
+</item>
+<item>
+  <title>3D展馆DEMO</title>
+  <link>https://www.fancybit.top/archives/823/</link>
+  <pubDate>Thu, 28 Apr 2022 11:12:56 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/823/</guid>
+  <description><![CDATA[使用陀螺仪和摇杆多种控制模式的3D展馆，可以用来扩展成各种NFT商品交易之类的系统
+点击物品会穿梭到物品面前 长按可以进入观察模式 手机开启陀螺仪，可以用类似VR的方式浏览 也可以用摇杆或者键盘
+安卓端
+链接：https://pan.baidu.com/s/1KdRa51TQoYHnhQ4wprOaaA?pwd=jkla
+提取码：jkla
+&ndash;来自百度网盘超级会员V5的分享
+WINDOWS PC端
+链接：https://pan.baidu.com/s/1RIyy8bwo0SQxlTc18BhL5A?pwd=abcn
+提取码：abcn
+&ndash;来自百度网盘超级会员V5的分享]]></description>
+</item>
+<item>
+  <title>全景看房标记APP</title>
+  <link>https://www.fancybit.top/archives/820/</link>
+  <pubDate>Thu, 28 Apr 2022 10:26:00 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/820/</guid>
+  <description><![CDATA[技术研究要点
+自定义全景照片生成（80%）
+UGUI组件拼接，各种布局器，自己编码扩展新的布局器
+3维标记绘制到摄像机正前方平面上
+编辑模式切换
+标记的选中和拖拽，标字操作
+服务端逻辑模型 DTO
+.NET CORE 接受上传图片]]></description>
+</item>
+<item>
+  <title>猫猫大战克苏鲁DEMO</title>
+  <link>https://www.fancybit.top/archives/812/</link>
+  <pubDate>Thu, 28 Apr 2022 08:12:40 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/812/</guid>
+  <description><![CDATA[只是个简单DEMO 用了大概3天 朋友要的 后来需求大改这个就搁置了
+其中研习了xlua热更框架 还有资源热更框架
+LIVE2D的装备替换方式 面数测试
+A* Path Project插件的自动寻路生成和使用方法 智能寻路追踪的效果
+简单的地下迷宫生成算法]]></description>
+</item>
+<item>
+  <title>你咋不喜呢–清明忆外婆</title>
+  <link>https://www.fancybit.top/archives/806/</link>
+  <pubDate>Wed, 06 Apr 2022 23:57:45 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/806/</guid>
+  <description><![CDATA[“你咋不喜呢？”当我在北京漂泊，996的时候，我已经再也听不到这句话了。从小到大，我是外婆的心头肉，家里3个孩子，我总是最受宠的一个。外婆甚至总是把好吃好喝的偷偷藏起来专门留给我不给姐姐和哥哥吃。为此我还总是心里抱怨，你这么做我姐姐可就不高兴了吧，于是每次都会把藏起来的东西分给姐姐，因为妈妈也一直教导我不要吃独食，好东西要和家人分享。
+每一次见到外婆，她头一句总是会问“辉，你咋不喜呢？”然后就会跟我讲那些重复了好多遍的故事，顺口溜，段子。
+“我是一个兵，脸上有麻坑，买个雪花膏，腻也腻不平；买个新洋车，蹬也蹬不动；买个拖拉机，轧也轧不平；我说死了吧，对不起毛泽东~”
+俗话说身在福中不知福，经历了各种各样现实与社会的毒打，才明白青少时期的简单快乐多么的弥足珍贵，亲人的挂念与关怀多么温暖。焦躁难眠之时，总会想起小时候在姥姥家村里房门口，躺着枕在姥姥腿上，仰望清澈干净的夜空，数着星星，姥姥扇着扇子一下一下，也没有太多话，就这样惬意地渡过半个夏夜。
+“你咋不喜呢？”在每次放学回家疲于一天的课业。
+“你咋不喜呢？”在考试失后利纠结怎么跟爸妈说。
+“你咋不喜呢？”在喜欢的女同学有了“男朋友“。
+而当我在北漂打工的时候，多少次要猝死在公司，出租房的时候，身边只有着为了钱贪婪 痛楚 癫狂 出卖朋友 欺诈老板 也背叛自己理想的自己和他人。
+“你咋不喜呢？”一个90多岁农村老太太对外甥的一句简单的关怀，这一刻也许比再多的金钱，都弥足珍贵吧。
+小时候在外婆家常听一首黄安的歌：
+荣华富贵呀飞呀飞
+世上的人呀追呀追
+荣华富贵呀飞呀飞
+何时放下歇一歇
+当一个人还会流泪的时候，说明他还是一个人。虽说男儿有泪不轻弹，但是伴着泪水的真心是无价的，因为这些眼泪正是我们这些生而为人的无价之宝的一部分。
+“你咋不喜呢？”
+在这清明祭时，只有已逝亲人无私的关爱，才配得上这无价之宝。]]></description>
+</item>
+<item>
+  <title>【初音ミク】神っぽいな【中、日、羅歌詞】</title>
+  <link>https://www.fancybit.top/archives/803/</link>
+  <pubDate>Sun, 23 Jan 2022 13:51:05 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/803/</guid>
+  <description><![CDATA[★
+作詞：ピノキオピー作曲：ピノキオピー編曲：ピノキオピーGuitar： ヤヅキPV：ピノキオピー唄：初音ミク
+中文翻譯：月勳
+愛のネタバレ　「別れ」っぽいなai no neta bare &ldquo;wakare&rdquo; ppo i na愛的透露劇情　真像「別離」呢
+人生のネタバレ　「死ぬ」っぽいなjinsei no neta bare &ldquo;shinu&rdquo; ppo i na人生的透露劇情　真像「死亡」呢
+なにそれ意味深でかっこいいじゃん…na ni so re imishin de kakko i i jyan&hellip;那是什麼　這不是意義深長而且很帥嘛…
+それっぽい単語集で踊ってんだ　失敬so reppo i tango syuu de odotte n da shikkei在像是那個的單字本上起舞著　失禮
+とぅ　とぅる　とぅ　とぅ　とぅる　&ldquo;風&quot;tu tu ru tu tu tu ru &ldquo;fuu&quot;To　Toul　To　To　Toul　&ldquo;風&rdquo;
+とぅ　とぅる　とぅ　とぅ　とぅる　&ldquo;風&quot;tu tu ru tu tu tu ru &ldquo;fuu&quot;To　Toul　To　To　Toul　&ldquo;風&rdquo;]]></description>
+</item>
+<item>
+  <title>C#中webbrowser与javascript(js)交互的方法</title>
+  <link>https://www.fancybit.top/archives/800/</link>
+  <pubDate>Sun, 28 Nov 2021 06:41:36 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/800/</guid>
+  <description><![CDATA[C#调用js
+js调用c#]]></description>
+</item>
+<item>
+  <title>vscode调试typescript</title>
+  <link>https://www.fancybit.top/archives/793/</link>
+  <pubDate>Wed, 24 Nov 2021 15:08:08 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/793/</guid>
+  <description><![CDATA[vscode本身支持ts调试： 只要在tsconfig.json里打开sourceMap = true就可以启动源码映射文件(*.map)来进行运行时ts断点调试。 终端-》新建终端 创建一个终端窗口 如果已经有终端窗口可以略过这一步 点击终端面板右上角添加终端的+右边的向下箭头，选择创建js调试终端： 这个时候在这个终端里启动的node.js运行js的实例都会进行调试，遇到ts或者js断点都会暂停然后查看状态。
+安装一个vscode插件typescript debugger可以把调试过程做的更简单，F5一键进入调试模式： 1.搜索安装typescript debugger插件，然后切换到debug设置状态：
+2.创建一个调试配置文件，选择ts debug
+3.下图这里把标记的地方改成启动的js文件相对路径，比如./dist/app.js,然后保存
+4.在随意一个终端里运行npm install -dev ts-node 安装所需的包
+5.完成后就可以F5一键键开始调试了，同样是支持js和ts断点，只要tsconfig.json里启用了sourceMap文件生成]]></description>
+</item>
+</channel>
+</rss>

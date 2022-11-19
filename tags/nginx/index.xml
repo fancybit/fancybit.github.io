@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>nginx - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/nginx/</link>
+    <description>nginx - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 20 Feb 2020 16:50:17 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/nginx/" rel="self" type="application/rss+xml" /><item>
+  <title>使用frp，宝塔nginx反向代理调试.net core的坑</title>
+  <link>https://www.fancybit.top/archives/85/</link>
+  <pubDate>Thu, 20 Feb 2020 16:50:17 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/85/</guid>
+  <description><![CDATA[用这套环境开发调试.net core网站的时候会遇到即使宝塔nginx反向代理转发到127.0.0.1:xxx（FRP的http协议监听端口）之后仍然无法打开网页的情况。这个时候很简单，只要把.net core网站的监听ip改为0.0.0.0即可。
+有关如何构建frp+宝塔nginx的开发环境，看这里：
+https://www.fancybit.top/post/81.html
+有关如何更改.netcore网站的监听IP，看这里：
+https://www.fancybit.top/post/84.html]]></description>
+</item>
+</channel>
+</rss>

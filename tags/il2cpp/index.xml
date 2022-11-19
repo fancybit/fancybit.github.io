@@ -1,0 +1,40 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Il2Cpp - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/il2cpp/</link>
+    <description>Il2Cpp - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 08 Feb 2021 05:06:12 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/il2cpp/" rel="self" type="application/rss+xml" /><item>
+  <title>发布到steam的unity游戏破解方法</title>
+  <link>https://www.fancybit.top/archives/112/</link>
+  <pubDate>Mon, 08 Feb 2021 05:06:12 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/112/</guid>
+  <description><![CDATA[工具下载：
+IDA 7.0
+Il2CppDumper
+Reflector
+百度网盘下载：
+链接：https://pan.baidu.com/s/1EpYlq6VQfoKPzH9ZkF9Nug 提取码：8u2b 交流QQ群：1025446555
+unity是现在独立游戏的常用游戏引擎，Steam上就有很多。这篇记录就先简单介绍一下破解游戏做出游戏补丁让游戏脱离steam也能运行的办法。
+以最近上线steam的游戏《回门》为例：
+首先是下载游戏，找到游戏本体存在的目录：
+比如我的steam安装在G:\Games\ 路径大概就是：
+G:\Game\Steam\steamapps\common\回门 Way Back Home
+放在其他盘其他目录的童鞋可以自行推断位置
+发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第1张可以看到里面的GameAssembly.dll 用reflector打开GameAssembly.dll 会发现它不是C#的DLL文件，
+发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第2张打开XXX_Data目录，里面有个il2cpp_data
+从这两点可以看出这个游戏是使用的Il2cpp的后端，这种后端需要懂点汇编才好破解，不过只是断开steam的话是难度不高的。对付il2cpp后端的游戏，我们可以用Il2cppDumper这个工具来做辅助提取和修改。
+进行这个修改还需要找另外一个文件global-metadata.dat，通常在il2cpp_data下面，我找了一下在：
+我们先创建一个目录，把破解需要的中间文件都放在这里，比如我放在了g:\works\hack\hm\里面
+然后我们编写一个简单的批处理脚本，放在游戏目录下（也就是GameAssembly.dll所在目录） 调用il2cppdumper来破解，其实只有一行：
+编写完保存成bat文件，运行后等待结束，成功的话就会在g:\works\hack\hm\ 下面生成一些中间文件，比如：
+发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第3张其中DummyDll里是一些C#代码，里面并没有从c和汇编反编译出来的具体代码内容，只有元数据，也就是可以用reflector或者ilspy之类打开查看代码结构。要修改的话 还是只能去用IDA去修改原本的GameAssembly.dll文件。
+IDA是用来反编译机器语言到汇编语言，还可以返到不是很好看的C代码。
+注意这个Tool是我把文章开头下载下来的工具解压之后放在这里的。然后现在启动我们的神器IDA,注意32位的就可以，64位的话可能会出现无法反编译到C代码。
+在IDA打开这个GameAssembly.dll之后，默认选项确认进去，可以看到IDA会自动开始扫描分析这个dll文件，这个时候等待左下角的提示，
+发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第4张出现这个自动分析结束的提示，就是分析完成了
+好了现在选择 File-》Script File
+运行Il2cpp所在文件夹下的ida_with_struct.py 然后IDA会弹出窗口让你选择几个前面il2cppdumper提取出的json文件，也就是script.json和il2cpp.h 根据提示窗口标题就能看到。上面截图就有。]]></description>
+</item>
+</channel>
+</rss>

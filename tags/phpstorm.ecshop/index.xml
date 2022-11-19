@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>phpstorm.ecshop - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/phpstorm.ecshop/</link>
+    <description>phpstorm.ecshop - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 05 Jan 2020 17:00:41 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/phpstorm.ecshop/" rel="self" type="application/rss+xml" /><item>
+  <title>ecshop二次开发爬坑记录</title>
+  <link>https://www.fancybit.top/archives/70/</link>
+  <pubDate>Sun, 05 Jan 2020 17:00:41 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/70/</guid>
+  <description><![CDATA[宝塔面板本机运行不方便用ssl，如果不小心用了&lt;a href=&ldquo;https://就会报403错误&rdquo; _src=&ldquo;https://就会报403错误&rdquo; target=&quot;_blank&quot; rel=&ldquo;nofollow&rdquo; &gt;https://就会报403错误
+phpstorm全局搜索替换的时候默认会勾选文件类型过滤，只搜索php文件，去掉文件类型过滤才能所有文本内容全局搜索
+ECSHOP在include/config.php里设置一个DEBUG_MODE宏可以开启DEBUG模式，不启用缓存之类的机制方便调试。
+去掉这个可以解决本机调试时候的一些断点追踪配置报错
+ecshop二次开发爬坑记录 php phpstorm.ecshop 电商 第1张手机端页面路径是/mobile/而不是/wap/
+ECSHOP 5.4以上PHP报错
+https://www.cnblogs.com/1442369580cyw/p/3674739.html
+ecs_ecsmart_shop_config 商店基本信息配置表
+后台管理页面目录访问权限报错解决：
+https://blog.csdn.net/qq_31752115/article/details/103597263]]></description>
+</item>
+</channel>
+</rss>

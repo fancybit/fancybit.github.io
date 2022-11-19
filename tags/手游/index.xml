@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>手游 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E6%89%8B%E6%B8%B8/</link>
+    <description>手游 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 29 Dec 2020 08:54:41 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E6%89%8B%E6%B8%B8/" rel="self" type="application/rss+xml" /><item>
+  <title>Unity插件OdinInspector系列要点记录</title>
+  <link>https://www.fancybit.top/archives/110/</link>
+  <pubDate>Tue, 29 Dec 2020 08:54:41 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/110/</guid>
+  <description><![CDATA[对于Dictionary&lt;T,T&gt;之类的unity本身不支持序列化的字段，需要使用[OdinSerialize]标签来进行序列化存储。
+需要启用Odin Inspector增强的组件需要从SerializedMonoBehaviour类型继承。
+更换了组件的序列化方式之后，可能需要删除掉组件再添加组件，然后重启Unity编辑器。否则会出现一些莫名其妙的BUG。]]></description>
+</item>
+</channel>
+</rss>

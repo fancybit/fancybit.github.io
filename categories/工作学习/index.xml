@@ -1,0 +1,108 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>工作学习 - Category - 数语轩</title>
+    <link>https://www.fancybit.top/categories/%E5%B7%A5%E4%BD%9C%E5%AD%A6%E4%B9%A0/</link>
+    <description>工作学习 - Category - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 14 Sep 2022 00:53:43 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/categories/%E5%B7%A5%E4%BD%9C%E5%AD%A6%E4%B9%A0/" rel="self" type="application/rss+xml" /><item>
+  <title>C# obfuscar代码混淆备忘</title>
+  <link>https://www.fancybit.top/archives/871/</link>
+  <pubDate>Wed, 14 Sep 2022 00:53:43 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/871/</guid>
+  <description><![CDATA[从nuget安装Obfascar包，不用GlobalTool
+在项目中创建obfucar.xml
+在生成后事件里，
+注意这里是Obfuscar 不是obfascator
+然后是一个简单的obfuscar.xml范例
+有关配置文件详情看这里：
+Configuration — obfuscar 2.2 documentation]]></description>
+</item>
+<item>
+  <title>C#中webbrowser与javascript(js)交互的方法</title>
+  <link>https://www.fancybit.top/archives/800/</link>
+  <pubDate>Sun, 28 Nov 2021 06:41:36 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/800/</guid>
+  <description><![CDATA[C#调用js
+js调用c#]]></description>
+</item>
+<item>
+  <title>vscode调试typescript</title>
+  <link>https://www.fancybit.top/archives/793/</link>
+  <pubDate>Wed, 24 Nov 2021 15:08:08 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/793/</guid>
+  <description><![CDATA[vscode本身支持ts调试： 只要在tsconfig.json里打开sourceMap = true就可以启动源码映射文件(*.map)来进行运行时ts断点调试。 终端-》新建终端 创建一个终端窗口 如果已经有终端窗口可以略过这一步 点击终端面板右上角添加终端的+右边的向下箭头，选择创建js调试终端： 这个时候在这个终端里启动的node.js运行js的实例都会进行调试，遇到ts或者js断点都会暂停然后查看状态。
+安装一个vscode插件typescript debugger可以把调试过程做的更简单，F5一键进入调试模式： 1.搜索安装typescript debugger插件，然后切换到debug设置状态：
+2.创建一个调试配置文件，选择ts debug
+3.下图这里把标记的地方改成启动的js文件相对路径，比如./dist/app.js,然后保存
+4.在随意一个终端里运行npm install -dev ts-node 安装所需的包
+5.完成后就可以F5一键键开始调试了，同样是支持js和ts断点，只要tsconfig.json里启用了sourceMap文件生成]]></description>
+</item>
+<item>
+  <title>NPM install -save 和 -save-dev 傻傻分不清</title>
+  <link>https://www.fancybit.top/archives/775/</link>
+  <pubDate>Sun, 03 Oct 2021 08:12:00 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/775/</guid>
+  <description><![CDATA[NPM install -save 和 -save-dev 傻傻分不清
+回顾 npm install 命令 最近在写Node程序的时候，突然对 npm install 的-save和-save-dev 这两个参数的使用比较混乱。其实博主在这之前对这两个参数的理解也是模糊的，各种查资料和实践后对它们之间的异同点略有理解。遂写下这篇文章避免自己忘记，同时也给node猿友一点指引。
+我们在使用 npm install 安装模块的模块的时候 ，一般会使用下面这几种命令形式：
+&lt;td&gt; &lt;code&gt;npm install&lt;/code&gt; &lt;code&gt;moduleName&lt;/code&gt;&lt;br /&gt;&lt;code&gt;# 安装模块到项目目录下&lt;/code&gt; &lt;br /&gt;&lt;code&gt;npm install&lt;/code&gt; &lt;code&gt;-g moduleName &lt;/code&gt;&lt;br /&gt;&lt;code&gt;# -g 的意思是将模块安装到全局，具体安装到磁盘哪个位置，要看 npm config prefix 的位置。&lt;/code&gt;&lt;br /&gt;&lt;code&gt;npm install&lt;/code&gt; &lt;code&gt;-save moduleName &lt;/code&gt;&lt;br /&gt;&lt;code&gt;# -save 的意思是将模块安装到项目目录下，并在package文件的dependencies节点写入依赖。&lt;/code&gt; &lt;code&gt;npm install&lt;/code&gt; &lt;code&gt;-save-dev moduleName &lt;/code&gt;&lt;br /&gt;&lt;code&gt;# -save-dev 的意思是将模块安装到项目目录下，并在package文件的devDependencies节点写入依赖。&lt;/code&gt; &lt;/td&gt; 那么问题来了，在项目中我们应该使用四个命令中的哪个呢？这个就要视情况而定了。下面对这四个命令进行对比，看完后你就不再这么问了。
+npm install moduleName 命令 安装模块到项目node_modules目录下。 不会将模块依赖写入devDependencies或dependencies 节点。 运行 npm install 初始化项目时不会下载模块。 npm install -g moduleName 命令 安装模块到全局，不会在项目node_modules目录中保存模块包。 不会将模块依赖写入devDependencies或dependencies 节点。 运行 npm install 初始化项目时不会下载模块。 npm install -save moduleName 命令 安装模块到项目node_modules目录下。 会将模块依赖写入dependencies 节点。 运行 npm install 初始化项目时，会将模块下载到项目目录下。 运行npm install &ndash;production或者注明NODE_ENV变量值为production时，会自动下载模块到node_modules目录中。 npm install -save-dev moduleName 命令 安装模块到项目node_modules目录下。 会将模块依赖写入devDependencies 节点。 运行 npm install 初始化项目时，会将模块下载到项目目录下。 运行npm install &ndash;production或者注明NODE_ENV变量值为production时，不会自动下载模块到node_modules目录中。 总结 devDependencies 节点下的模块是我们在开发时需要用的，比如项目中使用的 gulp ，压缩css、js的模块。这些模块在我们的项目部署后是不需要的，所以我们可以使用 -save-dev 的形式安装。像 express 这些模块是项目运行必备的，应该安装在 dependencies 节点下，所以我们应该使用 -save 的形式安装。]]></description>
+</item>
+<item>
+  <title>Anaconda &#43; VSCode 最详细教程</title>
+  <link>https://www.fancybit.top/archives/774/</link>
+  <pubDate>Fri, 01 Oct 2021 16:17:53 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/774/</guid>
+  <description><![CDATA[写在前面 为了录制这篇教程，我又把电脑上的 Python 卸载了🕹，重新安装 Anaconda 和 VSCode ，并录制动图。文章每个步骤介绍的很详细，只要跟着GIF动图一步一步操作就可以，适合零基础的朋友，通过这篇文章可以让你学会自己运行 Py 文件、以及一些发布出来的 Py 代码段，同时也是为了让更多人迈出学习 Python 的第一个门槛，后续也会写一些 Python 爬虫案例，用于工商信息查询、地址查询、快递查询等，所以为了这些工具，赶紧学起来吧📘。
+现在 Python 的广告可谓铺天盖地，文章、朋友圈、各种网页基本都能看到，虽然有些广告确实夸大了 Python 的作用，标题很雷人，但是无论如何也反映了一种趋势，未来编程思维很重要。而我们看待 Python 等编程语言应保持客观，能够帮到自己那就值得花点时间学习，入门之后才知道是不是自己的菜。
+「戏」说 Python image
+写在前面 为了录制这篇教程，我又把电脑上的 Python 卸载了🕹，重新安装 Anaconda 和 VSCode ，并录制动图。文章每个步骤介绍的很详细，只要跟着GIF动图一步一步操作就可以，适合零基础的朋友，通过这篇文章可以让你学会自己运行 Py 文件、以及一些发布出来的 Py 代码段，因为封装成 EXE 不方便调试和更新，同时也是让更多人迈出学习 Python 的第一个门槛，后续也会写一些 Python 爬虫案例，用于工商信息查询、地址查询、快递查询等，所以为了这些工具，赶紧学起来吧📘。
+一、Anaconda 下载 Anaconda 可以看做Python的一个集成安装，安装它后就默认安装了python、IPython、集成开发环境Spyder和众多的包和模块，让你在管理环境和包时更加方便。
+可以选择从官网或清华源下载 Anaconda 安装包，清华源下载速度相对较快。
+安装的位数推荐32位，兼容性最强，也可以根据自己的系统位数选择安装。
+官网：https://www.anaconda.com/products/individual
+官网
+清华源：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+清华源
+二、Anaconda 安装 安装过程中三个注意的地方：
+勾选 Alls Users 勾选 Add Anaconda to the system PATH environment variable 如果之前没有安装 VSCode，可以在 Anaconda 安装过程中选择安装 Anaconda 安装]]></description>
+</item>
+<item>
+  <title>Docker复习备忘</title>
+  <link>https://www.fancybit.top/archives/773/</link>
+  <pubDate>Wed, 29 Sep 2021 09:28:22 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/773/</guid>
+  <description><![CDATA[Docker Windows使用wsl后端可以提高性能
+-p xxx[宿主机口号]:xxx[docker容器内端口号]
+当宿主机内使用非0.0.0.0 Listen的时候，可能导致宿主机转发来的连接断开，所以如果宿主机内可以curl到内容，但是宿主机浏览器显示socket hang up以及empty_response错误的时候，很可能就是宿主机内listen的IP不对，用0.0.0.0监听所有来源地址即可。
+把容器名和镜像名取同一个 然后commit xxx xxx即可把容器状态同步给镜像文件了
+每一句都会生成一个中间缓存，所以不变的尽量靠前放，经常变化的比如入口点，复制文件之类的往后放。但是也要注意不要搞错依赖关系致使中间出错。
+Dockerfile进行build的时候需要很多错综复杂的国外网络地址，所以与其来回折腾换源提速，还不如直接用一个VPN暂时把所有流量走国外加速VPN，可以解决很多缺失问题。
+pip安装python模块的时候经常会遇到一些.h文件缺失，这种情况一般是用yum来安装缺少的xxx-dev xxx-devel之类的支持库即可解决。
+COPY . .可以和WorkDir配合，WorkDir指定的是容器内的文件系统路径，而COPY的第一个参数是相对于Dokerfile放置的目录，第二个是基于WorkDir参数的容器内路径，注意顺序。
+用.dockerIgnore排除掉.git应该可以避免不需要的git历史占据的空间。
+如果dockerfile构建的时候需要清理每一句的缓存，可以在docker后添加&ndash;no-cache参数来不用缓存彻底从头构建
+vscode有一个docker插件可以浏览修改docker内部 不过我觉得还是用VI做小修小改更顺手。不过拿来检查docker内的文件是否正确更新是个好东西。
+vscode带的DOKERFILE语法格式识别还不错，右键就可以构建]]></description>
+</item>
+<item>
+  <title>Docker容器里centos无法使用 systemctl 命令</title>
+  <link>https://www.fancybit.top/archives/770/</link>
+  <pubDate>Mon, 27 Sep 2021 07:12:03 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/770/</guid>
+  <description><![CDATA[提示信息：system has not been booted with systemd as systme init system（PID 1）. can&rsquo;t operate
+解决办法：
+命令1：docker run -tid &ndash;name 容器名称 &ndash;privileged=true 镜像ID /usr/sbin/init
+命令2：docker exec -it centos01 /bin/bash
+————————————————
+版权声明：本文为CSDN博主「琪琪酱紫」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_26889387/article/details/110524090]]></description>
+</item>
+</channel>
+</rss>

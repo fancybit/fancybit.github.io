@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>网络安全 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</link>
+    <description>网络安全 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 01 Mar 2020 16:31:08 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="self" type="application/rss+xml" /><item>
+  <title>kali 虚拟机安装记录</title>
+  <link>https://www.fancybit.top/archives/93/</link>
+  <pubDate>Sun, 01 Mar 2020 16:31:08 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/93/</guid>
+  <description><![CDATA[安装vmware
+去kali官网上下载最新版的kali镜像 注意最好下载live版 installer是给windows环境下安装的目测 在vmware里用live才能安装成功
+安装完毕了再安装vm-tools
+安装teamviewer的时候需要用dpkg -i xxx.deb 然后会遇到一些依赖问题 这时再运行apt-get &ndash;fix-broken 就可以继续安装并且自动搞定所有依赖问题了 方便
+安装输入法和添加国内镜像加快软件下载速度参照这里：
+https://blog.csdn.net/wanglolaini/article/details/82845748
+解决启动之后输入密码时候小键盘关闭的问题 参看下面：
+https://www.cnblogs.com/lxmwb/p/6241788.html
+不过我用的不是gedit 好像我用的kali版本是基于qt的kde界面 可以用mousepad 不过我最后还是用的vim就够了
+kali使用代理的话可以用proxychains 修改配置文件 /etc/proxychains.conf 把最后一行换成代理服务器IP和端口 然后注掉其他代理IP 使用控制台proxychians xxx来启动需要代理的软件]]></description>
+</item>
+</channel>
+</rss>

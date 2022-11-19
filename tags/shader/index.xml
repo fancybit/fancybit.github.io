@@ -1,0 +1,33 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>shader - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/shader/</link>
+    <description>shader - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 18 Mar 2021 17:07:18 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/shader/" rel="self" type="application/rss+xml" /><item>
+  <title>Shader效果踩坑备忘</title>
+  <link>https://www.fancybit.top/archives/113/</link>
+  <pubDate>Thu, 18 Mar 2021 17:07:18 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/113/</guid>
+  <description><![CDATA[在使用%运算来制作图集中的sprite无限滚动的UV动画效果的时候，记得用abs把符号去掉，否则%运算（对于小数或者整数都一样）会保留符号，这就导致实际取值范围会到达(-1,1) 负数uv的部分会造成依赖于贴图超出处理方式属性的错误结果（clamp就是什么都没有或者色块 repeat就是显示出同图集的相邻其他sprite图像）。
+还有几种可以代替%的计算方法：
+另外unity的UV坐标原点在贴图左下角，和GDI的左上角不同。
+参考shader：
+另外传入UVRect的时候记得从sprite的rect属性里得到rect再除以sprite的纹理宽高，生成0-1范围的UV坐标再传入shader，否则会看不到任何东西。]]></description>
+</item>
+<item>
+  <title>Shader编程备忘</title>
+  <link>https://www.fancybit.top/archives/100/</link>
+  <pubDate>Thu, 23 Apr 2020 04:24:04 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/100/</guid>
+  <description><![CDATA[目前效果
+B站：https://www.bilibili.com/video/bv1Wa4y147Nr
+cg的乘法运算符是数值对乘 对向量和矩阵要求尺寸一致，cg的向量点积和向量矩阵 矩阵矩阵乘法用mul函数
+只有4维的向量vector可以作为向量参数 设置Blend 并且才能启用半透明混合效果
+透明相关tag参看这里:https://www.cnblogs.com/0kk470/p/8250704.html
+Blend参数看这里：https://blog.csdn.net/LeeXxs/article/details/85112661
+用材质制作摄像机后处理效果时候，如果修改fragment shader出现拖影问题，就要在代码里把RenderTexture上面每一次处理绘制成全白，木有找到clear的办法只能先这样：]]></description>
+</item>
+</channel>
+</rss>

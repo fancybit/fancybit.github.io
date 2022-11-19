@@ -1,0 +1,68 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>windows - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/windows/</link>
+    <description>windows - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 04 Nov 2021 02:16:07 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/windows/" rel="self" type="application/rss+xml" /><item>
+  <title>2021-11-3开发日志</title>
+  <link>https://www.fancybit.top/archives/785/</link>
+  <pubDate>Thu, 04 Nov 2021 02:16:07 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/785/</guid>
+  <description><![CDATA[今天搞定了unity桌宠的透明和使用像素做鼠标穿透的问题，主要参考这个油管视频：
+unity中有些涉及windows的操作 .net必须选择.net framework4.x，同时引用来的.net dll也必须是.net 4.x的一套]]></description>
+</item>
+<item>
+  <title>windows下运行语音识别项目wenet Demo</title>
+  <link>https://www.fancybit.top/archives/765/</link>
+  <pubDate>Sun, 19 Sep 2021 15:52:18 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/765/</guid>
+  <description><![CDATA[wenet是个语音识别AI 效果感觉还不错 只是在windows下直接下载demo会需要修改些指令 说明文档里写的是适合linux的指令。我这里把自己修改后的可以在windows10下执行的指令列出来 原本步骤参见GITHUB:
+https://github.com/wenet-e2e/wenet/blob/main/README_CN.md
+OK这就可以方便windows用户 不用再切换到linux或者在虚拟机中运行docker了 应该可以提高效率也方便点
+源项目地址：]]></description>
+</item>
+<item>
+  <title>像程序员一样安装程序：Chocolatey 初见</title>
+  <link>https://www.fancybit.top/archives/754/</link>
+  <pubDate>Wed, 07 Jul 2021 09:16:22 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/754/</guid>
+  <description><![CDATA[SanKo2019年06月26日
+Matrix 精选 Matrix 是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选 Matrix 最优质的文章，展示来自用户的最真实的体验和观点。
+文章代表作者个人观点，少数派仅对标题和排版略作修改。
+你一定会觉得很酷！今天，我们会尝试用一种非常程序员的方式在 Windows 上安装、卸载、管理程序。
+来动手试一试吧，毕竟，这可能是你接近编程的一次美好体验。
+神奇！ 要是你 在少数派上 看到了一款很好用的文件压缩工具 Bandizip，你会怎么来安装它呢？
+通过文章内的链接或搜索引擎找到它的官网，点击官网的下载按钮安装 要是你使用百度，你可以在百度搜索页直接点击第三方软件下载站的按钮下载 借助各大厂家的电脑管家来搜索、下载 向身边的好友或在论坛、交流群中索要安装包 但是，今天我们会尝试一种更加有趣、方便而又可靠的方式：
+使用 Chocolatey 安装 Bandizip
+没错，只需要输入一行命令，稍等几分钟，Bandizip 已经在你的系统中装好啦。
+安装 Chocolatey 要想这样通过命令行来一键安装程序，我们借助的是 Chocolatey 这款软件包管理器。它事实上是为了习惯于 Linux 的程序员们准备的，因为在 Linux 中安装程序，通常都只需要一条安装命令就可以完成。不过，这丝毫不影响每一个人来尝试一下。
+安装 Chocolatey
+Chocolatey 自身的安装很方便，一共有三步：
+开始菜单中搜索 cmd，选择「命令提示符」 右键菜单或在右边菜单选择「以管理员身份运行」 复制下面这段内容，回车执行@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot; OK 准备就绪。
+前面的安装命令来自 官网的安装界面，如果有更新，还是以官网的为准。
+第一次尝试 接下来，我们可以继续在这个窗口中，尝试安装我们的第一个程序。输入：
+稍等片刻，Bandizip 程序就安装好了。你可以在桌面上看到它的快捷方式。
+装机从此不再难 每次拿到一台新的电脑，快速安装上所有自己需要的程序是一件非常非常耗时间的事情。
+如果去国内各大第三方下载站，或者电脑管家、百度的安装工具，它们很多都会把原生的安装包进行修改，加入自己的广告或其他私货；总之，下载软件还是最好去各自的官网，这样才能最好地避免病毒、保护隐私。
+然而，要一个个软件分别去官网下载，既无聊，又费心。下载安装包之后，还需要手动一次次地点击「下一步」，直到全部安装完成。]]></description>
+</item>
+<item>
+  <title>文件莫名其妙被共享</title>
+  <link>https://www.fancybit.top/archives/58/</link>
+  <pubDate>Thu, 14 Nov 2019 03:27:40 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/58/</guid>
+  <description><![CDATA[最近发现隔一段时间我的电脑C D盘就会不知道什么时候被开了共享，这样来蹭WIFI的都可以随便下我的电脑内容了，然后就在火绒上开了个注册表保护：
+高级防护-》自定义防护-》添加规则-》添加保护对象-》注册表规则-》
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Shares\
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Shares\Security
+这两项注册表是有关局域网文件共享的
+然后修改这2项之后重启lanmanserver服务 就可以看到lanmanserver会读取这两个里面的内容 重新启动注册表服务
+windows xp之后好像都是这个服务在控制局域网的文件和打印机共享
+哦了 现在就等着哪个捣蛋的进程再来动我的局域网共享了 到时候查出来彻底灭掉]]></description>
+</item>
+</channel>
+</rss>

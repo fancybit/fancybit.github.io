@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>三国 - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/%E4%B8%89%E5%9B%BD/</link>
+    <description>三国 - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 18 Sep 2019 10:28:56 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/%E4%B8%89%E5%9B%BD/" rel="self" type="application/rss+xml" /><item>
+  <title>疾风三国</title>
+  <link>https://www.fancybit.top/archives/52/</link>
+  <pubDate>Wed, 18 Sep 2019 10:28:56 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/52/</guid>
+  <description><![CDATA[在三生石公司参与开发的一款动作PK手游，现在已经改名字了，具体换成了什么名字不太清楚
+http://www.iqiyi.com/w_19rt6pyqdt.html
+在那里做node.js服务端游戏逻辑，一开始配置pomelo让同事带着搞了几个小时，又是源码编译又是挨个处理异常 node这种东西还是在linux上开发更容易些吧 可是我又得在对接的时候开着unity，没办法那时候好像unity并没有linux版的ide]]></description>
+</item>
+</channel>
+</rss>

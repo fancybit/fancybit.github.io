@@ -1,0 +1,106 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>js - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/js/</link>
+    <description>js - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 24 Nov 2021 15:08:08 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/js/" rel="self" type="application/rss+xml" /><item>
+  <title>vscode调试typescript</title>
+  <link>https://www.fancybit.top/archives/793/</link>
+  <pubDate>Wed, 24 Nov 2021 15:08:08 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/793/</guid>
+  <description><![CDATA[vscode本身支持ts调试： 只要在tsconfig.json里打开sourceMap = true就可以启动源码映射文件(*.map)来进行运行时ts断点调试。 终端-》新建终端 创建一个终端窗口 如果已经有终端窗口可以略过这一步 点击终端面板右上角添加终端的+右边的向下箭头，选择创建js调试终端： 这个时候在这个终端里启动的node.js运行js的实例都会进行调试，遇到ts或者js断点都会暂停然后查看状态。
+安装一个vscode插件typescript debugger可以把调试过程做的更简单，F5一键进入调试模式： 1.搜索安装typescript debugger插件，然后切换到debug设置状态：
+2.创建一个调试配置文件，选择ts debug
+3.下图这里把标记的地方改成启动的js文件相对路径，比如./dist/app.js,然后保存
+4.在随意一个终端里运行npm install -dev ts-node 安装所需的包
+5.完成后就可以F5一键键开始调试了，同样是支持js和ts断点，只要tsconfig.json里启用了sourceMap文件生成]]></description>
+</item>
+<item>
+  <title>jquery mouseleave和mouseout的区别</title>
+  <link>https://www.fancybit.top/archives/778/</link>
+  <pubDate>Tue, 19 Oct 2021 14:30:19 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/778/</guid>
+  <description><![CDATA[今天做一个下拉菜单的效果，发现用mouseout事件判断鼠标是否移出菜单让菜单消失的判断有很大问题。
+第一是鼠标移动到了元素的margin border padding区域的时候会触发mouseout。
+第二是子元素上鼠标移开也会让父元素触发mouseout。
+这就导致鼠标在进入下拉菜单和在菜单元素之间移动的时候触发大量的mouseout，菜单总是消失。
+改为使用mouseleave事件以后问题消失，说明mouseleave既会把margin border padding视为组件内部，也不会反复的在其子元素之间移动鼠标的时候触发。]]></description>
+</item>
+<item>
+  <title>使用 pjax 实现网站无刷新加载</title>
+  <link>https://www.fancybit.top/archives/719/</link>
+  <pubDate>Sat, 03 Jul 2021 15:42:33 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/719/</guid>
+  <description><![CDATA[之前也没有研究过pjax，但是没事走访别人博客时看到不少经过pjax优化的网站，响应速度很快，今天看到玖梦博客的一篇《一行代码实现全站pjax无刷新加载》测试后发发现效果确实不错，故发文记录一下。
+pjax是什么
+pjax是一个jQuery插件，它通过ajax和pushState技术提供了极速的（无刷新ajax加载）浏览体验，并且保持了真实的地址、网页标题，浏览器的后退（前进）按钮也可以正常使用。
+pjax的工作原理是通过ajax从服务器端获取HTML，在页面中用获取到的HTML替换指定容器元素中的内容。然后使用pushState技术更新浏览器地址栏中的当前地址。
+以下两点原因决定了pjax会有更快的浏览体验：
+1.不存在页面资源（js/css）的重复加载和应用；
+2.如果服务器端配置了pjax，它可以只渲染页面局部内容，从而避免服务器渲染完整布局的额外开销。
+项目现状
+jquery-pjax的维护方向：可能会继续修复重要的bug，但其功能不会再发生变化，即不会再实现新功能，也不会再扩展现有功能。
+如何使用
+客户端
+客户端设置分两步： 1.下载插件，包括jquery1.8+，或者npm安装，这部分参考文档，不赘述。
+2.初始化pjax插件，并有条件的拦截
+初始化
+下面代码表示：当 selector 被点击时，执行ajax请求，并将返回的HTML字符串填充在 container 标记的位置。
+参数说明
+selector：string类型，用于click 事件委托 的选择器。
+container：string类型，用于标识唯一pjax容器的选择器。
+options object类型，包含下列选项。
+pjax配置选项
+选项 默认值 说明
+timeout 650 ajax超时时间（毫秒），超时后强制刷新整个页面
+push true
+使用
+pushState
+在浏览器中添加历史记录
+replace false 替换URL地址但不添加浏览器历史记录
+maxCacheLength 20 容器元素缓存内容的最大值（次）
+version string或function，返回当前pjax版本
+scrollTo 浏览器滚动条的垂直滚动位置。设为 false 时禁止滚动
+type &ldquo;GET&rdquo;
+参考
+$.ajax
+dataType &ldquo;html&rdquo;
+参考
+$.ajax
+container 被替换内容元素的CSS选择器
+url link.href string或function，返回ajax请求响应的URL
+target link
+pjax
+事件
+中 relatedTarget 属性的最终值]]></description>
+</item>
+<item>
+  <title>微信公众号开发踩坑记录</title>
+  <link>https://www.fancybit.top/archives/105/</link>
+  <pubDate>Wed, 09 Sep 2020 08:03:15 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/105/</guid>
+  <description><![CDATA[在微信浏览器里可以通过jssdk调用微信的各种功能，比如微信扫一扫，获取用户列表，分享到朋友圈之类 。
+但是每次调用jssdk的时候浏览器的JS必须先用wx.config完成配置和签名校验，这就需要从后端获取一组签名数据包。微信公众平台提供了这方面的文档和参考，有后端也有前端。
+后端范例下载：
+http://demo.open.weixin.qq.com/jssdk/sample.zip
+JSSDK文档：
+https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html
+我使用的是php，这里需要把jssdk.php jsapi_ticket.php access_token.php三个文件都下载下来才能使用，后2个文件是用来缓存jsapi_ticket和access_token的。这两个用来给后端生成签名数据包，然后浏览器端获取签名数据包之后，用js调用jssdk传入签名数据包进行配置，通过验证之后就可以正常调用微信（微信内置浏览器）提供的功能了，这些功能都通过wx这个对象调用。这两个口令的有效期都是2小时，并且请求频率有限制，所以这个缓存机制不能省略。
+jssdk.php并不是复制过来就能用的，我做了几个修改才最终适配到了我这边的需求和环境。一个是access_token.php和jsap_ticket.php的路径，由于用了MVC结构，所以改了一下jssdk.php内对这两个文件的访问，使用了完整URL路径才能正确读写。然后是请求access_token的时候一开始得到的是null，之后下载了
+这个文件，放到文件系统，更改了php配置文件:
+[curl]
+; A default value for the CURLOPT_CAINFO option. This is required to be an
+; absolute path.
+curl.cainfo=&ldquo;d:\xxx\xxx\cacert.pem&rdquo;
+然后重启php，之后就可以获取到access_token和jsapi_ticket了。当然，我开启了ssl。
+还有一个坑是签名验证算法的url参数，首先我用的是frp转发，frp服务端用了ssl，但是我自己的机器没有用，通过nginx转发到本机所以没必要用ssl。因此我这边检测出来的通信协议是http而不是https，这里可能需要手动指定一下。在jssdk.php的这里：
+如果没有使用ajax获取签名包，这里可能需要直接指定成&lt;a href=&ldquo;https://&rdquo; _src=&ldquo;https://&rdquo; target=&quot;_blank&quot; rel=&ldquo;nofollow&rdquo; &gt;https://
+另外这个url参数必须和执行wx.config这个js代码的所在页面路径一致，因此如果你用ajax访问另外一个服务端url获取签名包，应该把执行js的页面的window.location进行url编码，跟着ajax Post参数发送到后端，后端用收到的参数解码后替代这里的url，大概改了以后是这样：
+终于可以顺利通过验证调用扫码了，这个坑磨了我将近一天，做个记录备忘，如果帮到你了或者还有疑问，欢迎留言联系我。]]></description>
+</item>
+</channel>
+</rss>

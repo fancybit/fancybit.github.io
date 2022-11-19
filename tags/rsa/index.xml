@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>rsa - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/rsa/</link>
+    <description>rsa - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 19 Feb 2020 14:16:17 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/rsa/" rel="self" type="application/rss+xml" /><item>
+  <title>ssh使用秘钥登陆linux的坑</title>
+  <link>https://www.fancybit.top/archives/81/</link>
+  <pubDate>Wed, 19 Feb 2020 14:16:17 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/81/</guid>
+  <description><![CDATA[有个问题总是记反，用秘钥文件登陆的时候 在客户机上是创建公钥和私钥，私钥用ssh-add指令添加到windows的秘钥管理，然后公钥上传到linux服务器，输入到公钥列表文件
+也就是说 其实客户机可以只使用一组非对称的加密秘钥，私钥放着自己保管，公钥发到哪些服务器，哪些服务器就会允许客户机登陆，而不是之前印象里的服务器创建秘钥文件
+假设在公司维护或者开发 需要连接一台新的服务器，就要把自己的公钥交给运维的放到服务器，这样就获得了特定服务器的访问权限，而不是应该从运维那里索要秘钥对，这样也避免了运维人员使用发给你的秘钥对冒充你操作]]></description>
+</item>
+</channel>
+</rss>

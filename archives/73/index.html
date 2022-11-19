@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>好商城二开备忘 - 数语轩</title><meta name="author" content="">
+<meta name="author-link" content="">
+<meta name="description" content="处理请求的核心流程：
+base.php
+install/index.php
+183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+读取配置文件到全局变量$setting_config
+设置MD5 KEY
+检测配置时区
+配置启动session
+配置语言
+control 解析url get参数传递来的action op 控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+设置语言
+检测是否登录
+调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+检测权限
+用户ID为1的根用户可以越过检测控制所有功能
+转码防止GBK乱码
+index layout" /><meta name="keywords" content='b2b2c, php, 好商城, 电商' /><meta itemprop="name" content="好商城二开备忘">
+<meta itemprop="description" content="处理请求的核心流程：
+base.php
+install/index.php
+183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+读取配置文件到全局变量$setting_config
+设置MD5 KEY
+检测配置时区
+配置启动session
+配置语言
+control 解析url get参数传递来的action op 控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+设置语言
+检测是否登录
+调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+检测权限
+用户ID为1的根用户可以越过检测控制所有功能
+转码防止GBK乱码
+index layout"><meta itemprop="datePublished" content="2020-01-23T16:29:40+00:00" />
+<meta itemprop="dateModified" content="2020-01-23T16:29:40+00:00" />
+<meta itemprop="wordCount" content="59">
+<meta itemprop="keywords" content="b2b2c,php,好商城,电商," /><meta property="og:title" content="好商城二开备忘" />
+<meta property="og:description" content="处理请求的核心流程：
+base.php
+install/index.php
+183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+读取配置文件到全局变量$setting_config
+设置MD5 KEY
+检测配置时区
+配置启动session
+配置语言
+control 解析url get参数传递来的action op 控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+设置语言
+检测是否登录
+调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+检测权限
+用户ID为1的根用户可以越过检测控制所有功能
+转码防止GBK乱码
+index layout" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.fancybit.top/archives/73/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-01-23T16:29:40+00:00" />
+<meta property="article:modified_time" content="2020-01-23T16:29:40+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="好商城二开备忘"/>
+<meta name="twitter:description" content="处理请求的核心流程：
+base.php
+install/index.php
+183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+读取配置文件到全局变量$setting_config
+设置MD5 KEY
+检测配置时区
+配置启动session
+配置语言
+control 解析url get参数传递来的action op 控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+设置语言
+检测是否登录
+调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+检测权限
+用户ID为1的根用户可以越过检测控制所有功能
+转码防止GBK乱码
+index layout"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://www.fancybit.top/archives/73/" /><link rel="prev" href="https://www.fancybit.top/archives/72/" /><link rel="next" href="https://www.fancybit.top/archives/74/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "好商城二开备忘",
+    "inLanguage": "zh-cn",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/www.fancybit.top\/archives\/73\/"
+    },"genre": "post","keywords": "b2b2c, php, 好商城, 电商","wordcount":  59 ,
+    "url": "https:\/\/www.fancybit.top\/archives\/73\/","datePublished": "2020-01-23T16:29:40+00:00","dateModified": "2020-01-23T16:29:40+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="数语轩"
+    title="数语轩"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><img
+    class="lazyload logo"
+    src="/svg/loading.min.svg"
+    data-src="/fixit.min.svg"
+    data-srcset="/fixit.min.svg, /fixit.min.svg 1.5x, /fixit.min.svg 2x"
+    data-sizes="auto"
+    alt="/fixit.min.svg"
+    title="/fixit.min.svg"/><span class="header-title-text">My New Hugo FixIt Site</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Posts</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="normal"><article class="page single special">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">好商城二开备忘</h1></div><div
+      class="content"
+      id="content"
+      
+      
+    ><p>处理请求的核心流程：</p>
+<p>base.php</p>
+<!-- raw HTML omitted -->
+<p>install/index.php</p>
+<p>    183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用</p>
+<p>设置选项在数据库的setting表里</p>
+<p>cp 权限检测</p>
+<p>init</p>
+<p>    读取配置文件到全局变量$setting_config</p>
+<p>        设置MD5 KEY</p>
+<p>    检测配置时区</p>
+<p>    配置启动session</p>
+<p>    配置语言</p>
+<p>control </p>
+<p>    解析url get参数传递来的action op </p>
+<p>    控制转移到controller</p>
+<p>/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议</p>
+<p>/shop/index.php是商城入口</p>
+<p>/wap/是手机h5入口</p>
+<p>/admin/总管理入口</p>
+<p>/mobile/ 手机服务端</p>
+<p>/admin/include/menu.php 框架菜单列表</p>
+<p>/data/log/ 日志文件 包括支付API的日志</p>
+<p>/moblie/控制层修改：</p>
+<p>\mobile\framework\function\function.php</p>
+<!-- raw HTML omitted -->
+<p>添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题</p>
+<p>默认布局模板：</p>
+<p>/shop/templates/default/layout/home_layout.php</p>
+<p>顶部布局模板：</p>
+<p>/shop/templates/default/layout/layout_top.php</p>
+<p>总后台管理端：</p>
+<p>分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：</p>
+<p>/admin/modules/</p>
+<p>由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程</p>
+<p>几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：</p>
+<p>    设置语言</p>
+<p>    检测是否登录</p>
+<p>        调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面</p>
+<p>    检测权限</p>
+<p>        用户ID为1的根用户可以越过检测控制所有功能</p>
+<p>    转码防止GBK乱码</p>
+<p>    </p>
+<p>index layout</p>
+<!-- raw HTML omitted -->
+</div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.106.0">Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.2.17-RC"><img class="fixit-icon" src="/fixit.min.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

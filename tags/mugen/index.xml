@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>MUGEN - Tag - 数语轩</title>
+    <link>https://www.fancybit.top/tags/mugen/</link>
+    <description>MUGEN - Tag - 数语轩</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 18 Sep 2019 10:16:29 &#43;0000</lastBuildDate><atom:link href="https://www.fancybit.top/tags/mugen/" rel="self" type="application/rss+xml" /><item>
+  <title>幽游白书2</title>
+  <link>https://www.fancybit.top/archives/55/</link>
+  <pubDate>Wed, 18 Sep 2019 10:16:29 &#43;0000</pubDate>
+  <author>fancybit</author>
+  <guid>https://www.fancybit.top/archives/55/</guid>
+  <description><![CDATA[百度网盘下载：
+点击下载
+中学时候和穿山王一起开发的MUGEN同人格斗游戏，还并没有把所有角色和场景都还原出来。只是一个飞影和山顶的场景。
+操控：
+aswd 上下左右
+jkl abc（也就是重攻击 轻攻击 防御）
+和幽游白书魔强统一战的区别：
+山顶场景的镜头炫光
+飞影的空中邪王炼狱焦附带了重击（也就是最后一拳会把对手锤到地上去）
+飞影的投技改成了邪眼发出的捆束能力（其实就加了个闪电动效）
+飞影的下下C会发出挑衅一样的动作 但是会耗灵力 然后此时被攻击会闪到对手后面来一刀（也就是反击技）
+飞影的黑龙波操控变成了a d（也就是左右）分别是顺时针 逆时针旋转 不按键就是直着走
+飞影的黑龙波自己吃掉以后 回满灵力再按下前下前a+b(也就是键盘上的sasa j+k)可以发射2条黑龙（因为开发的时候看到网上很多网友P图双龙甚至9龙 所以就满足一下他们吧）第二条黑龙用a b(也就是j k)来控制
+AI没有专门调校 所以行为看起来会比较傻 当沙包打就行
+我现在有空了会继续开发unity的MUGEN插件，目前已经实现了MUGEN资源的导入 包括图包和动画 现在正在做动画资源格式转成和UNITY编辑器和unity2d组件结合更好的操作流程，项目名称叫UnityMUGEN，完成度差不多了会发布到unity商店供大家使用，然后会用这个插件再重制幽游白书这个游戏，别着急因为最近其实比较忙 2333
+下面是几个截图：
+幽游白书2 幽游白书 yuyu 格斗 MUGEN 第1张幽游白书2 幽游白书 yuyu 格斗 MUGEN 第2张幽游白书2 幽游白书 yuyu 格斗 MUGEN 第3张幽游白书2 幽游白书 yuyu 格斗 MUGEN 第4张]]></description>
+</item>
+</channel>
+</rss>
