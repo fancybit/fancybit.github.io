@@ -1,10 +1,5 @@
----
-title: "Butterfly Love Flower"
-date: 2025-06-29T03:16:26+08:00
-type: posts
-author: fancybit
-draft: false
----
+# Butterfly Love Flower
+
 
 ## Butterfly in Love with Flower
 
@@ -25,4 +20,11 @@ Rosy fruit touches pointed pistils softly;
 Four seasons pass, love's journey unfolds.
 
 
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://fancybit.github.io/posts/butterfly.love.flower/  
 
