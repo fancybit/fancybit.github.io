@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -24,9 +24,9 @@
 4.提供协程支持C#天生支持异步变同步语法 async和await，比lua，python的协程强大的多，新版python以及javascript语言甚至照搬了C#的协程语法。分布式服务端大量服务器之间的远程调用，没有异步语法的支持，开发将非常麻烦。所以java没有异步语法，做单服还行，不适合做大型分布式游戏服务端。例如：
 可以看出，有了async await，所有的服务器间的异步操作将变得非常连贯，不用再拆成多段逻辑。大大简化了分布式服务器开发
 5.提供类似erlang的actor消息机制erlang语言一大优势就是位置透明的消息机制，用户完全不用关心对象在哪个进程，拿到id就可以对对象发送消息。ET框架也提供了actor消息机制，实体对象只需要挂上ActorComponent组件，这个实体对象就成了一个Actor，任何服务器只需要知道这个实体对象的id就可以向其发送消息，完全不用关心这个实体对象在哪个server，在哪台物理机器上。其实现原理也很简单，ET框架提供了一个位置服务器，所有挂载ActorComoponet的实体对象都会将自己的id跟位置注册到这个位置服务器，其它服务器向这个实体对象发送消息的时候如果不知道这个实体对象的位置，会先去位置服务器查询，查询到位置再进行发送。">
-  <meta itemprop="datePublished" content="2025-06-29T15:20:25+00:00">
-  <meta itemprop="dateModified" content="2025-06-29T15:20:25+00:00">
-  <meta itemprop="wordCount" content="38"><meta property="og:url" content="http://localhost:1313/posts/44/">
+  <meta itemprop="datePublished" content="2025-06-29T15:37:37+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:37:37+00:00">
+  <meta itemprop="wordCount" content="38"><meta property="og:url" content="http://fancybit.github.io/posts/44/">
   <meta property="og:site_name" content="数语轩">
   <meta property="og:title" content="【转】egametang框架简介">
   <meta property="og:description" content="【转】egametang框架简介 讨论QQ群 : 474643097
@@ -40,8 +40,8 @@
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-06-29T15:20:25+00:00">
-    <meta property="article:modified_time" content="2025-06-29T15:20:25+00:00">
+    <meta property="article:published_time" content="2025-06-29T15:37:37+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:37:37+00:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="【转】egametang框架简介">
@@ -56,7 +56,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/44/" title="【转】egametang框架简介 - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/62/" title="2019-12-10" /><link rel="next" type="text/html" href="http://localhost:1313/posts/749/" title="《绯红结系》动画" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/44/index.md" title="【转】egametang框架简介 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://fancybit.github.io/posts/44/" title="【转】egametang框架简介 - 数语轩" /><link rel="prev" type="text/html" href="http://fancybit.github.io/posts/62/" title="2019-12-10" /><link rel="next" type="text/html" href="http://fancybit.github.io/posts/91/" title="隐士逆位" /><link rel="alternate" type="text/markdown" href="http://fancybit.github.io/posts/44/index.md" title="【转】egametang框架简介 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -66,9 +66,9 @@
     "inLanguage": "en",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http:\/\/localhost:1313\/posts\/44\/"
+      "@id": "http:\/\/fancybit.github.io\/posts\/44\/"
     },"genre": "posts","wordcount":  38 ,
-    "url": "http:\/\/localhost:1313\/posts\/44\/","datePublished": "2025-06-29T15:20:25+00:00","dateModified": "2025-06-29T15:20:25+00:00","publisher": {
+    "url": "http:\/\/fancybit.github.io\/posts\/44\/","datePublished": "2025-06-29T15:37:37+00:00","dateModified": "2025-06-29T15:37:37+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -110,22 +110,22 @@
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>【转】egametang框架简介</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:25"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="38 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:37:37"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="38 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
     </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">【转】egametang框架简介</h1></div>
 <div class="content" id="content"><p>讨论QQ群 : 474643097</p><h3 id="a-hrefhttpsgithubcomegametangegametang1可用vs单步调试的分布式服务端n变1-target_blank-relnoopener-relnofollow-a1可用vs单步调试的分布式服务端n变1"><!-- raw HTML omitted --><!-- raw HTML omitted -->1.可用VS单步调试的分布式服务端，N变1</h3><p>一般来说，分布式服务端要启动很多进程，一旦进程多了，单步调试就变得非常困难，导致服务端开发基本上靠打log来查找问题。平常开发游戏逻辑也得开启一大堆进程，不仅启动慢，而且查找问题及其不方便，要在一堆堆日志里面查问题，这感觉非常糟糕，这么多年也没人解决这个问题。ET框架使用了类似守望先锋的组件设计，所有服务端内容都拆成了一个个组件，启动时根据服务器类型挂载自己所需要的组件。这有点类似电脑，电脑都模块化的拆成了内存，CPU，主板等等零件，搭配不同的零件就能组装成一台不同的电脑，例如家用台式机需要内存，CPU，主板，显卡，显示器，硬盘。而公司用的服务器却不需要显示器和显卡，网吧的电脑可能不需要硬盘等。正因为这样的设计，ET框架可以将所有的服务器组件都挂在一个服务器进程上，那么这个服务器进程就有了所有服务器的功能，一个进程就可以作为整组分布式服务器使用。这也类似电脑，台式机有所有的电脑组件，那它也完全可以当作公司服务器使用，也可以当作网吧电脑。</p><h3 id="a-hrefhttpsgithubcomegametangegametang2随意可拆分功能的分布式服务端1变n-target_blank-relnoopener-relnofollow-a2随意可拆分功能的分布式服务端1变n"><!-- raw HTML omitted --><!-- raw HTML omitted -->2.随意可拆分功能的分布式服务端，1变N</h3><p>分布式服务端要开发多种类型的服务器进程，比如Login server，gate server，battle server，chat server friend server等等一大堆各种server，传统开发方式需要预先知道当前的功能要放在哪个服务器上，当功能越来越多的时候，比如聊天功能之前在一个中心服务器上，之后需要拆出来单独做成一个服务器，这时会牵扯到大量迁移代码的工作，烦不胜烦。ET框架在平常开发的时候根本不太需要关心当前开发的这个功能会放在什么server上，只用一个进程进行开发，功能开发成组件的形式。发布的时候使用一份多进程的配置即可发布成多进程的形式，是不是很方便呢？随便你怎么拆分服务器。只需要修改极少的代码就可以进行拆分。不同的server挂上不同的组件就行了嘛！</p><h3 id="a-hrefhttpsgithubcomegametangegametang3跨平台的分布式服务端-target_blank-relnoopener-relnofollow-a3跨平台的分布式服务端"><!-- raw HTML omitted --><!-- raw HTML omitted -->3.跨平台的分布式服务端</h3><p>ET框架使用C#做服务端，现在C#是完全可以跨平台的，在linux上安装mono，即可，不需要修改任何代码，就能跑起来。性能方面，因为.net已经开源，mono已经被微软收购，现在mono的性能很强，测试了，只比windows慢一点点，比lua，python什么快的多了。做游戏服务端完全不在话下。平常我们开发的时候用VS在windows上开发调试，发布的时候发布到linux上即可。ET框架还提供了一键同步工具，打开unity-&gt;tools-&gt;rsync同步，即可同步代码到linux上，</p><!-- raw HTML omitted --><p>即可编译启动服务器。</p><h3 id="a-hrefhttpsgithubcomegametangegametang4提供协程支持-target_blank-relnoopener-relnofollow-a4提供协程支持"><!-- raw HTML omitted --><!-- raw HTML omitted -->4.提供协程支持</h3><p>C#天生支持异步变同步语法 async和await，比lua，python的协程强大的多，新版python以及javascript语言甚至照搬了C#的协程语法。分布式服务端大量服务器之间的远程调用，没有异步语法的支持，开发将非常麻烦。所以java没有异步语法，做单服还行，不适合做大型分布式游戏服务端。例如：</p><!-- raw HTML omitted --><!-- raw HTML omitted --><p>可以看出，有了async await，所有的服务器间的异步操作将变得非常连贯，不用再拆成多段逻辑。大大简化了分布式服务器开发</p><h3 id="a-hrefhttpsgithubcomegametangegametang5提供类似erlang的actor消息机制-target_blank-relnoopener-relnofollow-a5提供类似erlang的actor消息机制"><!-- raw HTML omitted --><!-- raw HTML omitted -->5.提供类似erlang的actor消息机制</h3><p>erlang语言一大优势就是位置透明的消息机制，用户完全不用关心对象在哪个进程，拿到id就可以对对象发送消息。ET框架也提供了actor消息机制，实体对象只需要挂上ActorComponent组件，这个实体对象就成了一个Actor，任何服务器只需要知道这个实体对象的id就可以向其发送消息，完全不用关心这个实体对象在哪个server，在哪台物理机器上。其实现原理也很简单，ET框架提供了一个位置服务器，所有挂载ActorComoponet的实体对象都会将自己的id跟位置注册到这个位置服务器，其它服务器向这个实体对象发送消息的时候如果不知道这个实体对象的位置，会先去位置服务器查询，查询到位置再进行发送。</p><h3 id="a-hrefhttpsgithubcomegametangegametang6提供服务器不停服动态更新逻辑功能-target_blank-relnoopener-relnofollow-a6提供服务器不停服动态更新逻辑功能"><!-- raw HTML omitted --><!-- raw HTML omitted -->6.提供服务器不停服动态更新逻辑功能</h3><p>热更是游戏服务器不可缺少的功能，ET框架使用的组件设计，可以做成守望先锋的设计，组件只有成员，无方法，将所有方法做成扩展方法放到热更dll中，运行时重新加载dll即可热更所有逻辑。</p><h3 id="a-hrefhttpsgithubcomegametangegametang7客户端热更新一键切换-target_blank-relnoopener-relnofollow-a7客户端热更新一键切换"><!-- raw HTML omitted --><!-- raw HTML omitted -->7.客户端热更新一键切换</h3><p>因为ios的限制，之前unity热更新一般使用lua，导致unity3d开发人员要写两种代码，麻烦的要死。之后幸好出了ILRuntime库，利用ILRuntime库，unity3d可以利用C#语言加载热更新dll进行热更新。ILRuntime一个缺陷就是开发时候不支持VS debug，这有点不爽。ET框架使用了一个预编译指令ILRuntime，可以无缝切换。平常开发的时候不使用ILRuntime，而是使用Assembly.Load加载热更新动态库，这样可以方便用VS单步调试。在发布的时候，定义预编译指令ILRuntime就可以无缝切换成使用ILRuntime加载热更新动态库。这样开发起来及其方便，再也不用使用狗屎lua了</p><h3 id="a-hrefhttpsgithubcomegametangegametang8客户端服务端用同一种语言并且共享代码-target_blank-relnoopener-relnofollow-a8客户端服务端用同一种语言并且共享代码"><!-- raw HTML omitted --><!-- raw HTML omitted -->8.客户端服务端用同一种语言，并且共享代码</h3><p>下载ET框架，打开服务端工程，可以看到服务端引用了客户端很多代码，通过引用客户端代码的方式实现了双端共享代码。例如客户端服务端之间的网络消息两边完全共用一个文件即可，添加一个消息只需要修改一遍。</p><h3 id="a-hrefhttpsgithubcomegametangegametang9udp-tcp协议无缝切换-target_blank-relnoopener-relnofollow-a9udp-tcp协议无缝切换"><!-- raw HTML omitted --><!-- raw HTML omitted -->9.UDP TCP协议无缝切换</h3><p>ET框架不但支持TCP，而且支持可靠的UDP协议，UDP支持是封装了ENet库，ENet也是英雄联盟所使用的网络库，其特点是快速，并且网络丢包的情况下性能也非常好，这个我们做过测试TCP在丢包5%的情况下，moba游戏就卡的不行了，但是使用ENet，丢包20%仍然不会感到卡。非常强大。</p><h3 id="a-hrefhttpsgithubcomegametangegametang10-还有很多很多功能我就不详细介绍了-target_blank-relnoopener-relnofollow-a10-还有很多很多功能我就不详细介绍了"><!-- raw HTML omitted --><!-- raw HTML omitted -->10 还有很多很多功能，我就不详细介绍了</h3><p>a.及其方便检查CPU占用和内存泄漏检查，vs自带分析工具，不用再为性能和内存泄漏检查而烦恼<br> b.使用NLog库，打log及其方便，平常开发时，可以将所有服务器log打到一个文件中，再也不用一个个文件搜索log了<br> c.统一使用Mongodb的bson做序列化，消息和配置文件全部都是bson或者json，并且以后使用mongodb做数据库，再也不用做格式转换了。<br> d.提供一个强大的ai行为树工具<br> e.提供一个同步工具<br> f.提供命令行配置工具，配置分布式非常简单</p><p>ET框架的服务端是一个强大灵活的分布式服务端架构，完全可以满足绝大部分大型游戏需求。使用这套框架，客户端开发者就可以自己完成双端开发，节省大量人力物力，节省大量沟通时间。</p><p>使用方法：<br><!-- raw HTML omitted -->运行指南<!-- raw HTML omitted --></p><p>讨论QQ群 : 474643097</p><!-- raw HTML omitted --></div>
 </div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="Updated on 2025-06-29 15:20:25">Updated on 2025-06-29&nbsp;</span>
+        <span title="Updated on 2025-06-29 15:37:37">Updated on 2025-06-29&nbsp;</span>
       </div><div class="post-info-license">
             <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
           </div></div><div class="post-info-line">
-        <div class="post-info-md"><span><a href="/posts/44/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c44.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-md"><span><a href="/posts/44/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/44/" data-title="【转】egametang框架简介"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/44/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/44/" data-title="【转】egametang框架简介"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://fancybit.github.io/posts/44/" data-title="【转】egametang框架简介"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://fancybit.github.io/posts/44/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://fancybit.github.io/posts/44/" data-title="【转】egametang框架简介"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
@@ -135,7 +135,7 @@
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>
-  </div><div class="post-nav"><a href="/posts/62/" class="post-nav-item" rel="prev" title="2019-12-10"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>2019-12-10</a><a href="/posts/749/" class="post-nav-item" rel="next" title="《绯红结系》动画">《绯红结系》动画<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  </div><div class="post-nav"><a href="/posts/62/" class="post-nav-item" rel="prev" title="2019-12-10"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>2019-12-10</a><a href="/posts/91/" class="post-nav-item" rel="next" title="隐士逆位">隐士逆位<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article>
 
@@ -149,5 +149,5 @@
     <div class="noscript-warning">This website works best with JavaScript enabled.</div>
   </noscript>
 </div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -20,9 +20,9 @@ C#开发.net core软件的过程中也可以让编译器自动采用这些SIMD�
 运行结果：
 ​
 只要用Vector支持的重载运算符来代替数组或者列表之类进行计算，即可获得编译器SIMD自动优化指令的效果。不过目前文档里说只支持x86系列的CPU ARM的CPU相关支持还在研发中">
-  <meta itemprop="datePublished" content="2025-06-29T15:20:23+00:00">
-  <meta itemprop="dateModified" content="2025-06-29T15:20:23+00:00">
-  <meta itemprop="wordCount" content="15"><meta property="og:url" content="http://localhost:1313/posts/10/">
+  <meta itemprop="datePublished" content="2025-06-29T15:37:36+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:37:36+00:00">
+  <meta itemprop="wordCount" content="15"><meta property="og:url" content="http://fancybit.github.io/posts/10/">
   <meta property="og:site_name" content="数语轩">
   <meta property="og:title" content=".net core SIMD范例分析">
   <meta property="og:description" content=".net core SIMD范例分析 单指令多数据流（SIMD）是CPU基本运算之外为了提高并行处理多条数据效率的技术，常用于多媒体处理如视频，3D模拟的计算。实现方式不同品牌的CPU各有自己的指令集，如SSE MMX 3DNOW等。
@@ -34,8 +34,8 @@ C#开发.net core软件的过程中也可以让编译器自动采用这些SIMD�
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-06-29T15:20:23+00:00">
-    <meta property="article:modified_time" content="2025-06-29T15:20:23+00:00">
+    <meta property="article:published_time" content="2025-06-29T15:37:36+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:37:36+00:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content=".net core SIMD范例分析">
@@ -48,7 +48,7 @@ C#开发.net core软件的过程中也可以让编译器自动采用这些SIMD�
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/10/" title=".net core SIMD范例分析 - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/100/" title="Shader编程备忘" /><link rel="next" type="text/html" href="http://localhost:1313/posts/11/" title="递归转迭代实操记录" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/10/index.md" title=".net core SIMD范例分析 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://fancybit.github.io/posts/10/" title=".net core SIMD范例分析 - 数语轩" /><link rel="prev" type="text/html" href="http://fancybit.github.io/posts/109/" title="IDA7.0提示Oops! internal error 1491 occured.解决办法" /><link rel="next" type="text/html" href="http://fancybit.github.io/posts/37/" title="逆向win32程序的思路琐记" /><link rel="alternate" type="text/markdown" href="http://fancybit.github.io/posts/10/index.md" title=".net core SIMD范例分析 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -58,9 +58,9 @@ C#开发.net core软件的过程中也可以让编译器自动采用这些SIMD�
     "inLanguage": "en",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http:\/\/localhost:1313\/posts\/10\/"
+      "@id": "http:\/\/fancybit.github.io\/posts\/10\/"
     },"genre": "posts","wordcount":  15 ,
-    "url": "http:\/\/localhost:1313\/posts\/10\/","datePublished": "2025-06-29T15:20:23+00:00","dateModified": "2025-06-29T15:20:23+00:00","publisher": {
+    "url": "http:\/\/fancybit.github.io\/posts\/10\/","datePublished": "2025-06-29T15:37:36+00:00","dateModified": "2025-06-29T15:37:36+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -102,22 +102,22 @@ C#开发.net core软件的过程中也可以让编译器自动采用这些SIMD�
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>.Net Core SIMD范例分析</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:23"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="15 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:37:36"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="15 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
     </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">.net core SIMD范例分析</h1></div>
 <div class="content" id="content"><p>单指令多数据流（SIMD）是CPU基本运算之外为了提高并行处理多条数据效率的技术，常用于多媒体处理如视频，3D模拟的计算。实现方式不同品牌的CPU各有自己的指令集，如SSE MMX 3DNOW等。</p><p>C#开发.net core软件的过程中也可以让编译器自动采用这些SIMD指令集进行代码优化，测试了一下在我的AMD 锐龙7 2700X上对于整数加法处理可以提高10倍的效率。</p><p>下面是我自己写的例子：</p><precode language="" precodenum="0"></precode><p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p><p>运行结果：</p><p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->​<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p><p>只要用Vector<!-- raw HTML omitted -->支持的重载运算符来代替数组或者列表之类进行计算，即可获得编译器SIMD自动优化指令的效果。不过目前文档里说只支持x86系列的CPU ARM的CPU相关支持还在研发中</p><!-- raw HTML omitted --></div>
 </div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="Updated on 2025-06-29 15:20:23">Updated on 2025-06-29&nbsp;</span>
+        <span title="Updated on 2025-06-29 15:37:36">Updated on 2025-06-29&nbsp;</span>
       </div><div class="post-info-license">
             <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
           </div></div><div class="post-info-line">
-        <div class="post-info-md"><span><a href="/posts/10/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c10.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-md"><span><a href="/posts/10/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/10/" data-title=".Net Core SIMD范例分析"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/10/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/10/" data-title=".Net Core SIMD范例分析"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://fancybit.github.io/posts/10/" data-title=".Net Core SIMD范例分析"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://fancybit.github.io/posts/10/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://fancybit.github.io/posts/10/" data-title=".Net Core SIMD范例分析"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
@@ -127,7 +127,7 @@ C#开发.net core软件的过程中也可以让编译器自动采用这些SIMD�
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>
-  </div><div class="post-nav"><a href="/posts/100/" class="post-nav-item" rel="prev" title="Shader编程备忘"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Shader编程备忘</a><a href="/posts/11/" class="post-nav-item" rel="next" title="递归转迭代实操记录">递归转迭代实操记录<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  </div><div class="post-nav"><a href="/posts/109/" class="post-nav-item" rel="prev" title="IDA7.0提示Oops! Internal Error 1491 Occured.解决办法"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>IDA7.0提示Oops! Internal Error 1491 Occured.解决办法</a><a href="/posts/37/" class="post-nav-item" rel="next" title="逆向win32程序的思路琐记">逆向win32程序的思路琐记<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article>
 
@@ -141,5 +141,5 @@ C#开发.net core软件的过程中也可以让编译器自动采用这些SIMD�
     <div class="noscript-warning">This website works best with JavaScript enabled.</div>
   </noscript>
 </div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

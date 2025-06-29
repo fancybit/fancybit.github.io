@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -30,9 +30,9 @@ udp的底层使用了ENet，提供了可靠有序的udp通信。
 服务端的NetOuterComponent用于通过外网进行连接，比如Gate服务器和玩家电脑之间的连接。
 NetInnerComponent用于服务器组之间的内部通信，通过ip和端口号创建或者使用已有的Session来发消息或者调用rpc。
 创建Session也可以使用NetworkComponent.Create()方法">
-  <meta itemprop="datePublished" content="2025-06-29T15:20:25+00:00">
-  <meta itemprop="dateModified" content="2025-06-29T15:20:25+00:00">
-  <meta itemprop="wordCount" content="12"><meta property="og:url" content="http://localhost:1313/posts/47/">
+  <meta itemprop="datePublished" content="2025-06-29T15:37:37+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:37:37+00:00">
+  <meta itemprop="wordCount" content="12"><meta property="og:url" content="http://fancybit.github.io/posts/47/">
   <meta property="og:site_name" content="数语轩">
   <meta property="og:title" content="egametang网络系统组件">
   <meta property="og:description" content="egametang网络系统组件 先看一下网络组件的中层：
@@ -49,8 +49,8 @@ NetInnerComponent用于服务器组之间的内部通信，通过ip和端口号�
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-06-29T15:20:25+00:00">
-    <meta property="article:modified_time" content="2025-06-29T15:20:25+00:00">
+    <meta property="article:published_time" content="2025-06-29T15:37:37+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:37:37+00:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="egametang网络系统组件">
@@ -68,7 +68,7 @@ NetInnerComponent用于服务器组之间的内部通信，通过ip和端口号�
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/47/" title="egametang网络系统组件 - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/65/" title="htop详解" /><link rel="next" type="text/html" href="http://localhost:1313/posts/45/" title="egametang框架服务端运行流程" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/47/index.md" title="egametang网络系统组件 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://fancybit.github.io/posts/47/" title="egametang网络系统组件 - 数语轩" /><link rel="prev" type="text/html" href="http://fancybit.github.io/posts/65/" title="htop详解" /><link rel="next" type="text/html" href="http://fancybit.github.io/posts/45/" title="egametang框架服务端运行流程" /><link rel="alternate" type="text/markdown" href="http://fancybit.github.io/posts/47/index.md" title="egametang网络系统组件 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -78,9 +78,9 @@ NetInnerComponent用于服务器组之间的内部通信，通过ip和端口号�
     "inLanguage": "en",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http:\/\/localhost:1313\/posts\/47\/"
+      "@id": "http:\/\/fancybit.github.io\/posts\/47\/"
     },"genre": "posts","wordcount":  12 ,
-    "url": "http:\/\/localhost:1313\/posts\/47\/","datePublished": "2025-06-29T15:20:25+00:00","dateModified": "2025-06-29T15:20:25+00:00","publisher": {
+    "url": "http:\/\/fancybit.github.io\/posts\/47\/","datePublished": "2025-06-29T15:37:37+00:00","dateModified": "2025-06-29T15:37:37+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -122,22 +122,22 @@ NetInnerComponent用于服务器组之间的内部通信，通过ip和端口号�
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Egametang网络系统组件</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:25"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="12 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:37:37"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="12 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
     </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">egametang网络系统组件</h1></div>
 <div class="content" id="content"><p>先看一下网络组件的中层：</p><!-- raw HTML omitted --><p>AService抽象了udp和tcp协议的连接工厂，udp的连接方式也被封装的和tcp类似，但是一个接收连接的UService只能建立一个连接。这个接口既可以做服务端通过AcceptChannel接受其他地址的连接，也可以作客户端调用ConnectChanel向其他地址发出连接请求。</p><p>AChannel抽象了tcp和udp的连接信道，由AService创建，可以用于收发字节数据。</p><p>udp的底层使用了ENet，提供了可靠有序的udp通信。</p><p></p><p>然后再来看网络组件的上层类图：</p><p><!-- raw HTML omitted --></p><p></p><p>&nbsp;NetworkComponent是其他上层网络访问组件的基类，内部有一个AService字段。使用tcp做服务端的时候可以创建多个Session，每个Session都是一个连接的高层抽象。这个类型在服务端和客户端项目公用，其提供的MessageDispatch和MessagePacker仅在客户端项目使用。服务端分发消息需要附加另外的MessageDispatcher组件。</p><p>&nbsp;向session另一端做rpc调用可以调用它的Call方法，发送消息可以调用Send，二者的区别在于是否需要服务器响应一个反馈消息。定义消息或者rpc请求的时候使用Message标签设置消息类型与opcode的对应关系。</p><p>接收并响应Session另一端发来的消息是通过OuterMessageDispatcher或者InnerMessageDispatcher。如果是Actor消息或者请求会先把消息分发给Actor，否则获取服务端Game.Scene上的MessageDispatherComponent然后这个组件会根据消息的类型用OpcodeComponent找出对应opcode分发给相应的IMHandler处理。注册新的消息handler只需实现AMHandler或者AMRPCHandler(RPC调用）然后用MessageHandler标记这个handler生效的服务器类型。</p><p>服务端的NetOuterComponent用于通过外网进行连接，比如Gate服务器和玩家电脑之间的连接。</p><p>NetInnerComponent用于服务器组之间的内部通信，通过ip和端口号创建或者使用已有的Session来发消息或者调用rpc。</p><p>创建Session也可以使用NetworkComponent.Create()方法</p><p></p><!-- raw HTML omitted --></div>
 </div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="Updated on 2025-06-29 15:20:25">Updated on 2025-06-29&nbsp;</span>
+        <span title="Updated on 2025-06-29 15:37:37">Updated on 2025-06-29&nbsp;</span>
       </div><div class="post-info-license">
             <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
           </div></div><div class="post-info-line">
-        <div class="post-info-md"><span><a href="/posts/47/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c47.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-md"><span><a href="/posts/47/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/47/" data-title="Egametang网络系统组件"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/47/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/47/" data-title="Egametang网络系统组件"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://fancybit.github.io/posts/47/" data-title="Egametang网络系统组件"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://fancybit.github.io/posts/47/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://fancybit.github.io/posts/47/" data-title="Egametang网络系统组件"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
@@ -161,5 +161,5 @@ NetInnerComponent用于服务器组之间的内部通信，通过ip和端口号�
     <div class="noscript-warning">This website works best with JavaScript enabled.</div>
   </noscript>
 </div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

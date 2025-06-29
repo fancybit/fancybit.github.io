@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -22,9 +22,9 @@ cocos creator 和matchvs的混淆工具现在是否还有能用的？
 matchvs的通信协议能不能改成protobuf或者其他二进制协议？能自定义通信加密么？
 typescript的process库和readline库的声明文件（*.d.ts）哪里能下到？
 typescript的命名空间和导入导出的合作用法">
-  <meta itemprop="datePublished" content="2025-06-29T15:20:25+00:00">
-  <meta itemprop="dateModified" content="2025-06-29T15:20:25+00:00">
-  <meta itemprop="wordCount" content="18"><meta property="og:url" content="http://localhost:1313/posts/57/">
+  <meta itemprop="datePublished" content="2025-06-29T15:37:37+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:37:37+00:00">
+  <meta itemprop="wordCount" content="18"><meta property="og:url" content="http://fancybit.github.io/posts/57/">
   <meta property="og:site_name" content="数语轩">
   <meta property="og:title" content="ts cocos creator 踩坑记录">
   <meta property="og:description" content="ts cocos creator 踩坑记录 vscode调试支持开启：cocos creator编辑器菜单 开发者-&gt;vs工作流-&gt;XXX
@@ -37,8 +37,8 @@ typescript的命名空间和导入导出的合作用法">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-06-29T15:20:25+00:00">
-    <meta property="article:modified_time" content="2025-06-29T15:20:25+00:00">
+    <meta property="article:published_time" content="2025-06-29T15:37:37+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:37:37+00:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="ts cocos creator 踩坑记录">
@@ -52,7 +52,7 @@ typescript的命名空间和导入导出的合作用法">
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/57/" title="ts cocos creator 踩坑记录 - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/759/" title="unity&#43;.net5全景地图项目开发备忘" /><link rel="next" type="text/html" href="http://localhost:1313/posts/66/" title="Linux中通过grep命令检索文件内容" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/57/index.md" title="ts cocos creator 踩坑记录 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://fancybit.github.io/posts/57/" title="ts cocos creator 踩坑记录 - 数语轩" /><link rel="prev" type="text/html" href="http://fancybit.github.io/posts/35/" title="Unity3D第一次亲密接触" /><link rel="next" type="text/html" href="http://fancybit.github.io/posts/30/" title="sae开发备忘录" /><link rel="alternate" type="text/markdown" href="http://fancybit.github.io/posts/57/index.md" title="ts cocos creator 踩坑记录 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -62,9 +62,9 @@ typescript的命名空间和导入导出的合作用法">
     "inLanguage": "en",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http:\/\/localhost:1313\/posts\/57\/"
+      "@id": "http:\/\/fancybit.github.io\/posts\/57\/"
     },"genre": "posts","wordcount":  18 ,
-    "url": "http:\/\/localhost:1313\/posts\/57\/","datePublished": "2025-06-29T15:20:25+00:00","dateModified": "2025-06-29T15:20:25+00:00","publisher": {
+    "url": "http:\/\/fancybit.github.io\/posts\/57\/","datePublished": "2025-06-29T15:37:37+00:00","dateModified": "2025-06-29T15:37:37+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -106,22 +106,22 @@ typescript的命名空间和导入导出的合作用法">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Ts Cocos Creator 踩坑记录</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:25"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="18 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:37:37"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="18 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
     </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">ts cocos creator 踩坑记录</h1></div>
 <div class="content" id="content"><p>vscode调试支持开启：cocos creator编辑器菜单 开发者-&gt;vs工作流-&gt;XXX</p><p>vscode 报不支持chrome：重新安装debugger for chrome插件</p><p>//TODO:</p><p>cocos creator 和matchvs的混淆工具现在是否还有能用的？</p><p>matchvs的通信协议能不能改成protobuf或者其他二进制协议？能自定义通信加密么？</p><p>typescript的process库和readline库的声明文件（*.d.ts）哪里能下到？</p><p>typescript的命名空间和导入导出的合作用法</p><!-- raw HTML omitted --></div>
 </div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="Updated on 2025-06-29 15:20:25">Updated on 2025-06-29&nbsp;</span>
+        <span title="Updated on 2025-06-29 15:37:37">Updated on 2025-06-29&nbsp;</span>
       </div><div class="post-info-license">
             <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
           </div></div><div class="post-info-line">
-        <div class="post-info-md"><span><a href="/posts/57/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c57.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-md"><span><a href="/posts/57/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/57/" data-title="Ts Cocos Creator 踩坑记录"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/57/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/57/" data-title="Ts Cocos Creator 踩坑记录"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://fancybit.github.io/posts/57/" data-title="Ts Cocos Creator 踩坑记录"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://fancybit.github.io/posts/57/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://fancybit.github.io/posts/57/" data-title="Ts Cocos Creator 踩坑记录"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
@@ -131,7 +131,7 @@ typescript的命名空间和导入导出的合作用法">
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>
-  </div><div class="post-nav"><a href="/posts/759/" class="post-nav-item" rel="prev" title="Unity&#43;.net5全景地图项目开发备忘"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Unity&#43;.net5全景地图项目开发备忘</a><a href="/posts/66/" class="post-nav-item" rel="next" title="Linux中通过grep命令检索文件内容">Linux中通过grep命令检索文件内容<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  </div><div class="post-nav"><a href="/posts/35/" class="post-nav-item" rel="prev" title="Unity3D第一次亲密接触"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Unity3D第一次亲密接触</a><a href="/posts/30/" class="post-nav-item" rel="next" title="Sae开发备忘录">Sae开发备忘录<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article>
 
@@ -145,5 +145,5 @@ typescript的命名空间和导入导出的合作用法">
     <div class="noscript-warning">This website works best with JavaScript enabled.</div>
   </noscript>
 </div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

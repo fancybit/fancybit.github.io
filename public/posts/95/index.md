@@ -9,5 +9,5 @@
 ---
 
 > Author: fancybit  
-> URL: http://localhost:1313/posts/95/  
+> URL: http://fancybit.github.io/posts/95/  
 

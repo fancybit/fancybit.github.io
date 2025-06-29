@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -34,9 +34,9 @@ https://github.com/4d61726b/VirtualKD-Redux
 每次调试前需要先打开这个程序，并且调试结束前不要关闭，它还要继续工作以维持连接并加速数据传输。
 重新启动虚拟机 到启动项选择的时候，确保选中VirtualKD-Redux的那一项，然后不是按回车而是按F8，选择“禁用驱动程序强制签名”来继续启动windows。这个时候可以立刻用VMWARE做一个状态镜像，这样以后就不用每次启动都按F8，只要载入这个状态镜像即可。
 这时候正常情况下windbg就会在虚拟机进入windows徽标显示的载入过程中自动启动并且连接，这时调试环境就已经搞定了，在windbg里可以继续运行或者随时中断虚拟机里win10的所有线程。也可以加载PDB，源代码来进行断点调试了。如果windbg没有断下来，可以再次重启，或者从vmmon（32/64）上还原快照来再次尝试。">
-  <meta itemprop="datePublished" content="2025-06-29T15:20:26+00:00">
-  <meta itemprop="dateModified" content="2025-06-29T15:20:26+00:00">
-  <meta itemprop="wordCount" content="21"><meta property="og:url" content="http://localhost:1313/posts/792/">
+  <meta itemprop="datePublished" content="2025-06-29T15:37:38+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:37:38+00:00">
+  <meta itemprop="wordCount" content="21"><meta property="og:url" content="http://fancybit.github.io/posts/792/">
   <meta property="og:site_name" content="数语轩">
   <meta property="og:title" content="win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG">
   <meta property="og:description" content="win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG 先到微软的网站下载Windows10的SDK和对应版本WDK
@@ -55,8 +55,8 @@ https://github.com/4d61726b/VirtualKD-Redux
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-06-29T15:20:26+00:00">
-    <meta property="article:modified_time" content="2025-06-29T15:20:26+00:00">
+    <meta property="article:published_time" content="2025-06-29T15:37:38+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:37:38+00:00">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG">
@@ -76,7 +76,7 @@ https://github.com/4d61726b/VirtualKD-Redux
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/792/" title="win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/791/" title="windows驱动开发-物理双机调试" /><link rel="next" type="text/html" href="http://localhost:1313/posts/87/" title="vs中同时运行多个可执行文件启动调试的办法" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/792/index.md" title="win10核心层虚拟机双机调试 VirtualKD-Redux+WinDBG - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://fancybit.github.io/posts/792/" title="win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG - 数语轩" /><link rel="prev" type="text/html" href="http://fancybit.github.io/posts/764/" title="win10自带ubuntu开启和安装pip过程记录" /><link rel="next" type="text/html" href="http://fancybit.github.io/posts/87/" title="vs中同时运行多个可执行文件启动调试的办法" /><link rel="alternate" type="text/markdown" href="http://fancybit.github.io/posts/792/index.md" title="win10核心层虚拟机双机调试 VirtualKD-Redux+WinDBG - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -86,9 +86,9 @@ https://github.com/4d61726b/VirtualKD-Redux
     "inLanguage": "en",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http:\/\/localhost:1313\/posts\/792\/"
+      "@id": "http:\/\/fancybit.github.io\/posts\/792\/"
     },"genre": "posts","wordcount":  21 ,
-    "url": "http:\/\/localhost:1313\/posts\/792\/","datePublished": "2025-06-29T15:20:26+00:00","dateModified": "2025-06-29T15:20:26+00:00","publisher": {
+    "url": "http:\/\/fancybit.github.io\/posts\/792\/","datePublished": "2025-06-29T15:37:38+00:00","dateModified": "2025-06-29T15:37:38+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -130,22 +130,22 @@ https://github.com/4d61726b/VirtualKD-Redux
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:26"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="21 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:37:38"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="21 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
     </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">win10核心层虚拟机双机调试 VirtualKD-Redux+WinDBG</h1></div>
 <div class="content" id="content"><p>先到微软的网站下载Windows10的SDK和对应版本WDK</p><p>安装win10 sdk 其中包含WinDBG调试器</p><p>安装对应版本WDK</p><p>vmware workstation 15-16虚拟机上安装windows10</p><p>虚拟机菜单上找安装VMWare tools</p><p>从下面地址下载Release的VirtualKD-Redux</p><p><!-- raw HTML omitted --><a href="https://github.com/4d61726b/VirtualKD-Redux" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/4d61726b/VirtualKD-Redux</a><!-- raw HTML omitted --></p><p>在宿主机（真机）解压缩VirtualKD-Redux的压缩包，根据虚拟机的操作系统位数，把对应的Target文件夹复制到虚拟机，然后在里面找到vminstall.exe文件双击安装。</p><p>安装的时候可以选择新建启动项或者改变原有启动项。win10一定要确保选项选中</p><p>在真机上根据真机win10位数启动vmmon64.exe或者vmmon32.exe，随后在虚拟机win10存在的状态下点击一下patch，然后设置一下windbg所在的路径。</p><p>每次调试前需要先打开这个程序，并且调试结束前不要关闭，它还要继续工作以维持连接并加速数据传输。</p><p><strong>重新启动虚拟机 到启动项选择的时候，确保选中VirtualKD-Redux的那一项，然后不是按回车而是按F8，选择“禁用驱动程序强制签名”来继续启动windows。这个时候可以立刻用VMWARE做一个状态镜像，这样以后就不用每次启动都按F8，只要载入这个状态镜像即可。</strong></p><p>这时候正常情况下windbg就会在虚拟机进入windows徽标显示的载入过程中自动启动并且连接，这时调试环境就已经搞定了，在windbg里可以继续运行或者随时中断虚拟机里win10的所有线程。也可以加载PDB，源代码来进行断点调试了。如果windbg没有断下来，可以再次重启，或者从vmmon（32/64）上还原快照来再次尝试。</p></div>
 </div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="Updated on 2025-06-29 15:20:26">Updated on 2025-06-29&nbsp;</span>
+        <span title="Updated on 2025-06-29 15:37:38">Updated on 2025-06-29&nbsp;</span>
       </div><div class="post-info-license">
             <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
           </div></div><div class="post-info-line">
-        <div class="post-info-md"><span><a href="/posts/792/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c792.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-md"><span><a href="/posts/792/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/792/" data-title="Win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/792/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/792/" data-title="Win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://fancybit.github.io/posts/792/" data-title="Win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://fancybit.github.io/posts/792/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://fancybit.github.io/posts/792/" data-title="Win10核心层虚拟机双机调试 VirtualKD-Redux&#43;WinDBG"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
@@ -155,7 +155,7 @@ https://github.com/4d61726b/VirtualKD-Redux
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>
-  </div><div class="post-nav"><a href="/posts/791/" class="post-nav-item" rel="prev" title="Windows驱动开发-物理双机调试"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Windows驱动开发-物理双机调试</a><a href="/posts/87/" class="post-nav-item" rel="next" title="Vs中同时运行多个可执行文件启动调试的办法">Vs中同时运行多个可执行文件启动调试的办法<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  </div><div class="post-nav"><a href="/posts/764/" class="post-nav-item" rel="prev" title="Win10自带ubuntu开启和安装pip过程记录"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Win10自带ubuntu开启和安装pip过程记录</a><a href="/posts/87/" class="post-nav-item" rel="next" title="Vs中同时运行多个可执行文件启动调试的办法">Vs中同时运行多个可执行文件启动调试的办法<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article>
 
@@ -169,5 +169,5 @@ https://github.com/4d61726b/VirtualKD-Redux
     <div class="noscript-warning">This website works best with JavaScript enabled.</div>
   </noscript>
 </div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

@@ -2,5 +2,6 @@ url: https://www.fancybit.top
 name: 数语轩
 description: 吟游赛博空间 谱写01诗篇
 contentDir: content
-auther: fancybit
-autherUrl: https://fancybit.github.io
+publishDir: docs
+author: fancybit
+authorUrl: https://www.fancybit.top
