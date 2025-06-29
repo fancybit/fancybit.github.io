@@ -1,0 +1,13 @@
+# 给git-Bash加点儿料——gcc、make、cmake
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">给git-bash加点儿料——gcc、make、cmake</h1></div>
+
+<div class="content" id="content"><h1 id="figure-classwp-block-image"><!-- raw HTML omitted --></h1><p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->任卫<!-- raw HTML omitted -->领略真软件项目管理，真DevOps，真。。。​关注他6 人赞同了该文章</p><p>git-bash是一个mingw64环境，shell为bash，基本就和linux一样了，但它没有携带gcc和make等程序。</p><p>这两个开发工具都是常用工具，必然是要协同使用的，那我们来给git-bash加上gcc和make。</p><p>从<!-- raw HTML omitted --><a href="http://www.equation.com/servlet/equation.cmd?fa=fortra" target="_blank" rel="external nofollow noopener noreferrer">http://www.equation.com/servlet/equation.cmd?fa=fortra</a><!-- raw HTML omitted -->&nbsp;下载gcc套件，gcc套件内包含make，所以一并就装了这俩。解压gcc套件，比如默认按照在了个人账户目录内为&nbsp;<em>C:\Users\renwei\gcc</em>&nbsp;，那好，打开这个文件</p><!-- raw HTML omitted --><p>添加一行：</p><!-- raw HTML omitted --><p>再次打开git-bash，gcc套件内工具就能使用了，make自然包括。</p><p>如果用不到gcc，只想使用下make。那从&nbsp;<!-- raw HTML omitted --><a href="http://www.equation.com/servlet/equation.cmd?fa=make" target="_blank" rel="external nofollow noopener noreferrer">http://www.equation.com/servlet/equation.cmd?fa=make</a><!-- raw HTML omitted -->&nbsp;下载make程序即可，同样，将make程序直接放到&nbsp;<em>C:\Program Files\Git\mingw64\bin</em>&nbsp;内就可以了。</p><p>好，我还行使用CMake，那从&nbsp;<!-- raw HTML omitted --><a href="https://cmake.org/download/" target="_blank" rel="external nofollow noopener noreferrer">https://cmake.org/download/</a><!-- raw HTML omitted -->&nbsp;下载安装包，仿前，安装后打开这个文件</p><!-- raw HTML omitted --><p>再添加一行：</p><!-- raw HTML omitted --><p>那我们就以<!-- raw HTML omitted -->googletest<!-- raw HTML omitted -->工程为例介绍下如何使用cmake吧</p><!-- raw HTML omitted --><!-- raw HTML omitted --><p>发布于 2020-06-19</p></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/757/  
+

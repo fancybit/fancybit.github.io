@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>好商城二开备忘 - 数语轩</title><meta name="author" content="fancybit">
+<meta name="description" content="好商城二开备忘 处理请求的核心流程：
+base.php
+install/index.php
+&nbsp;183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+&nbsp;读取配置文件到全局变量$setting_config
+&nbsp;设置MD5 KEY
+&nbsp;检测配置时区
+&nbsp;配置启动session
+&nbsp;配置语言
+control&nbsp;
+&nbsp;解析url get参数传递来的action op&nbsp;
+&nbsp;控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+&nbsp;设置语言
+&nbsp;检测是否登录
+&nbsp;调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+&nbsp;检测权限
+&nbsp;用户ID为1的根用户可以越过检测控制所有功能
+&nbsp;转码防止GBK乱码
+index layout
+">
+  <meta itemprop="name" content="好商城二开备忘">
+  <meta itemprop="description" content="好商城二开备忘 处理请求的核心流程：
+base.php
+install/index.php
+ 183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+ 读取配置文件到全局变量$setting_config
+ 设置MD5 KEY
+ 检测配置时区
+ 配置启动session
+ 配置语言
+control 
+ 解析url get参数传递来的action op 
+ 控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+ 设置语言
+ 检测是否登录
+ 调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+ 检测权限
+ 用户ID为1的根用户可以越过检测控制所有功能
+ 转码防止GBK乱码
+index layout">
+  <meta itemprop="datePublished" content="2025-06-29T15:20:25+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:20:25+00:00">
+  <meta itemprop="wordCount" content="60"><meta property="og:url" content="http://localhost:1313/posts/73/">
+  <meta property="og:site_name" content="数语轩">
+  <meta property="og:title" content="好商城二开备忘">
+  <meta property="og:description" content="好商城二开备忘 处理请求的核心流程：
+base.php
+install/index.php
+ 183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+ 读取配置文件到全局变量$setting_config
+ 设置MD5 KEY
+ 检测配置时区
+ 配置启动session
+ 配置语言
+control 
+ 解析url get参数传递来的action op 
+ 控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+ 设置语言
+ 检测是否登录
+ 调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+ 检测权限
+ 用户ID为1的根用户可以越过检测控制所有功能
+ 转码防止GBK乱码
+index layout">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-29T15:20:25+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:20:25+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="好商城二开备忘">
+  <meta name="twitter:description" content="好商城二开备忘 处理请求的核心流程：
+base.php
+install/index.php
+ 183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用
+设置选项在数据库的setting表里
+cp 权限检测
+init
+ 读取配置文件到全局变量$setting_config
+ 设置MD5 KEY
+ 检测配置时区
+ 配置启动session
+ 配置语言
+control 
+ 解析url get参数传递来的action op 
+ 控制转移到controller
+/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议
+/shop/index.php是商城入口
+/wap/是手机h5入口
+/admin/总管理入口
+/mobile/ 手机服务端
+/admin/include/menu.php 框架菜单列表
+/data/log/ 日志文件 包括支付API的日志
+/moblie/控制层修改：
+\mobile\framework\function\function.php
+添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题
+默认布局模板：
+/shop/templates/default/layout/home_layout.php
+顶部布局模板：
+/shop/templates/default/layout/layout_top.php
+总后台管理端：
+分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：
+/admin/modules/
+由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程
+几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：
+ 设置语言
+ 检测是否登录
+ 调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面
+ 检测权限
+ 用户ID为1的根用户可以越过检测控制所有功能
+ 转码防止GBK乱码
+index layout">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/73/" title="好商城二开备忘 - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/69/" title="平衡大师" /><link rel="next" type="text/html" href="http://localhost:1313/posts/762/" title="基于OpenCV的全景图剪切程序：一张全景生成六张立方体天空盒图" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/73/index.md" title="好商城二开备忘 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "好商城二开备忘",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/73\/"
+    },"genre": "posts","wordcount":  60 ,
+    "url": "http:\/\/localhost:1313\/posts\/73\/","datePublished": "2025-06-29T15:20:25+00:00","dateModified": "2025-06-29T15:20:25+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>好商城二开备忘</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:25"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="60 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+    </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">好商城二开备忘</h1></div>
+<div class="content" id="content"><p>处理请求的核心流程：</p><p>base.php</p><!-- raw HTML omitted --><p>install/index.php</p><p>&nbsp;183行 安装时随机生成md5_key 用于cookie等地方加密 在encrypt函数中使用</p><p>设置选项在数据库的setting表里</p><p>cp 权限检测</p><p>init</p><p>&nbsp;读取配置文件到全局变量$setting_config</p><p>&nbsp;设置MD5 KEY</p><p>&nbsp;检测配置时区</p><p>&nbsp;配置启动session</p><p>&nbsp;配置语言</p><p>control&nbsp;</p><p>&nbsp;解析url get参数传递来的action op&nbsp;</p><p>&nbsp;控制转移到controller</p><p>/data/config/config.ini.php 存放了大多配置内容 包括用https还是http协议</p><p>/shop/index.php是商城入口</p><p>/wap/是手机h5入口</p><p>/admin/总管理入口</p><p>/mobile/ 手机服务端</p><p>/admin/include/menu.php 框架菜单列表</p><p>/data/log/ 日志文件 包括支付API的日志</p><p>/moblie/控制层修改：</p><p>\mobile\framework\function\function.php</p><!-- raw HTML omitted --><p>添加ob_clean()和ob_end_flush()解决ajax获取json可能被某些插件干扰的问题</p><p>默认布局模板：</p><p>/shop/templates/default/layout/home_layout.php</p><p>顶部布局模板：</p><p>/shop/templates/default/layout/layout_top.php</p><p>总后台管理端：</p><p>分多个模块 一个顶部菜单项一个模块，模块的M C层存放在下面路径的文件夹下：</p><p>/admin/modules/</p><p>由/admin/index.php调用 /core/framework/base/core/base.php 中的run方法，进入MVC流程</p><p>几个/admin/control/里的控制器是第一层，这些控制器从control.php里的SystemControl派生，在创建时都会先调用SystemControl的构造函数：</p><p>&nbsp;设置语言</p><p>&nbsp;检测是否登录</p><p>&nbsp;调用systemLogin函数，如果cookie取不到正确的信息则跳转登录页面</p><p>&nbsp;检测权限</p><p>&nbsp;用户ID为1的根用户可以越过检测控制所有功能</p><p>&nbsp;转码防止GBK乱码</p><p></p><p>index layout</p><!-- raw HTML omitted --></div>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2025-06-29 15:20:25">Updated on 2025-06-29&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/73/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c73.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/73/" data-title="好商城二开备忘"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/73/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/73/" data-title="好商城二开备忘"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/69/" class="post-nav-item" rel="prev" title="平衡大师"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>平衡大师</a><a href="/posts/762/" class="post-nav-item" rel="next" title="基于OpenCV的全景图剪切程序：一张全景生成六张立方体天空盒图">基于OpenCV的全景图剪切程序：一张全景生成六张立方体天空盒图<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.147.9"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.21-b2e6f70a"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+</html>

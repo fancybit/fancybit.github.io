@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Sae开发备忘录 - 数语轩</title><meta name="author" content="fancybit">
+<meta name="description" content="sae开发备忘录 新浪的sina app engine是个不错的公用云空间：
+注册开发者每月都有免费的云豆赠送，进入门槛低。使用svn部署代码，符合一般开发者的习惯，也方便协作开发。使用读写分离的mysql数据库，并发性和负载能力更强。企业版可以使用cdn，利用新浪分散在各地的机房加快应用访问速度。有各类流行框架和开放应用的支持，如thinkPHP，分词，面部识别api等等。有新浪微博的api，可以整合到新浪微博便于推广自己的应用。诸如此类的好处还有很多，还有各种新服务在不断推出，想了解更详细的话请自行进入传送门：http://sae.sina.com.cn/?m=devcenter&nbsp;不过由于性能，安全之类的考虑，sae平台和传统的php主机有些区别，新手（比如我这样的）经常在上面碰钉子，建议先浏览一遍文档再动手。这里记录一些开发中走的弯路，希望能帮到看到此文的朋友。
+新浪的sae是基于linux&#43;apache&#43;mysql&#43;php几个技术，在linux下面有个匪夷所思的特性就是路径是大小写敏感的。因此如果出现网页中的资源（如图片，swf)失效的情况，可以先检查一下文件夹名和url中的大小写是否一致。sae提供了一个模拟的本地开发环境，一定程度上模拟了sae的环境，但还不完整。比如storage服务里面的文件路径不能自己拼出来，每个storage也不能简单的当做一级子目录处理，只能获取返回值里的文件路径再保存利用。另外有时候开着本地模拟环境访问服务器上的thinkPHP sae版会出现很多匪夷所思的情况，比如上传文件会传到本地的虚拟环境而不是服务器，所以svn同步到服务器后建议关闭虚拟环境再测试。未完待续….
+">
+  <meta itemprop="name" content="sae开发备忘录">
+  <meta itemprop="description" content="sae开发备忘录 新浪的sina app engine是个不错的公用云空间：
+注册开发者每月都有免费的云豆赠送，进入门槛低。使用svn部署代码，符合一般开发者的习惯，也方便协作开发。使用读写分离的mysql数据库，并发性和负载能力更强。企业版可以使用cdn，利用新浪分散在各地的机房加快应用访问速度。有各类流行框架和开放应用的支持，如thinkPHP，分词，面部识别api等等。有新浪微博的api，可以整合到新浪微博便于推广自己的应用。诸如此类的好处还有很多，还有各种新服务在不断推出，想了解更详细的话请自行进入传送门：http://sae.sina.com.cn/?m=devcenter 不过由于性能，安全之类的考虑，sae平台和传统的php主机有些区别，新手（比如我这样的）经常在上面碰钉子，建议先浏览一遍文档再动手。这里记录一些开发中走的弯路，希望能帮到看到此文的朋友。
+新浪的sae是基于linux&#43;apache&#43;mysql&#43;php几个技术，在linux下面有个匪夷所思的特性就是路径是大小写敏感的。因此如果出现网页中的资源（如图片，swf)失效的情况，可以先检查一下文件夹名和url中的大小写是否一致。sae提供了一个模拟的本地开发环境，一定程度上模拟了sae的环境，但还不完整。比如storage服务里面的文件路径不能自己拼出来，每个storage也不能简单的当做一级子目录处理，只能获取返回值里的文件路径再保存利用。另外有时候开着本地模拟环境访问服务器上的thinkPHP sae版会出现很多匪夷所思的情况，比如上传文件会传到本地的虚拟环境而不是服务器，所以svn同步到服务器后建议关闭虚拟环境再测试。未完待续….">
+  <meta itemprop="datePublished" content="2025-06-29T15:20:24+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:20:24+00:00">
+  <meta itemprop="wordCount" content="7"><meta property="og:url" content="http://localhost:1313/posts/30/">
+  <meta property="og:site_name" content="数语轩">
+  <meta property="og:title" content="sae开发备忘录">
+  <meta property="og:description" content="sae开发备忘录 新浪的sina app engine是个不错的公用云空间：
+注册开发者每月都有免费的云豆赠送，进入门槛低。使用svn部署代码，符合一般开发者的习惯，也方便协作开发。使用读写分离的mysql数据库，并发性和负载能力更强。企业版可以使用cdn，利用新浪分散在各地的机房加快应用访问速度。有各类流行框架和开放应用的支持，如thinkPHP，分词，面部识别api等等。有新浪微博的api，可以整合到新浪微博便于推广自己的应用。诸如此类的好处还有很多，还有各种新服务在不断推出，想了解更详细的话请自行进入传送门：http://sae.sina.com.cn/?m=devcenter 不过由于性能，安全之类的考虑，sae平台和传统的php主机有些区别，新手（比如我这样的）经常在上面碰钉子，建议先浏览一遍文档再动手。这里记录一些开发中走的弯路，希望能帮到看到此文的朋友。
+新浪的sae是基于linux&#43;apache&#43;mysql&#43;php几个技术，在linux下面有个匪夷所思的特性就是路径是大小写敏感的。因此如果出现网页中的资源（如图片，swf)失效的情况，可以先检查一下文件夹名和url中的大小写是否一致。sae提供了一个模拟的本地开发环境，一定程度上模拟了sae的环境，但还不完整。比如storage服务里面的文件路径不能自己拼出来，每个storage也不能简单的当做一级子目录处理，只能获取返回值里的文件路径再保存利用。另外有时候开着本地模拟环境访问服务器上的thinkPHP sae版会出现很多匪夷所思的情况，比如上传文件会传到本地的虚拟环境而不是服务器，所以svn同步到服务器后建议关闭虚拟环境再测试。未完待续….">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-29T15:20:24+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:20:24+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="sae开发备忘录">
+  <meta name="twitter:description" content="sae开发备忘录 新浪的sina app engine是个不错的公用云空间：
+注册开发者每月都有免费的云豆赠送，进入门槛低。使用svn部署代码，符合一般开发者的习惯，也方便协作开发。使用读写分离的mysql数据库，并发性和负载能力更强。企业版可以使用cdn，利用新浪分散在各地的机房加快应用访问速度。有各类流行框架和开放应用的支持，如thinkPHP，分词，面部识别api等等。有新浪微博的api，可以整合到新浪微博便于推广自己的应用。诸如此类的好处还有很多，还有各种新服务在不断推出，想了解更详细的话请自行进入传送门：http://sae.sina.com.cn/?m=devcenter 不过由于性能，安全之类的考虑，sae平台和传统的php主机有些区别，新手（比如我这样的）经常在上面碰钉子，建议先浏览一遍文档再动手。这里记录一些开发中走的弯路，希望能帮到看到此文的朋友。
+新浪的sae是基于linux&#43;apache&#43;mysql&#43;php几个技术，在linux下面有个匪夷所思的特性就是路径是大小写敏感的。因此如果出现网页中的资源（如图片，swf)失效的情况，可以先检查一下文件夹名和url中的大小写是否一致。sae提供了一个模拟的本地开发环境，一定程度上模拟了sae的环境，但还不完整。比如storage服务里面的文件路径不能自己拼出来，每个storage也不能简单的当做一级子目录处理，只能获取返回值里的文件路径再保存利用。另外有时候开着本地模拟环境访问服务器上的thinkPHP sae版会出现很多匪夷所思的情况，比如上传文件会传到本地的虚拟环境而不是服务器，所以svn同步到服务器后建议关闭虚拟环境再测试。未完待续….">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/30/" title="sae开发备忘录 - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/113/" title="Shader效果踩坑备忘" /><link rel="next" type="text/html" href="http://localhost:1313/posts/104/" title="PS CC 2019下载地址" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/30/index.md" title="sae开发备忘录 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "sae开发备忘录",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/30\/"
+    },"genre": "posts","wordcount":  7 ,
+    "url": "http:\/\/localhost:1313\/posts\/30\/","datePublished": "2025-06-29T15:20:24+00:00","dateModified": "2025-06-29T15:20:24+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Sae开发备忘录</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:24"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="7 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+    </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">sae开发备忘录</h1></div>
+<div class="content" id="content"><p>新浪的sina app engine是个不错的公用云空间：<!-- raw HTML omitted --></p><ul><li>注册开发者每月都有免费的云豆赠送，进入门槛低。</li><li>使用svn部署代码，符合一般开发者的习惯，也方便协作开发。</li><li>使用读写分离的mysql数据库，并发性和负载能力更强。</li><li>企业版可以使用cdn，利用新浪分散在各地的机房加快应用访问速度。</li><li>有各类流行框架和开放应用的支持，如thinkPHP，分词，面部识别api等等。</li><li>有新浪微博的api，可以整合到新浪微博便于推广自己的应用。</li><li>诸如此类的好处还有很多，还有各种新服务在不断推出，想了解更详细的话请自行进入传送门：<!-- raw HTML omitted --><a href="http://sae.sina.com.cn/?m=devcenter" target="_blank" rel="external nofollow noopener noreferrer">http://sae.sina.com.cn/?m=devcenter</a><!-- raw HTML omitted --></li></ul><p>&nbsp;不过由于性能，安全之类的考虑，sae平台和传统的php主机有些区别，新手（比如我这样的）经常在上面碰钉子，建议先浏览一遍文档再动手。这里记录一些开发中走的弯路，希望能帮到看到此文的朋友。<!-- raw HTML omitted --></p><ol><li>新浪的sae是基于linux+apache+mysql+php几个技术，在linux下面有个匪夷所思的特性就是路径是大小写敏感的。因此如果出现网页中的资源（如图片，swf)失效的情况，可以先检查一下文件夹名和url中的大小写是否一致。</li><li>sae提供了一个模拟的本地开发环境，一定程度上模拟了sae的环境，但还不完整。比如storage服务里面的文件路径不能自己拼出来，每个storage也不能简单的当做一级子目录处理，只能获取返回值里的文件路径再保存利用。另外有时候开着本地模拟环境访问服务器上的thinkPHP sae版会出现很多匪夷所思的情况，比如上传文件会传到本地的虚拟环境而不是服务器，所以svn同步到服务器后建议关闭虚拟环境再测试。</li></ol><p>未完待续….</p><p><!-- raw HTML omitted --></p><p></p><!-- raw HTML omitted --></div>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2025-06-29 15:20:24">Updated on 2025-06-29&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/30/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c30.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/30/" data-title="Sae开发备忘录"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/30/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/30/" data-title="Sae开发备忘录"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/113/" class="post-nav-item" rel="prev" title="Shader效果踩坑备忘"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Shader效果踩坑备忘</a><a href="/posts/104/" class="post-nav-item" rel="next" title="PS CC 2019下载地址">PS CC 2019下载地址<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.147.9"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.21-b2e6f70a"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+</html>

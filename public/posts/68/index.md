@@ -1,0 +1,13 @@
+# KSFramework研究纪要
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">KSFramework研究纪要</h1></div>
+
+<div class="content" id="content"><p>发包前重要步骤和KSFramework的重要路径：</p><!-- raw HTML omitted --><p>&nbsp;/Product/SettingSource/ =&gt;&nbsp;/Assets/AppSettings.cs 从配置表生成配置数据cs类</p><p>&nbsp;/Product/SettingSource/ =&gt; /Product/Setting/ 生成tsv数据文件</p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><p>KEngine - &gt; AssetBundle -&gt; Build All /Rebuild All&nbsp;</p><p>&nbsp;=&gt; /Assets/StreamAssets/ 包括预制件 场景 多媒体资源 lua代码等内容 导出成AssetBundle</p><p>KEngine -&gt; AutoBuilder -&gt; Android Dev</p><p>&nbsp;切换平台&nbsp;</p><p>&nbsp;/Assets/StreamAssets/内容移动到/Product/Bundles/XXX(Android)/</p><p>&nbsp;打包APK</p><p>用于编辑UI预制件的场景放在/Assets/BundleEditing/UI/</p><p>场景不能和任何其他场景重名，即使和不包含UIWindowAsset组件物体的场景同样不能重名，否则会发生Prefab的UI组件与lua绑定失效的问题。</p><p>Assets/KSFramework/KEngine/KEngine.Lib/TabeMLCompiler/ 这里的DLL仅在UnityEditor中使用 不能打包发布到手机因为引用了Winform相关的库。</p><p><!-- raw HTML omitted -->计划：<!-- raw HTML omitted --><!-- raw HTML omitted -->现在的unity2018已经可以不用场景直接编辑Prefab，或许可以修改调整去掉场景里生成ui prefab的流程<!-- raw HTML omitted --></p><p>在场景文件里单独编辑预制件还可以配合摄像机等其他辅助物体进行对位，编辑预制件的场景仍然有必要</p><p>打包前最好调用xLua生成一遍包装代码，不然：</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2019/12/201912211576939042977316.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2019/12/201912211576939042977316.png" data-sub-html="<h2>KSFramework研究纪要  Unity 热更新 xLua KSFramework KEngine 第1张</h2><p>KSFramework研究纪要  Unity 热更新 xLua KSFramework KEngine 第1张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2019/12/201912211576939042977316.png" data-srcset="https://www.fancybit.top/zb_users/upload/2019/12/201912211576939042977316.png, https://www.fancybit.top/zb_users/upload/2019/12/201912211576939042977316.png 1.5x, https://www.fancybit.top/zb_users/upload/2019/12/201912211576939042977316.png 2x" data-sizes="auto" alt="KSFramework研究纪要  Unity 热更新 xLua KSFramework KEngine 第1张" title="KSFramework研究纪要  Unity 热更新 xLua KSFramework KEngine 第1张"></a><figcaption class="image-caption">KSFramework研究纪要 Unity 热更新 xLua KSFramework KEngine 第1张</figcaption></figure><p></p><p>改动：修改了SceneLoader.Load方法的第一个参数，现在不需要加Scene\前缀，直接输入放到Scene里的场景路径即可载入。</p><p>经验：遇到aguments invalid的LUA层错误，先检查是否对一个luatable调用成员方法的时候没有用第一个self参数，也没有用:替代.</p><p>疑问：lua是在另外线程执行的么？ 线程同步使用的什么机制？ 同样一个按钮事件是CS先执行还是LUA先执行？LUA能等待CS线程或者协程的同步消息么？&nbsp;</p><p>经验：用StaticAssetLoader.Load载入的物体会创建在场景里，如果不希望放进场景的话可以SetActive(false)</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/68/  
+

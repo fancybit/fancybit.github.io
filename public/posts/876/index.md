@@ -1,0 +1,13 @@
+# GrassCutter研究备忘
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">GrassCutter研究备忘</h1></div>
+
+<div class="content" id="content"><p>fiddler和pandavpn只能开一个 互相会抢占系统默认代理的位置 影响原神的htt_p_请求转发</p><p>Cultivation在本机的时候需要在GrassCutter的config.json里面禁用加密和InRouting，具体位置在server/http/encryption/useEncryption和useInRouting.服务端端口server/http/bindPort设置为启动器一致端口。启动器以GrassCutter模式连接，不能勾选使用Https。</p></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/876/  
+

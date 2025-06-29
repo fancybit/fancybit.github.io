@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器 - 数语轩</title><meta name="author" content="fancybit">
+<meta name="description" content="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器 用了一段时间的MONO，现在MONO也支持了ENTITY FRAMEWORK 6。但是实际上在LINUX环境里用MYSQL还是会有很多坑。并且之前在网络游戏服务端SCUT上扩展一些功能时候也遇到了一些因为MONO和.NET行为方式不一致的坑耗掉了不少时间。使用mono虽然可以节约性能开销，但是牺牲掉了windows套件本身的便利。微软开发工具的优势本来就在开发时候的方便，因此想开发的爽的话，还是老实用WINDOWS SERVER和SQL SERVER好了。而且windows server似乎也有无桌面的运行模式，具体怎么用试验过了再来发文吧。
+windows的远程桌面只有用户名密码的方式登录，安全性并不高，不过LINUX上方便的工具很多都有WINDOWS的移植版本了。
+这次使用了SecureCRT和RealVNC服务端和Cygwin在windows server服务器上搭建了使用RSA秘钥文件加密登录和SSH加密信道的远程桌面。
+首先是服务端的配置：
+首先在cygwin网站上下载最新版的cygwin,根据机器的CPU和操作系统类型:
+下一步到如下界面设置CYGWIN安装到的目录，这里也是在cygwin控制台里根路径对应的位置：
+这里是下载的包的缓存，增加软件包的时候需要重新运行安装程序：
+&nbsp;选择安装源，最上面的源应该是最新的，国内也有一些镜像但是有些软件包似乎版本不是最新还有缺失。推荐使用网易的源，在我这里速度很快：
+163的镜像：http://mirrors.163.com/cygwin/
+在下面粘贴后ADD即可
+这里搜索openssh,git,&nbsp;bash-completion以及bash-compelion-devel
+&nbsp;搜索后点击前面的skip或者default改成要安装的版本号
+选好所需软件包之后一直下一步等待安装。
+cygwin安装成功后, 在管理员特权下执行bash终端. 我们先对git server端进行设置. 执行ssh-host-config, 接下来脚本会引导用户进行设定. 1. *** Query: Should StrictModes be used? (yes/no)
+">
+  <meta itemprop="name" content="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器">
+  <meta itemprop="description" content="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器 用了一段时间的MONO，现在MONO也支持了ENTITY FRAMEWORK 6。但是实际上在LINUX环境里用MYSQL还是会有很多坑。并且之前在网络游戏服务端SCUT上扩展一些功能时候也遇到了一些因为MONO和.NET行为方式不一致的坑耗掉了不少时间。使用mono虽然可以节约性能开销，但是牺牲掉了windows套件本身的便利。微软开发工具的优势本来就在开发时候的方便，因此想开发的爽的话，还是老实用WINDOWS SERVER和SQL SERVER好了。而且windows server似乎也有无桌面的运行模式，具体怎么用试验过了再来发文吧。
+windows的远程桌面只有用户名密码的方式登录，安全性并不高，不过LINUX上方便的工具很多都有WINDOWS的移植版本了。
+这次使用了SecureCRT和RealVNC服务端和Cygwin在windows server服务器上搭建了使用RSA秘钥文件加密登录和SSH加密信道的远程桌面。
+首先是服务端的配置：
+首先在cygwin网站上下载最新版的cygwin,根据机器的CPU和操作系统类型:
+下一步到如下界面设置CYGWIN安装到的目录，这里也是在cygwin控制台里根路径对应的位置：
+这里是下载的包的缓存，增加软件包的时候需要重新运行安装程序：
+ 选择安装源，最上面的源应该是最新的，国内也有一些镜像但是有些软件包似乎版本不是最新还有缺失。推荐使用网易的源，在我这里速度很快：
+163的镜像：http://mirrors.163.com/cygwin/
+在下面粘贴后ADD即可
+这里搜索openssh,git, bash-completion以及bash-compelion-devel
+ 搜索后点击前面的skip或者default改成要安装的版本号
+选好所需软件包之后一直下一步等待安装。
+cygwin安装成功后, 在管理员特权下执行bash终端. 我们先对git server端进行设置. 执行ssh-host-config, 接下来脚本会引导用户进行设定. 1. *** Query: Should StrictModes be used? (yes/no)">
+  <meta itemprop="datePublished" content="2025-06-29T15:20:24+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:20:24+00:00">
+  <meta itemprop="wordCount" content="197"><meta property="og:url" content="http://localhost:1313/posts/40/">
+  <meta property="og:site_name" content="数语轩">
+  <meta property="og:title" content="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器">
+  <meta property="og:description" content="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器 用了一段时间的MONO，现在MONO也支持了ENTITY FRAMEWORK 6。但是实际上在LINUX环境里用MYSQL还是会有很多坑。并且之前在网络游戏服务端SCUT上扩展一些功能时候也遇到了一些因为MONO和.NET行为方式不一致的坑耗掉了不少时间。使用mono虽然可以节约性能开销，但是牺牲掉了windows套件本身的便利。微软开发工具的优势本来就在开发时候的方便，因此想开发的爽的话，还是老实用WINDOWS SERVER和SQL SERVER好了。而且windows server似乎也有无桌面的运行模式，具体怎么用试验过了再来发文吧。
+windows的远程桌面只有用户名密码的方式登录，安全性并不高，不过LINUX上方便的工具很多都有WINDOWS的移植版本了。
+这次使用了SecureCRT和RealVNC服务端和Cygwin在windows server服务器上搭建了使用RSA秘钥文件加密登录和SSH加密信道的远程桌面。
+首先是服务端的配置：
+首先在cygwin网站上下载最新版的cygwin,根据机器的CPU和操作系统类型:
+下一步到如下界面设置CYGWIN安装到的目录，这里也是在cygwin控制台里根路径对应的位置：
+这里是下载的包的缓存，增加软件包的时候需要重新运行安装程序：
+ 选择安装源，最上面的源应该是最新的，国内也有一些镜像但是有些软件包似乎版本不是最新还有缺失。推荐使用网易的源，在我这里速度很快：
+163的镜像：http://mirrors.163.com/cygwin/
+在下面粘贴后ADD即可
+这里搜索openssh,git, bash-completion以及bash-compelion-devel
+ 搜索后点击前面的skip或者default改成要安装的版本号
+选好所需软件包之后一直下一步等待安装。
+cygwin安装成功后, 在管理员特权下执行bash终端. 我们先对git server端进行设置. 执行ssh-host-config, 接下来脚本会引导用户进行设定. 1. *** Query: Should StrictModes be used? (yes/no)">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-29T15:20:24+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:20:24+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器">
+  <meta name="twitter:description" content="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器 用了一段时间的MONO，现在MONO也支持了ENTITY FRAMEWORK 6。但是实际上在LINUX环境里用MYSQL还是会有很多坑。并且之前在网络游戏服务端SCUT上扩展一些功能时候也遇到了一些因为MONO和.NET行为方式不一致的坑耗掉了不少时间。使用mono虽然可以节约性能开销，但是牺牲掉了windows套件本身的便利。微软开发工具的优势本来就在开发时候的方便，因此想开发的爽的话，还是老实用WINDOWS SERVER和SQL SERVER好了。而且windows server似乎也有无桌面的运行模式，具体怎么用试验过了再来发文吧。
+windows的远程桌面只有用户名密码的方式登录，安全性并不高，不过LINUX上方便的工具很多都有WINDOWS的移植版本了。
+这次使用了SecureCRT和RealVNC服务端和Cygwin在windows server服务器上搭建了使用RSA秘钥文件加密登录和SSH加密信道的远程桌面。
+首先是服务端的配置：
+首先在cygwin网站上下载最新版的cygwin,根据机器的CPU和操作系统类型:
+下一步到如下界面设置CYGWIN安装到的目录，这里也是在cygwin控制台里根路径对应的位置：
+这里是下载的包的缓存，增加软件包的时候需要重新运行安装程序：
+ 选择安装源，最上面的源应该是最新的，国内也有一些镜像但是有些软件包似乎版本不是最新还有缺失。推荐使用网易的源，在我这里速度很快：
+163的镜像：http://mirrors.163.com/cygwin/
+在下面粘贴后ADD即可
+这里搜索openssh,git, bash-completion以及bash-compelion-devel
+ 搜索后点击前面的skip或者default改成要安装的版本号
+选好所需软件包之后一直下一步等待安装。
+cygwin安装成功后, 在管理员特权下执行bash终端. 我们先对git server端进行设置. 执行ssh-host-config, 接下来脚本会引导用户进行设定. 1. *** Query: Should StrictModes be used? (yes/no)">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/40/" title="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器 - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/102/" title="使用vscode打造python开发环境" /><link rel="next" type="text/html" href="http://localhost:1313/posts/15/" title="使用js把json字符串转为js对象的方法" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/40/index.md" title="使用VNC+SSH建立安全的远程桌面访问WINDOWS服务器 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "使用VNC+SSH建立安全的远程桌面访问WINDOWS服务器",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/40\/"
+    },"genre": "posts","wordcount":  197 ,
+    "url": "http:\/\/localhost:1313\/posts\/40\/","datePublished": "2025-06-29T15:20:24+00:00","dateModified": "2025-06-29T15:20:24+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:24"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="197 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+    </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">使用VNC+SSH建立安全的远程桌面访问WINDOWS服务器</h1></div>
+<div class="content" id="content"><p>用了一段时间的MONO，现在MONO也支持了ENTITY FRAMEWORK 6。但是实际上在LINUX环境里用MYSQL还是会有很多坑。并且之前在网络游戏服务端SCUT上扩展一些功能时候也遇到了一些因为MONO和.NET行为方式不一致的坑耗掉了不少时间。使用mono虽然可以节约性能开销，但是牺牲掉了windows套件本身的便利。微软开发工具的优势本来就在开发时候的方便，因此想开发的爽的话，还是老实用WINDOWS SERVER和SQL SERVER好了。而且windows server似乎也有无桌面的运行模式，具体怎么用试验过了再来发文吧。</p><p>windows的远程桌面只有用户名密码的方式登录，安全性并不高，不过LINUX上方便的工具很多都有WINDOWS的移植版本了。</p><p>这次使用了SecureCRT和RealVNC服务端和Cygwin在windows server服务器上搭建了使用RSA秘钥文件加密登录和SSH加密信道的远程桌面。</p><p>首先是服务端的配置：</p><p>首先在cygwin网站上下载最新版的cygwin,根据机器的CPU和操作系统类型:</p><!-- raw HTML omitted --><p>下一步到如下界面设置CYGWIN安装到的目录，这里也是在cygwin控制台里根路径对应的位置：</p><!-- raw HTML omitted --><p>这里是下载的包的缓存，增加软件包的时候需要重新运行安装程序：</p><!-- raw HTML omitted --><p>&nbsp;选择安装源，最上面的源应该是最新的，国内也有一些镜像但是有些软件包似乎版本不是最新还有缺失。推荐使用网易的源，在我这里速度很快：</p><p>163的镜像：<!-- raw HTML omitted --><a href="http://mirrors.163.com/cygwin/" target="_blank" rel="external nofollow noopener noreferrer">http://mirrors.163.com/cygwin/</a><!-- raw HTML omitted --></p><p>在下面粘贴后ADD即可</p><!-- raw HTML omitted --><p></p><p>这里搜索openssh,git,&nbsp;bash-completion以及bash-compelion-devel</p><!-- raw HTML omitted --><p>&nbsp;搜索后点击前面的skip或者default改成要安装的版本号</p><p><!-- raw HTML omitted --></p><p>选好所需软件包之后一直下一步等待安装。</p><p>cygwin安装成功后, 在管理员特权下执行bash终端. 我们先对git server端进行设置. 执行ssh-host-config, 接下来脚本会引导用户进行设定. 1. *** Query: Should StrictModes be used? (yes/no)</p><p>&nbsp;这里选择yes 2. *\<em>* Query: Should privilege separation be used? (yes/no)&nbsp;这里选择yes, Cygwin会为我们建立一个特殊的windows账户用来执行sshd服务. 3. **</em> Query: Do you want to install sshd as a service?</p><p> *\<em>* Query: (Say “no” if it is already installed as a service) (yes/no)&nbsp;选择yes, 会注册一个sshd的服务, 以执行server. 4. **</em> Query: Enter the value of CYGWIN for the daemon: []</p><p>&nbsp;这里写ntsec 5. *** Info: This script plans to use ‘cyg_server’.</p><p>*** Info: ‘cyg_server’ will only be used by registered services.</p><p>*** Query: Do you want to use a different name? (yes/no)</p><p>&nbsp;Cygwin要建立一个cyg_server账户以运行sshd服务, 这里可以选择为该账户另取名字或者使用default. 我们选择no. 6. *** Query: Create new privileged user account ‘DMC-PC\cyg_server’ (Cygwin name: ‘cyg_server’)? (yes/no)</p><p>&nbsp;yes, 确定建立账户. 之后输入密码, 完成config. 设定完毕后, 在/etc下面多出来一个sshd_config文件, 打开该文件, 将如下item的注释取消, RSAAuthentication yes PubkeyAuthentication yes 新版的openssh原配置文件可能并没有RSAAuthentication这行，我是自己加上了它，还没测试是否对使用有影响。 openSSH配置完毕之后，在cygwin终端输入： net stop sshd net start sshd 即可重启sshd服务。如果出现了什么错误，可以到服务端windows事件日志里查看错误详细信息。 秘钥可以在服务端生成，不过我更习惯用SecureCRT生成： SecureCRT的安装破解这里就先不赘述了，连接的时候使用服务器ip和windows的用户名：<br><!-- raw HTML omitted --> 选中publickey然后单击properties,进入公钥设置界面，这里可以生成公钥：<br><!-- raw HTML omitted --></p><p>点击Create Identity File创建公钥，key type选择RSA Passphrase可以不填 key length 1024或者2048都可以。</p><!-- raw HTML omitted --><p>&nbsp;选择OpenSSH类型的秘钥，保存在自己电脑安全的位置（不要共享出去的地方）：</p><!-- raw HTML omitted --><p>登陆时候选择公钥并且登陆过程会自动读取公钥同目录下无扩展名的私钥，因此不要改名或者移动私钥</p><p>这样设置完成后秘钥对生成完毕，服务器上只需要保存公钥，即有pub扩展名的文件。</p><p>直接在这里upload到服务器总是失败，我后来是使用secureFX上传公钥到服务器上，位置是~/.ssh/authorized_keys 每个用户自己的文件夹下都有各自的公钥文件，多个公钥使用»操作符追加到authorized_keys文件即可。</p><p>现在去掉SecureCRT的客户端密码登陆方式，尝试秘钥文件登陆成功后在服务器上把/etc/sshd_config这一行注释解除并设置为PasswordAuthentication no关闭服务器密码认证 随后打开SecureCRT连接属性，如下把5900端口添加到端口映射<br><!-- raw HTML omitted --></p><p></p><p>在服务端安装RealVNC Server</p><p>&nbsp;在服务里把VNC Server改成手动启动 然后创建一个批处理用于启动VNC服务：</p><p>net stop winvnc4<br> sc start winvnc4 -localhost :1<br> pause</p><p></p><p>这里主要是为了传递localhost :1参数，让VNC在SSH隧道的本地端口等待连接</p><p>然后把这个批处理加到开始，或者其他开机自启动的位置</p><p>把服务器当前管理员账户设置为进入系统后直接登录，这样就可以保证开机之后启动VNC服务。试了在注册表和WIN.INI里在登录前启动批处理的方法，然并卵了。</p><p>参考这里设置自动登陆：http://jingyan.baidu.com/article/7e440953eabd742fc0e2efae.html</p><p></p><p>客户端先开启SecureCRT用之前设置的连接登陆 保持这个连接打开直到退出远程桌面</p><p>开启VNC Viewer，连接localhost :1</p><p>然后一切正常的话你就可以看到VNC远程桌面了 重启几次测试一下不靠windows远程桌面是否能登陆。如果可以的话就可以用VNC关闭windows远程桌面，到此你就可以保证只有拥有2个秘钥的计算机才能远程登陆windows桌面了。</p><!-- raw HTML omitted --></div>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2025-06-29 15:20:24">Updated on 2025-06-29&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/40/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c40.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/40/" data-title="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/40/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/40/" data-title="使用VNC&#43;SSH建立安全的远程桌面访问WINDOWS服务器"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/102/" class="post-nav-item" rel="prev" title="使用vscode打造python开发环境"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>使用vscode打造python开发环境</a><a href="/posts/15/" class="post-nav-item" rel="next" title="使用js把json字符串转为js对象的方法">使用js把json字符串转为js对象的方法<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.147.9"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.21-b2e6f70a"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+</html>

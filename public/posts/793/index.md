@@ -1,0 +1,13 @@
+# Vscode调试typescript
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">vscode调试typescript</h1></div>
+
+<div class="content" id="content"><h2 id="vscode本身支持ts调试">vscode本身支持ts调试：</h2><ol><li>只要在tsconfig.json里打开sourceMap = true就可以启动源码映射文件(*.map)来进行运行时ts断点调试。</li><li>终端-》新建终端 创建一个终端窗口 如果已经有终端窗口可以略过这一步</li><li>点击终端面板右上角添加终端的+右边的向下箭头，选择创建js调试终端：<!-- raw HTML omitted --></li></ol><p><!-- raw HTML omitted -->¨NBSP;<!-- raw HTML omitted --></p><p>这个时候在这个终端里启动的node.js运行js的实例都会进行调试，遇到ts或者js断点都会暂停然后查看状态。</p><h2 id="安装一个vscode插件typescript-debugger可以把调试过程做的更简单f5一键进入调试模式">安装一个vscode插件typescript debugger可以把调试过程做的更简单，F5一键进入调试模式：</h2><p>1.搜索安装typescript debugger插件，然后切换到debug设置状态：<!-- raw HTML omitted --></p><p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p><p>2.创建一个调试配置文件，选择ts debug<!-- raw HTML omitted --></p><p><!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p><p>3.下图这里把标记的地方改成启动的js文件相对路径，比如./dist/app.js,然后保存<!-- raw HTML omitted --></p><p><!-- raw HTML omitted --> <!-- raw HTML omitted --></p><p>4.在随意一个终端里运行npm install -dev ts-node 安装所需的包</p><p>5.完成后就可以F5一键键开始调试了，同样是支持js和ts断点，只要tsconfig.json里启用了sourceMap文件生成</p></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/793/  
+

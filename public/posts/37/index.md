@@ -1,0 +1,13 @@
+# 逆向win32程序的思路琐记
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">逆向win32程序的思路琐记</h1></div>
+
+<div class="content" id="content"><p>根据每个地址上使用的指令可以判断出此地址的类型 如果间接引用是指针类型，浮点或者整数运算则证明是数值类型等。</p><p>c++的union可能造成一些复杂的情况。。。</p><p>函数被调用之前的一系列PUSH动作可以作为推测参数类型和顺序的依据。</p><p>线程堆栈中存放着局部变量和参数，通过绘制堆栈帧图像可以判断出函数参数的个数和尺寸。</p><p>通过类的成员函数中this指针的相对偏移量可以获取类的成员变量信息。</p><p>虚函数的具体结构还未理清…</p><p>从汇编指令逆向出算式的方法还未理顺…</p><p>未完待续…</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/37/  
+

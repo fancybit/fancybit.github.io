@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Docker复习备忘 - 数语轩</title><meta name="author" content="fancybit">
+<meta name="description" content="Docker复习备忘 Docker Windows使用wsl后端可以提高性能
+-p xxx[宿主机口号]:xxx[docker容器内端口号]
+当宿主机内使用非0.0.0.0 Listen的时候，可能导致宿主机转发来的连接断开，所以如果宿主机内可以curl到内容，但是宿主机浏览器显示socket hang up以及empty_response错误的时候，很可能就是宿主机内listen的IP不对，用0.0.0.0监听所有来源地址即可。
+把容器名和镜像名取同一个 然后commit xxx xxx即可把容器状态同步给镜像文件了
+每一句都会生成一个中间缓存，所以不变的尽量靠前放，经常变化的比如入口点，复制文件之类的往后放。但是也要注意不要搞错依赖关系致使中间出错。
+Dockerfile进行build的时候需要很多错综复杂的国外网络地址，所以与其来回折腾换源提速，还不如直接用一个VPN暂时把所有流量走国外加速VPN，可以解决很多缺失问题。
+pip安装python模块的时候经常会遇到一些.h文件缺失，这种情况一般是用yum来安装缺少的xxx-dev xxx-devel之类的支持库即可解决。
+COPY . .可以和WorkDir配合，WorkDir指定的是容器内的文件系统路径，而COPY的第一个参数是相对于Dokerfile放置的目录，第二个是基于WorkDir参数的容器内路径，注意顺序。
+用.dockerIgnore排除掉.git应该可以避免不需要的git历史占据的空间。
+如果dockerfile构建的时候需要清理每一句的缓存，可以在docker后添加–no-cache参数来不用缓存彻底从头构建
+vscode有一个docker插件可以浏览修改docker内部 不过我觉得还是用VI做小修小改更顺手。不过拿来检查docker内的文件是否正确更新是个好东西。
+vscode带的DOKERFILE语法格式识别还不错，右键就可以构建
+">
+  <meta itemprop="name" content="Docker复习备忘">
+  <meta itemprop="description" content="Docker复习备忘 Docker Windows使用wsl后端可以提高性能
+-p xxx[宿主机口号]:xxx[docker容器内端口号]
+当宿主机内使用非0.0.0.0 Listen的时候，可能导致宿主机转发来的连接断开，所以如果宿主机内可以curl到内容，但是宿主机浏览器显示socket hang up以及empty_response错误的时候，很可能就是宿主机内listen的IP不对，用0.0.0.0监听所有来源地址即可。
+把容器名和镜像名取同一个 然后commit xxx xxx即可把容器状态同步给镜像文件了
+每一句都会生成一个中间缓存，所以不变的尽量靠前放，经常变化的比如入口点，复制文件之类的往后放。但是也要注意不要搞错依赖关系致使中间出错。
+Dockerfile进行build的时候需要很多错综复杂的国外网络地址，所以与其来回折腾换源提速，还不如直接用一个VPN暂时把所有流量走国外加速VPN，可以解决很多缺失问题。
+pip安装python模块的时候经常会遇到一些.h文件缺失，这种情况一般是用yum来安装缺少的xxx-dev xxx-devel之类的支持库即可解决。
+COPY . .可以和WorkDir配合，WorkDir指定的是容器内的文件系统路径，而COPY的第一个参数是相对于Dokerfile放置的目录，第二个是基于WorkDir参数的容器内路径，注意顺序。
+用.dockerIgnore排除掉.git应该可以避免不需要的git历史占据的空间。
+如果dockerfile构建的时候需要清理每一句的缓存，可以在docker后添加–no-cache参数来不用缓存彻底从头构建
+vscode有一个docker插件可以浏览修改docker内部 不过我觉得还是用VI做小修小改更顺手。不过拿来检查docker内的文件是否正确更新是个好东西。
+vscode带的DOKERFILE语法格式识别还不错，右键就可以构建">
+  <meta itemprop="datePublished" content="2025-06-29T15:20:26+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:20:26+00:00">
+  <meta itemprop="wordCount" content="25"><meta property="og:url" content="http://localhost:1313/posts/773/">
+  <meta property="og:site_name" content="数语轩">
+  <meta property="og:title" content="Docker复习备忘">
+  <meta property="og:description" content="Docker复习备忘 Docker Windows使用wsl后端可以提高性能
+-p xxx[宿主机口号]:xxx[docker容器内端口号]
+当宿主机内使用非0.0.0.0 Listen的时候，可能导致宿主机转发来的连接断开，所以如果宿主机内可以curl到内容，但是宿主机浏览器显示socket hang up以及empty_response错误的时候，很可能就是宿主机内listen的IP不对，用0.0.0.0监听所有来源地址即可。
+把容器名和镜像名取同一个 然后commit xxx xxx即可把容器状态同步给镜像文件了
+每一句都会生成一个中间缓存，所以不变的尽量靠前放，经常变化的比如入口点，复制文件之类的往后放。但是也要注意不要搞错依赖关系致使中间出错。
+Dockerfile进行build的时候需要很多错综复杂的国外网络地址，所以与其来回折腾换源提速，还不如直接用一个VPN暂时把所有流量走国外加速VPN，可以解决很多缺失问题。
+pip安装python模块的时候经常会遇到一些.h文件缺失，这种情况一般是用yum来安装缺少的xxx-dev xxx-devel之类的支持库即可解决。
+COPY . .可以和WorkDir配合，WorkDir指定的是容器内的文件系统路径，而COPY的第一个参数是相对于Dokerfile放置的目录，第二个是基于WorkDir参数的容器内路径，注意顺序。
+用.dockerIgnore排除掉.git应该可以避免不需要的git历史占据的空间。
+如果dockerfile构建的时候需要清理每一句的缓存，可以在docker后添加–no-cache参数来不用缓存彻底从头构建
+vscode有一个docker插件可以浏览修改docker内部 不过我觉得还是用VI做小修小改更顺手。不过拿来检查docker内的文件是否正确更新是个好东西。
+vscode带的DOKERFILE语法格式识别还不错，右键就可以构建">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-29T15:20:26+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:20:26+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Docker复习备忘">
+  <meta name="twitter:description" content="Docker复习备忘 Docker Windows使用wsl后端可以提高性能
+-p xxx[宿主机口号]:xxx[docker容器内端口号]
+当宿主机内使用非0.0.0.0 Listen的时候，可能导致宿主机转发来的连接断开，所以如果宿主机内可以curl到内容，但是宿主机浏览器显示socket hang up以及empty_response错误的时候，很可能就是宿主机内listen的IP不对，用0.0.0.0监听所有来源地址即可。
+把容器名和镜像名取同一个 然后commit xxx xxx即可把容器状态同步给镜像文件了
+每一句都会生成一个中间缓存，所以不变的尽量靠前放，经常变化的比如入口点，复制文件之类的往后放。但是也要注意不要搞错依赖关系致使中间出错。
+Dockerfile进行build的时候需要很多错综复杂的国外网络地址，所以与其来回折腾换源提速，还不如直接用一个VPN暂时把所有流量走国外加速VPN，可以解决很多缺失问题。
+pip安装python模块的时候经常会遇到一些.h文件缺失，这种情况一般是用yum来安装缺少的xxx-dev xxx-devel之类的支持库即可解决。
+COPY . .可以和WorkDir配合，WorkDir指定的是容器内的文件系统路径，而COPY的第一个参数是相对于Dokerfile放置的目录，第二个是基于WorkDir参数的容器内路径，注意顺序。
+用.dockerIgnore排除掉.git应该可以避免不需要的git历史占据的空间。
+如果dockerfile构建的时候需要清理每一句的缓存，可以在docker后添加–no-cache参数来不用缓存彻底从头构建
+vscode有一个docker插件可以浏览修改docker内部 不过我觉得还是用VI做小修小改更顺手。不过拿来检查docker内的文件是否正确更新是个好东西。
+vscode带的DOKERFILE语法格式识别还不错，右键就可以构建">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/773/" title="Docker复习备忘 - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/770/" title="Docker容器里centos无法使用 systemctl 命令" /><link rel="next" type="text/html" href="http://localhost:1313/posts/82/" title="docker下载镜像太慢的解决方案" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/773/index.md" title="Docker复习备忘 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Docker复习备忘",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/773\/"
+    },"genre": "posts","wordcount":  25 ,
+    "url": "http:\/\/localhost:1313\/posts\/773\/","datePublished": "2025-06-29T15:20:26+00:00","dateModified": "2025-06-29T15:20:26+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Docker复习备忘</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:26"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="25 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+    </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">Docker复习备忘</h1></div>
+<div class="content" id="content"><p>Docker Windows使用wsl后端可以提高性能</p><!-- raw HTML omitted --><p>-p xxx[宿主机口号]:xxx[docker容器内端口号]</p><p>当宿主机内使用非0.0.0.0 Listen的时候，可能导致宿主机转发来的连接断开，所以如果宿主机内可以curl到内容，但是宿主机浏览器显示socket hang up以及empty_response错误的时候，很可能就是宿主机内listen的IP不对，用0.0.0.0监听所有来源地址即可。</p><p>把容器名和镜像名取同一个 然后commit xxx xxx即可把容器状态同步给镜像文件了</p><!-- raw HTML omitted --><p>每一句都会生成一个中间缓存，所以不变的尽量靠前放，经常变化的比如入口点，复制文件之类的往后放。但是也要注意不要搞错依赖关系致使中间出错。</p><p>Dockerfile进行build的时候需要很多错综复杂的国外网络地址，所以与其来回折腾换源提速，还不如直接用一个VPN暂时把所有流量走国外加速VPN，可以解决很多缺失问题。</p><p>pip安装python模块的时候经常会遇到一些.h文件缺失，这种情况一般是用yum来安装缺少的xxx-dev xxx-devel之类的支持库即可解决。</p><p>COPY . .可以和WorkDir配合，WorkDir指定的是容器内的文件系统路径，而COPY的第一个参数是相对于Dokerfile放置的目录，第二个是基于WorkDir参数的容器内路径，注意顺序。<br> 用.dockerIgnore排除掉.git应该可以避免不需要的git历史占据的空间。</p><p>如果dockerfile构建的时候需要清理每一句的缓存，可以在docker后添加–no-cache参数来不用缓存彻底从头构建</p><p>vscode有一个docker插件可以浏览修改docker内部 不过我觉得还是用VI做小修小改更顺手。不过拿来检查docker内的文件是否正确更新是个好东西。</p><p>vscode带的DOKERFILE语法格式识别还不错，右键就可以构建</p></div>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2025-06-29 15:20:26">Updated on 2025-06-29&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/773/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c773.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/773/" data-title="Docker复习备忘"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/773/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/773/" data-title="Docker复习备忘"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/770/" class="post-nav-item" rel="prev" title="Docker容器里centos无法使用 Systemctl 命令"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Docker容器里centos无法使用 Systemctl 命令</a><a href="/posts/82/" class="post-nav-item" rel="next" title="Docker下载镜像太慢的解决方案">Docker下载镜像太慢的解决方案<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.147.9"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.21-b2e6f70a"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+</html>

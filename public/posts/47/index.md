@@ -1,0 +1,13 @@
+# Egametang网络系统组件
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">egametang网络系统组件</h1></div>
+
+<div class="content" id="content"><p>先看一下网络组件的中层：</p><!-- raw HTML omitted --><p>AService抽象了udp和tcp协议的连接工厂，udp的连接方式也被封装的和tcp类似，但是一个接收连接的UService只能建立一个连接。这个接口既可以做服务端通过AcceptChannel接受其他地址的连接，也可以作客户端调用ConnectChanel向其他地址发出连接请求。</p><p>AChannel抽象了tcp和udp的连接信道，由AService创建，可以用于收发字节数据。</p><p>udp的底层使用了ENet，提供了可靠有序的udp通信。</p><p></p><p>然后再来看网络组件的上层类图：</p><p><!-- raw HTML omitted --></p><p></p><p>&nbsp;NetworkComponent是其他上层网络访问组件的基类，内部有一个AService字段。使用tcp做服务端的时候可以创建多个Session，每个Session都是一个连接的高层抽象。这个类型在服务端和客户端项目公用，其提供的MessageDispatch和MessagePacker仅在客户端项目使用。服务端分发消息需要附加另外的MessageDispatcher组件。</p><p>&nbsp;向session另一端做rpc调用可以调用它的Call方法，发送消息可以调用Send，二者的区别在于是否需要服务器响应一个反馈消息。定义消息或者rpc请求的时候使用Message标签设置消息类型与opcode的对应关系。</p><p>接收并响应Session另一端发来的消息是通过OuterMessageDispatcher或者InnerMessageDispatcher。如果是Actor消息或者请求会先把消息分发给Actor，否则获取服务端Game.Scene上的MessageDispatherComponent然后这个组件会根据消息的类型用OpcodeComponent找出对应opcode分发给相应的IMHandler处理。注册新的消息handler只需实现AMHandler或者AMRPCHandler(RPC调用）然后用MessageHandler标记这个handler生效的服务器类型。</p><p>服务端的NetOuterComponent用于通过外网进行连接，比如Gate服务器和玩家电脑之间的连接。</p><p>NetInnerComponent用于服务器组之间的内部通信，通过ip和端口号创建或者使用已有的Session来发消息或者调用rpc。</p><p>创建Session也可以使用NetworkComponent.Create()方法</p><p></p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/47/  
+

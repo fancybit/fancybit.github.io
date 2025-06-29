@@ -1,0 +1,19 @@
+{
+    // 使用 IntelliSense 了解相关属性。
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\NodeJS\\html_to_md.js"
+        }
+    ]
+}
+// 这是一个用于将 HTML 文件转换为 Markdown 文件的 Node.js 脚本配置文件。
+// 该脚本会读取指定目录下的 HTML 文件，提取其中的标题

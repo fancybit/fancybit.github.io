@@ -1,0 +1,13 @@
+# 奇葩的maxscript
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">奇葩的maxscript</h1></div>
+
+<div class="content" id="content"><p>最近打算写一个把MMD导入到UNITY3D的脚本，于是学起了maxscript。这个强大的脚本语言还真是有些奇葩的特性：</p><p>1、变量名可以是单引号字符串。就是说变量名可以是'123’ ‘var’ 甚至是’"’</p><p>2、全局变量是跨脚本的 还有persist的全局变量会存储在max文件中，随着文件打开恢复之前存储的值，但是支持的类型受限。</p><p>3、默认顶层的变量是全局的，语句块中的变量是局部的</p><p><!-- raw HTML omitted -->4、print语句会输出2次 其中一次应该是语句本身求值的结果 和print之后的内容一样<!-- raw HTML omitted --></p><p>5、print之后不加()会左结合造成后续表达式被求值但不参加输出</p><p>6、while循环结束时会输出循环体表达式的值，如果是（）中的多行语句，输出最后一行的值（换言之语句块的值是最后一行的值，因而语句块中的print就不会输出2次）。</p><p>7、无参函数调用要加一对括号 有参数函数调用参数之间用空格间隔 如果参数是表达式需要加括号，否则函数调用会和最近的运算子左结合，这也是print语句那个现象同样道理</p><p>8、定义已有函数会替代原函数 好像没有函数重载</p><p>9、定义函数的时候不像手册里说的必须给执行体加括号，简单的表达式可以不加括号</p><p>10、定义函数时候可以在参数后面用：赋予参数默认值</p><p>11、调用函数的时候除了按照顺序输入参数（位置参数） 还可以用“参数名:值”的方式（关键字参数）以任意的顺序传递参数</p><p>12、关键字参数可以被省略，设定关键字参数需要使用“参数名:值”的方式设定，关键字参数和位置参数混用的时候需要先写顺序参数再写关键字参数才能正确传递</p><p>13、使用struct构造对象的时候，如果没有构造函数参数，需要加()，否则会认为是把此类赋给变量，也就是类型别名。</p><p>14、?可以表示最近执行的一条语句得到的结果，$可以表示当前选定的物体。</p><p>15、数值类型的对象之间赋值是副本，而字符串和其他类型的赋值则是引用。需要副本的时候使用copy函数。</p><p>类型系统方面：</p><p>16、对类型使用classof得到的是其父类，对类型使用superclassof得到的是其父类的父类</p><p><!-- raw HTML omitted -->17、浮点数和整数都是Number 但是integer和float的父类是value而不是Number Number是value的另外一个子类（使用iskindof classof得出）<!-- raw HTML omitted --></p><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->再遇见什么特性继续补充吧<!-- raw HTML omitted --></p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/39/  
+

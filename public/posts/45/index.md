@@ -1,0 +1,13 @@
+# Egametang框架服务端运行流程
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">egametang框架服务端运行流程</h1></div>
+
+<div class="content" id="content"><!-- raw HTML omitted --><p>et框架的构建块主要由entity和componet组成，类似unity的组件。一个Entity可以挂载多个不同Component。Entity和Component的共同基类Disposer用于提供对象池和事件机制。所有Disposer的派生类都可以从对象池中获取。</p><p>entity的构造函数会调用IdGenerator类来根据服务器id当前时间以及一个自增计数组合出一个唯一的id。对象池Fetch对象的时候也会用这个IdGenerator生成新的唯一Id。通常使用EntityFactory.Create方法创建Entity实例，这样会先从对象池获取，随后注册到全局事件管理器ObjectEvents。</p><p>Disposer创建时会被注册进单例的ObjectEvents，如果它实现了ILoad,IUpdate,IStart,就会注册进相应的列表，在ObjectEvents启动，更新或者载入的时候触发对应的事件处理方法（此方法在接口中定义）。</p><p>Disposer实现了IDisposable，在使用using或者手动调用Dispose之后会被对象池回收。</p><p>et框架的服务端启动项目是app.proj 里面只有一个带main的program类型。et自定义了一个OneThreadSynchronizationContext,在有异步回调到来的时候保存delegate和参数到一个多线安全的队列，然后在后面的主循环中调用update，在主线程中取出本次主循环产生的所有异步回调，从而保证了所有的回调函数都被捕捉到单一主线程执行。在主线程中多用await和async既符合顺序的思考习惯，避免了很多的回调定义分散在多个函数中，又可以在等待某一异步操作完成时自动将执行权交给调用函数的后续代码，避免了单线程主线挂起而永远等不到回调完成的问题。单线程的架构既避免了各种多线编程的复杂性和问题陷阱，又可以在组织服务器集群时根据服务器cpu支持的线程数合理启动数量相当的进程来充分发挥服务器计算能力，避免了过多线程造成的上下文切换开销，有利于总体性能的提高。</p><p>et框架的启动项目是App.proj，其中只有一个Program类，类中包含入口函数Main。</p><p><!-- raw HTML omitted -->启动之后首先注册Model程序集中提供的各种基础模型类，随后加载Hotfix中可以热更新的类型并且注册到ObjectEvents。一方面是提供IAwake ILoad IUpdate接口中的事件处理，一方面检索各类Attribute并且注册到相应容器中以便后续查找。<!-- raw HTML omitted --></p><p>Game.Scene是很重要的单例实体，其上的component代表了服务端进程能提供的基础功能集合。</p><p>&nbsp;OptionComponent和StartConfigComponent用来读取unity中设定的服务器集群配置，给后续的启动步骤留下依据。</p><p>后续OpcodeTypeComponent和MessageDispatherComponent提供服务端进程相应网络消息回调的功能，这个所有种类的服务端进程都需要。</p><p>随后是根据本身的appid添加自身需要的Component。这些具体的组件后续的文章会继续介绍。最后是进入服务端主循环：每此循环休息1ms防止CPU占用过高；处理发生的异步回调；处理各种IDisposer的update事件。</p><p>服务端的设计思路和基本运行流程就到这里，后续会再介绍框架的其他方面。</p><p></p><p>参考资料：</p><p><!-- raw HTML omitted -->搞懂SynchronizationContext：<!-- raw HTML omitted --><a href="http://www.cnblogs.com/lzxianren/p/SynchronizationContext.html" target="_blank" rel="external nofollow noopener noreferrer">http://www.cnblogs.com/lzxianren/p/SynchronizationContext.html</a><!-- raw HTML omitted --><!-- raw HTML omitted --></p><p></p><p>作者:fancybit</p><p>qq:148332727</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/45/  
+

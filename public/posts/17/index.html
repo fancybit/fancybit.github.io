@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Js Function.call - 数语轩</title><meta name="author" content="fancybit">
+<meta name="description" content="js Function.call 提到上述的概念之前，首先想说说javascript中函数的隐含参数：
+arguments
+Arguments
+该对象代表正在执行的函数和调用它的函数的参数。
+说明
+Arguments是进行函数调用时，除了指定的参数外，还另外创建的一个隐藏对象。Arguments是一个类似数组但不是数组的对象，说它类似数组是因为其具有数组一样的访问性质及方式，可以由arguments[n]来访问对应的单个参数的值，并拥有数组长度属性length。还有就是arguments对象存储的是实际传递给函数的参数，而不局限于函数声明所定义的参数列表，而且不能显式创建&nbsp;arguments对象。arguments对象只有函数开始时才可用。下边例子详细说明了这些性质:
+">
+  <meta itemprop="name" content="js Function.call">
+  <meta itemprop="description" content="js Function.call 提到上述的概念之前，首先想说说javascript中函数的隐含参数：
+arguments
+Arguments
+该对象代表正在执行的函数和调用它的函数的参数。
+说明
+Arguments是进行函数调用时，除了指定的参数外，还另外创建的一个隐藏对象。Arguments是一个类似数组但不是数组的对象，说它类似数组是因为其具有数组一样的访问性质及方式，可以由arguments[n]来访问对应的单个参数的值，并拥有数组长度属性length。还有就是arguments对象存储的是实际传递给函数的参数，而不局限于函数声明所定义的参数列表，而且不能显式创建 arguments对象。arguments对象只有函数开始时才可用。下边例子详细说明了这些性质:">
+  <meta itemprop="datePublished" content="2025-06-29T15:20:24+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:20:24+00:00">
+  <meta itemprop="wordCount" content="36"><meta property="og:url" content="http://localhost:1313/posts/17/">
+  <meta property="og:site_name" content="数语轩">
+  <meta property="og:title" content="js Function.call">
+  <meta property="og:description" content="js Function.call 提到上述的概念之前，首先想说说javascript中函数的隐含参数：
+arguments
+Arguments
+该对象代表正在执行的函数和调用它的函数的参数。
+说明
+Arguments是进行函数调用时，除了指定的参数外，还另外创建的一个隐藏对象。Arguments是一个类似数组但不是数组的对象，说它类似数组是因为其具有数组一样的访问性质及方式，可以由arguments[n]来访问对应的单个参数的值，并拥有数组长度属性length。还有就是arguments对象存储的是实际传递给函数的参数，而不局限于函数声明所定义的参数列表，而且不能显式创建 arguments对象。arguments对象只有函数开始时才可用。下边例子详细说明了这些性质:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-29T15:20:24+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:20:24+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="js Function.call">
+  <meta name="twitter:description" content="js Function.call 提到上述的概念之前，首先想说说javascript中函数的隐含参数：
+arguments
+Arguments
+该对象代表正在执行的函数和调用它的函数的参数。
+说明
+Arguments是进行函数调用时，除了指定的参数外，还另外创建的一个隐藏对象。Arguments是一个类似数组但不是数组的对象，说它类似数组是因为其具有数组一样的访问性质及方式，可以由arguments[n]来访问对应的单个参数的值，并拥有数组长度属性length。还有就是arguments对象存储的是实际传递给函数的参数，而不局限于函数声明所定义的参数列表，而且不能显式创建 arguments对象。arguments对象只有函数开始时才可用。下边例子详细说明了这些性质:">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/17/" title="js Function.call - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/23/" title="JS valueOf与字符串" /><link rel="next" type="text/html" href="http://localhost:1313/posts/18/" title="Irrlicht引擎分析记录1" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/17/index.md" title="js Function.call - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "js Function.call",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/17\/"
+    },"genre": "posts","wordcount":  36 ,
+    "url": "http:\/\/localhost:1313\/posts\/17\/","datePublished": "2025-06-29T15:20:24+00:00","dateModified": "2025-06-29T15:20:24+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Js Function.call</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:24"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="36 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+    </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">js Function.call</h1></div>
+<div class="content" id="content"><p> 提到上述的概念之前，首先想说说javascript中函数的隐含参数：<br><strong>arguments</strong></p><p><strong><!-- raw HTML omitted -->Arguments<!-- raw HTML omitted --></strong></p><p><!-- raw HTML omitted -->该对象代表正在执行的函数和调用它的函数的参数。<!-- raw HTML omitted --></p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><p><strong>说明</strong></p><p><!-- raw HTML omitted --><!-- raw HTML omitted -->Arguments<!-- raw HTML omitted -->是进行函数调用时，除了指定的参数外，还另外创建的一个隐藏对象。<!-- raw HTML omitted -->Arguments<!-- raw HTML omitted -->是一个类似数组但不是数组的对象，说它类似数组是因为其具有数组一样的访问性质及方式，可以由<!-- raw HTML omitted -->arguments[<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->n<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->]<!-- raw HTML omitted -->来访问对应的单个参数的值，并拥有数组长度属性length。还有就是<!-- raw HTML omitted -->arguments<!-- raw HTML omitted -->对象存储的是实际传递给函数的参数，而不局限于函数声明所定义的参数列表，而且不能显式创建&nbsp;<!-- raw HTML omitted -->arguments<!-- raw HTML omitted -->对象。<!-- raw HTML omitted -->arguments<!-- raw HTML omitted -->对象只有函数开始时才可用。下边例子详细说明了这些性质<!-- raw HTML omitted --><!-- raw HTML omitted -->:<!-- raw HTML omitted --><!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->//arguments&nbsp;对象的用法。<!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->function<!-- raw HTML omitted --><br><!-- raw HTML omitted -->&nbsp;ArgTest(a,&nbsp;b){<!-- raw HTML omitted -->&nbsp;var&nbsp;i,&nbsp;s&nbsp;=&nbsp;“The&nbsp;ArgTest&nbsp;function&nbsp;expected&nbsp;"<!-- raw HTML omitted --><br><!-- raw HTML omitted -->;<!-- raw HTML omitted -->&nbsp;var&nbsp;numargs&nbsp;=&nbsp;arguments.length;&nbsp;//&nbsp;获取被传递参数的数值。<!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->&nbsp;var&nbsp;expargs&nbsp;=&nbsp;ArgTest.length;&nbsp;//&nbsp;获取期望参数的数值。<!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->&nbsp;if&nbsp;(expargs&nbsp;&lt;&nbsp;2<!-- raw HTML omitted --><br><!-- raw HTML omitted -->)<!-- raw HTML omitted -->&nbsp;s&nbsp;+=&nbsp;expargs&nbsp;+&nbsp;"&nbsp;argument.&nbsp;"<!-- raw HTML omitted --><br><!-- raw HTML omitted -->;<!-- raw HTML omitted -->&nbsp;else<!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->&nbsp;s&nbsp;<!-- raw HTML omitted --><br><!-- raw HTML omitted -->+=&nbsp;expargs&nbsp;+&nbsp;"&nbsp;arguments.&nbsp;"<!-- raw HTML omitted --><br><!-- raw HTML omitted -->;<!-- raw HTML omitted -->&nbsp;if&nbsp;(numargs&nbsp;&lt;&nbsp;2<!-- raw HTML omitted --><br><!-- raw HTML omitted -->)<!-- raw HTML omitted -->&nbsp;s&nbsp;+=&nbsp;numargs&nbsp;+&nbsp;"&nbsp;was&nbsp;passed."<!-- raw HTML omitted --><br><!-- raw HTML omitted -->;<!-- raw HTML omitted -->&nbsp;else<!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->&nbsp;s&nbsp;<!-- raw HTML omitted --><br><!-- raw HTML omitted -->+=&nbsp;numargs&nbsp;+&nbsp;"&nbsp;were&nbsp;passed."<!-- raw HTML omitted --><br><!-- raw HTML omitted -->;<!-- raw HTML omitted -->&nbsp;s&nbsp;+=&nbsp;““n"n”<!-- raw HTML omitted --></p><p><!-- raw HTML omitted --><!-- raw HTML omitted --><br><!-- raw HTML omitted -->for&nbsp;(i&nbsp;=0&nbsp;;&nbsp;i&nbsp;&lt;&nbsp;numargs;&nbsp;i++){&nbsp;//&nbsp;获取参数内容。<!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->&nbsp;s&nbsp;+=&nbsp;"&nbsp;Arg&nbsp;"&nbsp;+&nbsp;i&nbsp;+&nbsp;"&nbsp;=&nbsp;"&nbsp;+&nbsp;arguments[i]&nbsp;+&nbsp;““n”<!-- raw HTML omitted --><br><!-- raw HTML omitted -->;<!-- raw HTML omitted -->&nbsp;}<!-- raw HTML omitted -->&nbsp;return(s);&nbsp;//&nbsp;返回参数列表。<!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->}<!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->在此添加了一个说明arguments不是数组(Array类)的代码:<!-- raw HTML omitted --><!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->Array.prototype.selfvalue&nbsp;=&nbsp;1<!-- raw HTML omitted --><br><!-- raw HTML omitted -->;<!-- raw HTML omitted -->alert(new<!-- raw HTML omitted --><br><!-- raw HTML omitted -->&nbsp;Array().selfvalue);<!-- raw HTML omitted -->function<!-- raw HTML omitted --><br><!-- raw HTML omitted -->&nbsp;testAguments(){<!-- raw HTML omitted -->&nbsp;alert(arguments.selfvalue);<!-- raw HTML omitted -->}<!-- raw HTML omitted --></p><p><!-- raw HTML omitted -->运行代码你会发现第一个alert显示1，这表示数组对象拥有selfvalue属性，值为1，而当你调用函数testAguments时，你会发现显示的是“undefined”，说明了不是arguments的属性，即arguments并不是一个数组对象。<!-- raw HTML omitted --><!-- raw HTML omitted -->在此附加上大家推荐的一个简单方法<!-- raw HTML omitted -->：<!-- raw HTML omitted --></p><p><!-- raw HTML omitted --> alert(arguments&nbsp;instanceof&nbsp;Array);</p><p><!-- raw HTML omitted --> alert(arguments&nbsp;instanceof&nbsp;Object);</p><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></div>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2025-06-29 15:20:24">Updated on 2025-06-29&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/17/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c17.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/17/" data-title="Js Function.call"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/17/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/17/" data-title="Js Function.call"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/23/" class="post-nav-item" rel="prev" title="JS ValueOf与字符串"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>JS ValueOf与字符串</a><a href="/posts/18/" class="post-nav-item" rel="next" title="Irrlicht引擎分析记录1">Irrlicht引擎分析记录1<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.147.9"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.21-b2e6f70a"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+</html>

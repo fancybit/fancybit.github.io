@@ -1,0 +1,13 @@
+# Jquery Mouseleave和mouseout的区别
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">jquery mouseleave和mouseout的区别</h1></div>
+
+<div class="content" id="content"><p>今天做一个下拉菜单的效果，发现用mouseout事件判断鼠标是否移出菜单让菜单消失的判断有很大问题。</p><p>第一是鼠标移动到了元素的margin border padding区域的时候会触发mouseout。</p><p>第二是子元素上鼠标移开也会让父元素触发mouseout。</p><p>这就导致鼠标在进入下拉菜单和在菜单元素之间移动的时候触发大量的mouseout，菜单总是消失。</p><p>改为使用mouseleave事件以后问题消失，说明mouseleave既会把margin border padding视为组件内部，也不会反复的在其子元素之间移动鼠标的时候触发。</p><!-- raw HTML omitted --><p><!-- raw HTML omitted -->¨NBSP;<!-- raw HTML omitted --></p></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/778/  
+

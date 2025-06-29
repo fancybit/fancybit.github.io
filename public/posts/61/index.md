@@ -1,0 +1,13 @@
+# 在控制台用git把本地项目同步到远程的gitee或者github
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">在控制台用git把本地项目同步到远程的gitee或者github</h1></div>
+
+<div class="content" id="content"><p>创建git容器</p><p>git init</p><p>创建并且切换分支到develop</p><p>&nbsp;git checkout -b develop</p><p>编写.gitignore确定排除文件</p><p>提交文件</p><p>git commit -m “注释”</p><p>浏览器登陆github或者gitt 设置远程容器</p><p>创建空容器 注意不想开源就设置为私有容器</p><p>不要启用readme.md 使用master/develop双分支模型</p><!-- raw HTML omitted --><!-- raw HTML omitted --><p>git remote add 容器名 容器url</p><p>推送当前项目所有分支到容器</p><p>git push –all 容器名</p><p>输入账号密码</p><p>完成</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/61/  
+

@@ -1,0 +1,13 @@
+# Windows7内核驱动开发试验环境配置
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">windows7内核驱动开发试验环境配置</h1></div>
+
+<div class="content" id="content"><p>首先配置环境参照这个：</p><p><a href="http://blog.csdn.net/qing666888/article/details/50858272" target="_blank" rel="external nofollow noopener noreferrer">http://blog.csdn.net/qing666888/article/details/50858272</a></p><p>然后在win10里可能由于没有做测试签名因此一直没有成功加载驱动，换成win7后需要安装winddk7然后重启VS，项目属性-&gt;Driver Settings-&gt;Target OS Version切换到Windows 7</p><p>然后</p><p>Driver Signing里设置</p><p>Sign Mode: Test Sign</p><p>Test Certificate 下拉菜单选择Create(如果以前没有创建过数字签名）或者Select from store(以前创建过数字签名)</p><p>TimeStampServer选一个 我用的默认的</p><p>你也可以参照这里https://msdn.microsoft.com/zh-cn/windows/hardware/drivers/install/test-signing-a-driver-file</p><p>使用工具更可控地创建和签名驱动程序</p><p>然后如果是要做nt driver，可以把inf文件删除</p><p>目标机为了在测试的过程中安装测试驱动，还需要开启测试签名模式，此模式下可以安装自签名的驱动，不需要权威CA。管理员权限运行cmd然后bcdedit /set testsigning on 重启即可</p><p>VS内的调试器看样子是内嵌了一个windbg，每次调试的时候要先中断一次，才会正常看到调试连接建立成功的信息，一直等待是看不到任何反馈的。</p><p>还要注意的是第一篇引文中的工具安装删除服务是有效的，但是启动和停止服务是无效的，因此需要使用在管理员权限的控制台下net start 服务名和net stop服务名来开关服务。</p><p>还有注意操作系统的版本和编译出来的驱动程序CPU平台版本要一直，都是win32或者都是x64</p><p>如第一篇引文，到此在计算机上捕捉到了虚拟机中win7操作系统的断点。</p><p>还有其他补充和试验会另外记录，今天先到这里。</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/29/  
+

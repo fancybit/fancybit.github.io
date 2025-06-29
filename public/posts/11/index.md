@@ -1,0 +1,13 @@
+# 递归转迭代实操记录
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">递归转迭代实操记录</h1></div>
+
+<div class="content" id="content"><p>针对那些经典的像素游戏设计的自动切图工具里用到种子填充算法的实现。</p><p>一开始是用递归实现的，后来遇到一些头像之类的比较大一点的图素，运行的时候经常占满C#默认的1M线程栈内存而崩溃。尝试使用各种多线方式改造并没有成功，于是干脆改成迭代形式，创建一个Stack自己完全精确控制其中的数据操作。</p><p>这里截取一段改成迭代后的代码，这是窗体的事件处理用cs代码。因为只是个小工具，没有完全把界面和逻辑分离。</p><precode language="" precodenum="0"></precode><p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p><p>总结一下递归转迭代的操作步骤：</p><ol><li>初始化函数调用前用到的类的成员变量和常量，放在类的成员变量或者常量直接初始化就可以。</li><li>初始化在本次调用不变的数据比如这里的延伸距离distance，放在进入迭代循环之前。</li><li>把递归函数的参数合成一个类型Frame，创建一个Stack<!-- raw HTML omitted -->来代替运行时提供的栈内存。这个Stack根据具体情况可以是类的成员变量也可以是函数的局部变量。</li><li>压入初始的传入参数帧</li><li>进入迭代循环，迭代循环基本就是原本函数的递归执行体改造过来。</li><li>迭代循环中把所有递归调用自身的函数换成新参数构建成帧并且压入Stack。</li><li>原有的return改成对迭代循环的continue。</li><li>如果有跳出所有原来递归的需要，在迭代循环中加入break。</li><li>其他操作顺序维持不变。</li></ol><p></p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/11/  
+

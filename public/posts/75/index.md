@@ -1,0 +1,13 @@
+# 资源站和源码站搜集
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">资源站和源码站搜集</h1></div>
+
+<div class="content" id="content"><p>爱给网 <!-- raw HTML omitted --><a href="http://www.aigei.com/" target="_blank" rel="external nofollow noopener noreferrer">http://www.aigei.com/</a><!-- raw HTML omitted --></p><p>&nbsp;各种免费资源提供 音频 3D模型 原画 游戏源码 教学视频</p><p><!-- raw HTML omitted --><!-- raw HTML omitted -->中国源码网&nbsp;<!-- raw HTML omitted --><a href="http://www.zgymw.com/" target="_blank" rel="external nofollow noopener noreferrer">http://www.zgymw.com/</a><!-- raw HTML omitted --></p><p>&nbsp;非常低价和大量免费的资源 不过内容好像质量不太高而且比较老旧</p><p>GMBBS&nbsp;<!-- raw HTML omitted --><a href="https://www.gmbbs.cn/" target="_blank" rel="external nofollow noopener noreferrer">https://www.gmbbs.cn/</a><!-- raw HTML omitted --></p><p>&nbsp;各种编译好的一键搭建的私服端 但是只有构建好的可执行文件 似乎少有完整源码 主要面向不会编译修改只会拿工具去架设当GM的玩家</p><p>其他实测之后再来补充</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/75/  
+

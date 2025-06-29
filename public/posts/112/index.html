@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>发布到steam的unity游戏破解方法 - 数语轩</title><meta name="author" content="fancybit">
+<meta name="description" content="发布到steam的unity游戏破解方法 工具下载：
+IDA 7.0
+Il2CppDumper
+Reflector
+百度网盘下载：
+链接：https://pan.baidu.com/s/1EpYlq6VQfoKPzH9ZkF9Nug&nbsp;
+提取码：8u2b&nbsp;
+交流QQ群：1025446555
+unity是现在独立游戏的常用游戏引擎，Steam上就有很多。这篇记录就先简单介绍一下破解游戏做出游戏补丁让游戏脱离steam也能运行的办法。
+以最近上线steam的游戏《回门》为例：
+首先是下载游戏，找到游戏本体存在的目录：
+比如我的steam安装在G:\Games\ 路径大概就是：
+G:\Game\Steam\steamapps\common\回门 Way Back Home
+放在其他盘其他目录的童鞋可以自行推断位置
+发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第1张
+可以看到里面的GameAssembly.dll 用reflector打开GameAssembly.dll 会发现它不是C#的DLL文件，
+">
+  <meta itemprop="name" content="发布到steam的unity游戏破解方法">
+  <meta itemprop="description" content="发布到steam的unity游戏破解方法 工具下载：
+IDA 7.0
+Il2CppDumper
+Reflector
+百度网盘下载：
+链接：https://pan.baidu.com/s/1EpYlq6VQfoKPzH9ZkF9Nug 
+提取码：8u2b 
+交流QQ群：1025446555
+unity是现在独立游戏的常用游戏引擎，Steam上就有很多。这篇记录就先简单介绍一下破解游戏做出游戏补丁让游戏脱离steam也能运行的办法。
+以最近上线steam的游戏《回门》为例：
+首先是下载游戏，找到游戏本体存在的目录：
+比如我的steam安装在G:\Games\ 路径大概就是：
+G:\Game\Steam\steamapps\common\回门 Way Back Home
+放在其他盘其他目录的童鞋可以自行推断位置
+发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第1张
+可以看到里面的GameAssembly.dll 用reflector打开GameAssembly.dll 会发现它不是C#的DLL文件，">
+  <meta itemprop="datePublished" content="2025-06-29T15:20:24+00:00">
+  <meta itemprop="dateModified" content="2025-06-29T15:20:24+00:00">
+  <meta itemprop="wordCount" content="161"><meta property="og:url" content="http://localhost:1313/posts/112/">
+  <meta property="og:site_name" content="数语轩">
+  <meta property="og:title" content="发布到steam的unity游戏破解方法">
+  <meta property="og:description" content="发布到steam的unity游戏破解方法 工具下载：
+IDA 7.0
+Il2CppDumper
+Reflector
+百度网盘下载：
+链接：https://pan.baidu.com/s/1EpYlq6VQfoKPzH9ZkF9Nug 
+提取码：8u2b 
+交流QQ群：1025446555
+unity是现在独立游戏的常用游戏引擎，Steam上就有很多。这篇记录就先简单介绍一下破解游戏做出游戏补丁让游戏脱离steam也能运行的办法。
+以最近上线steam的游戏《回门》为例：
+首先是下载游戏，找到游戏本体存在的目录：
+比如我的steam安装在G:\Games\ 路径大概就是：
+G:\Game\Steam\steamapps\common\回门 Way Back Home
+放在其他盘其他目录的童鞋可以自行推断位置
+发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第1张
+可以看到里面的GameAssembly.dll 用reflector打开GameAssembly.dll 会发现它不是C#的DLL文件，">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-29T15:20:24+00:00">
+    <meta property="article:modified_time" content="2025-06-29T15:20:24+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="发布到steam的unity游戏破解方法">
+  <meta name="twitter:description" content="发布到steam的unity游戏破解方法 工具下载：
+IDA 7.0
+Il2CppDumper
+Reflector
+百度网盘下载：
+链接：https://pan.baidu.com/s/1EpYlq6VQfoKPzH9ZkF9Nug 
+提取码：8u2b 
+交流QQ群：1025446555
+unity是现在独立游戏的常用游戏引擎，Steam上就有很多。这篇记录就先简单介绍一下破解游戏做出游戏补丁让游戏脱离steam也能运行的办法。
+以最近上线steam的游戏《回门》为例：
+首先是下载游戏，找到游戏本体存在的目录：
+比如我的steam安装在G:\Games\ 路径大概就是：
+G:\Game\Steam\steamapps\common\回门 Way Back Home
+放在其他盘其他目录的童鞋可以自行推断位置
+发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第1张
+可以看到里面的GameAssembly.dll 用reflector打开GameAssembly.dll 会发现它不是C#的DLL文件，">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/112/" title="发布到steam的unity游戏破解方法 - 数语轩" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/34/" title="史上最全的css hack（ie6-9,firefox,chrome,opera,safari）" /><link rel="next" type="text/html" href="http://localhost:1313/posts/16/" title="冷门JS技巧" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/112/index.md" title="发布到steam的unity游戏破解方法 - 数语轩"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "发布到steam的unity游戏破解方法",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/112\/"
+    },"genre": "posts","wordcount":  161 ,
+    "url": "http:\/\/localhost:1313\/posts\/112\/","datePublished": "2025-06-29T15:20:24+00:00","dateModified": "2025-06-29T15:20:24+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "fancybit"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="数语轩"><span class="header-title-text">数语轩</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>发布到steam的unity游戏破解方法</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      fancybit</span></span></div><div class="post-meta-line"><span title="published on 2025-06-29 15:20:24"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-06-29">2025-06-29</time></span>&nbsp;<span title="161 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;</div>
+    </div><div class="content" id="content"><div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">发布到steam的unity游戏破解方法</h1></div>
+<div class="content" id="content"><p>工具下载：</p><p>IDA 7.0</p><p>Il2CppDumper</p><p>Reflector</p><p>百度网盘下载：</p><p>链接：https://pan.baidu.com/s/1EpYlq6VQfoKPzH9ZkF9Nug&nbsp;</p><p>提取码：8u2b&nbsp;</p><p>交流QQ群：1025446555</p><p>unity是现在独立游戏的常用游戏引擎，Steam上就有很多。这篇记录就先简单介绍一下破解游戏做出游戏补丁让游戏脱离steam也能运行的办法。</p><p>以最近上线steam的游戏《回门》为例：</p><p>首先是下载游戏，找到游戏本体存在的目录：</p><p>比如我的steam安装在G:\Games\ 路径大概就是：</p><p>G:\Game\Steam\steamapps\common\回门 Way Back Home</p><p>放在其他盘其他目录的童鞋可以自行推断位置</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612769455458962.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612769455458962.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第1张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第1张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612769455458962.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612769455458962.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612769455458962.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612769455458962.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第1张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第1张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第1张</figcaption></figure><p></p><p>可以看到里面的GameAssembly.dll 用reflector打开GameAssembly.dll 会发现它不是C#的DLL文件，</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612769771842696.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612769771842696.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第2张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第2张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612769771842696.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612769771842696.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612769771842696.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612769771842696.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第2张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第2张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第2张</figcaption></figure><p></p><p>打开XXX_Data目录，里面有个il2cpp_data</p><p>从这两点可以看出这个游戏是使用的Il2cpp的后端，这种后端需要懂点汇编才好破解，不过只是断开steam的话是难度不高的。对付il2cpp后端的游戏，我们可以用Il2cppDumper这个工具来做辅助提取和修改。</p><p>进行这个修改还需要找另外一个文件global-metadata.dat，通常在il2cpp_data下面，我找了一下在：</p><!-- raw HTML omitted --><p>我们先创建一个目录，把破解需要的中间文件都放在这里，比如我放在了g:\works\hack\hm\里面</p><p>然后我们编写一个简单的批处理脚本，<!-- raw HTML omitted -->放在游戏目录下（也就是GameAssembly.dll所在目录）<!-- raw HTML omitted --> 调用il2cppdumper来破解，其实只有一行：</p><!-- raw HTML omitted --><p>编写完保存成bat文件，运行后等待结束，成功的话就会在g:\works\hack\hm\ 下面生成一些中间文件，比如：</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612770254767280.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612770254767280.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第3张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第3张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612770254767280.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612770254767280.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612770254767280.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612770254767280.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第3张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第3张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第3张</figcaption></figure><p></p><p>其中DummyDll里是一些C#代码，里面并没有从c和汇编反编译出来的具体代码内容，只有元数据，也就是可以用reflector或者ilspy之类打开查看代码结构。要修改的话 还是只能去用IDA去修改原本的GameAssembly.dll文件。</p><p>IDA是用来反编译机器语言到汇编语言，还可以返到不是很好看的C代码。</p><p>注意这个Tool是我把文章开头下载下来的工具解压之后放在这里的。然后现在启动我们的神器IDA,注意32位的就可以，64位的话可能会出现无法反编译到C代码。</p><p>在IDA打开这个GameAssembly.dll之后，默认选项确认进去，可以看到IDA会自动开始扫描分析这个dll文件，这个时候等待左下角的提示，</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773227344163.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773227344163.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第4张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第4张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773227344163.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773227344163.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773227344163.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773227344163.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第4张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第4张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第4张</figcaption></figure><p></p><p>出现这个自动分析结束的提示，就是分析完成了</p><p>好了现在选择 File-》Script File</p><p>运行Il2cpp所在文件夹下的ida_with_struct.py&nbsp;</p><p>然后IDA会弹出窗口让你选择几个前面il2cppdumper提取出的json文件，也就是script.json和il2cpp.h 根据提示窗口标题就能看到。上面截图就有。</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773358113420.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773358113420.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第5张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第5张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773358113420.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773358113420.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773358113420.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773358113420.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第5张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第5张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第5张</figcaption></figure><p></p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773390409333.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773390409333.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第6张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第6张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773390409333.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773390409333.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773390409333.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773390409333.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第6张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第6张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第6张</figcaption></figure><p></p><p>选择完毕IDA会开始进一步分析和替换函数名，这样就可以快速确认steam连接操作的代码位置了。</p><p>中途可能会报错，一般忽略并且继续就行。</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773435461694.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773435461694.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第7张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第7张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773435461694.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773435461694.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773435461694.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773435461694.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第7张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第7张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第7张</figcaption></figure><p></p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773460329700.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773460329700.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第8张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第8张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773460329700.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773460329700.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773460329700.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773460329700.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第8张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第8张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第8张</figcaption></figure><p></p><p>等待分析完成。</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773878613413.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773878613413.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第9张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第9张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773878613413.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612773878613413.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773878613413.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612773878613413.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第9张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第9张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第9张</figcaption></figure><p></p><p>看到这个script finished就是分析完成了。</p><p>这时候看左侧的function window，里面会出现很多替换成有意义名称的函数名，选中随便一个，然后直接打英文SteamManager$$Awake</p><p>寻找到SteamManager$$Awake</p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774007895413.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774007895413.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第10张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第10张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774007895413.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774007895413.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612774007895413.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612774007895413.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第10张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第10张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第10张</figcaption></figure>把它的<p></p><p>选中右侧窗口 点击push ebp那里</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774146206962.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774146206962.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第11张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第11张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774146206962.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774146206962.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612774146206962.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612774146206962.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第11张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第11张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第11张</figcaption></figure><p></p><p>然后选择Edit-&gt;Patch Program-&gt;Assemble</p><p>改成ret</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774178582756.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774178582756.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第12张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第12张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774178582756.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774178582756.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612774178582756.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612774178582756.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第12张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第12张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第12张</figcaption></figure><p></p><p>这样初始化steam连接的函数改成了第一句就返回，跳过了后面和steam交互的过程，就可以脱离steam运行了。</p><p>最后Edit-&gt;Patch program-&gt;Apply patches to input file…</p><p></p><figure><a class="lightgallery" href="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774242807778.png" data-thumbnail="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774242807778.png" data-sub-html="<h2>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第13张</h2><p>发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第13张</p>"><img class="lazyload" src="/svg/loading.min.svg" data-src="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774242807778.png" data-srcset="https://www.fancybit.top/zb_users/upload/2021/02/202102081612774242807778.png, https://www.fancybit.top/zb_users/upload/2021/02/202102081612774242807778.png 1.5x, https://www.fancybit.top/zb_users/upload/2021/02/202102081612774242807778.png 2x" data-sizes="auto" alt="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第13张" title="发布到steam的unity游戏破解方法  Il2Cpp unity 逆向工程 破解 游戏 第13张"></a><figcaption class="image-caption">发布到steam的unity游戏破解方法 Il2Cpp unity 逆向工程 破解 游戏 第13张</figcaption></figure><p></p><p>这样补丁就打上了 关掉或者卸载STEAM 都可以直接进入游戏了。</p><p>破解完成</p><p>特别声明：</p><p>本人文章仅以技术交流为目的，不会直接用于任何盈利行为。如果使用本文介绍技术进行违法活动，本人概不负责，望周知。</p><!-- raw HTML omitted --></div>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2025-06-29 15:20:24">Updated on 2025-06-29&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/112/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/F:%5cworks%5cfancybit.github.io%5ccontent%5cposts%5c112.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/112/" data-title="发布到steam的unity游戏破解方法"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/112/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/112/" data-title="发布到steam的unity游戏破解方法"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/34/" class="post-nav-item" rel="prev" title="史上最全的css Hack（ie6-9,firefox,chrome,opera,safari）"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>史上最全的css Hack（ie6-9,firefox,chrome,opera,safari）</a><a href="/posts/16/" class="post-nav-item" rel="next" title="冷门JS技巧">冷门JS技巧<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.147.9"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.21-b2e6f70a"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="/"></a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"version":"v0.3.21-b2e6f70a"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+</html>

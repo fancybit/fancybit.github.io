@@ -1,0 +1,13 @@
+# Unity+Live2D采坑记录
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">unity+Live2D采坑记录</h1></div>
+
+<div class="content" id="content"><p><strong><!-- raw HTML omitted -->拖放进去的live2d不显示：<!-- raw HTML omitted --></strong></p><p>有时候拖放live2d模型动画文件进untiy之后会显示不出来，打开drawables子级可以看到里面的子物体都有一个MeshFilter组件，并且组件的mesh为空。但是看下面的CubismRenderer组件里有一个mesh属性里面是有数据的。这种情况只要点播放按钮进入一次游戏 在场景中展示一次 随后MeshFilter里就有内容了，模型也就可以看的见了。初步判断应该是live2d给unity的SDK里有些应该awake里写的初始化代码写到了Start里面，所以必须启动一次触发一次Start才能完成初始化。有空分析一下看看有没必要发个pull request修复。</p><p><strong><!-- raw HTML omitted -->Live2D模型代码里改参数无效：<!-- raw HTML omitted --></strong></p><p><!-- raw HTML omitted -->通过Parameters下面的子物体改参数以后，需要去调用一次CubismModel.ForceUpdateNow()才能生效。建议所有参数修改完毕后再调用，也可以直接在Model的Update方法里调用这个。<!-- raw HTML omitted --></p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/111/  
+

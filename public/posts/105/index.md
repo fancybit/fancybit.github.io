@@ -1,0 +1,13 @@
+# 微信公众号开发踩坑记录
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">微信公众号开发踩坑记录</h1></div>
+
+<div class="content" id="content"><p>在微信浏览器里可以通过jssdk调用微信的各种功能，比如微信扫一扫，获取用户列表，分享到朋友圈之类 。</p><p>但是每次调用jssdk的时候浏览器的JS必须先用wx.config完成配置和签名校验，这就需要从后端获取一组签名数据包。微信公众平台提供了这方面的文档和参考，有后端也有前端。</p><p>后端范例下载：</p><p><a href="http://demo.open.weixin.qq.com/jssdk/sample.zip" target="_blank" rel="external nofollow noopener noreferrer">http://demo.open.weixin.qq.com/jssdk/sample.zip</a></p><p>JSSDK文档：</p><p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html" target="_blank" rel="external nofollow noopener noreferrer">https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html</a><!-- raw HTML omitted --></p><p>我使用的是php，这里需要把jssdk.php jsapi_ticket.php access_token.php三个文件都下载下来才能使用，后2个文件是用来缓存jsapi_ticket和access_token的。这两个用来给后端生成签名数据包，然后浏览器端获取签名数据包之后，用js调用jssdk传入签名数据包进行配置，通过验证之后就可以正常调用微信（微信内置浏览器）提供的功能了，这些功能都通过wx这个对象调用。这两个口令的有效期都是2小时，并且请求频率有限制，所以这个缓存机制不能省略。</p><p>jssdk.php并不是复制过来就能用的，我做了几个修改才最终适配到了我这边的需求和环境。一个是access_token.php和jsap_ticket.php的路径，由于用了MVC结构，所以改了一下jssdk.php内对这两个文件的访问，使用了完整URL路径才能正确读写。然后是请求access_token的时候一开始得到的是null，之后下载了</p><!-- raw HTML omitted --><p>这个文件，放到文件系统，更改了php配置文件:</p><p>[curl]</p><p>; A default value for the CURLOPT_CAINFO option. This is required to be an</p><p>; absolute path.</p><p>curl.cainfo=“d:\xxx\xxx\cacert.pem”</p><p>然后重启php，之后就可以获取到access_token和jsapi_ticket了。当然，我开启了ssl。</p><p>还有一个坑是签名验证算法的url参数，首先我用的是frp转发，frp服务端用了ssl，但是我自己的机器没有用，通过nginx转发到本机所以没必要用ssl。因此我这边检测出来的通信协议是http而不是https，这里可能需要手动指定一下。在jssdk.php的这里：</p><!-- raw HTML omitted --><p>如果没有使用ajax获取签名包，这里可能需要直接指定成&lt;a href=“https://” _src=“https://” target="_blank" rel=“nofollow” &gt;https://<!-- raw HTML omitted --></p><p>另外这个url参数必须和执行wx.config这个js代码的所在页面路径一致，因此如果你用ajax访问另外一个服务端url获取签名包，应该把执行js的页面的window.location进行url编码，跟着ajax Post参数发送到后端，后端用收到的参数解码后替代这里的url，大概改了以后是这样：</p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><p>终于可以顺利通过验证调用扫码了，这个坑磨了我将近一天，做个记录备忘，如果帮到你了或者还有疑问，欢迎留言联系我。</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/105/  
+

@@ -1,0 +1,13 @@
+# Egametang启动配置
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">egametang启动配置</h1></div>
+
+<div class="content" id="content"><!-- raw HTML omitted --><p>egametang的启动配置文件可以在Unity的Tools-&gt;命令行配置中修改保存然后启动</p><p>如果需要添加自定义的启动配置项目，只需要修改客户端的</p><!-- raw HTML omitted --><p>ServerCommandLineEditor.cs</p><!-- raw HTML omitted --><!-- raw HTML omitted --><p>这段代码里可以修改AppType对应的startconfig包含的AConfigComponent子类</p><p></p><!-- raw HTML omitted --><!-- raw HTML omitted --><p>修改这段代码即可给新增或者修改的AConfigComponent子类字段赋值</p><p></p><p><!-- raw HTML omitted -->注意如果派生新的AConfigComponent 子类，需要再AConfigComponent上使用BsonKnownTypes标记记录上去<!-- raw HTML omitted --></p><!-- raw HTML omitted --><!-- raw HTML omitted --><p></p><p></p><p></p><p></p><p>点击保存后，StartConfig是个Entity，Entity的Componet容器被标记了BsonElement，所以它包含的配置组件及其内容都会序列化成json保存在配置文件夹中。从项目根目录\Config\StartConfig中即可查看这些序列化出来的json配置文件，这些配置文件还包含了_t之类的bson特有字段，和通常的newtonsoft.json序列化出来的还是有点不同。</p><p>服务端进程启动时这些序列化好的配置文件会在Program.Main函数中的OptionComponent和StartConfigComponent被反序列化 服务端需要修改StartConfigComponent加入相关代码：</p><!-- raw HTML omitted --><!-- raw HTML omitted --><p></p><p>改完上面2处就可以在代码中引用了。</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/46/  
+

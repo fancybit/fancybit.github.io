@@ -1,0 +1,13 @@
+# Win10核心层虚拟机双机调试 VirtualKD-Redux+WinDBG
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">win10核心层虚拟机双机调试 VirtualKD-Redux+WinDBG</h1></div>
+
+<div class="content" id="content"><p>先到微软的网站下载Windows10的SDK和对应版本WDK</p><p>安装win10 sdk 其中包含WinDBG调试器</p><p>安装对应版本WDK</p><p>vmware workstation 15-16虚拟机上安装windows10</p><p>虚拟机菜单上找安装VMWare tools</p><p>从下面地址下载Release的VirtualKD-Redux</p><p><!-- raw HTML omitted --><a href="https://github.com/4d61726b/VirtualKD-Redux" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/4d61726b/VirtualKD-Redux</a><!-- raw HTML omitted --></p><p>在宿主机（真机）解压缩VirtualKD-Redux的压缩包，根据虚拟机的操作系统位数，把对应的Target文件夹复制到虚拟机，然后在里面找到vminstall.exe文件双击安装。</p><p>安装的时候可以选择新建启动项或者改变原有启动项。win10一定要确保选项选中</p><p>在真机上根据真机win10位数启动vmmon64.exe或者vmmon32.exe，随后在虚拟机win10存在的状态下点击一下patch，然后设置一下windbg所在的路径。</p><p>每次调试前需要先打开这个程序，并且调试结束前不要关闭，它还要继续工作以维持连接并加速数据传输。</p><p><strong>重新启动虚拟机 到启动项选择的时候，确保选中VirtualKD-Redux的那一项，然后不是按回车而是按F8，选择“禁用驱动程序强制签名”来继续启动windows。这个时候可以立刻用VMWARE做一个状态镜像，这样以后就不用每次启动都按F8，只要载入这个状态镜像即可。</strong></p><p>这时候正常情况下windbg就会在虚拟机进入windows徽标显示的载入过程中自动启动并且连接，这时调试环境就已经搞定了，在windbg里可以继续运行或者随时中断虚拟机里win10的所有线程。也可以加载PDB，源代码来进行断点调试了。如果windbg没有断下来，可以再次重启，或者从vmmon（32/64）上还原快照来再次尝试。</p></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/792/  
+

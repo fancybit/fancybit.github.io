@@ -1,0 +1,13 @@
+# 直播姬录制视频直接导入pr编辑的参数备忘
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">直播姬录制视频直接导入pr编辑的参数备忘</h1></div>
+
+<div class="content" id="content"><p>码率控制 固定码率</p><p>编码器 硬件编码</p><p>保存格式 MP4（流式MP4和FLV都不行）</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/99/  
+

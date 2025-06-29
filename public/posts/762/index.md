@@ -1,0 +1,13 @@
+# 基于OpenCV的全景图剪切程序：一张全景生成六张立方体天空盒图
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">基于OpenCV的全景图剪切程序：一张全景生成六张立方体天空盒图</h1></div>
+
+<div class="content" id="content"><!-- raw HTML omitted --><!-- raw HTML omitted --><p>各种投影算法的链接：</p><p><a href="http://paulbourke.net/geometry/transformationprojection/" target="_blank" rel="external nofollow noopener noreferrer">http://paulbourke.net/geometry/transformationprojection/</a></p></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/762/  
+

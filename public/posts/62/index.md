@@ -1,0 +1,13 @@
+# 2019-12-10
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">2019-12-10</h1></div>
+
+<div class="content" id="content"><p>昨天重新导出了所有数据库 因为看错了商城系统以为要安装mysql6以上 中间发现phpmyadmin导出sql之后 再导回来的时候需要每个数据库前面加个use xxx; 另外这个use的后面;不能省略否则会出错 真坑</p><p>商城系统跑起来了 现在在分析它的模板结构 准备自己改一套适合的皮肤出来</p><p>发现迅雷的chrome插件开启自动侦测页面视频功能的时候会给商城系统的一段json字符串插入xml导致商城系统上传文件的时候js用eval反序列化json串吃到一个json和xml混杂的字符串导致出错 查了一两个小时 真实shit</p><p>安装一堆vscode插件 多是和php开发有关的</p><p>给博客宠物加了个时崎狂三角色 但是还有点问题 edge显示不正常 js有一个报错</p><p>还没有完成提取分析微信小程序的实践 目标《看一看》</p><p>平衡大师游戏还在看slua的使用 准备作为实践lua热更的机会 用lua来避免调试时候测试一次和陀螺仪等硬件就要重新打包一次的麻烦问题 其实各种公式问题都可以用这种动态的lua来搞定吧</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/62/  
+

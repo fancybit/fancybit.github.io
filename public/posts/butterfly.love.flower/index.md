@@ -26,5 +26,5 @@ Four seasons pass, love's journey unfolds.
 ---
 
 > Author: fancybit  
-> URL: http://fancybit.github.io/posts/butterfly.love.flower/  
+> URL: http://localhost:1313/posts/butterfly.love.flower/  
 

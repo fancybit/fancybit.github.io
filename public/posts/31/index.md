@@ -1,0 +1,13 @@
+# 一种不导出元件载入并操作其他swf中类和元件的方法
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">一种不导出元件载入并操作其他swf中类和元件的方法</h1></div>
+
+<div class="content" id="content"><p><!-- raw HTML omitted -->这是纠结了2天的经验，不记录下来对不起自己的时间啊。</p><p>问题是这么发生的：2个网页中的swf要用到统一一组简单的ui组件（Sprite的派生类），然后我第一想到的就是传说中的rsl（运行时共享库）。不过折腾了半天，似乎是因为不是单纯的共享图片资源，还包含一部分用TweenLite控制的动画代码，直接操作元件里舞台上拖放的命名元件。控制这些元件的代码在要使用共享库的fla中一直报告找不到的错误。</p><p>于是不再使用Flash IDE上设置RSL导出的方法，自己用Loader 去加载ui.swf，然后在ui.swf的文档类中用一个工厂方法create(type:UIType)来创建各种元件实例，UIType是包含所有UI元素类型的枚举。但是问题依然存在，经过反复试验排查发现，只要是代码中import了ui库中和元件绑定的那些类，并且使用ui.swf的fla中有创建ui.swf中元件的代码，就会报错。错误的原因主要是在使用者的环境里错误的编译了&nbsp;公用库的代码。自然地想到如果能彻底分离ui.swf的界面与实现，就可能解决这个问题。</p><p>于是最后的方案出现了， 为所有的UI组件定义了一套接口，放到ui.i包中让使用ui的fla导入，创建工作仍是交给文档类完成，只不过文档类从loader.content获取之后保持Object的类型，不import文档类的定义直接调用它的create方法，返回的结果as为对应的UI元素接口，比如IMessageBox，即可。使用这种结构组织代码后没有再出现上文中提出的错误。随后把Loader载入ui.swf的逻辑封装进另外一个UIManager类，代码看起来更加整齐了。</p><p>这个方案的好处是一个swf中可以包含多个元件，不用把元件一个一个导出，在文档类的create中按类型加入创建实例的代码即可。定义接口会用掉一些时间，不过调用方可以由此获得代码提示，方便操作。</p><p>这个方案并不完美，还要等学习研究了制作基于UIComponent的组件方法之后再做比较，改进。</p><p>先做个记录，详细的代码范例整理后再放出。</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/31/  
+

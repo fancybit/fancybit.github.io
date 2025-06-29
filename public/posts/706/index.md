@@ -1,0 +1,13 @@
+# [资源] 【2020.3.15】碧蓝幻想VS-Granblue Fantasy: Versus+8 DLCs+联机，fitgirl重新封装，3.25GB
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">[资源] 【2020.3.15】碧蓝幻想VS-Granblue Fantasy: Versus+8 DLCs+联机，fitgirl重新封装，3.25GB</h1></div>
+
+<div class="content" id="content"><p><strong>国外bt建议使用bitcomet，μtorrent，qbittorrent等正规bt软件下载，没速度的多找点有效tracker就快了。学会分享，拒绝某雷等流氓软件吸血（某雷等流氓软件下载导致文件破损后果自负）！</strong>**<br> **<br> **话外音，fitgirl发布页在我搬运完这个资源之后瘫痪了几分钟，然后页面变回了11天前的状态，应该是又被黑了。。。。。。阿弥陀佛，我最爱的repacks小组。。。</p><p>重新封包游戏安装注意事项：</p><p>如遇安装过程卡住<br> 前提1.如果是机械硬盘，首先排除硬盘是否存在坏道；<br> 前提2.用某雷下载的，下载附件中的种子，使用正规bt软件打开种子重新检索已下载文件的完整性（重新hash）；</p><p>1.安装时关闭一切防护防毒软件（包括win自带的），因为这些可能拦截安装程序释放临时文件；<br> 2.内存16G或小于16G的，手动设置虚拟内存最大最小值均为16G。32G或以上的，以防万一手动设置虚拟内存最大最小值8G；<br> 3.安装全套c++运行库，从2003到2019，x86和x64都要装；<br> 4.不要安装在系统分区；<br> 5.把UAC设置到最低级，从不通知；<br> 6.确保你安装的分区有足够的空间；<br> 7.如果你系统分区Windows文件夹下有unarc.dll，将其删除；<br> 8.win系统用户名只能是字母或数字，不能是中文；****<br> **<br> **<br> 中文设置方法<br> 用记事本打开游戏目录下\Engine\Binaries\ThirdParty\Steamworks\Steamv144\Win64\steam_emu.ini文件，把Language=english改为Language=schinese是简体，Language=tchinese是繁体<br> 由于游戏语言设置中没有提供简繁中文的选项（但游戏数据中包含简繁中文），故无论任何时候，不要对游戏自定义选项中的声音&amp;语言项进行设置，否则将保存为游戏中设置的语言。<br> 如果已经用其他语言进入游戏，出现开头中文，载入存档进入游戏后变其它语言的问题，删除游戏存档文件，x:\Users\你的用户名\AppData\Local\GBVS文件夹，并按上述方式修改ini文件，在进入游戏，其余如上****<br> **<br> **<br> 本资源为搬运，一切解释权归fitgirl小组所有<br> **<br><strong>重新包装功能</strong></p><ul><li><strong>基于Granblue.Fantasy.Versus-CODEX ISO版本：codex-granblue.fantasy.versus.iso（6,367,444,992字节）</strong></li><li><strong>安装后，NoDVD文件夹中提供用于在线联机的基于CreamAPI的Steamworks Fix，以供使用</strong></li><li><strong>包含并激活了8个DLC</strong></li><li><strong>100％无损和MD5完美：安装后所有文件均与原始文件相同</strong></li><li><strong>没有删减，没有重新编码</strong></li><li><strong>存档大小显着减小（从5.9 GB压缩到3.3 GB）</strong></li><li><strong>安装需要3-6分钟（取决于您的配置）</strong></li><li><strong>安装后完整性检查，以便您可以确保所有内容均已正确安装</strong></li><li><strong>安装后的硬盘空间：7 GB</strong></li><li><strong>可以在游戏设置中更改语言</strong></li><li><strong>重新打包使用Razor12911的XTool库</strong></li><li>**安装此重新包装至少需要2 GB的可用RAM（包括虚拟）<br> **</li></ul><p>**<br> 随附的DLC**</p><ul><li><strong>Additional Character Set 1 (Beelzebub)</strong></li><li><strong>Additional Character Set 2 (Narmaya)</strong></li><li><strong>Color Pack Set 1</strong></li><li><strong>Color Pack Set 2</strong></li><li><strong>Color Pack Set 3</strong></li><li><strong>Color Pack Set 4</strong></li><li><strong>Color Pack Set 5</strong></li><li>**Color Pack Set 6<br> **</li></ul><p>**</p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><p><!-- raw HTML omitted -->**</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/706/  
+

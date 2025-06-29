@@ -1,0 +1,13 @@
+# VS2015安装时问题汇总
+
+<div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster">VS2015安装时问题汇总</h1></div>
+
+<div class="content" id="content"><p>安装VS2015遇到teamexplorer严重错误 在控制台管理员权限执行：</p><p>fsutil behavior set SymlinkEvaluation L2L:1 L2R:1 R2L:1 R2R:1</p><p>重新安装VS</p><p></p><p>可能是符号链接权限的问题（symlink permissions）</p><!-- raw HTML omitted --></div>
+
+
+
+---
+
+> Author: fancybit  
+> URL: http://localhost:1313/posts/43/  
+
